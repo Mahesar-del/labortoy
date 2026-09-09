@@ -8,7 +8,7 @@
 
     <div class="hero-section__content">
         <img class="hero-doc-img" src="{{ asset('img/hero-doc-img.png') }}" alt="">
-        <img class="hero-section__dots" src="{{ asset('img/dots-hero.png') }}" alt="">
+        <img class="hero-section__dots" src="{{ asset('img/dots-hero.png') }}?v={{ filemtime(public_path('img/dots-hero.png')) }}" alt="">
         <div class="hero-section__copy">
             <h1 id="hero-title">Precision Diagnostics.<br>Better Answers for<br>Better Care.</h1>
             <p>Sterling Genomic, Molecular &amp; Clinical Diagnostics is a U.S. laboratory providing accurate, science-driven testing for patients and providers.</p>
@@ -55,14 +55,16 @@
     .hero-doc-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
     .hero-section__copy { position: relative; z-index: 1; width: 49%; padding: 5% 0 5% 6.8%; }
     .hero-section h1 { margin: 0; font-size: clamp(24px, 3.25vw, 56px); font-weight: 800; letter-spacing: -.035em; line-height: 1.17; }
-    .hero-section p { max-width: 95%; margin: 24px 0 32px; color: #253238; font-size: clamp(11px, 1.12vw, 16px); line-height: 1.65; text-align: justify; }
+    .hero-section p { max-width: 95%; margin: 24px 0 32px; color: #000; font-size: clamp(11px, 1.12vw, 16px); line-height: 1.65; text-align: justify; }
     .hero-section__dots {
         position: absolute;
         left: 50%;
         top: 16%;
         width: 9%;
         aspect-ratio: 1;
+        display: block;
         object-fit: contain;
+        transform: rotate(43deg);
     }
     .hero-section__actions { display: flex; flex-wrap: wrap; gap: 18px; }
     .hero-section__button { display: inline-flex; justify-content: center; align-items: center; border: 1px solid transparent; border-radius: 999px; padding: 15px 31px; font-size: clamp(11px, 1vw, 14px); font-weight: 700; text-decoration: none; }
@@ -79,7 +81,7 @@
     @media (max-width: 600px) {
         .hero-section { padding: 40px 28px 37px; }
         .hero-section__left { clip-path: polygon(0 0, 61% 0, 48% 100%, 0 100%); }
-        .hero-section__content { min-height: 350px; aspect-ratio: auto; align-items: flex-start; background: rgba(244, 249, 250, .9); }
+        .hero-section__content { min-height: 0; aspect-ratio: auto; align-items: flex-start; background: rgba(244, 249, 250, .9); }
         .hero-doc-img { display: none; }
         .hero-section__copy { width: 100%; padding: 44px 24px 28px; }
         .hero-section h1 { font-size: clamp(22px, 5.5vw, 32px); }
