@@ -11,5 +11,6 @@
 </head>
 <body>
     @include('components.hero-section.index')
+    @include('components.diagnostics-cta.index')
 </body>
 </html>

@@ -6,8 +6,8 @@
         </div>
     </div>
 
-    <div class="hero-section__content">
-        <img class="hero-doc-img" src="{{ asset('img/hero-doc-img.png') }}" alt="">
+    <div class="hero-section__content" aria-live="polite">
+        <img class="hero-doc-img" src="{{ asset('img/hero-doc-img.png') }}" alt="Laboratory scientist examining a sample">
         <img class="hero-section__dots" src="{{ asset('img/dots-hero.png') }}?v={{ filemtime(public_path('img/dots-hero.png')) }}" alt="">
         <div class="hero-section__copy">
             <h1 id="hero-title">Precision Diagnostics.<br>Better Answers for<br>Better Care.</h1>
@@ -51,7 +51,12 @@
         display: flex;
         align-items: center;
         background: #e6eff2;
+        will-change: transform, opacity;
     }
+    .hero-section__content--leaving { animation: hero-slide-out .7s ease-in both; }
+    .hero-section__content--entering { animation: hero-slide-in .7s ease-out both; }
+    @keyframes hero-slide-out { to { opacity: 0; transform: translateY(-115%); } }
+    @keyframes hero-slide-in { from { opacity: 0; transform: translateY(115%); } to { opacity: 1; transform: translateY(0); } }
     .hero-doc-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
     .hero-section__copy { position: relative; z-index: 1; width: 49%; padding: 5% 0 5% 6.8%; }
     .hero-section h1 { margin: 0; font-size: clamp(24px, 3.25vw, 56px); font-weight: 800; letter-spacing: -.035em; line-height: 1.17; }
@@ -89,4 +94,91 @@
         .hero-section__button { padding: 12px 27px; }
         .hero-section__dots { display: none; }
     }
+    @media (prefers-reduced-motion: reduce) {
+        .hero-section__content--leaving, .hero-section__content--entering { animation: none; }
+    }
 </style>
+
+<script>
+    (() => {
+        const hero = document.querySelector('.hero-section');
+        if (!hero || hero.dataset.sliderReady) return;
+        hero.dataset.sliderReady = 'true';
+
+        const slides = [
+            {
+                title: 'Precision Diagnostics.<br>Better Answers for<br>Better Care.',
+                description: 'Sterling Genomic, Molecular &amp; Clinical Diagnostics is a U.S. laboratory providing accurate, science-driven testing for patients and providers.',
+                docImage: '{{ asset('img/hero-doc-img.png') }}',
+                bgLeft: '{{ asset('img/hero-bg-img-left.png') }}',
+                bgRight: '{{ asset('img/hero-bg-img-right.jpg') }}'
+            },
+            {
+                title: 'Molecular Testing.<br>Clearer Results for<br>Confident Decisions.',
+                description: 'Our molecular testing services deliver timely, dependable results that help providers make informed decisions for every patient.',
+                docImage: '{{ asset('img/hero-doctor-female.png') }}',
+                bgLeft: '{{ asset('img/hero-bg-img-left.png') }}',
+                bgRight: '{{ asset('img/hero-bg-img-right.jpg') }}'
+            },
+            {
+                title: 'Clinical Excellence.<br>Science That Supports<br>Better Outcomes.',
+                description: 'From advanced diagnostics to personalized support, our laboratory team delivers quality insights when they matter most.',
+                docImage: '{{ asset('img/hero-doctor-male.png') }}',
+                bgLeft: '{{ asset('img/hero-bg-img-left.png') }}',
+                bgRight: '{{ asset('img/hero-bg-img-right.jpg') }}'
+            }
+        ];
+
+        slides.forEach(({ docImage }) => {
+            const image = new Image();
+            image.src = docImage;
+        });
+
+        const content = hero.querySelector('.hero-section__content');
+        const title = hero.querySelector('#hero-title');
+        const description = hero.querySelector('.hero-section__copy p');
+        const doctorImage = hero.querySelector('.hero-doc-img');
+        const leftImage = hero.querySelector('.hero-bg-img-left');
+        const rightImage = hero.querySelector('.hero-bg-img-right');
+        let index = 0;
+        let changing = false;
+
+        const showSlide = () => {
+            if (changing) return;
+            changing = true;
+            content.classList.add('hero-section__content--leaving');
+
+            window.setTimeout(() => {
+                index = (index + 1) % slides.length;
+                const next = slides[index];
+                title.innerHTML = next.title;
+                description.innerHTML = next.description;
+                doctorImage.src = next.docImage;
+                leftImage.src = next.bgLeft;
+                rightImage.src = next.bgRight;
+                content.classList.remove('hero-section__content--leaving');
+                content.classList.add('hero-section__content--entering');
+
+                window.setTimeout(() => {
+                    content.classList.remove('hero-section__content--entering');
+                    changing = false;
+                }, 700);
+            }, 700);
+        };
+
+        if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            let sliderTimer;
+            const startSlider = () => {
+                if (!sliderTimer) sliderTimer = window.setInterval(showSlide, 3500);
+            };
+            const stopSlider = () => {
+                window.clearInterval(sliderTimer);
+                sliderTimer = undefined;
+            };
+
+            content.addEventListener('pointerenter', stopSlider);
+            content.addEventListener('pointerleave', startSlider);
+            startSlider();
+        }
+    })();
+</script>
