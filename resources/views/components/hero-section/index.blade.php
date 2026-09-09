@@ -26,7 +26,7 @@
         isolation: isolate;
         position: relative;
         overflow: hidden;
-        padding: clamp(28px, 5.4vw, 72px) 7%;
+        padding: clamp(28px, 5.4vw, 72px) 99px; /* Changed from 7% to 99px to align with header/footer */
         color: #102d55;
         background: #315fc1;
     }
