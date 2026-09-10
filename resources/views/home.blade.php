@@ -30,19 +30,22 @@
             color: var(--text-main);
             background-color: #ffffff;
             line-height: 1.5;
+            overflow-x: hidden;
         }
 
         .main-wrapper {
             width: 100%;
-            max-width: 90rem;
             margin: 0 auto;
+            overflow-x: hidden;
         }
 
+        /* Unified Container matching Hero Card Grid */
         .container {
             box-sizing: border-box;
-            max-width: 1320px; 
+            width: 100%;
+            max-width: calc(1320px + 198px);
             margin: 0 auto;
-            padding: 3rem 7%;
+            padding: 3rem 99px;
         }
 
         /* Tabs Navigation */
@@ -52,6 +55,7 @@
             gap: 2.5rem;
             border-bottom: 0.166875rem solid #D3D2D2;
             margin-bottom: 2rem;
+            width: 100%;
         }
 
         .tab-item {
@@ -75,7 +79,7 @@
             bottom: -0.166875rem;
             width: 100%;
             height: 0.166875rem;
-            border-radius: 0.625rem; /* 10px */
+            border-radius: 0.625rem;
             background-color: transparent;
             transition: background-color 0.2s ease;
         }
@@ -97,16 +101,17 @@
 
         .actions-grid {
             display: flex;
+            flex-wrap: wrap;
             gap: 1.25rem;
-            justify-content: center;
+            justify-content: space-between;
             width: 100%;
             margin-bottom: 1rem;
         }
 
         .action-btn {
-            flex: 0 1 14.5rem; /* ~232px */
-            width: 100%;
-            height: 4rem; /* 64px */
+            flex: 1 1 calc(25% - 1rem);
+            min-width: 200px;
+            height: 4rem;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -114,7 +119,7 @@
             background: #ffffff;
             border: 0.125rem solid #0B2545;
             border-radius: 0.5rem;
-            font-size: 1rem; /* 16px */
+            font-size: 1rem;
             font-weight: 500;
             color: var(--text-main);
             text-decoration: none;
@@ -138,9 +143,9 @@
             display: block;
             text-align: right;
             font-family: 'Inter', sans-serif;
-            font-size: 1.125rem; /* 18px */
+            font-size: 1.125rem;
             font-weight: 500;
-            line-height: 1.25rem; /* 20px */
+            line-height: 1.25rem;
             letter-spacing: 0;
             color: #0B2545;
             text-decoration: none;
@@ -156,11 +161,11 @@
             max-width: 100%;
             width: 100%;
             margin: 0 auto;
-            gap: 2rem;
+            gap: 3rem;
         }
 
         .content-left {
-            flex: 0 0 47%;
+            flex: 0 0 48%;
             position: relative;
             min-width: 0;
         }
@@ -175,10 +180,11 @@
             width: 100%;
             height: auto;
             display: block;
+            border-radius: 16px;
         }
 
         .content-right {
-            flex: 0 0 47%;
+            flex: 1;
             min-width: 0;
             container-type: inline-size;
         }
@@ -186,34 +192,33 @@
         /* Typography & Content Right */
         .section-subtitle {
             font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: 1rem; /* 16px */
+            font-size: 1rem;
             font-weight: 600;
-            line-height: 1.625rem; /* 26px */
+            line-height: 1.625rem;
             color: #22B6AF;
             text-transform: uppercase;
-            letter-spacing: 0.03125rem; /* 0.5px */
+            letter-spacing: 0.03125rem;
             margin-bottom: 0.5rem;
         }
 
         .section-title {
             font-family: 'Plus Jakarta Sans', sans-serif;
             font-size: clamp(1.4rem, 2.1vw, 2.125rem);
-            font-size: clamp(1.4rem, 5.35cqi, 2.125rem);
             font-weight: 700;
             line-height: 1.2;
             letter-spacing: -0.015em;
             color: #000000;
             margin-bottom: 1rem;
-            white-space: nowrap;
             max-width: 100%;
+            word-wrap: break-word;
         }
 
         .section-description {
             font-family: 'Inter', sans-serif;
-            font-size: 1rem; /* 16px */
+            font-size: 1rem;
             font-weight: 400;
             line-height: 1.6;
-            color: #4B5563; /* Muted text color like Figma */
+            color: #4B5563;
             text-align: left;
             margin-bottom: 1.5rem;
         }
@@ -226,7 +231,7 @@
         .feature-list li {
             position: relative;
             padding-left: 1.5rem;
-            margin-bottom: 0.875rem; /* Reduced spacing */
+            margin-bottom: 0.875rem;
             font-size: 1.125rem;
             color: #000000;
             font-weight: 500;
@@ -247,9 +252,9 @@
         .stats-container {
             display: flex;
             border-top: 0.0625rem solid #E5E7EB;
-            padding-top: 0.75rem; /* Further decreased top gap */
+            padding-top: 0.75rem;
             width: 100%;
-            max-width: 35.625rem; /* 570px matching Figma */
+            max-width: 35.625rem;
         }
 
         .stat-item {
@@ -263,7 +268,7 @@
 
         .stat-number {
             font-family: 'Barlow', sans-serif;
-            font-size: 2.25rem; /* 36px (reduced from 42px) */
+            font-size: 2.25rem;
             font-weight: 700;
             line-height: 1.2;
             color: #142441;
@@ -272,82 +277,84 @@
 
         .stat-label {
             font-family: 'Inter', sans-serif;
-            font-size: 1rem; /* 16px */
+            font-size: 1rem;
             font-weight: 500;
-            color: #9CA3AF; /* Lighter text color like Figma */
+            color: #9CA3AF;
         }
 
         /* Science Precision Section */
         .science-precision-section {
             display: flex;
-            align-items: stretch;
+            align-items: center;
             justify-content: space-between;
             max-width: 100%;
             width: 100%;
-            margin: 0 auto 0 auto;
-            gap: 2rem;
+            margin: 0 auto;
+            gap: 3rem;
         }
 
         .science-left {
-            flex: 0 0 45%;
+            flex: 0 0 48%;
             display: flex;
             justify-content: flex-start;
         }
 
         .science-image-container {
             position: relative;
-            width: 180%;
-            max-width: 180%;
+            width: 100%;
+            max-width: 100%;
             margin-bottom: 0;
-            padding-bottom: 10%;
-            margin-left: -1.5rem;
+            padding-bottom: 5%;
+            margin-left: 0;
         }
 
         .science-img-back {
             width: 100%;
             height: auto;
             display: block;
+            border-radius: 16px;
         }
 
         .science-img-front {
             position: absolute;
-            width: 54%;
+            width: 50%;
             height: auto;
-            bottom: -10%;
-            right: 4.5%;
+            bottom: -1rem;
+            right: 4%;
+            border-radius: 12px;
         }
 
         .science-right {
             flex: 1;
             min-width: 0;
             display: flex;
-            align-items: stretch;
+            align-items: center;
         }
 
         .science-right-content {
             width: 100%;
-            padding-left: 3rem;
+            padding-left: 1rem;
             display: flex;
             flex-direction: column;
         }
 
         .science-title {
             font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: 1.875rem; /* 30px */
+            font-size: 1.875rem;
             font-weight: 700;
             line-height: 1.3;
             letter-spacing: -0.015em;
             color: #12263A;
-            margin-top: 3.5rem;
+            margin-top: 1rem;
             margin-bottom: 1rem;
             max-width: 32rem;
         }
 
         .science-description {
             font-family: 'Inter', sans-serif;
-            font-size: 1rem; /* 16px */
+            font-size: 1rem;
             font-weight: 400;
-            line-height: 1.6; /* 26px */
+            line-height: 1.6;
             letter-spacing: -0.01em;
             word-spacing: -0.05em;
             text-align: left;
@@ -375,21 +382,17 @@
         /* Services Section (#F3F8FA) */
         .services-section {
             background-color: #F3F8FA;
-            padding: 2rem 0 5rem 0;
+            padding: 4rem 99px 5rem 99px;
             width: 100%;
+            box-sizing: border-box;
             margin-top: 0;
         }
 
         .services-section .container {
-            padding-top: 0;
-            padding-bottom: 0;
-        }
-
-        .services-container {
-            width: 100%;
-            max-width: 77.3rem; /* ~1237px */
+            max-width: 1320px;
             margin: 0 auto;
-            padding: 0 1.5rem;
+            padding: 0;
+            width: 100%;
         }
 
         .services-header {
@@ -398,9 +401,9 @@
 
         .services-title {
             font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: 2.125rem; /* 34px matching Figma */
+            font-size: 2.125rem;
             font-weight: 700;
-            line-height: 2.875rem; /* 46px matching Figma */
+            line-height: 2.875rem;
             color: #000000;
             margin-bottom: 0.75rem;
             letter-spacing: 0px;
@@ -408,9 +411,9 @@
 
         .services-description {
             font-family: 'Inter', sans-serif;
-            font-size: 1.125rem; /* 18px matching Figma */
+            font-size: 1.125rem;
             font-weight: 400;
-            line-height: 1.625rem; /* 26px matching Figma */
+            line-height: 1.625rem;
             color: #000000;
             max-width: 55rem;
             letter-spacing: 0px;
@@ -419,15 +422,15 @@
         /* Services Grid Layout */
         .services-grid {
             display: flex;
-            gap: 1.5rem; /* 24px gap */
+            gap: 1.5rem;
             width: 100%;
-            height: 34.56rem; /* 553px height matching Figma */
+            height: 34.56rem;
         }
 
         .service-card-left {
-            flex: 0 0 51.8%; /* ~641px out of 1237px */
+            flex: 0 0 calc(52% - 0.75rem);
             position: relative;
-            border-radius: 1rem;
+            border-radius: 18px;
             overflow: hidden;
             height: 100%;
             background-color: #0B2545;
@@ -439,12 +442,13 @@
             flex-direction: column;
             gap: 1.5rem;
             height: 100%;
+            min-width: 0;
         }
 
         .service-card-small {
             flex: 1;
             position: relative;
-            border-radius: 1rem;
+            border-radius: 18px;
             overflow: hidden;
             background-color: #0B2545;
         }
@@ -499,14 +503,14 @@
         }
 
         .service-card-left .card-title {
-            font-size: 1.875rem; /* 30px */
-            line-height: 2.5rem; /* 40px */
+            font-size: 1.875rem;
+            line-height: 2.5rem;
             letter-spacing: 0px;
         }
 
         .service-card-small .card-title {
-            font-size: 1.5rem; /* 24px */
-            line-height: 2.55rem; /* 40.8px */
+            font-size: 1.5rem;
+            line-height: 2.55rem;
             letter-spacing: 0px;
         }
 
@@ -519,8 +523,8 @@
         }
 
         .service-card-left .card-text {
-            font-size: 1rem; /* 16px */
-            line-height: 1.5rem; /* 24px */
+            font-size: 1rem;
+            line-height: 1.5rem;
             color: #ffffff;
             text-align: justify;
             letter-spacing: 0px;
@@ -528,8 +532,8 @@
         }
 
         .service-card-small .card-text {
-            font-size: 1rem; /* 16px */
-            line-height: 1.5rem; /* 24px */
+            font-size: 1rem;
+            line-height: 1.5rem;
             color: #ffffff;
             text-align: justify;
             letter-spacing: 0px;
@@ -545,7 +549,7 @@
             background-color: #23B3B0;
             color: #ffffff;
             font-family: 'Inter', sans-serif;
-            font-size: 1rem; /* 16px */
+            font-size: 1rem;
             font-weight: 700;
             line-height: 26.93px;
             width: 182px;
@@ -577,61 +581,19 @@
             transform: translateX(3px);
         }
 
-        /* Responsive */
-        @media (max-width: 64rem) {
-            .services-grid {
-                flex-direction: column;
-                height: auto;
-            }
-
-            .service-card-left {
-                height: 28rem;
-                flex: none;
-            }
-
-            .service-card-small {
-                height: 18rem;
-                flex: none;
-            }
-
-            .content-split {
-                flex-direction: column;
-                gap: 2rem;
-            }
-
-            .content-left, .content-right {
-                flex: 1 1 100%;
-                width: 100%;
-            }
-
-            .image-wrapper {
-                margin-left: 0;
-            }
-
-            .science-precision-section {
-                flex-direction: column;
-                gap: 3rem;
-            }
-
-            .science-left, .science-right {
-                flex: 1 1 100%;
-                width: 100%;
-            }
-        }
-
         /* Process Section */
         .process-section {
             background-color: #F3F8FA;
-            padding: 2.5rem 0 4rem 0;
+            padding: 4rem 99px 5rem 99px;
             width: 100%;
-            margin-top: -2rem;
+            box-sizing: border-box;
         }
 
-        .process-section .container,
-        .science-moves-section .container {
+        .process-section .container {
             max-width: 1320px;
             margin: 0 auto;
-            padding: 0 7%;
+            padding: 0;
+            width: 100%;
         }
 
         .process-title {
@@ -648,6 +610,7 @@
             display: flex;
             justify-content: space-between;
             gap: 2rem;
+            width: 100%;
         }
 
         .process-card {
@@ -690,14 +653,22 @@
         /* Science Moves Section */
         .science-moves-section {
             background-color: #ffffff;
-            padding: 0 0 6rem 0;
+            padding: 3rem 99px 5rem 99px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .science-moves-section .container {
+            max-width: 1320px;
+            margin: 0 auto;
+            padding: 0;
             width: 100%;
         }
 
         .science-moves-card {
             display: flex;
             background-color: #0B2545;
-            border-radius: 12px;
+            border-radius: 18px;
             overflow: hidden;
             width: 100%;
         }
@@ -753,20 +724,23 @@
         /* Visit Section */
         .visit-section {
             background-color: #F3F8FA;
-            padding: 3rem 0;
+            padding: 4rem 99px 4rem 99px;
             width: 100%;
+            box-sizing: border-box;
         }
 
         .visit-section .container {
             max-width: 1320px;
             margin: 0 auto;
-            padding: 0 7%;
+            padding: 0;
+            width: 100%;
         }
 
         .visit-wrapper {
             display: flex;
             justify-content: space-between;
             gap: 4rem;
+            width: 100%;
         }
 
         .visit-left {
@@ -841,7 +815,7 @@
 
         .map-placeholder {
             background-color: #EDF2F7;
-            border-radius: 16px;
+            border-radius: 18px;
             width: 100%;
             height: 100%;
             min-height: 350px;
@@ -882,14 +856,16 @@
         /* Insights Section */
         .insights-section {
             background-color: #ffffff;
-            padding: 1rem 0 2rem 0;
+            padding: 3rem 99px 4rem 99px;
             width: 100%;
+            box-sizing: border-box;
         }
         
         .insights-section .container {
             max-width: 1320px;
             margin: 0 auto;
-            padding: 0 7%;
+            padding: 0;
+            width: 100%;
         }
 
         .insights-title {
@@ -906,6 +882,7 @@
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
+            width: 100%;
         }
 
         .insight-card {
@@ -951,10 +928,111 @@
             color: #000000;
             line-height: 2.125rem;
         }
-        
-        @media (max-width: 48rem) {
+
+        /* Responsive Layouts */
+        @media (max-width: 900px) {
+            .container {
+                padding-left: 32px;
+                padding-right: 32px;
+            }
+
+            .services-section,
+            .process-section,
+            .science-moves-section,
+            .visit-section,
+            .insights-section {
+                padding-left: 32px;
+                padding-right: 32px;
+            }
+
+            .services-grid {
+                flex-direction: column;
+                height: auto;
+            }
+
+            .service-card-left {
+                height: 28rem;
+                flex: none;
+            }
+
+            .service-card-small {
+                height: 18rem;
+                flex: none;
+            }
+
+            .content-split {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .content-left, .content-right {
+                flex: 1 1 100%;
+                width: 100%;
+            }
+
+            .science-precision-section {
+                flex-direction: column;
+                gap: 3rem;
+            }
+
+            .science-left, .science-right {
+                flex: 1 1 100%;
+                width: 100%;
+            }
+
+            .science-right-content {
+                padding-left: 0;
+            }
+
+            .science-moves-card {
+                flex-direction: column;
+            }
+
+            .sm-left, .sm-right {
+                flex: 1 1 100%;
+            }
+
+            .sm-right {
+                padding: 2.5rem;
+            }
+
+            .visit-wrapper {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .visit-left {
+                flex: 1 1 100%;
+            }
+
+            .insights-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .process-grid {
+                flex-direction: column;
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 2rem 20px;
+            }
+
+            .services-section,
+            .process-section,
+            .science-moves-section,
+            .visit-section,
+            .insights-section {
+                padding-left: 20px;
+                padding-right: 20px;
+                padding-top: 2.5rem;
+                padding-bottom: 2.5rem;
+            }
+
             .actions-grid {
-                flex-wrap: wrap;
+                flex-direction: column;
             }
 
             .action-btn {
@@ -967,101 +1045,111 @@
                 align-items: center;
                 gap: 1rem;
             }
+
+            .services-title,
+            .process-title,
+            .sm-title,
+            .visit-title,
+            .insights-title {
+                font-size: 1.75rem;
+                line-height: 1.3;
+            }
         }
     </style>
 </head>
 <body>
 <div class="main-wrapper">
+    
     @include('components.hero-section.index')
-<div class="container">
-    <!-- Navigation Tabs -->
-    <nav class="tabs-nav">
-        <a href="javascript:void(0)" class="tab-item active" data-target="tab-patients">Individuals & Patients</a>
-        <a href="javascript:void(0)" class="tab-item" data-target="tab-providers">Providers</a>
-        <a href="javascript:void(0)" class="tab-item" data-target="tab-health">Health Systems & Organizations</a>
-    </nav>
 
-    <!-- Action Buttons Container -->
-    <div class="actions-container">
-        <!-- Action Buttons for Individuals & Patients -->
-        <div id="tab-patients" class="actions-grid">
-            <a href="#" class="action-btn">
-                <img src="{{ asset('images/location.svg') }}" class="action-icon" alt="Find a Lab">
-                Find a Lab
-            </a>
-            <a href="#" class="action-btn">
-                <img src="{{ asset('images/view-result.svg') }}" class="action-icon" alt="View Test Results">
-                View Test Results
-            </a>
-            <a href="#" class="action-btn">
-                <img src="{{ asset('images/pay-bill.svg') }}" class="action-icon" alt="Pay a Bill">
-                Pay a Bill
-            </a>
-            <a href="#" class="action-btn">
-                <img src="{{ asset('images/shop-test.svg') }}" class="action-icon" alt="Shop for Tests">
-                Shop for Tests
-            </a>
-        </div>
+    <!-- Main Container for Tabs, Actions and About -->
+    <div class="container">
+        <!-- Navigation Tabs -->
+        <nav class="tabs-nav">
+            <a href="javascript:void(0)" class="tab-item active" data-target="tab-patients">Individuals & Patients</a>
+            <a href="javascript:void(0)" class="tab-item" data-target="tab-providers">Providers</a>
+            <a href="javascript:void(0)" class="tab-item" data-target="tab-health">Health Systems & Organizations</a>
+        </nav>
 
-        <!-- Action Buttons for Providers -->
-        <div id="tab-providers" class="actions-grid" style="display: none;">
-            <a href="#" class="action-btn">Provider Services</a>
-            <a href="#" class="action-btn">Clinical Resources</a>
-            <a href="#" class="action-btn">Order Supplies</a>
-            <a href="#" class="action-btn">Contact Us</a>
-        </div>
-
-        <!-- Action Buttons for Health Systems & Organizations -->
-        <div id="tab-health" class="actions-grid" style="display: none;">
-            <a href="#" class="action-btn">Partner Integration</a>
-            <a href="#" class="action-btn">Enterprise Solutions</a>
-            <a href="#" class="action-btn">Data Analytics</a>
-            <a href="#" class="action-btn">Consulting</a>
-        </div>
-
-        <!-- View Page Link -->
-        <a href="#" class="view-page-link">View Individuals & Patients Page</a>
-    </div>
-
-    <!-- Main Content -->
-    <div class="content-split">
-        <!-- Left Image Section -->
-        <div class="content-left">
-            <div class="image-wrapper">
-                <!-- Laboratory Scientist Image -->
-                <img src="{{ asset('images/advance-senior.png') }}" alt="Laboratory Scientist">
+        <!-- Action Buttons Container -->
+        <div class="actions-container">
+            <!-- Action Buttons for Individuals & Patients -->
+            <div id="tab-patients" class="actions-grid">
+                <a href="#" class="action-btn">
+                    <img src="{{ asset('images/location.svg') }}" class="action-icon" alt="Find a Lab">
+                    Find a Lab
+                </a>
+                <a href="#" class="action-btn">
+                    <img src="{{ asset('images/view-result.svg') }}" class="action-icon" alt="View Test Results">
+                    View Test Results
+                </a>
+                <a href="#" class="action-btn">
+                    <img src="{{ asset('images/pay-bill.svg') }}" class="action-icon" alt="Pay a Bill">
+                    Pay a Bill
+                </a>
+                <a href="#" class="action-btn">
+                    <img src="{{ asset('images/shop-test.svg') }}" class="action-icon" alt="Shop for Tests">
+                    Shop for Tests
+                </a>
             </div>
+
+            <!-- Action Buttons for Providers -->
+            <div id="tab-providers" class="actions-grid" style="display: none;">
+                <a href="#" class="action-btn">Provider Services</a>
+                <a href="#" class="action-btn">Clinical Resources</a>
+                <a href="#" class="action-btn">Order Supplies</a>
+                <a href="#" class="action-btn">Contact Us</a>
+            </div>
+
+            <!-- Action Buttons for Health Systems & Organizations -->
+            <div id="tab-health" class="actions-grid" style="display: none;">
+                <a href="#" class="action-btn">Partner Integration</a>
+                <a href="#" class="action-btn">Enterprise Solutions</a>
+                <a href="#" class="action-btn">Data Analytics</a>
+                <a href="#" class="action-btn">Consulting</a>
+            </div>
+
+            <!-- View Page Link -->
+            <a href="#" class="view-page-link">View Individuals & Patients Page</a>
         </div>
 
-        <!-- Right Text Section -->
-        <div class="content-right">
-            <div class="section-subtitle">ABOUT OUR LABORATORY</div>
-            <h2 class="section-title">Advanced Science. Clinical Purpose.</h2>
-            <p class="section-description">
-                Sterling Genomic, Molecular & Clinical Diagnostics operates as a dedicated diagnostic laboratory, built around a simple premise: diagnostic testing should be rigorous, clearly communicated, and genuinely useful to the people who depend on it.
-            </p>
-
-            <ul class="feature-list">
-                <li>Genomic, molecular, and clinical diagnostics.</li>
-                <li>Consistent care from testing to reporting.</li>
-                <li>Supports informed clinical decisions.</li>
-                <li>A precise and dependable laboratory partner.</li>
-            </ul>
-
-            <div class="stats-container">
-                <div class="stat-item">
-                    <div class="stat-number">320+</div>
-                    <div class="stat-label">Wining Awards</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">10k+</div>
-                    <div class="stat-label">Test Completed</div>
+        <!-- Main Content -->
+        <div class="content-split">
+            <!-- Left Image Section -->
+            <div class="content-left">
+                <div class="image-wrapper">
+                    <img src="{{ asset('images/advance-senior.png') }}" alt="Laboratory Scientist">
                 </div>
             </div>
+
+            <!-- Right Text Section -->
+            <div class="content-right">
+                <div class="section-subtitle">ABOUT OUR LABORATORY</div>
+                <h2 class="section-title">Advanced Science. Clinical Purpose.</h2>
+                <p class="section-description">
+                    Sterling Genomic, Molecular & Clinical Diagnostics operates as a dedicated diagnostic laboratory, built around a simple premise: diagnostic testing should be rigorous, clearly communicated, and genuinely useful to the people who depend on it.
+                </p>
+
+                <ul class="feature-list">
+                    <li>Genomic, molecular, and clinical diagnostics.</li>
+                    <li>Consistent care from testing to reporting.</li>
+                    <li>Supports informed clinical decisions.</li>
+                    <li>A precise and dependable laboratory partner.</li>
+                </ul>
+
+                <div class="stats-container">
+                    <div class="stat-item">
+                        <div class="stat-number">320+</div>
+                        <div class="stat-label">Wining Awards</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">10k+</div>
+                        <div class="stat-label">Test Completed</div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-
-</div>
 
     <!-- Our Diagnostic Services Section -->
     <section class="services-section">
@@ -1128,7 +1216,7 @@
     </section>
 
     <!-- Science Precision Section -->
-    <div class="container" style="margin-bottom: 6rem;">
+    <div class="container" style="padding-top: 5rem; padding-bottom: 5rem;">
         <div class="science-precision-section">
             <div class="science-left">
                 <div class="science-image-container">
@@ -1138,7 +1226,7 @@
             </div>
             <div class="science-right">
                 <div class="science-right-content">
-                    <h2 class="science-title">Where Diagnostic Science Meets<br>Clinical Precision</h2>
+                    <h2 class="science-title">Where Diagnostic Science Meets Clinical Precision</h2>
                     <p class="science-description">
                         Sterling is a physical diagnostic laboratory, staffed by scientists and technicians who carry out testing in a controlled clinical environment. Every stage of the process — from sample handling to analysis — follows established laboratory protocol.
                     </p>
@@ -1310,8 +1398,8 @@
         </div>
     </section>
 
-@include('components.diagnostics-cta.index')
-</div>
+    @include('components.diagnostics-cta.index')
+    
 </div>
 
 <script>
