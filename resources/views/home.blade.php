@@ -42,12 +42,7 @@
         /* Unified Container matching Hero Card Grid */
         .container {
             box-sizing: border-box;
-<<<<<<< HEAD
-            width: 100%;
-            max-width: calc(1320px + 198px);
-=======
             max-width: 82.5rem; 
->>>>>>> Farukh
             margin: 0 auto;
             padding: 3rem 99px;
         }
@@ -177,11 +172,7 @@
             bottom: -0.166875rem;
             width: 100%;
             height: 0.166875rem;
-<<<<<<< HEAD
-            border-radius: 0.625rem;
-=======
             border-radius: 0.625rem; /* 0.625rem */
->>>>>>> Farukh
             background-color: transparent;
             transition: background-color 0.2s ease;
         }
@@ -211,15 +202,9 @@
         }
 
         .action-btn {
-<<<<<<< HEAD
-            flex: 1 1 calc(25% - 1rem);
-            min-width: 200px;
-            height: 4rem;
-=======
             flex: 0 1 14.5rem; /* ~14.5rem */
             width: 100%;
             height: 4rem; /* 4rem */
->>>>>>> Farukh
             display: flex;
             align-items: center;
             justify-content: center;
@@ -227,11 +212,7 @@
             background: #ffffff;
             border: 0.125rem solid #0B2545;
             border-radius: 0.5rem;
-<<<<<<< HEAD
-            font-size: 1rem;
-=======
             font-size: 1rem; /* 1rem */
->>>>>>> Farukh
             font-weight: 500;
             color: var(--text-main);
             text-decoration: none;
@@ -255,15 +236,9 @@
             display: block;
             text-align: right;
             font-family: 'Inter', sans-serif;
-<<<<<<< HEAD
-            font-size: 1.125rem;
-            font-weight: 500;
-            line-height: 1.25rem;
-=======
             font-size: 1.125rem; /* 1.125rem */
             font-weight: 500;
             line-height: 1.25rem; /* 1.25rem */
->>>>>>> Farukh
             letter-spacing: 0;
             color: #0B2545;
             text-decoration: none;
@@ -310,21 +285,12 @@
         /* Typography & Content Right */
         .section-subtitle {
             font-family: 'Plus Jakarta Sans', sans-serif;
-<<<<<<< HEAD
-            font-size: 1rem;
-            font-weight: 600;
-            line-height: 1.625rem;
-            color: #22B6AF;
-            text-transform: uppercase;
-            letter-spacing: 0.03125rem;
-=======
             font-size: 1rem; /* 1rem */
             font-weight: 600;
             line-height: 1.625rem; /* 1.625rem */
             color: #22B6AF;
             text-transform: uppercase;
             letter-spacing: 0.03125rem; /* 0.03125rem */
->>>>>>> Farukh
             margin-bottom: 0.5rem;
         }
 
@@ -342,11 +308,7 @@
 
         .section-description {
             font-family: 'Inter', sans-serif;
-<<<<<<< HEAD
-            font-size: 1rem;
-=======
             font-size: 1rem; /* 1rem */
->>>>>>> Farukh
             font-weight: 400;
             line-height: 1.6;
             color: #4B5563;
@@ -385,11 +347,7 @@
             border-top: 0.0625rem solid #E5E7EB;
             padding-top: 0.75rem;
             width: 100%;
-<<<<<<< HEAD
-            max-width: 35.625rem;
-=======
             max-width: 35.625rem; /* 35.625rem matching Figma */
->>>>>>> Farukh
         }
 
         .stat-item {
@@ -403,11 +361,7 @@
 
         .stat-number {
             font-family: 'Barlow', sans-serif;
-<<<<<<< HEAD
-            font-size: 2.25rem;
-=======
             font-size: 2.25rem; /* 2.25rem (reduced from 2.625rem) */
->>>>>>> Farukh
             font-weight: 700;
             line-height: 1.2;
             color: #142441;
@@ -416,11 +370,7 @@
 
         .stat-label {
             font-family: 'Inter', sans-serif;
-<<<<<<< HEAD
-            font-size: 1rem;
-=======
             font-size: 1rem; /* 1rem */
->>>>>>> Farukh
             font-weight: 500;
             color: #9CA3AF;
         }
@@ -488,11 +438,7 @@
 
         .science-title {
             font-family: 'Plus Jakarta Sans', sans-serif;
-<<<<<<< HEAD
-            font-size: 1.875rem;
-=======
             font-size: 1.875rem; /* 1.875rem */
->>>>>>> Farukh
             font-weight: 700;
             line-height: 1.3;
             letter-spacing: -0.015em;
@@ -504,15 +450,9 @@
 
         .science-description {
             font-family: 'Inter', sans-serif;
-<<<<<<< HEAD
-            font-size: 1rem;
-            font-weight: 400;
-            line-height: 1.6;
-=======
             font-size: 1rem; /* 1rem */
             font-weight: 400;
             line-height: 1.6; /* 1.625rem */
->>>>>>> Farukh
             letter-spacing: -0.01em;
             word-spacing: -0.05em;
             text-align: left;
@@ -547,17 +487,7 @@
         }
 
         .services-section .container {
-<<<<<<< HEAD
             max-width: 1320px;
-=======
-            padding-top: 0;
-            padding-bottom: 0;
-        }
-
-        .services-container {
-            width: 100%;
-            max-width: 77.3rem; /* ~77.3125rem */
->>>>>>> Farukh
             margin: 0 auto;
             padding: 0;
             width: 100%;
@@ -569,40 +499,27 @@
 
         .services-title {
             font-family: 'Plus Jakarta Sans', sans-serif;
-<<<<<<< HEAD
             font-size: 2.125rem;
             font-weight: 700;
             line-height: 2.875rem;
-=======
-            font-size: 2.125rem; /* 2.125rem matching Figma */
-            font-weight: 700;
-            line-height: 2.875rem; /* 2.875rem matching Figma */
->>>>>>> Farukh
             color: #000000;
             margin-bottom: 0.75rem;
-            letter-spacing: 0;
+            letter-spacing: 0px;
         }
 
         .services-description {
             font-family: 'Inter', sans-serif;
-<<<<<<< HEAD
             font-size: 1.125rem;
             font-weight: 400;
             line-height: 1.625rem;
-=======
-            font-size: 1.125rem; /* 1.125rem matching Figma */
-            font-weight: 400;
-            line-height: 1.625rem; /* 1.625rem matching Figma */
->>>>>>> Farukh
             color: #000000;
             max-width: 55rem;
-            letter-spacing: 0;
+            letter-spacing: 0px;
         }
 
         /* Services Grid Layout */
         .services-grid {
             display: flex;
-<<<<<<< HEAD
             gap: 1.5rem;
             width: 100%;
             height: 34.56rem;
@@ -610,15 +527,6 @@
 
         .service-card-left {
             flex: 0 0 calc(52% - 0.75rem);
-=======
-            gap: 1.5rem; /* 1.5rem gap */
-            width: 100%;
-            height: 34.56rem; /* 34.5625rem height matching Figma */
-        }
-
-        .service-card-left {
-            flex: 0 0 51.8%; /* ~40.0625rem out of 77.3125rem */
->>>>>>> Farukh
             position: relative;
             border-radius: 18px;
             overflow: hidden;
@@ -685,6 +593,10 @@
             padding: 2.75rem 2.5rem;
         }
 
+        .service-card-small .service-card-content {
+            padding: 1.5rem 2rem;
+        }
+
         .card-title {
             font-family: 'Plus Jakarta Sans', sans-serif;
             font-weight: 700;
@@ -693,17 +605,6 @@
         }
 
         .service-card-left .card-title {
-<<<<<<< HEAD
-            font-size: 1.875rem;
-            line-height: 2.5rem;
-            letter-spacing: 0px;
-        }
-
-        .service-card-small .card-title {
-            font-size: 1.5rem;
-            line-height: 2.55rem;
-            letter-spacing: 0px;
-=======
             font-size: 1.875rem; /* 1.875rem */
             line-height: 2.5rem; /* 2.5rem */
             letter-spacing: 0;
@@ -713,7 +614,6 @@
             font-size: 1.5rem; /* 1.5rem */
             line-height: 2.55rem; /* 2.55rem */
             letter-spacing: 0;
->>>>>>> Farukh
         }
 
         .card-text {
@@ -725,13 +625,8 @@
         }
 
         .service-card-left .card-text {
-<<<<<<< HEAD
-            font-size: 1rem;
-            line-height: 1.5rem;
-=======
             font-size: 1rem; /* 1rem */
             line-height: 1.5rem; /* 1.5rem */
->>>>>>> Farukh
             color: #ffffff;
             text-align: justify;
             letter-spacing: 0;
@@ -739,13 +634,8 @@
         }
 
         .service-card-small .card-text {
-<<<<<<< HEAD
-            font-size: 1rem;
-            line-height: 1.5rem;
-=======
             font-size: 1rem; /* 1rem */
             line-height: 1.5rem; /* 1.5rem */
->>>>>>> Farukh
             color: #ffffff;
             text-align: justify;
             letter-spacing: 0;
@@ -761,11 +651,7 @@
             background-color: #23B3B0;
             color: #ffffff;
             font-family: 'Inter', sans-serif;
-<<<<<<< HEAD
-            font-size: 1rem;
-=======
             font-size: 1rem; /* 1rem */
->>>>>>> Farukh
             font-weight: 700;
             line-height: 1.68312rem;
             width: 11.375rem;
@@ -805,14 +691,9 @@
             box-sizing: border-box;
         }
 
-<<<<<<< HEAD
-        .process-section .container {
-            max-width: 1320px;
-=======
         .process-section .container,
         .science-moves-section .container {
             max-width: 82.5rem;
->>>>>>> Farukh
             margin: 0 auto;
             padding: 0;
             width: 100%;
@@ -890,11 +771,7 @@
         .science-moves-card {
             display: flex;
             background-color: #0B2545;
-<<<<<<< HEAD
-            border-radius: 18px;
-=======
             border-radius: 0.75rem;
->>>>>>> Farukh
             overflow: hidden;
             width: 100%;
         }
@@ -1036,11 +913,7 @@
 
         .map-placeholder {
             background-color: #EDF2F7;
-<<<<<<< HEAD
-            border-radius: 18px;
-=======
             border-radius: 1rem;
->>>>>>> Farukh
             width: 100%;
             height: 100%;
             min-height: 21.875rem;
@@ -1610,11 +1483,7 @@
 </head>
 <body>
 <div class="main-wrapper">
-<<<<<<< HEAD
-    
-=======
     @include('components.header')
->>>>>>> Farukh
     @include('components.hero-section.index')
 
     <!-- Main Container for Tabs, Actions and About -->
