@@ -273,5 +273,70 @@
         }
     </style>
     
+    <section class="preparing-test" aria-labelledby="preparing-test-title">
+        <div class="preparing-test__container">
+            <div class="preparing-test__media">
+                <img src="{{ asset('images/prepare-for-the-test.jpg') }}" alt="Preparing for a diagnostic test">
+            </div>
+
+            <div class="preparing-test__content">
+                <h2 id="preparing-test-title">Preparing for a Test</h2>
+                <p class="preparing-test__intro">Preparation depends on the laboratory test your healthcare provider has ordered. Make sure you understand any test-specific instructions before your appointment.</p>
+
+                <ol class="preparing-test__timeline">
+                    <li>
+                        <span class="preparing-test__step">STEP 01</span>
+                        <h3>Review Your Instructions</h3>
+                        <p>Check whether your test requires fasting, specific timing, or any other preparation.</p>
+                    </li>
+                    <li>
+                        <span class="preparing-test__step">STEP 02</span>
+                        <h3>Follow Test-Specific Requirements</h3>
+                        <p>Follow the instructions given by your healthcare provider or laboratory.</p>
+                    </li>
+                    <li>
+                        <span class="preparing-test__step">STEP 03</span>
+                        <h3>Bring Required Information</h3>
+                        <p>Have any requested identification, test order, or relevant information available.</p>
+                    </li>
+                    <li>
+                        <span class="preparing-test__step">STEP 04</span>
+                        <h3>Ask Questions</h3>
+                        <p>If you are unsure about preparation, ask your healthcare provider before testing.</p>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </section>
+
+    <style>
+        .preparing-test, .preparing-test * { box-sizing: border-box; }
+        .preparing-test { background: #fff; padding: 76px 7% 96px; }
+        .preparing-test__container { align-items: stretch; display: grid; gap: clamp(60px, 7vw, 110px); grid-template-columns: minmax(360px, .92fr) minmax(0, 1.08fr); margin: 0 auto; max-width: 1500px; }
+        .preparing-test__media { align-self: stretch; }
+        .preparing-test__media img { border-radius: 8px; display: block; height: 100%; max-height: 560px; object-fit: cover; width: 100%; }
+        .preparing-test__content { max-width: 700px; }
+        .preparing-test h2 { color: #101820; font-size: clamp(30px, 2.35vw, 42px); letter-spacing: -.035em; line-height: 1.2; margin: 0 0 13px; }
+        .preparing-test__intro { color: #2a333e; font-size: clamp(15px, 1.05vw, 18px); line-height: 1.55; margin: 0 0 30px; }
+        .preparing-test__timeline { border-left: 2px solid #9fb3c7; list-style: none; margin: 0; padding: 0 0 0 28px; }
+        .preparing-test__timeline li { margin: 0 0 27px; position: relative; }
+        .preparing-test__timeline li:last-child { margin-bottom: 0; }
+        .preparing-test__timeline li::before { background: #20b0b5; border: 3px solid #d8f1f3; border-radius: 50%; content: ''; height: 16px; left: -37px; position: absolute; top: 0; width: 16px; }
+        .preparing-test__step { color: #159da6; display: block; font-size: 11px; font-weight: 800; letter-spacing: .04em; margin-bottom: 3px; }
+        .preparing-test h3 { color: #000; font-size: clamp(18px, 1.25vw, 22px); line-height: 1.25; margin: 0 0 5px; }
+        .preparing-test__timeline p { color: #000; font-size: clamp(14px, .95vw, 17px); line-height: 1.45; margin: 0; }
+        @media (max-width: 700px) {
+            .preparing-test { padding: 54px 28px 64px; }
+            .preparing-test__container { gap: 34px; grid-template-columns: 1fr; }
+            .preparing-test__media { order: -1; }
+            .preparing-test__media img { height: auto; max-height: none; min-height: 0; }
+            .preparing-test h2 { font-size: 28px; }
+            .preparing-test__intro { font-size: 14px; margin-bottom: 22px; }
+            .preparing-test__timeline { padding-left: 22px; }
+            .preparing-test__timeline li::before { left: -31px; }
+            .preparing-test h3 { font-size: 17px; }
+            .preparing-test__timeline p { font-size: 13px; }
+        }
+    </style>
 </body>
 </html>
