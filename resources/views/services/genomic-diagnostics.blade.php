@@ -217,6 +217,9 @@
         }
     </style>
     
+    @include('components.specimens-molecular')
+    @include('components.clinical-test.clinical-test')
+    
     <section class="genomic-process" aria-labelledby="genomic-process-title">
         <div class="genomic-process__container">
             <header class="genomic-process__header">
