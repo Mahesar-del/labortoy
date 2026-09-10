@@ -1,10 +1,15 @@
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700&family=Inter:wght@400&display=swap');
 
+    .clinical-wrapper {
+        padding: 40px 7%;
+        box-sizing: border-box;
+        overflow: hidden;
+    }
+
     .clinical-section {
-        max-width: 1240px;
+        max-width: 1320px;
         margin: 0 auto;
-        padding: 40px 20px;
         color: #000000;
         box-sizing: border-box;
     }
@@ -38,7 +43,7 @@
     .clinical-card {
         width: 100%;
         max-width: 307px;
-        height: 151px;
+        min-height: 151px;
         border: 0.67px solid #000000;
         border-radius: 15px;
         padding: 24px;
@@ -87,7 +92,7 @@
     /* Desktop Layout Grid */
     @media (min-width: 992px) {
         .clinical-grid {
-            grid-template-columns: 307px 555px 307px;
+            grid-template-columns: 1fr 1.8fr 1fr;
             grid-template-rows: 1fr 1fr;
             gap: 20px 30px;
             justify-content: center;
@@ -107,8 +112,9 @@
     }
 </style>
 
-<div class="clinical-section">
-    <div class="clinical-heading">Preparing for Your Clinical Test</div>
+<section class="clinical-wrapper">
+    <div class="clinical-section">
+        <div class="clinical-heading">Preparing for Your Clinical Test</div>
     <div class="clinical-paragraph">
         Test preparation and sample collection requirements vary depending on the specific laboratory test. Patients should follow the instructions provided for their individual test.
     </div>
@@ -138,4 +144,4 @@
             <div class="clinical-card-text">Review test-specific requirements before your laboratory visit.</div>
         </div>
     </div>
-</div>
+</section>
