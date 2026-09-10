@@ -42,10 +42,108 @@
         /* Unified Container matching Hero Card Grid */
         .container {
             box-sizing: border-box;
+<<<<<<< HEAD
             width: 100%;
             max-width: calc(1320px + 198px);
+=======
+            max-width: 82.5rem; 
+>>>>>>> Farukh
             margin: 0 auto;
             padding: 3rem 99px;
+        }
+
+        /* Header Styles */
+        .site-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 7%;
+            background-color: #ffffff;
+            width: 100%;
+            height: 5rem; /* 5rem */
+            max-width: 90rem; /* 90rem */
+            box-sizing: border-box;
+            margin: 0 auto;
+        }
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+        }
+        .logo-icon {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            width: 2.75rem;
+            height: 2.75rem;
+            border-radius: 0.6rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .logo-icon svg {
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+        .logo-text {
+            color: var(--primary-color);
+            font-size: 1.75rem;
+            font-weight: 700;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            letter-spacing: -0.02em;
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+            margin: 0;
+            padding: 0;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #111827; /* Dark text for links */
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+        .login-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.1rem;
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: 700;
+            font-size: 1rem;
+        }
+        .login-btn svg {
+            width: 2rem;
+            height: 2.25rem;
+            stroke-width: 2.5;
+        }
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--primary-color);
+        }
+        .mobile-menu-btn svg {
+            width: 1.75rem;
+            height: 1.75rem;
+        }
+        @media (max-width: 64rem) {
+            .nav-links, .login-btn {
+                display: none;
+            }
+            .mobile-menu-btn {
+                display: block;
+            }
+            .site-header {
+                padding: 1rem 5%;
+            }
         }
 
         /* Tabs Navigation */
@@ -79,7 +177,11 @@
             bottom: -0.166875rem;
             width: 100%;
             height: 0.166875rem;
+<<<<<<< HEAD
             border-radius: 0.625rem;
+=======
+            border-radius: 0.625rem; /* 0.625rem */
+>>>>>>> Farukh
             background-color: transparent;
             transition: background-color 0.2s ease;
         }
@@ -109,9 +211,15 @@
         }
 
         .action-btn {
+<<<<<<< HEAD
             flex: 1 1 calc(25% - 1rem);
             min-width: 200px;
             height: 4rem;
+=======
+            flex: 0 1 14.5rem; /* ~14.5rem */
+            width: 100%;
+            height: 4rem; /* 4rem */
+>>>>>>> Farukh
             display: flex;
             align-items: center;
             justify-content: center;
@@ -119,7 +227,11 @@
             background: #ffffff;
             border: 0.125rem solid #0B2545;
             border-radius: 0.5rem;
+<<<<<<< HEAD
             font-size: 1rem;
+=======
+            font-size: 1rem; /* 1rem */
+>>>>>>> Farukh
             font-weight: 500;
             color: var(--text-main);
             text-decoration: none;
@@ -143,9 +255,15 @@
             display: block;
             text-align: right;
             font-family: 'Inter', sans-serif;
+<<<<<<< HEAD
             font-size: 1.125rem;
             font-weight: 500;
             line-height: 1.25rem;
+=======
+            font-size: 1.125rem; /* 1.125rem */
+            font-weight: 500;
+            line-height: 1.25rem; /* 1.25rem */
+>>>>>>> Farukh
             letter-spacing: 0;
             color: #0B2545;
             text-decoration: none;
@@ -192,12 +310,21 @@
         /* Typography & Content Right */
         .section-subtitle {
             font-family: 'Plus Jakarta Sans', sans-serif;
+<<<<<<< HEAD
             font-size: 1rem;
             font-weight: 600;
             line-height: 1.625rem;
             color: #22B6AF;
             text-transform: uppercase;
             letter-spacing: 0.03125rem;
+=======
+            font-size: 1rem; /* 1rem */
+            font-weight: 600;
+            line-height: 1.625rem; /* 1.625rem */
+            color: #22B6AF;
+            text-transform: uppercase;
+            letter-spacing: 0.03125rem; /* 0.03125rem */
+>>>>>>> Farukh
             margin-bottom: 0.5rem;
         }
 
@@ -215,7 +342,11 @@
 
         .section-description {
             font-family: 'Inter', sans-serif;
+<<<<<<< HEAD
             font-size: 1rem;
+=======
+            font-size: 1rem; /* 1rem */
+>>>>>>> Farukh
             font-weight: 400;
             line-height: 1.6;
             color: #4B5563;
@@ -254,7 +385,11 @@
             border-top: 0.0625rem solid #E5E7EB;
             padding-top: 0.75rem;
             width: 100%;
+<<<<<<< HEAD
             max-width: 35.625rem;
+=======
+            max-width: 35.625rem; /* 35.625rem matching Figma */
+>>>>>>> Farukh
         }
 
         .stat-item {
@@ -268,7 +403,11 @@
 
         .stat-number {
             font-family: 'Barlow', sans-serif;
+<<<<<<< HEAD
             font-size: 2.25rem;
+=======
+            font-size: 2.25rem; /* 2.25rem (reduced from 2.625rem) */
+>>>>>>> Farukh
             font-weight: 700;
             line-height: 1.2;
             color: #142441;
@@ -277,7 +416,11 @@
 
         .stat-label {
             font-family: 'Inter', sans-serif;
+<<<<<<< HEAD
             font-size: 1rem;
+=======
+            font-size: 1rem; /* 1rem */
+>>>>>>> Farukh
             font-weight: 500;
             color: #9CA3AF;
         }
@@ -340,7 +483,11 @@
 
         .science-title {
             font-family: 'Plus Jakarta Sans', sans-serif;
+<<<<<<< HEAD
             font-size: 1.875rem;
+=======
+            font-size: 1.875rem; /* 1.875rem */
+>>>>>>> Farukh
             font-weight: 700;
             line-height: 1.3;
             letter-spacing: -0.015em;
@@ -352,9 +499,15 @@
 
         .science-description {
             font-family: 'Inter', sans-serif;
+<<<<<<< HEAD
             font-size: 1rem;
             font-weight: 400;
             line-height: 1.6;
+=======
+            font-size: 1rem; /* 1rem */
+            font-weight: 400;
+            line-height: 1.6; /* 1.625rem */
+>>>>>>> Farukh
             letter-spacing: -0.01em;
             word-spacing: -0.05em;
             text-align: left;
@@ -389,7 +542,17 @@
         }
 
         .services-section .container {
+<<<<<<< HEAD
             max-width: 1320px;
+=======
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+
+        .services-container {
+            width: 100%;
+            max-width: 77.3rem; /* ~77.3125rem */
+>>>>>>> Farukh
             margin: 0 auto;
             padding: 0;
             width: 100%;
@@ -401,27 +564,40 @@
 
         .services-title {
             font-family: 'Plus Jakarta Sans', sans-serif;
+<<<<<<< HEAD
             font-size: 2.125rem;
             font-weight: 700;
             line-height: 2.875rem;
+=======
+            font-size: 2.125rem; /* 2.125rem matching Figma */
+            font-weight: 700;
+            line-height: 2.875rem; /* 2.875rem matching Figma */
+>>>>>>> Farukh
             color: #000000;
             margin-bottom: 0.75rem;
-            letter-spacing: 0px;
+            letter-spacing: 0;
         }
 
         .services-description {
             font-family: 'Inter', sans-serif;
+<<<<<<< HEAD
             font-size: 1.125rem;
             font-weight: 400;
             line-height: 1.625rem;
+=======
+            font-size: 1.125rem; /* 1.125rem matching Figma */
+            font-weight: 400;
+            line-height: 1.625rem; /* 1.625rem matching Figma */
+>>>>>>> Farukh
             color: #000000;
             max-width: 55rem;
-            letter-spacing: 0px;
+            letter-spacing: 0;
         }
 
         /* Services Grid Layout */
         .services-grid {
             display: flex;
+<<<<<<< HEAD
             gap: 1.5rem;
             width: 100%;
             height: 34.56rem;
@@ -429,6 +605,15 @@
 
         .service-card-left {
             flex: 0 0 calc(52% - 0.75rem);
+=======
+            gap: 1.5rem; /* 1.5rem gap */
+            width: 100%;
+            height: 34.56rem; /* 34.5625rem height matching Figma */
+        }
+
+        .service-card-left {
+            flex: 0 0 51.8%; /* ~40.0625rem out of 77.3125rem */
+>>>>>>> Farukh
             position: relative;
             border-radius: 18px;
             overflow: hidden;
@@ -503,6 +688,7 @@
         }
 
         .service-card-left .card-title {
+<<<<<<< HEAD
             font-size: 1.875rem;
             line-height: 2.5rem;
             letter-spacing: 0px;
@@ -512,6 +698,17 @@
             font-size: 1.5rem;
             line-height: 2.55rem;
             letter-spacing: 0px;
+=======
+            font-size: 1.875rem; /* 1.875rem */
+            line-height: 2.5rem; /* 2.5rem */
+            letter-spacing: 0;
+        }
+
+        .service-card-small .card-title {
+            font-size: 1.5rem; /* 1.5rem */
+            line-height: 2.55rem; /* 2.55rem */
+            letter-spacing: 0;
+>>>>>>> Farukh
         }
 
         .card-text {
@@ -523,20 +720,30 @@
         }
 
         .service-card-left .card-text {
+<<<<<<< HEAD
             font-size: 1rem;
             line-height: 1.5rem;
+=======
+            font-size: 1rem; /* 1rem */
+            line-height: 1.5rem; /* 1.5rem */
+>>>>>>> Farukh
             color: #ffffff;
             text-align: justify;
-            letter-spacing: 0px;
+            letter-spacing: 0;
             max-width: 90%;
         }
 
         .service-card-small .card-text {
+<<<<<<< HEAD
             font-size: 1rem;
             line-height: 1.5rem;
+=======
+            font-size: 1rem; /* 1rem */
+            line-height: 1.5rem; /* 1.5rem */
+>>>>>>> Farukh
             color: #ffffff;
             text-align: justify;
-            letter-spacing: 0px;
+            letter-spacing: 0;
             max-width: 95%;
             margin-bottom: 1.25rem;
         }
@@ -549,21 +756,25 @@
             background-color: #23B3B0;
             color: #ffffff;
             font-family: 'Inter', sans-serif;
+<<<<<<< HEAD
             font-size: 1rem;
+=======
+            font-size: 1rem; /* 1rem */
+>>>>>>> Farukh
             font-weight: 700;
-            line-height: 26.93px;
-            width: 182px;
-            height: 48px;
-            border-radius: 30px;
+            line-height: 1.68312rem;
+            width: 11.375rem;
+            height: 3rem;
+            border-radius: 1.875rem;
             text-decoration: none;
             transition: all 0.25s ease;
-            box-shadow: 0 4px 12px rgba(35, 179, 176, 0.25);
+            box-shadow: 0 0.25rem 0.75rem rgba(35, 179, 176, 0.25);
         }
 
         .explore-btn:hover {
             background-color: #1A9C99;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(35, 179, 176, 0.35);
+            transform: translateY(-0.125rem);
+            box-shadow: 0 0.375rem 1rem rgba(35, 179, 176, 0.35);
         }
 
         .explore-btn svg {
@@ -578,7 +789,7 @@
         }
 
         .explore-btn:hover svg {
-            transform: translateX(3px);
+            transform: translateX(0.1875rem);
         }
 
         /* Process Section */
@@ -589,8 +800,14 @@
             box-sizing: border-box;
         }
 
+<<<<<<< HEAD
         .process-section .container {
             max-width: 1320px;
+=======
+        .process-section .container,
+        .science-moves-section .container {
+            max-width: 82.5rem;
+>>>>>>> Farukh
             margin: 0 auto;
             padding: 0;
             width: 100%;
@@ -632,7 +849,7 @@
             font-family: 'Libre Franklin', sans-serif;
             font-size: 1.125rem;
             font-weight: 600;
-            line-height: 23.4px;
+            line-height: 1.4625rem;
             color: #1E3A5F;
             margin-bottom: 1rem;
         }
@@ -645,7 +862,7 @@
         .process-description {
             font-family: 'Inter', sans-serif;
             font-size: 1rem;
-            line-height: 26px;
+            line-height: 1.625rem;
             color: #000000;
             text-align: center;
         }
@@ -668,7 +885,11 @@
         .science-moves-card {
             display: flex;
             background-color: #0B2545;
+<<<<<<< HEAD
             border-radius: 18px;
+=======
+            border-radius: 0.75rem;
+>>>>>>> Farukh
             overflow: hidden;
             width: 100%;
         }
@@ -697,7 +918,7 @@
             font-family: 'Plus Jakarta Sans', sans-serif;
             font-weight: 700;
             font-size: 0.875rem;
-            letter-spacing: 1px;
+            letter-spacing: 0.0625rem;
             text-transform: uppercase;
             margin-bottom: 1.5rem;
             display: flex;
@@ -730,7 +951,7 @@
         }
 
         .visit-section .container {
-            max-width: 1320px;
+            max-width: 82.5rem;
             margin: 0 auto;
             padding: 0;
             width: 100%;
@@ -769,18 +990,13 @@
             align-items: flex-start;
             gap: 1.5rem;
             padding: 1rem 0;
-            border-bottom: 1px solid #E2E8F0;
-        }
-        
-        .contact-item:last-child {
-            border-bottom: none;
         }
 
         .contact-icon-box {
-            width: 48px;
-            height: 48px;
+            width: 3rem;
+            height: 3rem;
             background-color: #E6F3F5;
-            border-radius: 12px;
+            border-radius: 0.75rem;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -788,8 +1004,8 @@
         }
 
         .contact-icon-box img {
-            width: 24px;
-            height: 24px;
+            width: 1.5rem;
+            height: 1.5rem;
         }
 
         .contact-info h4 {
@@ -799,7 +1015,7 @@
             color: #1E3A5F;
             margin-bottom: 0.25rem;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.03125rem;
         }
 
         .contact-info p {
@@ -815,10 +1031,14 @@
 
         .map-placeholder {
             background-color: #EDF2F7;
+<<<<<<< HEAD
             border-radius: 18px;
+=======
+            border-radius: 1rem;
+>>>>>>> Farukh
             width: 100%;
             height: 100%;
-            min-height: 350px;
+            min-height: 21.875rem;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -828,20 +1048,20 @@
         }
 
         .map-icon-circle {
-            width: 64px;
-            height: 64px;
+            width: 4rem;
+            height: 4rem;
             background-color: #0B2545;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             margin-bottom: 1.5rem;
-            box-shadow: 0 10px 15px -3px rgba(11, 37, 69, 0.2);
+            box-shadow: 0 0.625rem 0.9375rem -0.1875rem rgba(11, 37, 69, 0.2);
         }
 
         .map-icon-circle img {
-            width: 24px;
-            height: 24px;
+            width: 1.5rem;
+            height: 1.5rem;
             filter: brightness(0) invert(1);
         }
 
@@ -850,7 +1070,7 @@
             font-size: 1rem;
             color: #4B5563;
             line-height: 1.6;
-            max-width: 250px;
+            max-width: 15.625rem;
         }
 
         /* Insights Section */
@@ -862,7 +1082,7 @@
         }
         
         .insights-section .container {
-            max-width: 1320px;
+            max-width: 82.5rem;
             margin: 0 auto;
             padding: 0;
             width: 100%;
@@ -895,7 +1115,7 @@
             width: 100%;
             aspect-ratio: 4 / 3;
             object-fit: cover;
-            border-radius: 16px;
+            border-radius: 1rem;
             margin-bottom: 1.5rem;
         }
 
@@ -912,7 +1132,7 @@
             font-weight: 600;
             color: #0B2545;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.03125rem;
         }
 
         .insight-date {
@@ -1059,7 +1279,11 @@
 </head>
 <body>
 <div class="main-wrapper">
+<<<<<<< HEAD
     
+=======
+    @include('components.header')
+>>>>>>> Farukh
     @include('components.hero-section.index')
 
     <!-- Main Container for Tabs, Actions and About -->
@@ -1400,6 +1624,9 @@
 
     @include('components.diagnostics-cta.index')
     
+</div>
+<div class="main-wrapper">
+    @include('components.footer')
 </div>
 
 <script>
