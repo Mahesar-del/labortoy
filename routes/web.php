@@ -16,3 +16,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('home');
 });
+
+Route::get('/services', function () {
+    return redirect('/service/genomic-diagnostics');
+});
+
+Route::get('/service/genomic-diagnostics', function () {
+    return view('services.genomic-diagnostics');
+});
