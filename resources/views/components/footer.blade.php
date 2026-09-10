@@ -279,7 +279,7 @@
 
             .footer-top {
                 flex-direction: column;
-                gap: 2.5rem;
+                gap: 1.5rem;
                 margin-bottom: 1.875rem;
             }
 
@@ -313,7 +313,7 @@
 
             .footer-contact-info {
                 flex-direction: column;
-                gap: 1.5625rem;
+                gap: 0.1rem;
                 margin-top: 1.25rem;
             }
 
