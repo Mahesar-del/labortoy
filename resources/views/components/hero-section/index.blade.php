@@ -10,7 +10,7 @@
         <img class="hero-doc-img" src="{{ asset('img/hero-doc-img.png') }}" alt="Laboratory scientist examining a sample">
         <img class="hero-section__dots" src="{{ asset('img/dots-hero.png') }}?v={{ filemtime(public_path('img/dots-hero.png')) }}" alt="">
         <div class="hero-section__copy">
-            <h1 id="hero-title">Precision Diagnostics.<br>Better Answers for<br>Better Care.</h1>
+            <h1 id="hero-title">Precision Diagnostics. <br> Better Answers for <br> Better Care.</h1>
             <p>Sterling Genomic, Molecular &amp; Clinical Diagnostics is a U.S. laboratory providing accurate, science-driven testing for patients and providers.</p>
             <div class="hero-section__actions">
                 <a class="hero-section__button hero-section__button--primary" href="#services">Our Services</a>
@@ -84,7 +84,7 @@
         .hero-section__button { padding: 9px 17px; }
     }
     @media (max-width: 600px) {
-        .hero-section { padding: 20px; }
+        .hero-section { padding: 20px 10px; }
         .hero-section__left { clip-path: polygon(0 0, 70% 0, 40% 100%, 0 100%); }
         .hero-section__content { 
             min-height: 450px; 
@@ -93,22 +93,42 @@
             background: transparent; 
         }
         .hero-doc-img { 
-            display: block; 
-            object-fit: cover; 
-            object-position: 70% center;
+            display: none; 
         }
         .hero-section__copy { 
-            width: 88%; 
-            padding: 35px 25px; 
-            margin: 20px; 
+            width: 100%; 
+            padding: 40px 20px; 
+            margin: 0; 
             background: linear-gradient(135deg, rgba(244, 249, 250, 0.95), rgba(244, 249, 250, 0.85));
             border-radius: 16px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.08);
         }
-        .hero-section h1 { font-size: clamp(24px, 6.5vw, 28px); }
-        .hero-section p { max-width: 100%; font-size: 13px; margin: 20px 0 25px 0; text-align: left; line-height: 1.6; }
+        .hero-section h1 { 
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            font-size: 28px; 
+            line-height: 38px;
+            letter-spacing: 0px;
+            color: #0B2545;
+        }
+        .hero-section h1 br {
+            display: none;
+        }
+        .hero-section p { 
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 30px;
+            letter-spacing: 0px;
+            text-align: justify;
+            color: #222222;
+            max-width: 100%;
+            margin: 20px 0 25px 0;
+        }
         .hero-section__actions { flex-wrap: nowrap; gap: 12px; }
-        .hero-section__button { padding: 12px 18px; font-size: 12px; flex: 1; text-align: center; }
+        .hero-section__button { padding: 12px 18px; font-size: 12px; flex: 1; text-align: center; border-radius: 30px; }
+        .hero-section__button--primary { background-color: #22B6AF; }
+        .hero-section__button--secondary { border: 0.71px solid #828282; }
         .hero-section__dots { display: none; }
     }
     @media (prefers-reduced-motion: reduce) {
@@ -124,21 +144,21 @@
 
         const slides = [
             {
-                title: 'Precision Diagnostics.<br>Better Answers for<br>Better Care.',
+                title: 'Precision Diagnostics. <br> Better Answers for <br> Better Care.',
                 description: 'Sterling Genomic, Molecular &amp; Clinical Diagnostics is a U.S. laboratory providing accurate, science-driven testing for patients and providers.',
                 docImage: '{{ asset('img/hero-doc-img.png') }}',
                 bgLeft: '{{ asset('img/hero-bg-img-left.png') }}',
                 bgRight: '{{ asset('img/hero-bg-img-right.jpg') }}'
             },
             {
-                title: 'Molecular Testing.<br>Clearer Results for<br>Confident Decisions.',
+                title: 'Molecular Testing. <br> Clearer Results for <br> Confident Decisions.',
                 description: 'Our molecular testing services deliver timely, dependable results that help providers make informed decisions for every patient.',
                 docImage: '{{ asset('img/hero-doctor-female.png') }}',
                 bgLeft: '{{ asset('img/hero-bg-img-left.png') }}',
                 bgRight: '{{ asset('img/hero-bg-img-right.jpg') }}'
             },
             {
-                title: 'Clinical Excellence.<br>Science That Supports<br>Better Outcomes.',
+                title: 'Clinical Excellence. <br> Science That Supports <br> Better Outcomes.',
                 description: 'From advanced diagnostics to personalized support, our laboratory team delivers quality insights when they matter most.',
                 docImage: '{{ asset('img/hero-doctor-male.png') }}',
                 bgLeft: '{{ asset('img/hero-bg-img-left.png') }}',

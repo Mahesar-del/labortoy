@@ -103,15 +103,14 @@
             display: flex;
             flex-wrap: wrap;
             gap: 1.25rem;
-            justify-content: space-between;
+            justify-content: center;
             width: 100%;
             margin-bottom: 1rem;
         }
 
         .action-btn {
-            flex: 1 1 calc(25% - 1rem);
-            min-width: 200px;
-            height: 4rem;
+            min-width: 180px;
+            height: 3.5rem;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -119,13 +118,13 @@
             background: #ffffff;
             border: 0.125rem solid #0B2545;
             border-radius: 0.5rem;
-            font-size: 1rem;
+            font-size: 0.9375rem;
             font-weight: 500;
             color: var(--text-main);
             text-decoration: none;
             transition: all 0.2s ease;
             white-space: nowrap;
-            padding: 0 0.5rem;
+            padding: 0 1.5rem;
         }
 
         .action-btn:hover {
@@ -283,6 +282,11 @@
         }
 
         /* Science Precision Section */
+        .science-precision-container {
+            padding-top: 5rem;
+            padding-bottom: 5rem;
+        }
+
         .science-precision-section {
             display: flex;
             align-items: center;
@@ -814,7 +818,8 @@
         }
 
         .map-placeholder {
-            background-color: #EDF2F7;
+            background: linear-gradient(180deg, rgba(11, 37, 69, 0.05) 0%, rgba(11, 37, 69, 0.05) 100%);
+            border: 0.67px solid #DCE5EA;
             border-radius: 18px;
             width: 100%;
             height: 100%;
@@ -951,12 +956,12 @@
             }
 
             .service-card-left {
-                height: 28rem;
+                height: 22rem;
                 flex: none;
             }
 
             .service-card-small {
-                height: 18rem;
+                height: 22rem;
                 flex: none;
             }
 
@@ -970,14 +975,46 @@
                 width: 100%;
             }
 
+            .science-precision-container {
+                padding-top: 2rem;
+                padding-bottom: 2rem;
+            }
+
             .science-precision-section {
                 flex-direction: column;
-                gap: 3rem;
+                gap: 0;
             }
+
 
             .science-left, .science-right {
                 flex: 1 1 100%;
                 width: 100%;
+            }
+
+            .science-left {
+                overflow: hidden;
+                border-radius: 1rem;
+            }
+
+            .science-image-container {
+                overflow: hidden;
+                border-radius: 1rem;
+                margin: 0 auto;
+                max-width: 22.75rem;
+                padding-bottom: 0 !important;
+                position: relative;
+            }
+
+            .science-img-back {
+                width: 100%;
+                height: 18.75rem;
+                object-fit: cover;
+                display: block;
+                border-radius: 1rem;
+            }
+
+            .science-img-front {
+                display: none;
             }
 
             .science-right-content {
@@ -990,10 +1027,21 @@
 
             .sm-left, .sm-right {
                 flex: 1 1 100%;
+                width: 100%;
+                box-sizing: border-box;
+            }
+
+            .sm-left {
+                padding: 1.25rem 1.25rem 0 1.25rem;
+            }
+
+            .sm-left img {
+                border-radius: 1rem;
+                height: auto;
             }
 
             .sm-right {
-                padding: 2.5rem;
+                padding: 1.25rem;
             }
 
             .visit-wrapper {
@@ -1033,26 +1081,309 @@
 
             .actions-grid {
                 flex-direction: column;
-            }
-
-            .action-btn {
-                flex: 1 1 100%;
-                max-width: 100%;
-            }
-            
-            .tabs-nav {
-                flex-direction: column;
-                align-items: center;
                 gap: 1rem;
             }
 
-            .services-title,
-            .process-title,
-            .sm-title,
-            .visit-title,
+            .action-btn {
+                width: 100%;
+                max-width: 100%;
+                flex: none;
+            }
+
+            .view-page-link {
+                text-align: center;
+                margin-top: 1rem;
+            }
+            
+            .tabs-nav {
+                flex-direction: row;
+                overflow-x: auto;
+                white-space: nowrap;
+                justify-content: flex-start;
+                padding-bottom: 0.5rem;
+                gap: 1.5rem;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
+            }
+
+            .tabs-nav::-webkit-scrollbar {
+                display: none;
+            }
+
+            .services-title {
+                font-family: 'Plus Jakarta Sans', sans-serif;
+                font-weight: 700;
+                font-size: 24px;
+                line-height: 30px;
+                letter-spacing: 0px;
+                color: #000000;
+                text-align: center;
+            }
+
+            .process-title {
+                font-family: 'Plus Jakarta Sans', sans-serif;
+                font-weight: 700;
+                font-size: 24px;
+                line-height: 34px;
+                letter-spacing: 0px;
+                color: #000000;
+                text-align: center;
+            }
+
+            .process-step-title {
+                font-family: 'Libre Franklin', sans-serif;
+                font-weight: 600;
+                font-size: 18px;
+                line-height: 23.4px;
+                letter-spacing: 0px;
+                margin-bottom: 1rem;
+            }
+
+            .step-num {
+                font-family: 'Libre Franklin', sans-serif;
+                font-weight: 600;
+                font-size: 18px;
+                line-height: 23.4px;
+                letter-spacing: 0px;
+            }
+
+            .process-description {
+                font-family: 'Inter', sans-serif;
+                font-weight: 400;
+                font-size: 16px;
+                line-height: 26px;
+                letter-spacing: 0px;
+                text-align: center;
+                color: #000000;
+            }
+
+            .sm-category {
+                font-family: 'Plus Jakarta Sans', sans-serif;
+                font-weight: 700;
+                font-size: 14px;
+                line-height: 28.9px;
+                letter-spacing: 1.53px;
+                text-transform: uppercase;
+                color: #20B8C5;
+            }
+
+            .sm-title {
+                font-family: 'Plus Jakarta Sans', sans-serif;
+                font-weight: 700;
+                font-size: 24px;
+                line-height: 34px;
+                letter-spacing: 0px;
+                color: #FFFFFF;
+                text-align: left;
+                margin-top: 1rem;
+                margin-bottom: 1rem;
+            }
+
+            .sm-description {
+                font-family: 'Inter', sans-serif;
+                font-weight: 400;
+                font-size: 16px;
+                line-height: 28px;
+                letter-spacing: 0px;
+                text-align: justify;
+                color: #FFFFFF;
+            }
+
+            .visit-title {
+                font-family: 'Plus Jakarta Sans', sans-serif;
+                font-weight: 700;
+                font-size: 24px;
+                line-height: 40.8px;
+                letter-spacing: 0px;
+                color: #12263A;
+                text-align: left;
+                margin-bottom: 0.5rem;
+            }
+
+            .visit-subtitle {
+                font-family: 'Inter', sans-serif;
+                font-weight: 400;
+                font-size: 16px;
+                line-height: 24px;
+                letter-spacing: 0px;
+                color: #000000;
+                text-align: left;
+                margin-bottom: 2rem;
+            }
+
+            .contact-info h4 {
+                font-family: 'Plus Jakarta Sans', sans-serif;
+                font-weight: 700;
+                font-size: 16px;
+                line-height: 22.1px;
+                letter-spacing: 0.65px;
+                text-transform: uppercase;
+                color: #0B2545;
+                margin-top: 0;
+                margin-bottom: 0.25rem;
+            }
+
+            .contact-info p {
+                font-family: 'Inter', sans-serif;
+                font-weight: 400;
+                font-size: 16px;
+                line-height: 26.35px;
+                letter-spacing: 0px;
+                color: #000000;
+                margin: 0;
+            }
+
             .insights-title {
-                font-size: 1.75rem;
-                line-height: 1.3;
+                font-family: 'Plus Jakarta Sans', sans-serif;
+                font-weight: 700;
+                font-size: 24px;
+                line-height: 34px;
+                letter-spacing: 0px;
+                color: #000000;
+                text-align: center;
+                margin-bottom: 2rem;
+            }
+
+            .insight-heading {
+                font-family: 'Plus Jakarta Sans', sans-serif;
+                font-weight: 500;
+                font-size: 22px;
+                line-height: 30px;
+                letter-spacing: 0px;
+                color: #000000;
+                margin: 0;
+            }
+
+            .insights-grid {
+                display: flex;
+                flex-direction: row;
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                scrollbar-width: none; /* Firefox */
+                gap: 1.5rem;
+                padding-bottom: 1rem; /* Space for scrollbar/shadows */
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .insights-grid::-webkit-scrollbar {
+                display: none; /* Chrome/Safari */
+            }
+
+            .insight-card {
+                flex: 0 0 100%; /* Show exactly one card without peeking */
+                scroll-snap-align: start; /* Align to start of container */
+            }
+
+            .section-title {
+                font-family: 'Plus Jakarta Sans', sans-serif;
+                font-weight: 700;
+                font-size: 24px;
+                line-height: 30px;
+                letter-spacing: 0px;
+                color: #000000;
+            }
+
+            .science-title {
+                font-family: 'Plus Jakarta Sans', sans-serif;
+                font-size: 24px;
+                font-weight: 700;
+                line-height: 30px;
+                color: #12263A;
+                text-align: left;
+                margin-top: 0;
+                margin-bottom: 1rem;
+            }
+
+            .science-description {
+                font-family: 'Inter', sans-serif;
+                font-size: 16px;
+                font-weight: 400;
+                line-height: 30px;
+                text-align: justify;
+                color: #000000;
+                margin-bottom: 1rem;
+            }
+
+            .explore-link {
+                font-family: 'Inter', sans-serif;
+                font-size: 18px;
+                font-weight: 700;
+                line-height: 26.35px;
+                color: #0B2545;
+            }
+
+            .section-description {
+                font-family: 'Inter', sans-serif;
+                font-weight: 400;
+                font-size: 16px;
+                line-height: 30px;
+                letter-spacing: 0px;
+                text-align: justify;
+                color: #000000;
+            }
+
+            .feature-list li {
+                font-family: 'Inter', sans-serif;
+                font-weight: 400;
+                font-size: 16px;
+                line-height: 30px;
+                letter-spacing: 0px;
+                text-align: justify;
+                color: #000000;
+            }
+
+            .services-description {
+                font-family: 'Inter', sans-serif;
+                font-weight: 400;
+                font-size: 16px;
+                line-height: 24px;
+                letter-spacing: 0px;
+                text-align: justify;
+                color: #000000;
+            }
+
+            .service-card-content {
+                padding: 1.25rem 1rem;
+            }
+
+            .service-card-left .service-card-content {
+                padding: 1.25rem 1rem;
+            }
+
+            .card-title {
+                font-family: 'Plus Jakarta Sans', sans-serif;
+                font-weight: 700;
+                font-size: 16px;
+                line-height: 22.65px;
+                letter-spacing: 0px;
+                color: #FFFFFF;
+                white-space: nowrap;
+            }
+
+            .card-text {
+                font-family: 'Inter', sans-serif;
+                font-weight: 400;
+                font-size: 12px;
+                line-height: 13.59px;
+                letter-spacing: 0px;
+                text-align: justify;
+                color: #FFFFFF;
+                max-width: 100%;
+            }
+
+            .explore-btn {
+                font-family: 'Inter', sans-serif;
+                font-weight: 700;
+                font-size: 8px;
+                line-height: 15.99px;
+                letter-spacing: 0px;
+                color: #FFFFFF;
+                border-radius: 18px;
+                width: 108px;
+                height: 28.5px;
+                padding: 0;
+                background-color: #23B3B0;
+                gap: 0.3rem;
             }
         }
     </style>
@@ -1216,11 +1547,11 @@
     </section>
 
     <!-- Science Precision Section -->
-    <div class="container" style="padding-top: 5rem; padding-bottom: 5rem;">
+    <div class="container science-precision-container">
         <div class="science-precision-section">
             <div class="science-left">
-                <div class="science-image-container">
-                    <img src="{{ asset('images/science-meet-two.png') }}" class="science-img-back" alt="Laboratory Diagnostic Process">
+                <div class="science-image-container" style="overflow:hidden; border-radius:1rem; clip-path:inset(0 round 1rem); isolation:isolate;">
+                    <img src="{{ asset('images/science-meet-two.png') }}" class="science-img-back" style="border-radius:1rem;" alt="Laboratory Diagnostic Process">
                     <img src="{{ asset('images/science-meet-one.png') }}" class="science-img-front" alt="Microscope Analysis">
                 </div>
             </div>
@@ -1419,6 +1750,11 @@
                 
                 // Add active class to clicked tab
                 this.classList.add('active');
+                
+                // Scroll into view on mobile
+                if (window.innerWidth <= 600) {
+                    this.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+                }
                 
                 // Show the corresponding button grid
                 const targetId = this.getAttribute('data-target');

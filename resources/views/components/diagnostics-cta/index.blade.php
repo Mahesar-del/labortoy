@@ -36,10 +36,53 @@
     }
     @media (max-width: 600px) {
         .diagnostics-cta { padding: 20px; }
-        .diagnostics-cta__card { border-radius: 16px; min-height: 300px; }
-        .diagnostics-cta h2 { font-size: 22px; }
-        .diagnostics-cta p { font-size: 12px; margin: 18px auto 24px; }
-        .diagnostics-cta__button { font-size: 12px; padding: 12px 20px; }
-        .diagnostics-cta__decoration { opacity: .55; }
+        .diagnostics-cta__card { 
+            border-radius: 16px; 
+            min-height: 420px; 
+            text-align: left;
+            align-items: flex-start;
+            padding: 32px 20px 48px 20px;
+        }
+        .diagnostics-cta__content {
+            width: 100%;
+        }
+        .diagnostics-cta h2 { 
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 24px;
+            line-height: 34px;
+            margin-bottom: 12px;
+        }
+        .diagnostics-cta p { 
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 24px;
+            margin: 0 0 32px 0;
+            text-align: justify;
+        }
+        .diagnostics-cta__actions {
+            flex-direction: column;
+            width: 100%;
+            gap: 12px;
+        }
+        .diagnostics-cta__button { 
+            font-size: 14px; 
+            padding: 14px 20px; 
+            width: 100%;
+            text-align: center;
+        }
+        .diagnostics-cta__decoration--left { 
+            display: none; 
+        }
+        .diagnostics-cta__decoration--right { 
+            display: block;
+            max-width: 45%;
+            height: auto;
+            bottom: -5%;
+            right: -5%;
+            opacity: 1;
+            z-index: 0;
+        }
     }
 </style>
