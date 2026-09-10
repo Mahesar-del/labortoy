@@ -88,6 +88,7 @@
     @media (min-width: 992px) {
         .clinical-grid {
             grid-template-columns: 307px 555px 307px;
+            grid-template-rows: 1fr 1fr;
             gap: 20px 30px;
             justify-content: center;
         }
@@ -99,10 +100,10 @@
         .clinical-image {
             height: 100%;
         }
-        .card-a { grid-column: 1; grid-row: 1; align-self: start; }
-        .card-c { grid-column: 1; grid-row: 2; align-self: end; }
-        .card-b { grid-column: 3; grid-row: 1; align-self: start; }
-        .card-d { grid-column: 3; grid-row: 2; align-self: end; }
+        .card-a { grid-column: 1; grid-row: 1; align-self: end; }
+        .card-c { grid-column: 1; grid-row: 2; align-self: start; }
+        .card-b { grid-column: 3; grid-row: 1; align-self: end; }
+        .card-d { grid-column: 3; grid-row: 2; align-self: start; }
     }
 </style>
 
