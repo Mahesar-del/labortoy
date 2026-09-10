@@ -12,5 +12,6 @@
 <body>
     @include('components.hero-section.index')
     @include('components.diagnostics-cta.index')
+    @include('components.clinical-test.clinical-test')
 </body>
 </html>
