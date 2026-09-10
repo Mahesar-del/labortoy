@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laboratory Design</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+        :root {
+            --primary-color: #0B2545;
+            --text-main: #000000;
+            --text-muted: #4B5563; 
+            --accent-cyan: #20B2AA; 
+            --bg-light: #F9FAFB;
+            --border-color: #E5E7EB;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-main);
+            background-color: #ffffff;
+            line-height: 1.5;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 75rem; 
+            margin: 0 auto;
+            padding: 3rem 1.5rem;
+        }
+
+        /* Tabs Navigation */
+        .tabs-nav {
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            border-bottom: 0.0625rem solid var(--border-color);
+            margin-bottom: 2rem;
+        }
+
+        .tab-item {
+            font-size: 1.125rem; 
+            font-weight: 600;
+            line-height: 1.375rem; 
+            color: var(--text-muted);
+            padding-bottom: 1rem;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .tab-item.active {
+            color: var(--primary-color);
+            border-bottom: 0.1875rem solid var(--primary-color);
+            margin-bottom: -0.0625rem;
+        }
+
+        /* Action Buttons */
+        .actions-grid {
+            display: flex;
+            justify-content: space-between;
+            gap: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .action-btn {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            padding: 1.25rem;
+            background: #ffffff;
+            border: 0.0625rem solid var(--primary-color);
+            border-radius: 0.5rem;
+            font-size: 1.125rem;
+            font-weight: 500;
+            line-height: 1.25rem;
+            color: var(--text-main);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .action-btn:hover {
+            background: var(--bg-light);
+        }
+
+        .action-icon {
+            width: 1.5rem;
+            height: 1.5rem;
+            stroke: var(--primary-color);
+            fill: none;
+            stroke-width: 0.125rem;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        /* View Page Link */
+        .view-page-link {
+            display: block;
+            text-align: right;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            margin-bottom: 4rem;
+        }
+
+        /* Main Content Split */
+        .content-split {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+        }
+
+        .content-left {
+            flex: 1;
+            position: relative;
+        }
+
+        .content-right {
+            flex: 1;
+        }
+
+        /* Image Styling */
+        .image-wrapper {
+            position: relative;
+            width: 100%;
+            padding-top: 100%;
+            border-radius: 50%;
+            overflow: hidden;
+            background-color: var(--bg-light);
+        }
+
+        .image-wrapper img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .badge {
+            position: absolute;
+            bottom: 5%;
+            left: 5%;
+            width: 10rem;
+            height: 10rem;
+            background-color: var(--accent-cyan);
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            border: 0.5rem solid #ffffff;
+        }
+
+        .badge-number {
+            font-size: 3rem;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .badge-text {
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        /* Typography & Content Right */
+        .section-subtitle {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--accent-cyan);
+            text-transform: uppercase;
+            letter-spacing: 0.05rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .section-description {
+            font-size: 1.125rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin-bottom: 3rem;
+        }
+
+        .feature-list li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 1rem;
+            font-size: 1.125rem;
+            color: var(--text-main);
+            font-weight: 500;
+        }
+
+        .feature-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.5rem;
+            width: 0.5rem;
+            height: 0.5rem;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+        }
+
+        /* Stats Bottom */
+        .stats-container {
+            display: flex;
+            border-top: 0.0625rem solid var(--border-color);
+            padding-top: 2rem;
+            gap: 2rem;
+        }
+
+        .stat-item {
+            flex: 1;
+        }
+
+        .stat-item:first-child {
+            border-right: 0.0625rem solid var(--border-color);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1.125rem;
+            color: var(--text-muted);
+        }
+
+        /* Background Pattern (Dotted) */
+        .dotted-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: -2rem;
+            left: -2rem;
+            z-index: -1;
+            background-image: radial-gradient(var(--border-color) 0.125rem, transparent 0.125rem);
+            background-size: 1.5rem 1.5rem;
+            border-radius: 50%;
+        }
+
+        /* Responsive */
+        @media (max-width: 64rem) {
+            .content-split {
+                flex-direction: column;
+            }
+            
+            .actions-grid {
+                flex-wrap: wrap;
+            }
+            
+            .action-btn {
+                flex: 1 1 40%;
+            }
+        }
+        
+        @media (max-width: 48rem) {
+            .action-btn {
+                flex: 1 1 100%;
+            }
+            
+            .tabs-nav {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Navigation Tabs -->
+    <nav class="tabs-nav">
+        <a href="#" class="tab-item active">Individuals & Patients</a>
+        <a href="#" class="tab-item">Providers</a>
+        <a href="#" class="tab-item">Health Systems & Organizations</a>
+    </nav>
+
+    <!-- Action Buttons -->
+    <div class="actions-grid">
+        <a href="#" class="action-btn">
+            <svg class="action-icon" viewBox="0 0 24 24">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+            Find a Lab
+        </a>
+        <a href="#" class="action-btn">
+            <svg class="action-icon" viewBox="0 0 24 24">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+                <polyline points="10 9 9 9 8 9"></polyline>
+            </svg>
+            View Test Results
+        </a>
+        <a href="#" class="action-btn">
+            <svg class="action-icon" viewBox="0 0 24 24">
+                <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                <line x1="2" y1="10" x2="22" y2="10"></line>
+                <line x1="6" y1="16" x2="6.01" y2="16"></line>
+            </svg>
+            Pay a Bill
+        </a>
+        <a href="#" class="action-btn">
+            <svg class="action-icon" viewBox="0 0 24 24">
+                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <path d="M16 10a4 4 0 0 1-8 0"></path>
+            </svg>
+            Shop for Tests
+        </a>
+    </div>
+
+    <!-- View Page Link -->
+    <a href="#" class="view-page-link">View Individuals & Patients Page</a>
+
+    <!-- Main Content -->
+    <div class="content-split">
+        <!-- Left Image Section -->
+        <div class="content-left">
+            <div class="dotted-bg"></div>
+            <div class="image-wrapper">
+                <!-- Using placeholder image from Unsplash for the scientist -->
+                <img src="https://images.unsplash.com/photo-1581093588401-fbb62a02f120?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Scientist using microscope">
+            </div>
+            <div class="badge">
+                <span class="badge-number">20</span>
+                <span class="badge-text">Years of exps</span>
+            </div>
+        </div>
+
+        <!-- Right Text Section -->
+        <div class="content-right">
+            <div class="section-subtitle">ABOUT OUR LABORATORY</div>
+            <h2 class="section-title">Advanced Science. Clinical Purpose.</h2>
+            <p class="section-description">
+                Sterling Genomic, Molecular & Clinical Diagnostics operates as a dedicated diagnostic laboratory, built around a simple premise: diagnostic testing should be rigorous, clearly communicated, and genuinely useful to the people who depend on it.
+            </p>
+
+            <ul class="feature-list">
+                <li>Genomic, molecular, and clinical diagnostics.</li>
+                <li>Consistent care from testing to reporting.</li>
+                <li>Supports informed clinical decisions.</li>
+                <li>A precise and dependable laboratory partner.</li>
+            </ul>
+
+            <div class="stats-container">
+                <div class="stat-item">
+                    <div class="stat-number">320+</div>
+                    <div class="stat-label">Wining Awards</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">10k+</div>
+                    <div class="stat-label">Test Completed</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
