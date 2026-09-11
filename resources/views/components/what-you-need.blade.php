@@ -80,16 +80,18 @@
 </section>
 
 <style>
+    .what-you-need-section, .what-you-need-section * { box-sizing: border-box; }
     .what-you-need-section {
-        background-color: #F3F8FA; /* Light blue-gray background */
-        padding: 3rem 7% 4rem 7%;
+        background-color: #F3F8FA;
+        padding: 4rem 7%;
         width: 100%;
         font-family: 'Inter', sans-serif;
         box-sizing: border-box;
     }
 
     .wyn-container {
-        max-width: 1320px; /* Matched exactly with genomic-diagnostics containers */
+        max-width: 1320px;
+        width: 100%;
         margin: 0 auto;
     }
 
@@ -197,27 +199,46 @@
     }
 
     @media (max-width: 768px) {
+        .what-you-need-section {
+            padding: 2.5rem 20px;
+        }
         .wyn-title {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
             font-size: 24px;
             line-height: 30px;
+            letter-spacing: 0px;
+            color: #000000;
             text-align: center;
         }
         .wyn-subtitle {
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
             font-size: 16px;
             line-height: 24px;
+            letter-spacing: 0px;
+            color: #000000;
             text-align: center;
+            margin-bottom: 2.5rem;
         }
         .wyn-card-title {
-            font-size: 20px;
-            line-height: 23.26px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            font-size: 18px;
+            line-height: 1.3;
         }
         .wyn-card-text {
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
             font-size: 16px;
-            line-height: 30px;
+            line-height: 24px;
+            letter-spacing: 0px;
+            color: #333333;
+            text-align: justify;
         }
         .wyn-grid {
             grid-template-columns: 1fr;
-            row-gap: 3.5rem;
+            row-gap: 2.5rem;
         }
     }
 </style>

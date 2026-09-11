@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\AppointmentController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,6 +24,21 @@ Route::get('/services', function () {
 Route::get('/service/genomic-diagnostics', function () {
     return view('services.genomic-diagnostics');
 });
+
+Route::get('/service/molecular-diagnostics', function () {
+    return view('services.molecular-diagnostics');
+});
+
+Route::get('/service/clinical-diagnostics', function () {
+    return view('services.clinical-diagnostics');
+});
+
+Route::get('/provider-page', function () {
+    return view('Provider-page');
+});
+
+Route::get('/appointment', [AppointmentController::class, 'index'])->name('appointment.index');
+
 Route::get('/patient', function () {
     return view('patient');
 });

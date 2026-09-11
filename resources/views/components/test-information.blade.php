@@ -13,36 +13,46 @@
 </section>
 
 <style>
+    .test-information-section, .test-information-section * { box-sizing: border-box; }
     .test-information-section {
         background-color: #ffffff;
-        padding: 5rem 7% 5rem 7%;
+        padding: 5rem 7%;
         box-sizing: border-box;
         width: 100%;
     }
 
     .ti-container {
         max-width: 1320px;
+        width: 100%;
         margin: 0 auto;
         display: flex;
         align-items: center;
-        gap: 4rem;
-    }
-
-    .ti-content {
-        flex: 1;
+        justify-content: space-between;
+        gap: 48px;
+        padding: 0;
     }
 
     .ti-image {
         flex: 1;
-        display: flex;
-        justify-content: flex-start;
+        max-width: 520px;
+        width: 100%;
+        aspect-ratio: 555 / 470;
+        height: auto;
+        flex-shrink: 1;
     }
 
     .ti-image img {
-        max-width: 100%;
-        height: auto;
-        border-radius: 1rem;
+        width: 100%;
+        height: 100%;
+        border-radius: 12px;
         object-fit: cover;
+    }
+
+    .ti-content {
+        flex: 1;
+        max-width: 580px;
+        width: 100%;
+        flex-shrink: 1;
     }
 
     .ti-title {
@@ -68,28 +78,43 @@
     @media (max-width: 992px) {
         .ti-container {
             flex-direction: column;
-            gap: 2rem;
+            gap: 24px;
         }
         
-        .ti-image {
-            justify-content: center;
+        .ti-image, .ti-content {
             width: 100%;
+            max-width: 100%;
         }
     }
 
     @media (max-width: 768px) {
         .test-information-section {
-            padding: 3rem 7% 3rem 7%;
+            padding: 2.5rem 20px;
+        }
+
+        .ti-image {
+            aspect-ratio: 555 / 380;
         }
 
         .ti-title {
-            font-size: 28px;
-            line-height: 36px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            font-size: 24px;
+            line-height: 34px;
+            letter-spacing: 0px;
+            color: #000000;
             text-align: left;
+            margin-bottom: 14px;
         }
         
         .ti-text {
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 30px;
+            letter-spacing: 0px;
             text-align: justify;
+            color: #000000;
         }
     }
 </style>

@@ -18,7 +18,7 @@
 
 <style>
     .diagnostics-cta, .diagnostics-cta * { box-sizing: border-box; }
-    .diagnostics-cta { padding: 42px 99px; background: #fff; width: 100%; }
+    .diagnostics-cta { padding: 42px 7%; background: #fff; width: 100%; box-sizing: border-box; }
     .diagnostics-cta__container { width: 100%; max-width: 1320px; margin: 0 auto; }
     .diagnostics-cta__card { align-items: center; background: #0B2545; border-radius: 18px; color: #fff; display: flex; justify-content: center; min-height: 330px; overflow: hidden; padding: 42px 24px; position: relative; text-align: center; }
     .diagnostics-cta__content { max-width: 880px; position: relative; z-index: 1; }
@@ -31,34 +31,35 @@
     .diagnostics-cta__decoration { bottom: 0; height: 64%; max-width: 23%; object-fit: contain; object-position: bottom; position: absolute; width: auto; }
     .diagnostics-cta__decoration--left { left: 0; }
     .diagnostics-cta__decoration--right { right: 0; }
-    @media (max-width: 900px) {
-        .diagnostics-cta { padding: 32px; }
-    }
-    @media (max-width: 600px) {
-        .diagnostics-cta { padding: 20px; }
+    @media (max-width: 768px) {
+        .diagnostics-cta { padding: 2.5rem 20px; }
         .diagnostics-cta__card { 
             border-radius: 16px; 
-            min-height: 420px; 
+            min-height: 360px; 
             text-align: left;
             align-items: flex-start;
-            padding: 32px 20px 48px 20px;
+            padding: 32px 20px 40px 20px;
         }
         .diagnostics-cta__content {
             width: 100%;
         }
         .diagnostics-cta h2 { 
-            font-family: 'Inter', sans-serif;
+            font-family: 'Plus Jakarta Sans', sans-serif;
             font-weight: 700;
             font-size: 24px;
             line-height: 34px;
+            letter-spacing: 0px;
+            color: #ffffff;
             margin-bottom: 12px;
         }
         .diagnostics-cta p { 
             font-family: 'Inter', sans-serif;
             font-weight: 400;
             font-size: 16px;
-            line-height: 24px;
-            margin: 0 0 32px 0;
+            line-height: 30px;
+            letter-spacing: 0px;
+            color: rgba(255, 255, 255, 0.9);
+            margin: 0 0 28px 0;
             text-align: justify;
         }
         .diagnostics-cta__actions {
@@ -76,13 +77,7 @@
             display: none; 
         }
         .diagnostics-cta__decoration--right { 
-            display: block;
-            max-width: 45%;
-            height: auto;
-            bottom: -5%;
-            right: -5%;
-            opacity: 1;
-            z-index: 0;
+            display: none; 
         }
     }
 </style>
