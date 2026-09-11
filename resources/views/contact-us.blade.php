@@ -178,7 +178,7 @@
         .contact-icon {
             width: 44px;
             height: 44px;
-            background-color: #0B2545;
+            background-color: #0B2545 !important;
             border-radius: 50%;
             display: flex;
             align-items: center;
