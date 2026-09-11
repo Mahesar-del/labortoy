@@ -10,39 +10,7 @@
     <style>body { margin: 0; font-family: 'Manrope', sans-serif; }</style>
 </head>
 <body>
-    <section class="services-hero" aria-labelledby="services-hero-title">
-        <div class="services-hero__background" style="background-image: url('{{ asset('img/genomic-diagnostics-hero.png') }}');"></div>
-        <div class="services-hero__overlay"></div>
-    
-        <div class="services-hero__container">
-            <div class="services-hero__content">
-                <h1 id="services-hero-title">Genomic<br>Diagnostics</h1>
-                <p>Advanced genomic testing that helps identify genetic variation, understand disease risk, and support more informed clinical decisions.</p>
-                <a class="services-hero__button" href="#appointment">Book an Appointment</a>
-            </div>
-        </div>
-    </section>
-    
-    <style>
-        .services-hero, .services-hero * { box-sizing: border-box; }
-        .services-hero { background: #020b1c; color: #fff; isolation: isolate; min-height: 460px; overflow: hidden; position: relative; }
-        .services-hero__background, .services-hero__overlay { height: 100%; inset: 0; position: absolute; width: 100%; }
-        .services-hero__background { background-position: center; background-repeat: no-repeat; background-size: 100% 100%; z-index: -2; }
-        .services-hero__overlay { background: linear-gradient(90deg, rgba(7,26,49,.96) 0%, rgba(7,26,49,.86) 48%, rgba(7,26,49,.25) 100%); z-index: -1; }
-        .services-hero__container { align-items: center; display: flex; margin: 0 auto; max-width: 1320px; min-height: 460px; padding: 56px 76px; }
-        .services-hero__content { max-width: 530px; }
-        .services-hero h1 { font-size: clamp(34px, 3.1vw, 56px); letter-spacing: -.04em; line-height: 1.1; margin: 0; }
-        .services-hero p { color: rgba(255,255,255,.84); font-size: clamp(14px, 1vw, 17px); line-height: 1.7; margin: 25px 0 30px; }
-        .services-hero__button { background: #20b3b5; border-radius: 999px; color: #fff; display: inline-block; font-size: 14px; font-weight: 700; padding: 15px 25px; text-decoration: none; }
-        .services-hero__button:hover { filter: brightness(.94); }
-        .services-hero__button:focus-visible { outline: 3px solid #fff; outline-offset: 4px; }
-        @media (max-width: 700px) {
-            .services-hero, .services-hero__container { min-height: 430px; }
-            .services-hero__container { align-items: flex-end; padding: 48px 28px; }
-            .services-hero__overlay { background: linear-gradient(90deg, rgba(7,26,49,.96), rgba(7,26,49,.25)); }
-            .services-hero__content { max-width: 350px; }
-        }
-    </style>
+    @include('components.services-hero')
     
     <section class="understanding-genomic" aria-labelledby="understanding-genomic-title">
         <div class="understanding-genomic__container">
@@ -220,61 +188,7 @@
     @include('components.specimens-molecular')
     @include('components.clinical-test.clinical-test')
     
-    <section class="genomic-process" aria-labelledby="genomic-process-title">
-        <div class="genomic-process__container">
-            <header class="genomic-process__header">
-                <h2 id="genomic-process-title">From Sample to Results Our<br>Process Explained</h2>
-            </header>
-    
-            <div class="genomic-process__steps">
-                <article class="genomic-process-step">
-                    <img class="genomic-process-step__image" src="{{ asset('images/req-sample-kid.svg') }}" alt="" aria-hidden="true">
-                    <h3><span>01.</span> Request your test kit</h3>
-                    <p>Easily place orders through our secure Physician Portal, with options for custom panels and test combinations.</p>
-                </article>
-    
-                <article class="genomic-process-step">
-                    <img class="genomic-process-step__image" src="{{ asset('images/sample.svg') }}" alt="" aria-hidden="true">
-                    <h3><span>02.</span> Sample Collection</h3>
-                    <p>For added convenience, choose our home collection option or schedule a qualified visit to collect samples safely.</p>
-                </article>
-    
-                <article class="genomic-process-step">
-                    <img class="genomic-process-step__image" src="{{ asset('images/analysis-and-review.svg') }}" alt="" aria-hidden="true">
-                    <h3><span>03.</span> Analysis and Review</h3>
-                    <p>Our skilled pathologists and laboratory scientists analyze the test data using the latest technology.</p>
-                </article>
-    
-                <article class="genomic-process-step">
-                    <img class="genomic-process-step__image" src="{{ asset('images/follow-up and support.svg') }}" alt="" aria-hidden="true">
-                    <h3><span>04.</span> Follow-Up and Support</h3>
-                    <p>Our customer support team is here to answer questions about results, next steps, or any additional testing.</p>
-                </article>
-            </div>
-        </div>
-    </section>
-    
-    <style>
-        .genomic-process, .genomic-process * { box-sizing: border-box; }
-        .genomic-process { background: #f3f8fb; padding: 22px 7% 78px; }
-        .genomic-process__container { margin: 0 auto; max-width: 1320px; }
-        .genomic-process__header { margin: 0 auto 46px; text-align: center; }
-        .genomic-process__header h2 { color: #111820; font-size: clamp(26px, 2.15vw, 36px); letter-spacing: -.035em; line-height: 1.2; margin: 0; }
-        .genomic-process__steps { display: grid; gap: clamp(30px, 4vw, 64px); grid-template-columns: repeat(4, minmax(0, 1fr)); }
-        .genomic-process-step { text-align: center; }
-        .genomic-process-step__image { display: block; height: 89px; margin: 0 auto 24px; object-fit: contain; width: 82px; }
-        .genomic-process-step h3 { color: #173a60; font-size: clamp(15px, 1.1vw, 18px); font-weight: 800; line-height: 1.35; margin: 0 0 15px; }
-        .genomic-process-step h3 span { color: #79a0c8; }
-        .genomic-process-step p { color: #222b34; font-size: clamp(13px, .92vw, 15px); line-height: 1.65; margin: 0 auto; max-width: 265px; }
-        @media (max-width: 950px) {
-            .genomic-process__steps { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 52px; }
-        }
-        @media (max-width: 560px) {
-            .genomic-process { padding: 48px 28px 58px; }
-            .genomic-process__header { margin-bottom: 40px; }
-            .genomic-process__steps { grid-template-columns: 1fr; }
-        }
-    </style>
+    @include('components.process-explained')
     
     @include('components.test-information')
     @include('components.what-you-need')

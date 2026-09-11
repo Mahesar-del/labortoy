@@ -25,6 +25,14 @@ Route::get('/service/genomic-diagnostics', function () {
     return view('services.genomic-diagnostics');
 });
 
+Route::get('/service/molecular-diagnostics', function () {
+    return view('services.molecular-diagnostics');
+});
+
+Route::get('/service/clinical-diagnostics', function () {
+    return view('services.clinical-diagnostics');
+});
+
 Route::get('/provider-page', function () {
     return view('Provider-page');
 });

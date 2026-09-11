@@ -16,10 +16,12 @@
         body {
             font-family: 'Inter', sans-serif;
             background-color: #ffffff;
+        }
+        .appointment-page-wrapper {
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
+            min-height: calc(100vh - 200px);
             padding: 40px 20px;
         }
         .appointment-section {
@@ -191,7 +193,8 @@
     </style>
 </head>
 <body>
-
+    @include('components.header')
+    <div class="appointment-page-wrapper">
     <section class="appointment-section">
         <div class="text-center">
             <h1 class="heading">Book an Appointment</h1>
@@ -348,5 +351,7 @@
         // Initialize with patient tab
         switchTab('patient');
     </script>
+    </div>
+    @include('components.footer')
 </body>
 </html>

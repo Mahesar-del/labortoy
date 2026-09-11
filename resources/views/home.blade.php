@@ -1501,7 +1501,7 @@
                         <p class="card-text">
                             Testing focused on the genetic material that underlies inherited conditions and long-term health risk, processed with careful attention to accuracy at every step.
                         </p>
-                        <a href="#" class="explore-btn">
+                        <a href="{{ url('/service/genomic-diagnostics') }}" class="explore-btn">
                             Explore Service
                             <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                         </a>
@@ -1519,7 +1519,7 @@
                             <p class="card-text">
                                 Testing at the molecular level to identify markers relevant to infection, disease activity and treatment planning.
                             </p>
-                            <a href="#" class="explore-btn">
+                            <a href="{{ url('/service/molecular-diagnostics') }}" class="explore-btn">
                                 Explore Service
                                 <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                             </a>
@@ -1535,7 +1535,7 @@
                             <p class="card-text">
                                 Routine and specialized clinical testing that supports everyday diagnosis, monitoring and preventive care.
                             </p>
-                            <a href="#" class="explore-btn">
+                            <a href="{{ url('/service/clinical-diagnostics') }}" class="explore-btn">
                                 Explore Service
                                 <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                             </a>
@@ -1729,8 +1729,8 @@
         </div>
     </section>
 
+    @include('components.process-explained')
     @include('components.diagnostics-cta.cta')
-    
 </div>
 <div class="main-wrapper">
     @include('components.footer')
