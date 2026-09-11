@@ -6,7 +6,7 @@
     <title>Contact Us</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
     <style>body { margin: 0; font-family: 'Manrope', sans-serif; }</style>
 </head>
 <body>
@@ -19,26 +19,38 @@
         <div class="services-hero__container">
             <div class="services-hero__content">
                 <h1 id="services-hero-title">Contact Us</h1>
-                <p>Get in touch with us for any inquiries, support, or additional information about our services.</p>
+                <p>Access laboratory testing information, specimen requirements, clinical resources, and provider support to help you navigate the testing process with Sterling.</p>
             </div>
         </div>
     </section>
     
     <style>
         .services-hero, .services-hero * { box-sizing: border-box; }
-        .services-hero { background: #020b1c; color: #fff; isolation: isolate; min-height: 460px; overflow: hidden; position: relative; padding: 0 99px; box-sizing: border-box; }
+        .services-hero { background: #020b1c; color: #fff; isolation: isolate; min-height: 460px; overflow: hidden; position: relative; padding: 0 7%; box-sizing: border-box; }
         .services-hero__background, .services-hero__overlay { height: 100%; inset: 0; position: absolute; width: 100%; }
         .services-hero__background { background-position: center; background-repeat: no-repeat; background-size: 100% 100%; z-index: -2; }
         .services-hero__overlay { background: linear-gradient(90deg, rgba(7,26,49,.96) 0%, rgba(7,26,49,.86) 48%, rgba(7,26,49,.25) 100%); z-index: -1; }
         .services-hero__container { align-items: center; display: flex; margin: 0 auto; max-width: 1320px; width: 100%; min-height: 460px; padding: 56px 0; }
-        .services-hero__content { max-width: 530px; }
+        .services-hero__content { max-width: 580px; }
         .services-hero h1 { font-size: clamp(34px, 3.1vw, 56px); letter-spacing: -.04em; line-height: 1.1; margin: 0; }
-        .services-hero p { color: rgba(255,255,255,.84); font-size: clamp(14px, 1vw, 17px); line-height: 1.7; margin: 25px 0 30px; }
+        .services-hero p { 
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            font-size: 18px; 
+            line-height: 30px; 
+            letter-spacing: 0px;
+            color: #D9E5EE; 
+            margin: 25px 0 30px; 
+        }
         @media (max-width: 700px) {
             .services-hero, .services-hero__container { min-height: 430px; }
-            .services-hero__container { align-items: flex-end; padding: 48px 28px; }
+            .services-hero__container { align-items: flex-end; padding: 48px 20px; }
             .services-hero__overlay { background: linear-gradient(90deg, rgba(7,26,49,.96), rgba(7,26,49,.25)); }
             .services-hero__content { max-width: 350px; }
+            .services-hero p {
+                font-size: 16px;
+                line-height: 26px;
+            }
         }
     </style>
 
@@ -135,16 +147,21 @@
             justify-content: space-between;
         }
         .contact-info h2 {
-            font-size: 32px;
-            font-weight: 800;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 34px;
+            font-weight: 700;
+            line-height: 44px;
+            letter-spacing: 0px;
+            color: #0B2545;
             margin: 0 0 16px 0;
-            color: #0d233a;
-            letter-spacing: -0.02em;
         }
         .contact-intro {
-            font-size: 14.5px;
-            line-height: 1.6;
-            color: #333;
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 25.6px;
+            letter-spacing: 0px;
+            color: #000000;
             margin: 0 0 40px 0;
         }
         .contact-details {
@@ -161,7 +178,7 @@
         .contact-icon {
             width: 44px;
             height: 44px;
-            background-color: #0d233a;
+            background-color: #0B2545;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -179,21 +196,30 @@
             gap: 4px;
         }
         .contact-text strong {
-            font-size: 16px;
-            font-weight: 700;
-            color: #000;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 20px;
+            font-weight: 600;
+            line-height: 24px;
+            letter-spacing: 0px;
+            color: #000000;
         }
         .contact-text span {
-            font-size: 14px;
-            color: #555;
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 24px;
+            letter-spacing: 0px;
+            color: #000000;
         }
         
         .working-schedule h3 {
-            font-size: 22px;
-            font-weight: 800;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 34px;
+            letter-spacing: 0px;
+            color: #0B2545;
             margin: 0 0 24px 0;
-            color: #0d233a;
-            letter-spacing: -0.02em;
         }
         .working-schedule ul {
             list-style: none;
@@ -225,7 +251,7 @@
             flex: 1;
             min-width: 320px;
             max-width: 713px;
-            background-color: #0d233a;
+            background-color: #0b2545;
             border-radius: 20px;
             padding: 56px 48px;
             color: #fff;
@@ -235,10 +261,11 @@
             box-shadow: 0 20px 40px rgba(13, 35, 58, 0.08);
         }
         .contact-form-wrapper h2 {
-            font-size: 26px;
+            font-size: clamp(18px, 1.8vw, 24px);
             font-weight: 700;
             margin: 0 0 36px 0;
             text-align: center;
+            white-space: nowrap;
         }
         .contact-form {
             width: 100%;

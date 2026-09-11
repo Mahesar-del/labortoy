@@ -1,9 +1,8 @@
 <style>
     .faq-section, .faq-section * { box-sizing: border-box; }
     .faq-section {
-        padding: 4rem 7%;
+        padding: 1rem 0 2rem 0;
         background-color: #ffffff;
-        box-sizing: border-box;
         width: 100%;
     }
 
@@ -11,11 +10,12 @@
         max-width: 1320px;
         width: 100%;
         margin: 0 auto;
+        padding: 0 7%;
     }
 
     .faq-header {
         text-align: center;
-        margin-bottom: 2.5rem;
+        margin-bottom: 1.5rem;
     }
 
     .faq-title {

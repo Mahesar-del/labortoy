@@ -84,7 +84,7 @@
 
     .pt-image-wrapper {
         flex: 1;
-        max-width: 480px;
+        max-width: 600px;
         width: 100%;
         position: relative;
         display: flex;
@@ -101,7 +101,7 @@
 
     .pt-content {
         flex: 1;
-        max-width: 600px;
+        max-width: 624px;
         width: 100%;
         flex-shrink: 1;
     }

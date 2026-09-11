@@ -21,6 +21,10 @@ Route::get('/services', function () {
     return redirect('/service/genomic-diagnostics');
 });
 
+Route::get('/genomic-diagnostics', function () {
+    return view('services.genomic-diagnostics');
+});
+
 Route::get('/service/genomic-diagnostics', function () {
     return view('services.genomic-diagnostics');
 });

@@ -16,7 +16,7 @@
     .test-information-section, .test-information-section * { box-sizing: border-box; }
     .test-information-section {
         background-color: #ffffff;
-        padding: 5rem 7%;
+        padding: 5rem 7% 2rem 7%;
         box-sizing: border-box;
         width: 100%;
     }
@@ -34,7 +34,7 @@
 
     .ti-image {
         flex: 1;
-        max-width: 520px;
+        max-width: 600px;
         width: 100%;
         aspect-ratio: 555 / 470;
         height: auto;
@@ -50,7 +50,7 @@
 
     .ti-content {
         flex: 1;
-        max-width: 580px;
+        max-width: 624px;
         width: 100%;
         flex-shrink: 1;
     }
