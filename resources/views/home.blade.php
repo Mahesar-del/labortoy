@@ -187,7 +187,7 @@
 
         /* Action Buttons */
         .actions-container {
-            max-width: 100%;
+            max-width: 61.75rem;
             width: 100%;
             margin: 0 auto;
         }
@@ -1822,7 +1822,7 @@
         </div>
     </section>
 
-    @include('components.diagnostics-cta.index')
+    @include('components.diagnostics-cta.cta')
     
 </div>
 <div class="main-wrapper">

@@ -50,7 +50,7 @@
     .faq-item.active {
         background-color: #F3F8FA;
         border: none;
-        height: 9.5rem;
+        height: auto; /* Fix for content clipping */
     }
 
     .faq-question {
@@ -105,7 +105,7 @@
     }
 
     .faq-item.active .faq-answer {
-        max-height: 9.5rem;
+        max-height: 40rem; /* Increased max-height to ensure complete visibility */
     }
 
     .faq-answer-inner {
@@ -148,7 +148,28 @@
 
     @media (max-width: 48rem) {
         .faq-title {
-            font-size: 1.75rem;
+            font-size: 24px;
+            line-height: 30px;
+        }
+
+        .faq-subtitle {
+            font-size: 16px;
+            line-height: 24px;
+            text-align: center;
+        }
+
+        .faq-question-text {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 600;
+            font-size: 16px;
+            line-height: 28px;
+        }
+
+        .faq-answer-text {
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 24px;
         }
 
         .faq-list {
@@ -174,7 +195,7 @@
 
         <div class="faq-list">
             <!-- FAQ Item 1 (Default Open) -->
-            <div class="faq-item active" onclick="toggleFaq(this)">
+            <div class="faq-item" onclick="toggleFaq(this)">
                 <div class="faq-question">
                     <span class="faq-question-text">What is genomic testing?</span>
                     <button class="faq-toggle-plus" aria-label="Open answer">
@@ -186,7 +207,7 @@
                 </div>
                 <div class="faq-answer">
                     <div class="faq-answer-inner">
-                        <p class="faq-answer-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit id venenatis pretium risus <br> euismod dictum egestas orci netus feugiat ut egestas.</p>
+                        <p class="faq-answer-text">Genomic testing analyzes a person's DNA to identify genetic variations associated with specific health conditions, inherited traits, or responses to medications. It helps healthcare providers make informed decisions about personalized treatment plans.</p>
                         <button class="faq-toggle-close" aria-label="Close answer">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                                 <line x1="18" y1="6" x2="6" y2="18"></line>

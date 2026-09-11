@@ -276,5 +276,9 @@
         }
     </style>
     
+    @include('components.test-information')
+    @include('components.what-you-need')
+    @include('components.faq')
+    @include('components.diagnostics-cta.cta')
 </body>
 </html>
