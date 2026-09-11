@@ -10,6 +10,7 @@
     <style>body { margin: 0; font-family: 'Manrope', sans-serif; }</style>
 </head>
 <body>
+    @include('components.header')
     <section class="services-hero" aria-labelledby="services-hero-title">
         <div class="services-hero__background" style="background-image: url('{{ asset('img/genomic-diagnostics-hero.png') }}');"></div>
         <div class="services-hero__overlay"></div>
@@ -179,6 +180,8 @@
             }
         }
     </style>
+    @include('components.what-you-need')
+    @include('components.preparing-for-test')
     <section class="specimen-collection">
         <div class="specimen-collection__container">
             <!-- Left Side: Content -->
@@ -335,5 +338,8 @@
             }
         }
     </style>
+    @include('components.test-information')
+    @include('components.patient-faq')
+    @include('components.footer')
 </body>
 </html>
