@@ -27,3 +27,7 @@ Route::get('/service/genomic-diagnostics', function () {
 Route::get('/patient', function () {
     return view('patient');
 });
+
+Route::get('/contact-us', function () {
+    return view('contact-us');
+});
