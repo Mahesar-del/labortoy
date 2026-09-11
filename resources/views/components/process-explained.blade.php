@@ -5,7 +5,7 @@
             <!-- Step 1 -->
             <div class="process-card">
                 <img src="{{ asset('images/request-your-kit.svg') }}" alt="Request your test kit" class="process-icon">
-                <h3 class="process-step-title"><span class="step-num">01.</span> Request Your Test Kit</h3>
+                <h3 class="process-step-title"><span class="step-num">01.</span> <span>Request Your Test Kit</span></h3>
                 <p class="process-description">
                     Easily place orders via our secure Physician Portal with custom panels and test combinations.
                 </p>
@@ -13,7 +13,7 @@
             <!-- Step 2 -->
             <div class="process-card">
                 <img src="{{ asset('images/sample-collection.png') }}" alt="Sample Collection" class="process-icon">
-                <h3 class="process-step-title"><span class="step-num">02.</span> Sample Collection</h3>
+                <h3 class="process-step-title"><span class="step-num">02.</span> <span>Sample Collection</span></h3>
                 <p class="process-description">
                     For added convenience, choose our home collection option qualified visit to collect samples safely.
                 </p>
@@ -21,7 +21,7 @@
             <!-- Step 3 -->
             <div class="process-card">
                 <img src="{{ asset('images/analysis-review.svg') }}" alt="Analysis and Review" class="process-icon">
-                <h3 class="process-step-title"><span class="step-num">03.</span> Analysis and Review</h3>
+                <h3 class="process-step-title"><span class="step-num">03.</span> <span>Analysis and Review</span></h3>
                 <p class="process-description">
                     Our skilled pathologists and lab scientists analyze the test data with the latest technology.
                 </p>
@@ -29,7 +29,7 @@
             <!-- Step 4 -->
             <div class="process-card">
                 <img src="{{ asset('images/follow-support.svg') }}" alt="Follow-Up and Support" class="process-icon">
-                <h3 class="process-step-title"><span class="step-num">04.</span> Follow-Up and Support</h3>
+                <h3 class="process-step-title"><span class="step-num">04.</span> <span>Follow-Up and Support</span></h3>
                 <p class="process-description">
                     Our customer support team is here to answer any questions results, next steps, or any additional testing.
                 </p>
@@ -87,15 +87,12 @@
 
     .process-step-title {
         font-family: 'Libre Franklin', sans-serif;
-        font-size: 1.125rem;
+        font-size: 1rem;
         font-weight: 600;
         line-height: 1.4625rem;
         color: #1E3A5F;
-        margin-bottom: 1rem;
-        min-height: 3rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        margin-bottom: 0.5rem;
+        white-space: nowrap;
     }
 
     .step-num {
