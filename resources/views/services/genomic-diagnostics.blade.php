@@ -124,66 +124,16 @@
         }
     </style>
     
-    <section class="genomic-help" aria-labelledby="genomic-help-title">
-        <div class="genomic-help__backdrop" aria-hidden="true"></div>
-    
-        <div class="genomic-help__container">
-            <header class="genomic-help__header">
-                <h2 id="genomic-help-title">Where Genomic Diagnostics Can Help</h2>
-                <p>Genomic information can provide valuable insights across multiple areas of patient care<br class="genomic-help__desktop-break"> and clinical investigation.</p>
-            </header>
-    
-            <div class="genomic-help__cards">
-                <article class="genomic-help-card">
-                    <span class="genomic-help-card__icon" aria-hidden="true">
-                        <img src="{{ asset('images/dna.svg') }}" alt="">
-                    </span>
-                    <h3>Inherited Conditions</h3>
-                    <p>Support investigation of genetic conditions that may run within families.</p>
-                </article>
-    
-                <article class="genomic-help-card">
-                    <span class="genomic-help-card__icon" aria-hidden="true">
-                        <img src="{{ asset('images/Cancer.svg') }}" alt="">
-                    </span>
-                    <h3>Cancer Genetics</h3>
-                    <p>Help evaluate genetic variants associated with hereditary cancer risk.</p>
-                </article>
-    
-                <article class="genomic-help-card">
-                    <span class="genomic-help-card__icon" aria-hidden="true">
-                        <img src="{{ asset('images/target.svg') }}" alt="">
-                    </span>
-                    <h3>Precision Medicine</h3>
-                    <p>Provide genomic insights that may support individualized approaches to treatment.</p>
-                </article>
-            </div>
-        </div>
-    </section>
-    
-    <style>
-        .genomic-help, .genomic-help * { box-sizing: border-box; }
-        .genomic-help { background: #fff; isolation: isolate; overflow: hidden; padding: 48px 7% 64px; position: relative; }
-        .genomic-help__backdrop { background-image: linear-gradient(90deg, rgba(7, 26, 49, .58), rgba(7, 26, 49, .48)), url('{{ asset('images/why-genomic.jpg') }}'); background-position: center 43%; background-repeat: no-repeat; background-size: cover; height: clamp(250px, 21vw, 290px); inset: 0 0 auto; position: absolute; z-index: 0; }
-        .genomic-help__container { margin: 0 auto; max-width: 1320px; position: relative; z-index: 1; }
-        .genomic-help__header { color: #fff; margin: 0 auto 34px; max-width: 760px; text-align: center; }
-        .genomic-help__header h2 { font-size: clamp(26px, 2.05vw, 35px); letter-spacing: -.03em; line-height: 1.2; margin: 0 0 10px; }
-        .genomic-help__header p { font-size: clamp(13px, .95vw, 15px); line-height: 1.5; margin: 0; opacity: .96; }
-        .genomic-help__cards { display: grid; gap: 22px; grid-template-columns: repeat(3, minmax(0, 1fr)); }
-        .genomic-help-card { background: linear-gradient(180deg, rgba(207, 225, 248, .98) 0%, rgba(135, 177, 224, .98) 42%, rgba(28, 104, 190, .98) 100%); border: 1px solid rgba(255, 255, 255, .3); border-radius: 16px; color: #fff; min-height: 236px; padding: 24px; box-shadow: 0 14px 28px rgba(0, 18, 44, .18); }
-        .genomic-help-card__icon { align-items: center; background: #0a2b55; border-radius: 9px; color: #fff; display: inline-flex; height: 54px; justify-content: center; margin-bottom: 23px; width: 54px; }
-        .genomic-help-card__icon img { height: 38px; object-fit: contain; width: 38px; }
-        .genomic-help-card h3 { font-size: clamp(17px, 1.25vw, 21px); letter-spacing: -.02em; line-height: 1.28; margin: 0 0 12px; }
-        .genomic-help-card p { font-size: clamp(13px, .94vw, 15px); line-height: 1.52; margin: 0; }
-        @media (max-width: 760px) {
-            .genomic-help { padding: 5px 28px 48px; }
-            .genomic-help__backdrop { display: none; }
-            .genomic-help__header { color: #111820; margin-bottom: 28px; }
-            .genomic-help__desktop-break { display: none; }
-            .genomic-help__cards { grid-template-columns: 1fr; }
-            .genomic-help-card { min-height: 0; }
-        }
-    </style>
+    @include('components.three-cards-overlap', [
+        'title' => 'Where Genomic Diagnostics Can Help',
+        'description' => 'Genomic information can provide valuable insights across multiple areas of patient care<br class="genomic-help__desktop-break"> and clinical investigation.',
+        'backgroundImage' => asset('images/why-genomic.jpg'),
+        'cards' => [
+            ['icon' => asset('images/dna.svg'), 'title' => 'Inherited Conditions', 'text' => 'Support investigation of genetic conditions that may run within families.'],
+            ['icon' => asset('images/Cancer.svg'), 'title' => 'Cancer Genetics', 'text' => 'Help evaluate genetic variants associated with hereditary cancer risk.'],
+            ['icon' => asset('images/target.svg'), 'title' => 'Precision Medicine', 'text' => 'Provide genomic insights that may support individualized approaches to treatment.']
+        ]
+    ])
 
     
     @include('components.process-explained')

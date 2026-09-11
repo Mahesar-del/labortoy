@@ -194,6 +194,11 @@
 </head>
 <body>
     @include('components.header')
+    @include('components.provider-hero', [
+        'title' => 'Schedule Your Laboratory Appointment',
+        'description' => 'Choose the appointment option that best fits your needs. Patients can request home sample collection or visit our laboratory, while healthcare providers and organizations can coordinate diagnostic services with our laboratory team.',
+        'showButton' => false
+    ])
     <div class="appointment-page-wrapper">
     <section class="appointment-section">
         <div class="text-center">
