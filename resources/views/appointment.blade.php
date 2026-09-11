@@ -208,7 +208,7 @@
 
         <div class="tabs">
             <button type="button" class="tab-btn active" id="tab-patient" onclick="switchTab('patient')">
-                <span class="desktop-text">Individuals & </span>Patients
+                <span class="desktop-text">Individual/</span>Patients
             </button>
             <button type="button" class="tab-btn inactive" id="tab-provider" onclick="switchTab('provider')">
                 <span class="desktop-text">Healthcare </span>Provider
@@ -274,8 +274,6 @@
                     <label for="slot">Available Slot *</label>
                     <select id="slot" required>
                         <option value="" disabled selected>Select Time</option>
-                        <option value="morning">Morning</option>
-                        <option value="afternoon">Afternoon</option>
                     </select>
                 </div>
 
@@ -311,13 +309,13 @@
 
     <script>
         const patientOptions = `
-            <option value="" disabled selected>Visit Laboratory</option>
+            <option value="" disabled selected>Select Appointment Type</option>
             <option value="visit">Visit Laboratory</option>
             <option value="home">Home Sample Collection</option>
         `;
 
         const providerOptions = `
-            <option value="" disabled selected>Clinic Sample Collection</option>
+            <option value="" disabled selected>Select Appointment Type</option>
             <option value="clinic">Clinic Sample Collection</option>
             <option value="laboratory">Visit Laboratory</option>
         `;
