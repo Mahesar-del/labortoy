@@ -6,13 +6,13 @@
                         radial-gradient(circle at bottom right, rgba(26, 188, 156, 0.65) 0%, transparent 17%),
                         #06162a; /* Cyan glows and base color */
             color: #ffffff;
-            padding: 4.375rem 6.1875rem 4.5rem 6.1875rem;
+            padding: 4.375rem 6.1875rem 0 6.1875rem;
             font-family: 'Inter', sans-serif;
             position: relative;
             width: 100%;
             max-width: 100%;
             margin: 0 auto;
-            min-height: 33.8125rem;
+            height: 33.8125rem;
             box-sizing: border-box;
             border-top-left-radius: 1.5625rem;
             border-top-right-radius: 1.5625rem;
@@ -188,9 +188,8 @@
         }
 
         .footer-contact-info {
-            display: grid;
-            grid-template-columns: 1.5fr 0.85fr 0.75fr;
-            gap: 1rem;
+            display: flex;
+            justify-content: space-between;
             padding: 0;
             margin-top: 3.125rem; /* Reduced to tighten the gap */
             max-width: 1320px;
@@ -201,15 +200,13 @@
 
         .contact-item {
             display: flex;
-            align-items: flex-start;
+            align-items: center;
             gap: 0.9375rem;
-            min-width: 0;
         }
 
         .contact-icon {
             width: 2.8125rem;
             height: 2.8125rem;
-            flex: 0 0 2.8125rem;
             background-color: #1ABC9C;
             border-radius: 50%;
             display: flex;
@@ -233,15 +230,13 @@
             font-size: 1rem;
             font-weight: 500;
             color: #ffffff;
-            white-space: nowrap;
         }
 
         .contact-text p {
             margin: 0.3125rem 0 0 0;
             font-size: 0.875rem;
             color: #FFFFFF;
-            letter-spacing: 0;
-            white-space: nowrap;
+            letter-spacing: 0.0625rem;
 
         }
 
@@ -327,13 +322,9 @@
             }
 
             .footer-contact-info {
-                grid-template-columns: 1fr;
-                gap: 1rem;
+                flex-direction: column;
+                gap: 0.1rem;
                 margin-top: 1.25rem;
-            }
-
-            .contact-text p {
-                white-space: normal;
             }
 
             .footer-bottom {
@@ -360,56 +351,6 @@
                 background: radial-gradient(circle at 100% 0, transparent 1.25rem, #ffffff 1.28125rem);
             }
         }
-
-        /* Tablet and browser-zoom widths: give the links and contacts a full row. */
-        @media (min-width: 56.3125rem) and (max-width: 75rem) {
-            .site-footer {
-                height: auto;
-            }
-
-            .footer-top {
-                flex-direction: column;
-                gap: 2.5rem;
-            }
-
-            .footer-right {
-                width: 100%;
-                min-width: 0;
-            }
-
-            .footer-right-top {
-                display: grid;
-                grid-template-columns: repeat(3, minmax(0, 1fr));
-                gap: 2rem;
-            }
-
-            .footer-contact-info {
-                margin-top: 2rem;
-            }
-
-            .contact-text p {
-                white-space: normal;
-            }
-        }
-
-        /* Keep all three contact blocks on one row throughout desktop widths. */
-        @media (min-width: 56.3125rem) {
-            .contact-text h5 {
-                font-size: 14px !important;
-            }
-
-            .contact-text p {
-                font-size: 9px !important;
-            }
-        }
-
-        /* Current 100% browser zoom viewport: keep contact values at 14px. */
-        @media (min-width: 1200px) and (max-width: 1280px) {
-            .contact-text p {
-                font-size: 14px !important;
-            }
-        }
-
 </style>
 
         <!-- Footer Section -->
