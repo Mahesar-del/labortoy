@@ -115,7 +115,7 @@
         display: flex;
         align-items: flex-start;
         gap: 1rem;
-        padding: 0 2.1rem 1.25rem 1.5rem;
+        padding: 1.25rem 2.1rem 1.25rem 1.5rem;
     }
 
     .faq-answer-text {
@@ -136,7 +136,7 @@
         border-radius: 50%;
         border: none;
         background: #0B2545;
-        display: flex;
+        display: none;
         align-items: center;
         justify-content: center;
         cursor: pointer;
@@ -201,6 +201,19 @@
             padding: 0 1.25rem 1rem 1.25rem;
         }
     }
+
+    .faq-item.active .faq-question {
+        background-color: #0B2545;
+    }
+    .faq-item.active .faq-question-text {
+        color: #ffffff;
+    }
+    .faq-toggle-close {
+        display: none;
+    }
+    .faq-item.active .faq-toggle-close {
+        display: flex;
+    }
 </style>
 
 <section class="faq-section">
@@ -245,16 +258,16 @@
                             <line x1="5" y1="12" x2="19" y2="12"></line>
                         </svg>
                     </button>
-                </div>
-                <div class="faq-answer">
-                    <div class="faq-answer-inner">
-                        <p class="faq-answer-text">The type of specimen required depends on the specific test ordered by your healthcare provider. Common specimens include blood, urine, saliva, or tissue samples.</p>
                         <button class="faq-toggle-close" aria-label="Close answer">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                                 <line x1="18" y1="6" x2="6" y2="18"></line>
                                 <line x1="6" y1="6" x2="18" y2="18"></line>
                             </svg>
                         </button>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        <p class="faq-answer-text">The type of specimen required depends on the specific test ordered by your healthcare provider. Common specimens include blood, urine, saliva, or tissue samples.</p>
                     </div>
                 </div>
             </div>
@@ -269,16 +282,16 @@
                             <line x1="5" y1="12" x2="19" y2="12"></line>
                         </svg>
                     </button>
-                </div>
-                <div class="faq-answer">
-                    <div class="faq-answer-inner">
-                        <p class="faq-answer-text">If you are unsure how to prepare, please contact your healthcare provider or reach out to our laboratory directly for specific instructions regarding your test.</p>
                         <button class="faq-toggle-close" aria-label="Close answer">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                                 <line x1="18" y1="6" x2="6" y2="18"></line>
                                 <line x1="6" y1="6" x2="18" y2="18"></line>
                             </svg>
                         </button>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        <p class="faq-answer-text">If you are unsure how to prepare, please contact your healthcare provider or reach out to our laboratory directly for specific instructions regarding your test.</p>
                     </div>
                 </div>
             </div>
@@ -293,16 +306,16 @@
                             <line x1="5" y1="12" x2="19" y2="12"></line>
                         </svg>
                     </button>
-                </div>
-                <div class="faq-answer">
-                    <div class="faq-answer-inner">
-                        <p class="faq-answer-text">Turnaround times vary by test. Routine tests are typically completed within 24-48 hours, while complex genomic or specialized tests may take several days to a few weeks.</p>
                         <button class="faq-toggle-close" aria-label="Close answer">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                                 <line x1="18" y1="6" x2="6" y2="18"></line>
                                 <line x1="6" y1="6" x2="18" y2="18"></line>
                             </svg>
                         </button>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        <p class="faq-answer-text">Turnaround times vary by test. Routine tests are typically completed within 24-48 hours, while complex genomic or specialized tests may take several days to a few weeks.</p>
                     </div>
                 </div>
             </div>
@@ -317,16 +330,16 @@
                             <line x1="5" y1="12" x2="19" y2="12"></line>
                         </svg>
                     </button>
-                </div>
-                <div class="faq-answer">
-                    <div class="faq-answer-inner">
-                        <p class="faq-answer-text">While Sterling provides your test results, we recommend discussing them with your healthcare provider, who can explain what they mean in the context of your overall health and medical history.</p>
                         <button class="faq-toggle-close" aria-label="Close answer">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                                 <line x1="18" y1="6" x2="6" y2="18"></line>
                                 <line x1="6" y1="6" x2="18" y2="18"></line>
                             </svg>
                         </button>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        <p class="faq-answer-text">While Sterling provides your test results, we recommend discussing them with your healthcare provider, who can explain what they mean in the context of your overall health and medical history.</p>
                     </div>
                 </div>
             </div>
@@ -341,16 +354,16 @@
                             <line x1="5" y1="12" x2="19" y2="12"></line>
                         </svg>
                     </button>
-                </div>
-                <div class="faq-answer">
-                    <div class="faq-answer-inner">
-                        <p class="faq-answer-text">You can find information about specific tests in our test directory on our website, or by consulting with your healthcare provider who ordered the test.</p>
                         <button class="faq-toggle-close" aria-label="Close answer">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                                 <line x1="18" y1="6" x2="6" y2="18"></line>
                                 <line x1="6" y1="6" x2="18" y2="18"></line>
                             </svg>
                         </button>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        <p class="faq-answer-text">You can find information about specific tests in our test directory on our website, or by consulting with your healthcare provider who ordered the test.</p>
                     </div>
                 </div>
             </div>

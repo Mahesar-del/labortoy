@@ -1,6 +1,6 @@
 <style>
     .faq-section {
-        padding: 4rem 0;
+        padding: 0px 0;
         background-color: #ffffff;
     }
 
@@ -112,7 +112,7 @@
         display: flex;
         align-items: flex-start;
         gap: 1rem;
-        padding: 0 2.1rem 1.25rem 1.5rem;
+        padding: 1.25rem 2.1rem 1.25rem 1.5rem;
     }
 
     .faq-answer-text {
@@ -133,7 +133,7 @@
         border-radius: 50%;
         border: none;
         background: #0B2545;
-        display: flex;
+        display: none;
         align-items: center;
         justify-content: center;
         cursor: pointer;
@@ -184,6 +184,19 @@
             padding: 0 1.25rem 1rem 1.25rem;
         }
     }
+
+    .faq-item.active .faq-question {
+        background-color: #0B2545;
+    }
+    .faq-item.active .faq-question-text {
+        color: #ffffff;
+    }
+    .faq-toggle-close {
+        display: none;
+    }
+    .faq-item.active .faq-toggle-close {
+        display: flex;
+    }
 </style>
 
 <section class="faq-section">
@@ -204,16 +217,16 @@
                             <line x1="5" y1="12" x2="19" y2="12"></line>
                         </svg>
                     </button>
-                </div>
-                <div class="faq-answer">
-                    <div class="faq-answer-inner">
-                        <p class="faq-answer-text">Genomic testing analyzes a person's DNA to identify genetic variations associated with specific health conditions, inherited traits, or responses to medications. It helps healthcare providers make informed decisions about personalized treatment plans.</p>
                         <button class="faq-toggle-close" aria-label="Close answer">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                                 <line x1="18" y1="6" x2="6" y2="18"></line>
                                 <line x1="6" y1="6" x2="18" y2="18"></line>
                             </svg>
                         </button>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        <p class="faq-answer-text">Genomic testing analyzes a person's DNA to identify genetic variations associated with specific health conditions, inherited traits, or responses to medications. It helps healthcare providers make informed decisions about personalized treatment plans.</p>
                     </div>
                 </div>
             </div>
@@ -228,16 +241,16 @@
                             <line x1="5" y1="12" x2="19" y2="12"></line>
                         </svg>
                     </button>
-                </div>
-                <div class="faq-answer">
-                    <div class="faq-answer-inner">
-                        <p class="faq-answer-text">Genomic testing may be recommended for individuals with a family history of genetic conditions, patients with undiagnosed conditions, or those seeking personalized treatment plans.</p>
                         <button class="faq-toggle-close" aria-label="Close answer">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                                 <line x1="18" y1="6" x2="6" y2="18"></line>
                                 <line x1="6" y1="6" x2="18" y2="18"></line>
                             </svg>
                         </button>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        <p class="faq-answer-text">Genomic testing may be recommended for individuals with a family history of genetic conditions, patients with undiagnosed conditions, or those seeking personalized treatment plans.</p>
                     </div>
                 </div>
             </div>
@@ -252,16 +265,16 @@
                             <line x1="5" y1="12" x2="19" y2="12"></line>
                         </svg>
                     </button>
-                </div>
-                <div class="faq-answer">
-                    <div class="faq-answer-inner">
-                        <p class="faq-answer-text">Most genomic tests require a simple blood draw or saliva sample. Your healthcare provider will guide you through the specific collection process.</p>
                         <button class="faq-toggle-close" aria-label="Close answer">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                                 <line x1="18" y1="6" x2="6" y2="18"></line>
                                 <line x1="6" y1="6" x2="18" y2="18"></line>
                             </svg>
                         </button>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        <p class="faq-answer-text">Most genomic tests require a simple blood draw or saliva sample. Your healthcare provider will guide you through the specific collection process.</p>
                     </div>
                 </div>
             </div>
@@ -276,16 +289,16 @@
                             <line x1="5" y1="12" x2="19" y2="12"></line>
                         </svg>
                     </button>
-                </div>
-                <div class="faq-answer">
-                    <div class="faq-answer-inner">
-                        <p class="faq-answer-text">Results typically take 2–4 weeks depending on the complexity of the test. Your provider will notify you as soon as results are available.</p>
                         <button class="faq-toggle-close" aria-label="Close answer">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                                 <line x1="18" y1="6" x2="6" y2="18"></line>
                                 <line x1="6" y1="6" x2="18" y2="18"></line>
                             </svg>
                         </button>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        <p class="faq-answer-text">Results typically take 2–4 weeks depending on the complexity of the test. Your provider will notify you as soon as results are available.</p>
                     </div>
                 </div>
             </div>
@@ -300,16 +313,16 @@
                             <line x1="5" y1="12" x2="19" y2="12"></line>
                         </svg>
                     </button>
-                </div>
-                <div class="faq-answer">
-                    <div class="faq-answer-inner">
-                        <p class="faq-answer-text">Some tests can be ordered directly by patients, while others require a physician's order. Contact us to learn which tests are available for direct ordering.</p>
                         <button class="faq-toggle-close" aria-label="Close answer">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                                 <line x1="18" y1="6" x2="6" y2="18"></line>
                                 <line x1="6" y1="6" x2="18" y2="18"></line>
                             </svg>
                         </button>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        <p class="faq-answer-text">Some tests can be ordered directly by patients, while others require a physician's order. Contact us to learn which tests are available for direct ordering.</p>
                     </div>
                 </div>
             </div>
@@ -324,16 +337,16 @@
                             <line x1="5" y1="12" x2="19" y2="12"></line>
                         </svg>
                     </button>
-                </div>
-                <div class="faq-answer">
-                    <div class="faq-answer-inner">
-                        <p class="faq-answer-text">You can browse our full test catalog on our website or contact our team for assistance in finding the right test for your needs.</p>
                         <button class="faq-toggle-close" aria-label="Close answer">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                                 <line x1="18" y1="6" x2="6" y2="18"></line>
                                 <line x1="6" y1="6" x2="18" y2="18"></line>
                             </svg>
                         </button>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        <p class="faq-answer-text">You can browse our full test catalog on our website or contact our team for assistance in finding the right test for your needs.</p>
                     </div>
                 </div>
             </div>

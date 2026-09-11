@@ -5,7 +5,7 @@
             <!-- Step 1 -->
             <div class="process-card">
                 <img src="{{ asset('images/request-your-kit.svg') }}" alt="Request your test kit" class="process-icon">
-                <h3 class="process-step-title"><span class="step-num">01.</span> Request your test kit</h3>
+                <h3 class="process-step-title"><span class="step-num">01.</span> Request Your Test Kit</h3>
                 <p class="process-description">
                     Easily place orders via our secure Physician Portal with custom panels and test combinations.
                 </p>
@@ -41,7 +41,7 @@
 <style>
     .process-section {
         background-color: #F3F8FA;
-        padding: 4rem 99px 5rem 99px;
+        padding: 20px 99px;
         width: 100%;
         box-sizing: border-box;
     }
