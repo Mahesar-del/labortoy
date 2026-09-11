@@ -1571,45 +1571,7 @@
     </div>
 
     <!-- Process Section -->
-    <section class="process-section">
-        <div class="container">
-            <h2 class="process-title">From Sample to Results Our<br>Process Explained</h2>
-            <div class="process-grid">
-                <!-- Step 1 -->
-                <div class="process-card">
-                    <img src="{{ asset('images/request-your-kit.svg') }}" alt="Request your test kit" class="process-icon">
-                    <h3 class="process-step-title"><span class="step-num">01.</span> Request your test kit</h3>
-                    <p class="process-description">
-                        Easily place orders via our secure Physician Portal with custom panels and test combinations.
-                    </p>
-                </div>
-                <!-- Step 2 -->
-                <div class="process-card">
-                    <img src="{{ asset('images/sample-collection.png') }}" alt="Sample Collection" class="process-icon">
-                    <h3 class="process-step-title"><span class="step-num">02.</span> Sample Collection</h3>
-                    <p class="process-description">
-                        For added convenience, choose our home collection option qualified visit to collect samples safely.
-                    </p>
-                </div>
-                <!-- Step 3 -->
-                <div class="process-card">
-                    <img src="{{ asset('images/analysis-review.svg') }}" alt="Analysis and Review" class="process-icon">
-                    <h3 class="process-step-title"><span class="step-num">03.</span> Analysis and Review</h3>
-                    <p class="process-description">
-                        Our skilled pathologists and lab scientists analyze the test data with the latest technology.
-                    </p>
-                </div>
-                <!-- Step 4 -->
-                <div class="process-card">
-                    <img src="{{ asset('images/follow-support.svg') }}" alt="Follow-Up and Support" class="process-icon">
-                    <h3 class="process-step-title"><span class="step-num">04.</span> Follow-Up and Support</h3>
-                    <p class="process-description">
-                        Our customer support team is here to answer any questions results, next steps, or any additional testing.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
+    @include('components.process-explained')
 
     <!-- Science Moves Section -->
     <section class="science-moves-section">
@@ -1729,7 +1691,7 @@
         </div>
     </section>
 
-    @include('components.process-explained')
+   
     @include('components.diagnostics-cta.cta')
 </div>
 <div class="main-wrapper">
