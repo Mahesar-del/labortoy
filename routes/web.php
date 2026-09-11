@@ -21,25 +21,11 @@ use App\Http\Controllers\ContactController;
 
 Route::get('/', [HomeController::class, 'index']);
 
-Route::get('/services', function () {
-    return redirect('/service/genomic-diagnostics');
-});
-
-Route::get('/genomic-diagnostics', function () {
-    return view('services.genomic-diagnostics');
-});
-
-Route::get('/service/genomic-diagnostics', function () {
-    return view('services.genomic-diagnostics');
-});
-
-Route::get('/service/molecular-diagnostics', function () {
-    return view('services.molecular-diagnostics');
-});
-
-Route::get('/service/clinical-diagnostics', function () {
-    return view('services.clinical-diagnostics');
-});
+Route::get('/services', [ServiceController::class, 'index']);
+Route::get('/genomic-diagnostics', [ServiceController::class, 'genomic']);
+Route::get('/service/genomic-diagnostics', [ServiceController::class, 'genomic']);
+Route::get('/service/molecular-diagnostics', [ServiceController::class, 'molecular']);
+Route::get('/service/clinical-diagnostics', [ServiceController::class, 'clinical']);
 
 Route::get('/provider-page', [ProviderController::class, 'index']);
 Route::get('/appointment', [AppointmentController::class, 'index'])->name('appointment.index');
