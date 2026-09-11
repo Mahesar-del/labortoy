@@ -42,3 +42,7 @@ Route::get('/appointment', [AppointmentController::class, 'index'])->name('appoi
 Route::get('/patient', function () {
     return view('patient');
 });
+
+Route::get('/contact-us', function () {
+    return view('contact-us');
+});

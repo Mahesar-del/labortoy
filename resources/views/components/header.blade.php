@@ -130,6 +130,12 @@
 }
 
 @media (max-width: 1024px) {
+    .logo-icon {
+        left: 20px;
+    }
+    .logo-text {
+        left: 78.28px; /* 20px + 44px (icon) + 14.28px (original gap) */
+    }
     .nav-links, .login-btn {
         display: none;
     }
