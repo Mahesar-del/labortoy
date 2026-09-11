@@ -10,6 +10,8 @@
             font-family: 'Inter', sans-serif;
             position: relative;
             width: 100%;
+            max-width: 90rem; /* 1440px */
+            margin: 0 auto;
             height: 33.8125rem;
             box-sizing: border-box;
             border-top-left-radius: 1.5625rem;

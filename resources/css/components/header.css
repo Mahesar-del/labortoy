@@ -3,9 +3,11 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.9375rem 0;
-    /* border-bottom is not very visible in the image, maybe a slight shadow or nothing */
-    /* I'll leave it without border for now, or just a very subtle one */
+    padding: 0.9375rem 2rem;
+    width: 100%;
+    max-width: 90rem; /* 1440px */
+    margin: 0 auto;
+    box-sizing: border-box;
 }
 
 .logo-container {
@@ -50,6 +52,7 @@
     font-weight: 600;
     font-family: sans-serif;
     transition: color 0.2s;
+    white-space: nowrap;
 }
 
 .nav-links a:hover {
