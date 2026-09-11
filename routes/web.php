@@ -29,3 +29,4 @@ Route::get('/provider-page', function () {
     return view('Provider-page');
 });
 
+Route::get('/appointment', [AppointmentController::class, 'index'])->name('appointment.index');
