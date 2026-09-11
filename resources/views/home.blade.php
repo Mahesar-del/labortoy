@@ -30,13 +30,13 @@
             color: var(--text-main);
             background-color: #ffffff;
             line-height: 1.5;
-            overflow-x: hidden;
+            overflow-x: clip;
         }
 
         .main-wrapper {
             width: 100%;
             margin: 0 auto;
-            overflow-x: hidden;
+            overflow-x: clip;
         }
 
         /* Unified Container matching Hero Card Grid */

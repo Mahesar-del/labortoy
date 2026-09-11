@@ -1,4 +1,33 @@
 <style>
+/* Global Typography Rules */
+h1 {
+    font-size: 36px !important;
+}
+h2 {
+    font-size: 28px !important;
+}
+h3 {
+    font-size: 22px !important;
+}
+p {
+    font-size: 16px !important;
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 28px !important;
+    }
+    h2 {
+        font-size: 24px !important;
+    }
+    h3 {
+        font-size: 20px !important;
+    }
+    p {
+        font-size: 16px !important;
+    }
+}
+
 /* Header Styles */
 .site-header {
     background-color: #ffffff;
@@ -7,7 +36,9 @@
     max-width: 1440px;
     box-sizing: border-box;
     margin: 0 auto;
-    position: relative;
+    position: sticky;
+    top: 0;
+    z-index: 999;
     /* Use overflow hidden or keep it normal, but elements are absolute so it's fine */
 }
 .logo-container {

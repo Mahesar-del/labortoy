@@ -60,7 +60,7 @@
     .hero-doc-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
     .hero-section__copy { position: relative; z-index: 1; width: 49%; padding: 5% 0 5% 6.8%; }
     .hero-section h1 { margin: 0; font-size: clamp(24px, 3.25vw, 56px); font-weight: 800; letter-spacing: -.035em; line-height: 1.17; }
-    .hero-section p { max-width: 95%; margin: 24px 0 32px; color: #000; font-size: clamp(11px, 1.12vw, 16px); line-height: 1.65; text-align: justify; }
+    .hero-section p { max-width: 95%; margin: 24px 0 32px; color: #000; font-size: 16px; line-height: 1.65; text-align: justify; }
     .hero-section__dots {
         position: absolute;
         left: 50%;
@@ -117,7 +117,7 @@
         .hero-section p { 
             font-family: 'Inter', sans-serif;
             font-weight: 400;
-            font-size: 16px;
+            font-size: 16px !important;
             line-height: 30px;
             letter-spacing: 0px;
             text-align: justify;
