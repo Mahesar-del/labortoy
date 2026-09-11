@@ -10,7 +10,7 @@
             font-family: 'Inter', sans-serif;
             position: relative;
             width: 100%;
-            max-width: 90rem; /* 1440px */
+            max-width: 100%;
             margin: 0 auto;
             height: 33.8125rem;
             box-sizing: border-box;
@@ -23,6 +23,10 @@
             justify-content: space-between;
             gap: 3.75rem;
             margin-bottom: 3.125rem;
+            max-width: 1320px;
+            margin-left: auto;
+            margin-right: auto;
+            width: 100%;
         }
 
         .footer-left {
@@ -188,6 +192,10 @@
             justify-content: space-between;
             padding: 0;
             margin-top: 3.125rem; /* Reduced to tighten the gap */
+            max-width: 1320px;
+            margin-left: auto;
+            margin-right: auto;
+            width: 100%;
         }
 
         .contact-item {
