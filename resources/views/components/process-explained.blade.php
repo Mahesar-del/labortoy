@@ -92,6 +92,10 @@
         line-height: 1.4625rem;
         color: #1E3A5F;
         margin-bottom: 1rem;
+        min-height: 3rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     .step-num {
