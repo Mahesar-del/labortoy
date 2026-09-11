@@ -29,3 +29,6 @@ Route::get('/provider-page', function () {
     return view('Provider-page');
 });
 
+Route::get('/patient', function () {
+    return view('patient');
+});
