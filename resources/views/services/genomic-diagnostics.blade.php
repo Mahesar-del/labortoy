@@ -184,14 +184,9 @@
             .genomic-help-card { min-height: 0; }
         }
     </style>
-    
-    @include('components.specimens-molecular')
-    @include('components.clinical-test.clinical-test')
+
     
     @include('components.process-explained')
-    
-    @include('components.test-information')
-    @include('components.what-you-need')
     @include('components.faq')
     @include('components.diagnostics-cta.cta')
 </body>
