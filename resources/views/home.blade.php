@@ -1397,7 +1397,7 @@
     <div class="container">
         <!-- Navigation Tabs -->
         <nav class="tabs-nav">
-            <a href="javascript:void(0)" class="tab-item active" data-target="tab-patients">Individuals & Patients</a>
+            <a href="javascript:void(0)" class="tab-item active" data-target="tab-patients">Individual/Patients</a>
             <a href="javascript:void(0)" class="tab-item" data-target="tab-providers">Providers</a>
             <a href="javascript:void(0)" class="tab-item" data-target="tab-health">Health Systems & Organizations</a>
         </nav>
