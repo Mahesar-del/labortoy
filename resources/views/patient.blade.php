@@ -6,7 +6,7 @@
     <title>Patient</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
     <style>body { margin: 0; font-family: 'Manrope', sans-serif; }</style>
 </head>
 <body>
@@ -29,7 +29,7 @@
         .services-hero__background, .services-hero__overlay { height: 100%; inset: 0; position: absolute; width: 100%; }
         .services-hero__background { background-position: center; background-repeat: no-repeat; background-size: 100% 100%; z-index: -2; }
         .services-hero__overlay { background: linear-gradient(90deg, rgba(7,26,49,.96) 0%, rgba(7,26,49,.86) 48%, rgba(7,26,49,.25) 100%); z-index: -1; }
-        .services-hero__container { align-items: center; display: flex; margin: 0 auto; max-width: 1320px; min-height: 460px; padding: 56px 76px; }
+        .services-hero__container { align-items: center; display: flex; margin: 0 auto; max-width: 1320px; min-height: 460px; padding: 56px 7%; width: 100%; }
         .services-hero__content { max-width: 530px; }
         .services-hero h1 { font-size: clamp(34px, 3.1vw, 56px); letter-spacing: -.04em; line-height: 1.1; margin: 0; }
         .services-hero p { color: rgba(255,255,255,.84); font-size: clamp(14px, 1vw, 17px); line-height: 1.7; margin: 25px 0 30px; }
@@ -38,7 +38,7 @@
         .services-hero__button:focus-visible { outline: 3px solid #fff; outline-offset: 4px; }
         @media (max-width: 700px) {
             .services-hero, .services-hero__container { min-height: 430px; }
-            .services-hero__container { align-items: flex-end; padding: 48px 28px; }
+            .services-hero__container { align-items: flex-end; padding: 48px 7%; }
             .services-hero__overlay { background: linear-gradient(90deg, rgba(7,26,49,.96), rgba(7,26,49,.25)); }
             .services-hero__content { max-width: 350px; }
         }
@@ -47,7 +47,10 @@
         <div class="patient-info__container">
             <!-- Left Side: Image + Overlay Card -->
             <div class="patient-info__image-wrapper">
-                <img src="{{ asset('images/patient-info-section-left-img.png') }}" alt="Patient typing on laptop" class="patient-info__image">
+                <picture>
+                    <source media="(max-width: 768px)" srcset="{{ asset('images/test-information.jpg') }}">
+                    <img src="{{ asset('images/patient-info-section-left-img.png') }}" alt="Patient typing on laptop" class="patient-info__image">
+                </picture>
             </div>
             
             <!-- Right Side: Content -->
@@ -83,25 +86,37 @@
         .patient-info, .patient-info * { box-sizing: border-box; }
         .patient-info {
             width: 100%;
-            padding: 5rem 0;
+            padding: 5rem 7%;
             background-color: #ffffff;
+            box-sizing: border-box;
         }
 
         .patient-info__container {
-            max-width: 90rem; /* 1440px */
+            max-width: 1320px;
+            width: 100%;
             margin: 0 auto;
             display: flex;
-            gap: 73px;
             align-items: center;
-            justify-content: center;
-            padding: 0 5%;
+            justify-content: space-between;
+            gap: 48px;
         }
 
         .patient-info__image-wrapper {
             position: relative;
-            width: 555px;
-            height: 470px;
-            flex-shrink: 0;
+            flex: 1;
+            max-width: 520px;
+            width: 100%;
+            aspect-ratio: 555 / 470;
+            height: auto;
+            flex-shrink: 1;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .patient-info__image-wrapper picture {
+            width: 100%;
+            height: 100%;
+            display: block;
         }
 
         .patient-info__image {
@@ -109,11 +124,14 @@
             height: 100%;
             object-fit: cover;
             border-radius: 12px;
+            display: block;
         }
 
         .patient-info__content {
-            width: 612px;
-            flex-shrink: 0;
+            flex: 1;
+            max-width: 580px;
+            width: 100%;
+            flex-shrink: 1;
         }
 
         .patient-info__content h2 {
@@ -165,18 +183,59 @@
             height: 12px;
         }
 
-        @media (max-width: 1250px) {
+        @media (max-width: 992px) {
             .patient-info__container {
                 flex-direction: column;
-                align-items: center;
+                align-items: flex-start;
             }
             .patient-info__image-wrapper, .patient-info__content {
                 width: 100%;
-                max-width: 600px;
+                max-width: 100%;
                 height: auto;
             }
-            .patient-info__image {
-                aspect-ratio: 555 / 470;
+        }
+
+        @media (max-width: 768px) {
+            .patient-info {
+                padding: 2.5rem 20px;
+            }
+            .patient-info__container {
+                gap: 24px;
+            }
+            .patient-info__image-wrapper {
+                aspect-ratio: 555 / 380;
+                border-radius: 12px;
+            }
+            .patient-info__content h2 {
+                font-family: 'Plus Jakarta Sans', sans-serif;
+                font-weight: 700;
+                font-size: 24px;
+                line-height: 34px;
+                letter-spacing: 0px;
+                color: #000000;
+                margin-bottom: 16px;
+            }
+            .patient-info__content p {
+                font-family: 'Inter', sans-serif;
+                font-weight: 400;
+                font-size: 16px;
+                line-height: 30px;
+                letter-spacing: 0px;
+                text-align: justify;
+                color: #000000;
+                margin-bottom: 16px;
+            }
+            .patient-info__list {
+                margin-top: 20px;
+                gap: 16px;
+            }
+            .patient-info__list li {
+                font-family: 'Inter', sans-serif;
+                font-weight: 500;
+                font-size: 16px;
+                line-height: 24px;
+                letter-spacing: 0px;
+                color: #000000;
             }
         }
     </style>
@@ -219,33 +278,35 @@
         .specimen-collection {
             width: 100%;
             background-color: #0B2545;
-            padding: 5rem 0;
+            padding: 5rem 7%;
             display: flex;
             justify-content: center;
+            box-sizing: border-box;
         }
 
         .specimen-collection__container {
-            max-width: 90rem; /* 1440px */
+            max-width: 1320px;
             width: 100%;
             margin: 0 auto;
             display: flex;
             align-items: center;
-            justify-content: center;
-            padding: 0 2rem;
-            gap: 6rem;
+            justify-content: space-between;
+            gap: 48px;
         }
 
         .specimen-collection__content {
             display: flex;
             flex-direction: column;
             gap: 2rem;
-            width: 560px;
-            flex-shrink: 0;
+            flex: 1;
+            max-width: 540px;
+            width: 100%;
+            flex-shrink: 1;
         }
 
         .specimen-collection__header {
             width: 100%;
-            text-align: center;
+            text-align: left;
         }
 
         .specimen-collection__header h2 {
@@ -267,15 +328,15 @@
             display: flex;
             flex-direction: column;
             gap: 16px;
+            width: 100%;
         }
 
         .specimen-box {
-            background-color: #263B55; /* Lighter navy box color */
+            background-color: #263B55;
             border-radius: 8px;
-            padding: 24px;
+            padding: 20px 24px;
             width: 100%;
-            max-width: 560px;
-            /* Approximate the 560x110 size, letting padding handle it */
+            box-sizing: border-box;
         }
 
         .specimen-box h3 {
@@ -294,9 +355,12 @@
         }
 
         .specimen-collection__image-wrapper {
-            width: 586px;
-            height: 487px;
-            flex-shrink: 0;
+            flex: 1;
+            max-width: 540px;
+            width: 100%;
+            aspect-ratio: 586 / 487;
+            height: auto;
+            flex-shrink: 1;
             border-radius: 12px;
             overflow: hidden;
         }
@@ -308,30 +372,41 @@
             border-radius: 12px;
         }
 
-        @media (max-width: 1200px) {
+        @media (max-width: 992px) {
             .specimen-collection__container {
                 flex-direction: column;
-                align-items: center;
-                gap: 3rem;
+                align-items: flex-start;
+                gap: 2rem;
             }
-            .specimen-collection__content {
+            .specimen-collection__content, .specimen-collection__image-wrapper {
                 max-width: 100%;
                 width: 100%;
-            }
-            .specimen-box {
-                max-width: 100%;
-            }
-            .specimen-collection__image-wrapper {
-                width: 100%;
-                max-width: 586px;
-                height: auto;
-                aspect-ratio: 586 / 487;
             }
         }
         
         @media (max-width: 768px) {
             .specimen-collection {
-                padding: 2rem 0;
+                padding: 2.5rem 20px;
+            }
+            .specimen-collection__container {
+                gap: 24px;
+            }
+            .specimen-collection__header h2 {
+                font-family: 'Plus Jakarta Sans', sans-serif;
+                font-weight: 700;
+                font-size: 24px;
+                line-height: 30px;
+                letter-spacing: 0px;
+                color: #ffffff;
+            }
+            .specimen-collection__header p {
+                font-family: 'Inter', sans-serif;
+                font-weight: 400;
+                font-size: 16px;
+                line-height: 30px;
+                letter-spacing: 0px;
+                text-align: justify;
+                color: rgba(255, 255, 255, 0.85);
             }
             .specimen-collection__image-wrapper {
                 display: none;
@@ -340,6 +415,7 @@
     </style>
     @include('components.test-information')
     @include('components.patient-faq')
+    @include('components.diagnostics-cta.cta')
     @include('components.footer')
 </body>
 </html>

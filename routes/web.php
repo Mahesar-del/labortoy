@@ -30,3 +30,7 @@ Route::get('/provider-page', function () {
 });
 
 Route::get('/appointment', [AppointmentController::class, 'index'])->name('appointment.index');
+
+Route::get('/patient', function () {
+    return view('patient');
+});

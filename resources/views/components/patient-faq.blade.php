@@ -1,13 +1,16 @@
 <style>
+    .faq-section, .faq-section * { box-sizing: border-box; }
     .faq-section {
-        padding: 4rem 0;
+        padding: 4rem 7%;
         background-color: #ffffff;
+        box-sizing: border-box;
+        width: 100%;
     }
 
     .faq-container {
-        max-width: 82.5rem;
+        max-width: 1320px;
+        width: 100%;
         margin: 0 auto;
-        padding: 0 7%;
     }
 
     .faq-header {
@@ -146,30 +149,44 @@
         stroke: #ffffff;
     }
 
-    @media (max-width: 48rem) {
+    @media (max-width: 768px) {
+        .faq-section {
+            padding: 2.5rem 20px;
+        }
+
         .faq-title {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
             font-size: 24px;
-            line-height: 30px;
+            line-height: 34px;
+            letter-spacing: 0px;
+            color: #000000;
         }
 
         .faq-subtitle {
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
             font-size: 16px;
-            line-height: 24px;
+            line-height: 30px;
+            letter-spacing: 0px;
             text-align: center;
         }
 
         .faq-question-text {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
             font-size: 16px;
-            line-height: 28px;
+            line-height: 24px;
+            letter-spacing: 0px;
         }
 
         .faq-answer-text {
             font-family: 'Inter', sans-serif;
             font-weight: 400;
             font-size: 16px;
-            line-height: 24px;
+            line-height: 30px;
+            letter-spacing: 0px;
+            text-align: justify;
         }
 
         .faq-list {
