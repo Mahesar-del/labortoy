@@ -24,3 +24,4 @@ Route::get('/services', function () {
 Route::get('/service/genomic-diagnostics', function () {
     return view('services.genomic-diagnostics');
 });
+Route::get('/appointment', [AppointmentController::class, 'index'])->name('appointment.index');
