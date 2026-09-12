@@ -44,8 +44,6 @@
             display: flex;
             justify-content: space-between;
             margin-bottom: 2.5rem;
-            flex-wrap: wrap;
-            gap: 1.5rem;
         }
 
         .footer-col-about {
@@ -215,6 +213,7 @@
             align-items: center;
             justify-content: center;
             color: white;
+            flex-shrink: 0;
         }
 
         .contact-icon svg {
