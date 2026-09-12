@@ -6,13 +6,13 @@
                         radial-gradient(circle at bottom right, rgba(26, 188, 156, 0.65) 0%, transparent 17%),
                         #06162a; /* Cyan glows and base color */
             color: #ffffff;
-            padding: 4.375rem 6.1875rem 0 6.1875rem;
+            padding: 4.375rem 6.1875rem 6.5rem 6.1875rem;
             font-family: 'Inter', sans-serif;
             position: relative;
             width: 100%;
             max-width: 100%;
             margin: 0 auto;
-            height: 33.8125rem;
+            min-height: 33.8125rem;
             box-sizing: border-box;
             border-top-left-radius: 1.5625rem;
             border-top-right-radius: 1.5625rem;
@@ -44,6 +44,8 @@
             display: flex;
             justify-content: space-between;
             margin-bottom: 2.5rem;
+            flex-wrap: wrap;
+            gap: 1.5rem;
         }
 
         .footer-col-about {
