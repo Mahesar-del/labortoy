@@ -190,35 +190,50 @@
         .footer-contact-info {
             display: flex;
             justify-content: space-between;
+            align-items: flex-start;
             padding: 0;
-            margin-top: 3.125rem; /* Reduced to tighten the gap */
+            margin-top: 3.125rem;
             max-width: 1320px;
             margin-left: auto;
             margin-right: auto;
             width: 100%;
+            gap: 1.5rem;
         }
 
         .contact-item {
             display: flex;
-            align-items: center;
-            gap: 0.9375rem;
+            align-items: flex-start;
+            gap: 1rem;
+            flex: 1;
+            min-width: 0;
+        }
+
+        .contact-item:first-child {
+            flex: 1.25;
         }
 
         .contact-icon {
-            width: 2.8125rem;
-            height: 2.8125rem;
-            background-color: #1ABC9C;
+            width: 3rem;
+            height: 3rem;
+            background-color: #14B8A6;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
+            color: #ffffff;
             flex-shrink: 0;
+            margin-top: 0.125rem;
+            transition: transform 0.2s ease, background-color 0.2s ease;
+        }
+
+        .contact-item:hover .contact-icon {
+            transform: scale(1.05);
+            background-color: #0d9488;
         }
 
         .contact-icon svg {
-            width: 1.25rem;
-            height: 1.25rem;
+            width: 1.35rem;
+            height: 1.35rem;
             stroke: currentColor;
             fill: none;
             stroke-width: 2;
@@ -226,19 +241,34 @@
             stroke-linejoin: round;
         }
 
+        .contact-text {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            min-width: 0;
+        }
+
         .contact-text h5 {
             margin: 0;
             font-size: 1rem;
-            font-weight: 500;
+            font-weight: 600;
             color: #ffffff;
+            white-space: nowrap;
+            line-height: 1.3;
         }
 
-        .contact-text p {
-            margin: 0.3125rem 0 0 0;
+        .contact-text p,
+        .contact-text p a {
+            margin: 0;
             font-size: 0.875rem;
-            color: #FFFFFF;
-            letter-spacing: 0.0625rem;
+            color: #94A3B8;
+            text-decoration: none;
+            line-height: 1.4;
+            transition: color 0.2s ease;
+        }
 
+        .contact-text p a:hover {
+            color: #14B8A6;
         }
 
         .footer-bottom {
@@ -324,8 +354,8 @@
 
             .footer-contact-info {
                 flex-direction: column;
-                gap: 0.1rem;
-                margin-top: 1.25rem;
+                gap: 1.25rem;
+                margin-top: 1.5rem;
             }
 
             .footer-bottom {
@@ -431,7 +461,7 @@
                             </div>
                             <div class="contact-text">
                                 <h5>Laboratory Location</h5>
-                                <p>5th Street, 21st Floor, New York, USA</p>
+                                <p>5th Street, 21st Floor,<br>New York, USA</p>
                             </div>
                         </div>
 
@@ -441,7 +471,7 @@
                             </div>
                             <div class="contact-text">
                                 <h5>Customer Support</h5>
-                                <p>info@example.com</p>
+                                <p><a href="mailto:info@example.com">info@example.com</a></p>
                             </div>
                         </div>
 
@@ -451,7 +481,7 @@
                             </div>
                             <div class="contact-text">
                                 <h5>Speak with us</h5>
-                                <p>(888) 4567890</p>
+                                <p><a href="tel:8884567890">(888) 4567890</a></p>
                             </div>
                         </div>
                     </div>

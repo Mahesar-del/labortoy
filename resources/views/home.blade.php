@@ -1010,7 +1010,7 @@
                 height: 18.75rem;
                 object-fit: cover;
                 display: block;
-                border-radius: 1rem;
+                border-radius: 1rem !important;
             }
 
             .science-img-front {
