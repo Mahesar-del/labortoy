@@ -67,7 +67,7 @@
     .preparing-test-section, .preparing-test-section * { box-sizing: border-box; }
     .preparing-test-section {
         width: 100%;
-        padding: 5rem 7%;
+        padding: 3rem 7%;
         background-color: #ffffff;
         box-sizing: border-box;
     }

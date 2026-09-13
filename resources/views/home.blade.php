@@ -1461,11 +1461,11 @@
 
                 <div class="stats-container">
                     <div class="stat-item">
-                        <div class="stat-number">320+</div>
+                        <div class="stat-number"><span class="counter" data-target="320">0</span>+</div>
                         <div class="stat-label">Wining Awards</div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-number">10k+</div>
+                        <div class="stat-number"><span class="counter" data-target="10">0</span>k+</div>
                         <div class="stat-label">Test Completed</div>
                     </div>
                 </div>
@@ -1719,6 +1719,51 @@
                     targetGrid.style.display = 'flex';
                 }
             });
+        });
+    });
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const counters = document.querySelectorAll('.counter');
+        const duration = 1000; // Animation duration in milliseconds (faster)
+
+        const animateCounters = (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counter = entry.target;
+                    const target = +counter.getAttribute('data-target');
+                    const startTime = performance.now();
+                    counter.innerText = '0'; // Ensure it starts from 0
+
+                    const updateCount = (currentTime) => {
+                        const elapsedTime = currentTime - startTime;
+                        const progress = Math.min(elapsedTime / duration, 1);
+                        
+                        // Linear progress for consistent fast counting like 0, 1, 2...
+                        const currentCount = Math.floor(target * progress);
+                        
+                        counter.innerText = currentCount;
+
+                        if (progress < 1) {
+                            requestAnimationFrame(updateCount);
+                        } else {
+                            counter.innerText = target;
+                        }
+                    };
+                    
+                    requestAnimationFrame(updateCount);
+                    observer.unobserve(counter); // Only animate once
+                }
+            });
+        };
+
+        const observer = new IntersectionObserver(animateCounters, {
+            threshold: 0.1
+        });
+
+        counters.forEach(counter => {
+            observer.observe(counter);
         });
     });
 </script>

@@ -102,7 +102,7 @@
 
     .process-description {
         font-family: 'Inter', sans-serif;
-        font-size: 1rem;
+        font-size: 15px !important;
         line-height: 1.625rem;
         color: #000000;
         text-align: center;
