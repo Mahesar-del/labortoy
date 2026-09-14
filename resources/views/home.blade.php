@@ -1498,7 +1498,7 @@
                             </div>
                             <div class="contact-info">
                                 <h4>ADDRESS</h4>
-                                <p>To be provided</p>
+                                <p>{!! nl2br(e($contact->address)) !!}</p>
                             </div>
                         </div>
                         <!-- Phone -->
@@ -1508,7 +1508,7 @@
                             </div>
                             <div class="contact-info">
                                 <h4>PHONE</h4>
-                                <p>To be provided</p>
+                                <p>{{ $contact->phone }}</p>
                             </div>
                         </div>
                         <!-- Email -->
@@ -1518,7 +1518,7 @@
                             </div>
                             <div class="contact-info">
                                 <h4>EMAIL</h4>
-                                <p>To be provided</p>
+                                <p>{{ $contact->email }}</p>
                             </div>
                         </div>
                         <!-- Hours -->
@@ -1528,18 +1528,17 @@
                             </div>
                             <div class="contact-info">
                                 <h4>LABORATORY HOURS</h4>
-                                <p>To be provided</p>
+                                <p>Contact us for laboratory hours</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="visit-right">
-                    <div class="map-placeholder">
-                        <div class="map-icon-circle">
-                            <img src="{{ asset('images/location.svg') }}" alt="Location">
-                        </div>
-                        <p>Map location will appear here<br>once laboratory address is<br>confirmed</p>
-                    </div>
+                    @if($contact->address)
+                        <iframe title="Sterling laboratory location" src="https://www.google.com/maps?q={{ urlencode($contact->address) }}&output=embed" width="100%" height="100%" style="border:0;border-radius:16px" loading="lazy"></iframe>
+                    @else
+                        <div class="map-placeholder"><div class="map-icon-circle"><img src="{{ asset('images/location.svg') }}" alt="Location"></div><p>Map location will appear here once laboratory address is confirmed</p></div>
+                    @endif
                 </div>
             </div>
         </div>

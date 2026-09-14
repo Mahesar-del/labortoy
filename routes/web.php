@@ -55,6 +55,9 @@ Route::get('/admin/services/{id}/edit', [AdminServiceController::class, 'edit'])
 Route::post('/admin/services/{id}/edit', [AdminServiceController::class, 'update'])->name('admin.services.update');
 Route::get('/admin/tests', [AdminTestController::class, 'index'])->name('admin.tests.index');
 Route::post('/admin/tests', [AdminTestController::class, 'store'])->name('admin.tests.store');
+Route::get('/admin/tests/{id}/edit', [AdminTestController::class, 'edit'])->name('admin.tests.edit');
+Route::post('/admin/tests/{id}/edit', [AdminTestController::class, 'update'])->name('admin.tests.update');
+Route::post('/admin/tests/{id}/delete', [AdminTestController::class, 'destroy'])->name('admin.tests.delete');
 Route::get('/admin/faqs', [AdminFaqController::class, 'index'])->name('admin.faqs.index');
 Route::post('/admin/faqs', [AdminFaqController::class, 'store'])->name('admin.faqs.store');
 Route::get('/admin/molecular-specimens', [AdminMolecularSectionController::class, 'edit'])->name('admin.molecular-specimens.edit');

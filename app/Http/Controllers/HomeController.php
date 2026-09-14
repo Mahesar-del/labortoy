@@ -10,7 +10,13 @@ class HomeController extends Controller
     public function index()
     {
         $hero = DB::table('hero_settings')->where('key', 'home_hero')->first();
+        $settings = DB::table('site_settings')->whereIn('key', ['contact_address', 'contact_email', 'contact_phone'])->pluck('value', 'key');
+        $contact = (object) [
+            'address' => $settings['contact_address'] ?? '',
+            'email' => $settings['contact_email'] ?? '',
+            'phone' => $settings['contact_phone'] ?? '',
+        ];
 
-        return view('home', compact('hero'));
+        return view('home', compact('hero', 'contact'));
     }
 }
