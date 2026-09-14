@@ -23,9 +23,9 @@
 
 <style>
     .three-cards-overlap, .three-cards-overlap * { box-sizing: border-box; }
-    .three-cards-overlap { background: #fff; isolation: isolate; overflow: hidden; padding: 48px 7% 64px; position: relative; }
+    .three-cards-overlap { background: #fff; isolation: isolate; overflow: hidden; padding: 48px 0 64px; position: relative; }
     .tco-backdrop { background-position: center 43%; background-repeat: no-repeat; background-size: cover; height: clamp(250px, 21vw, 290px); inset: 0 0 auto; position: absolute; z-index: 0; width: 100%; }
-    .tco-container { margin: 0 auto; max-width: 1239px; position: relative; z-index: 1; }
+    .tco-container { margin: 0 auto; max-width: 1440px; padding: 0 99px; position: relative; z-index: 1; }
     .tco-header { color: #fff; margin: 0 auto 34px; max-width: 760px; text-align: center; }
     .tco-header h2 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(26px, 2.05vw, 35px); font-weight: 700; letter-spacing: -.03em; line-height: 1.2; margin: 0 0 10px; }
     .tco-header p { font-family: 'Inter', sans-serif; font-size: clamp(13px, .95vw, 15px); line-height: 1.5; margin: 0; opacity: .96; }
@@ -37,9 +37,10 @@
     .tco-card h3 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 18px; font-weight: 700; letter-spacing: -.02em; line-height: 1.28; margin: 0 0 12px; }
     .tco-card p { font-family: 'Inter', sans-serif; font-size: 14px; line-height: 1.6; margin: 0; }
     @media (max-width: 760px) {
-        .three-cards-overlap { padding: 5px 28px 48px; }
+        .three-cards-overlap { padding: 5px 0 48px; }
+        .tco-container { padding: 0 28px; }
         .tco-backdrop { display: none; }
-        .tco-header { color: #111820; margin-bottom: 28px; }
+        .tco-header { color: #111820; margin-bottom: 28px; max-width:258px; }
         .tco-cards { grid-template-columns: 1fr; }
         .tco-card { min-height: 0; align-items: center; text-align: center; }
         .tco-icon { margin-left: auto; margin-right: auto; }

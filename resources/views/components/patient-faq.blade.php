@@ -52,8 +52,7 @@
 
     .faq-item.active {
         background-color: #F3F8FA;
-        border: none;
-        height: auto; /* Fix for content clipping */
+        border-color: transparent;
     }
 
     .faq-question {
@@ -102,20 +101,28 @@
 
     /* Answer area */
     .faq-answer {
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.3s ease;
+        display: grid;
+        grid-template-rows: 0fr;
+        transition: grid-template-rows 0.3s ease;
     }
 
     .faq-item.active .faq-answer {
-        max-height: 40rem; /* Increased max-height to ensure complete visibility */
+        grid-template-rows: 1fr;
     }
 
     .faq-answer-inner {
+        overflow: hidden;
         display: flex;
         align-items: flex-start;
         gap: 1rem;
+        padding: 0 2.1rem 0 1.5rem;
+        opacity: 0;
+        transition: padding 0.3s ease, opacity 0.3s ease;
+    }
+
+    .faq-item.active .faq-answer-inner {
         padding: 1.25rem 2.1rem 1.25rem 1.5rem;
+        opacity: 1;
     }
 
     .faq-answer-text {
@@ -198,7 +205,11 @@
         }
 
         .faq-answer-inner {
-            padding: 0 1.25rem 1rem 1.25rem;
+            padding: 0 1.25rem 0 1.25rem;
+        }
+
+        .faq-item.active .faq-answer-inner {
+            padding: 1.25rem 1.25rem 1.25rem 1.25rem;
         }
     }
 

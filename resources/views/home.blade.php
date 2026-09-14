@@ -590,74 +590,11 @@
             transform: translateX(0.1875rem);
         }
 
-        /* Process Section */
-        .process-section {
-            background-color: #F3F8FA;
-            padding: 4rem 99px 5rem 99px;
-            width: 100%;
-            box-sizing: border-box;
-        }
-
-        .process-section .container,
         .science-moves-section .container {
             max-width: 82.5rem;
             margin: 0 auto;
             padding: 0;
             width: 100%;
-        }
-
-        .process-title {
-            text-align: center;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: 2.125rem;
-            font-weight: 700;
-            color: #000000;
-            line-height: 2.75rem;
-            margin-bottom: 2.5rem;
-        }
-
-        .process-grid {
-            display: flex;
-            justify-content: space-between;
-            gap: 2rem;
-            width: 100%;
-        }
-
-        .process-card {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-
-        .process-icon {
-            height: 4.5rem;
-            width: auto;
-            margin-bottom: 1rem;
-            object-fit: contain;
-        }
-
-        .process-step-title {
-            font-family: 'Libre Franklin', sans-serif;
-            font-size: 1.125rem;
-            font-weight: 600;
-            line-height: 1.4625rem;
-            color: #1E3A5F;
-            margin-bottom: 1rem;
-        }
-
-        .step-num {
-            color: #6392C9;
-            font-weight: 600;
-        }
-
-        .process-description {
-            font-family: 'Inter', sans-serif;
-            font-size: 1rem;
-            line-height: 1.625rem;
-            color: #000000;
-            text-align: center;
         }
 
         /* Science Moves Section */
@@ -1010,7 +947,7 @@
                 height: 18.75rem;
                 object-fit: cover;
                 display: block;
-                border-radius: 1rem;
+                border-radius: 1rem !important;
             }
 
             .science-img-front {
