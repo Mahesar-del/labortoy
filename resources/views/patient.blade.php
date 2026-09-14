@@ -155,7 +155,7 @@
 
         .patient-info__content p {
             font-size: 15px;
-            color: #333333;
+            color: #000;
             line-height: 1.6;
             margin: 0 0 20px 0;
         }
@@ -251,7 +251,7 @@
             }
         }
     </style>
-    @include('components.what-you-need')
+    @include('components.patient-what-you-need')
     @include('components.preparing-for-test')
     <section class="specimen-collection">
         <div class="specimen-collection__container">
@@ -318,7 +318,7 @@
 
         .specimen-collection__header {
             width: 100%;
-            text-align: left;
+            text-align: center;
         }
 
         .specimen-collection__header h2 {
@@ -331,7 +331,7 @@
 
         .specimen-collection__header p {
             font-size: 14px;
-            color: rgba(255, 255, 255, 0.85);
+            color: #ffffff;
             line-height: 1.6;
             margin: 0;
         }
@@ -361,7 +361,7 @@
 
         .specimen-box p {
             font-size: 13px;
-            color: rgba(255, 255, 255, 0.8);
+            color: #ffffff;
             line-height: 1.5;
             margin: 0;
         }
@@ -416,9 +416,9 @@
                 font-weight: 400;
                 font-size: 16px;
                 line-height: 30px;
-                letter-spacing: 0px;
-                text-align: justify;
-                color: rgba(255, 255, 255, 0.85);
+                letter-spacing: 0px
+                text-align: center;
+                color: #ffffff;
             }
             .specimen-collection__image-wrapper {
                 display: none;

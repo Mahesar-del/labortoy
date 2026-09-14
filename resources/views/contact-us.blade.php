@@ -362,7 +362,7 @@
             <div class="faq-wrapper">
                 <h2>Frequently Asked Questions</h2>
                 <div class="faq-list">
-                    <div class="faq-item active">
+                    <div class="faq-item">
                         <button class="faq-summary">What is genomic testing?<span class="icon">+</span></button>
                         <div class="faq-answer-wrapper">
                             <div class="faq-answer">Genomic testing examines DNA to identify inherited variants and other molecular findings that can support diagnosis, risk assessment, and personalized treatment decisions.</div>

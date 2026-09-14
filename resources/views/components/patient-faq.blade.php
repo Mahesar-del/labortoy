@@ -29,7 +29,7 @@
     .faq-subtitle {
         font-family: 'Inter', sans-serif;
         font-size: 1rem;
-        color: #6B7280;
+        color: #000000;
         font-weight: 400;
     }
 
@@ -161,6 +161,13 @@
             padding: 2.5rem 20px;
         }
 
+        .faq-container {
+            max-width: 1320px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 0%;
+        }
+
         .faq-title {
             font-family: 'Plus Jakarta Sans', sans-serif;
             font-weight: 700;
@@ -235,8 +242,8 @@
         </div>
 
         <div class="faq-list">
-            <!-- FAQ Item 1 (Default Open) -->
-            <div class="faq-item active" onclick="toggleFaq(this)">
+            <!-- FAQ Item 1 -->
+            <div class="faq-item" onclick="toggleFaq(this)">
                 <div class="faq-question">
                     <span class="faq-question-text">Do all laboratory tests require preparation?</span>
                     <button class="faq-toggle-plus" aria-label="Open answer">

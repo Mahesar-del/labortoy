@@ -32,83 +32,49 @@ p {
 .site-header {
     background-color: #ffffff;
     width: 100%;
-    height: 80px;
+    height: 100px; /* Increased from 80px to fit larger logo */
     max-width: none;
     box-sizing: border-box;
     margin: 0 auto;
-    border-radius: 0 0 1.5625rem 1.5625rem;
-    padding: 0 0;
+    padding: 0 99px;
     position: sticky;
     top: 0;
     z-index: 999;
-    /* Use overflow hidden or keep it normal, but elements are absolute so it's fine */
+}
+.header-container {
+    position: relative;
+    max-width: 1320px;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 .logo-container {
-    position: absolute;
-    left: max(24px, calc((100% - 1320px) / 2));
-    top: 0;
-    width: 190px;
+    display: flex;
+    align-items: center;
     height: 100%;
-    pointer-events: none; /* Let clicks pass through empty areas */
-}
-.logo-icon, .logo-text {
-    pointer-events: auto; /* Make them clickable */
-}
-.logo-icon {
-    position: absolute;
-    left: 0;
-    top: 16px; /* Centered in 80px: (80-44)/2 = 18px. Or maybe the same as text. Let's make it align vertically. */
-    /* Icon is usually ~44px. Let's just vertically center it if not specified */
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: #0d233a;
-    color: #ffffff;
-    width: 44px; /* 2.75rem = 44px */
-    height: 44px;
-    border-radius: 9.6px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.logo-icon svg {
-    width: 24px;
-    height: 24px;
-}
-.logo-text {
-    position: absolute;
-    left: 58.28px;
-    top: 16px;
-    width: 125px;
-    height: 48px;
-    color: #0d233a;
-    font-size: 28px;
-    font-weight: 800;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    line-height: 47.22px;
-    margin: 0;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
+    pointer-events: auto;
+    flex-shrink: 1;
+    min-width: 120px;
+    max-width: 280px;
+    margin-left: -8px; /* Pulled left slightly less to perfectly align */
 }
 .nav-links {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 762px;
-    height: 20px;
+    flex: 1;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+    gap: clamp(8px, 1.5vw, 32px);
     list-style: none;
     margin: 0;
-    padding: 0;
+    padding: 0 10px;
 }
 .nav-links a {
     text-decoration: none;
     color: #111827;
     font-weight: 500;
-    font-size: 15px; /* ~0.95rem */
+    font-size: clamp(12px, 1.1vw, 15px);
     transition: color 0.2s;
     white-space: nowrap;
     line-height: 20px;
@@ -116,27 +82,23 @@ p {
 .nav-links a:hover {
     color: #0d233a;
 }
-.login-btn {
-    position: absolute;
-    right: max(24px, calc((100% - 1320px) / 2));
-    top: 28px;
-    width: 79px;
-    height: 24px;
+.appointment-btn {
+    width: clamp(150px, 12vw, 180px);
+    height: 48px;
+    flex-shrink: 0;
+    background-color: #22B6AF;
+    border-radius: 24px;
     display: flex;
     align-items: center;
-    justify-content: flex-start;
-    gap: 6px;
+    justify-content: center;
     text-decoration: none;
-    color: #0d233a;
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 24px;
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 13px; /* Reduced from 14px */
+    transition: background-color 0.2s;
 }
-.login-btn svg {
-    width: 20px;
-    height: 20px;
-    stroke-width: 2.5;
-    flex-shrink: 0;
+.appointment-btn:hover {
+    background-color: #1c9b95;
 }
 .mobile-menu-btn {
     display: none;
@@ -145,7 +107,7 @@ p {
     cursor: pointer;
     color: #0d233a;
     position: absolute;
-    right: 20px;
+    right: 0;
     top: 50%;
     transform: translateY(-50%);
 }
@@ -154,25 +116,148 @@ p {
     height: 28px;
 }
 
-/* Maintain layout across views up to 1440px. Below a certain point, stack or hide */
-@media (max-width: 1400px) {
-    /* If they want it fixed har view par, maybe we add a wrapper to allow horizontal scrolling or scaling */
-    .site-header {
-        overflow-x: auto;
+    .header-actions {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        flex-shrink: 0;
     }
-}
 
-@media (max-width: 1024px) {
-    .site-header {
+    .header-search {
+        display: flex;
+        align-items: center;
+        background-color: #ffffff;
+        border: 1px solid #9ca3af; /* Darker gray border */
+        border-radius: 24px;
+        padding: 5px 15px;
+        width: clamp(150px, 15vw, 220px);
+        height: 48px;
+        box-sizing: border-box;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Subtle shadow for depth */
+        transition: background-color 0.2s, box-shadow 0.2s, border-color 0.2s;
+    }
+
+    .header-search:focus-within {
+        background-color: #ffffff;
+        border-color: #22B6AF;
+        box-shadow: 0 0 0 2px rgba(34, 182, 175, 0.2);
+    }
+
+    .header-search input {
+        border: none;
+        background: transparent;
+        outline: none;
         width: 100%;
+        padding: 5px 10px;
+        font-size: 14px;
+        color: #1f2937;
     }
-    .logo-icon {
-        left: 20px;
+    
+    .header-search input::placeholder {
+        color: #64748b;
     }
-    .logo-text {
-        left: 78.28px; /* 20px + 44px (icon) + 14.28px (original gap) */
+
+    .header-search .search-icon {
+        width: 18px;
+        height: 18px;
+        color: #475569;
+        flex-shrink: 0;
     }
-    .nav-links, .login-btn {
+
+    .header-search .clear-btn {
+        background: none;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+        color: #94a3b8;
+        display: none;
+        flex-shrink: 0;
+        margin-left: 5px;
+        display: none;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .header-search .clear-btn:hover {
+        color: #ef4444; /* Red color on hover for delete/clear action */
+    }
+
+    /* Megamenu Styles */
+    .has-megamenu {
+        position: relative;
+    }
+    
+    .nav-links li {
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
+
+    .megamenu {
+        position: absolute;
+        top: calc(50% + 20px);
+        left: 50%;
+        transform: translateX(-50%);
+        width: 200px;
+        background-color: #ffffff; /* White background */
+        color: #111827;
+        padding: 15px 20px;
+        box-sizing: border-box;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        border-top: 2px solid #eaedf2;
+        border-radius: 0 0 8px 8px;
+    }
+
+    .has-megamenu:hover .megamenu {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .megamenu-column h4 {
+        font-size: 16px !important;
+        font-weight: 600;
+        margin-bottom: 20px;
+        color: #ffffff;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .megamenu-column ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .megamenu-column ul li a {
+        color: #4b5563;
+        text-decoration: none;
+        font-size: 14px;
+        transition: color 0.2s, transform 0.2s;
+        font-weight: 500;
+        display: inline-block;
+    }
+
+    .megamenu-column ul li a:hover {
+        color: #214f9d;
+        transform: translateX(5px);
+    }
+
+
+
+@media (max-width: 1150px) {
+    .site-header {
+        padding: 0 20px;
+    }
+    .nav-links, .header-actions {
         display: none;
     }
     .mobile-menu-btn {
@@ -182,36 +267,52 @@ p {
 </style>
 
 <header class="site-header">
-    <!-- Logo -->
-    <a href="/" class="logo-container">
-        <div class="logo-icon">
-            <!-- Figma-style Hexagon Icon -->
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <polygon points="12 2 22 8 22 16 12 22 2 16 2 8 12 2"></polygon>
-                <circle cx="12" cy="12" r="2.5" fill="currentColor" stroke="none"></circle>
-            </svg>
-        </div>
-        <span class="logo-text">Labortoy</span>
-    </a>
+    <div class="header-container">
+        <!-- Logo -->
+        <a href="/" class="logo-container">
+            <img src="{{ asset('images/header-logo.svg') }}" alt="Sterling Logo" style="height: auto; max-height: 85px; width: 100%; object-fit: contain; object-position: left;">
+        </a>
 
-    <!-- Navigation Links -->
     <ul class="nav-links">
-
-    <li><a href="/services">Services</a></li>
+        <li class="has-megamenu">
+            <a href="/services">Services</a>
+            <div class="megamenu">
+                <div class="megamenu-column">
+                    <ul>
+                        <li><a href="#">Clinical Services</a></li>
+                        <li><a href="#">Specialty Testing</a></li>
+                        <li><a href="#">Genetics</a></li>
+                    </ul>
+                </div>
+            </div>
+        </li>
         <li><a href="/patient">Patients</a></li>
         <li><a href="/provider-page">Providers</a></li>
-        <li><a href="#">Health Systems & Organizations</a></li>
         <li><a href="#">Resources</a></li>
         <li><a href="/contact-us">Contact</a></li>
     </ul>
 
-    <!-- Login Button -->
-    <a href="#" class="login-btn">
-        <svg viewBox="0 0 24 24" fill="currentColor" stroke="none">
-            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"></path>
-        </svg>
-        <span>Login</span>
-    </a>
+    <div class="header-actions">
+        <!-- Search Bar -->
+        <div class="header-search">
+            <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="text" id="headerSearchInput" placeholder="Search..." aria-label="Search" oninput="document.getElementById('clearSearchBtn').style.display = this.value ? 'flex' : 'none'">
+            <button type="button" id="clearSearchBtn" class="clear-btn" aria-label="Clear search" onclick="document.getElementById('headerSearchInput').value = ''; this.style.display = 'none'; document.getElementById('headerSearchInput').focus();">
+                <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Appointment Button -->
+        <a href="#" class="appointment-btn">
+            Book an Appointment
+        </a>
+    </div>
 
     <!-- Mobile Menu Button -->
     <button class="mobile-menu-btn" aria-label="Open menu">
@@ -221,4 +322,5 @@ p {
             <line x1="3" y1="18" x2="21" y2="18"></line>
         </svg>
     </button>
+    </div>
 </header>

@@ -16,6 +16,27 @@
                 <a class="hero-section__button hero-section__button--primary" href="{{ $hero->primary_button_link ?? '#services' }}">{{ $hero->primary_button_text ?? 'Our Services' }}</a>
                 <a class="hero-section__button hero-section__button--secondary" href="{{ $hero->secondary_button_link ?? '#contact' }}">{{ $hero->secondary_button_text ?? 'Contact Us' }}</a>
             </div>
+
+            <div class="hero-section__badges">
+                <div class="hero-badge">
+                    <div class="hero-badge__icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    </div>
+                    <div class="hero-badge__text">
+                        <span class="hero-badge__label">Active CLIA Registration</span>
+                        <span class="hero-badge__value">14D2349787</span>
+                    </div>
+                </div>
+                <div class="hero-badge">
+                    <div class="hero-badge__icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="9" x2="20" y2="9"></line><line x1="4" y1="15" x2="20" y2="15"></line><line x1="10" y1="3" x2="8" y2="21"></line><line x1="16" y1="3" x2="14" y2="21"></line></svg>
+                    </div>
+                    <div class="hero-badge__text">
+                        <span class="hero-badge__label">National Provider Identifier</span>
+                        <span class="hero-badge__value">1134037385</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>
@@ -77,11 +98,62 @@
     .hero-section__button--secondary { background: transparent; border-color: #afc3ca; color: #18313b; }
     .hero-section__button:hover { filter: brightness(.93); }
     .hero-section__button:focus-visible { outline: 3px solid #102d55; outline-offset: 4px; }
+    
+    .hero-section__badges {
+        display: flex;
+        gap: clamp(12px, 1.5vw, 30px);
+        margin-top: clamp(20px, 2.5vw, 40px);
+        margin-left: -40px; /* Shift badges further to the left as requested */
+        align-items: flex-start;
+        flex-wrap: nowrap;
+    }
+    .hero-badge {
+        display: flex;
+        align-items: center;
+        gap: clamp(8px, 1vw, 12px);
+        flex: 0 1 auto; /* Size to content naturally */
+        min-width: 0;
+    }
+    .hero-badge__icon {
+        width: clamp(36px, 3vw, 44px);
+        height: clamp(36px, 3vw, 44px);
+        background-color: #e6f6f5;
+        color: #17827e;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+    }
+    .hero-badge__icon svg {
+        width: clamp(16px, 1.5vw, 20px);
+        height: clamp(16px, 1.5vw, 20px);
+    }
+    .hero-badge__text {
+        display: flex;
+        flex-direction: column;
+        line-height: 1.3;
+        min-width: 0;
+    }
+    .hero-badge__label {
+        font-size: clamp(11px, 1vw, 14px);
+        color: #64748b;
+        font-weight: 500;
+        font-family: 'Inter', sans-serif;
+    }
+    .hero-badge__value {
+        font-size: clamp(13px, 1.2vw, 16px);
+        color: #0b2545;
+        font-weight: 700;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        white-space: nowrap;
+    }
     @media (max-width: 900px) {
         .hero-section__content { border-radius: 12px; }
         .hero-section p { margin: 12px 0 16px; }
         .hero-section__actions { gap: 10px; }
         .hero-section__button { padding: 9px 17px; }
+        .hero-section__badges { gap: 20px; margin-top: 25px; }
     }
     @media (max-width: 600px) {
         .hero-section { padding: 20px 10px; }

@@ -107,7 +107,7 @@
     .wyn-subtitle {
         font-family: 'Inter', sans-serif;
         font-size: 1rem;
-        color: #333333;
+        color: #000;
         margin-bottom: 2.5rem;
         font-weight: 400;
     }
@@ -183,7 +183,7 @@
     .wyn-card-text {
         font-family: 'Inter', sans-serif;
         font-size: 0.95rem;
-        color: #333333;
+        color: #000000;
         line-height: 1.6;
         margin: 0;
         z-index: 2;
