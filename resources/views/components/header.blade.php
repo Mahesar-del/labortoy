@@ -33,9 +33,11 @@ p {
     background-color: #ffffff;
     width: 100%;
     height: 80px;
-    max-width: 1440px;
+    max-width: none;
     box-sizing: border-box;
     margin: 0 auto;
+    border-radius: 0 0 1.5625rem 1.5625rem;
+    padding: 0 0;
     position: sticky;
     top: 0;
     z-index: 999;
@@ -43,7 +45,7 @@ p {
 }
 .logo-container {
     position: absolute;
-    left: 0;
+    left: max(24px, calc((100% - 1320px) / 2));
     top: 0;
     width: 100%;
     height: 100%;
@@ -54,7 +56,7 @@ p {
 }
 .logo-icon {
     position: absolute;
-    left: 99px;
+    left: 0;
     top: 16px; /* Centered in 80px: (80-44)/2 = 18px. Or maybe the same as text. Let's make it align vertically. */
     /* Icon is usually ~44px. Let's just vertically center it if not specified */
     top: 50%;
@@ -74,7 +76,7 @@ p {
 }
 .logo-text {
     position: absolute;
-    left: 157.28px;
+    left: calc(max(24px, calc((100% - 1320px) / 2)) + 58.28px);
     top: 16px;
     width: 85px;
     height: 48px;
@@ -116,7 +118,7 @@ p {
 }
 .login-btn {
     position: absolute;
-    right: 99px;
+    right: max(24px, calc((100% - 1320px) / 2));
     top: 28px;
     width: 79px;
     height: 24px;
@@ -161,6 +163,9 @@ p {
 }
 
 @media (max-width: 1024px) {
+    .site-header {
+        width: 100%;
+    }
     .logo-icon {
         left: 20px;
     }
