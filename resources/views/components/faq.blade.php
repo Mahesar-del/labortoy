@@ -26,7 +26,7 @@
     .faq-subtitle {
         font-family: 'Inter', sans-serif;
         font-size: 1rem;
-        color: #6B7280;
+        color: #000;
         font-weight: 400;
     }
 
@@ -154,6 +154,13 @@
     }
 
     @media (max-width: 48rem) {
+        .faq-container {
+            max-width: 1320px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 0%;
+        }
+
         .faq-title {
             font-size: 24px;
             line-height: 30px;

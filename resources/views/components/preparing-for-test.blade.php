@@ -50,7 +50,7 @@
                 <div class="pt-step">
                     <div class="pt-step-indicator">
                         <div class="pt-dot"></div>
-                        <!-- No line for the last step -->
+                        <div class="pt-line"></div>
                     </div>
                     <div class="pt-step-content">
                         <span class="pt-step-label">STEP 04</span>
@@ -117,7 +117,7 @@
     .pt-intro {
         font-family: 'Inter', sans-serif;
         font-size: 15px;
-        color: #333333;
+        color: #000;
         line-height: 1.6;
         margin: 0 0 40px 0;
     }
@@ -129,8 +129,9 @@
 
     .pt-step {
         display: flex;
-        gap: 20px;
+        gap: 14px;
         position: relative;
+        align-items: stretch;
     }
 
     .pt-step-indicator {
@@ -138,60 +139,62 @@
         flex-direction: column;
         align-items: center;
         width: 12px;
+        flex-shrink: 0;
+        position: relative;
     }
 
     .pt-dot {
         width: 12px;
         height: 12px;
-        background-color: #38b2ac; /* Cyan color matching screenshot */
+        background-color: #00A896;
         border-radius: 50%;
         flex-shrink: 0;
-        margin-top: 6px;
+        margin-top: 0px;
+        position: relative;
+        z-index: 2;
     }
 
     .pt-line {
         width: 2px;
-        background-color: #1a365d; /* Dark blue color */
         flex-grow: 1;
-        margin: 4px 0;
-        min-height: 40px;
+        min-height: 54px;
+        background-color: #1a365d;
+        margin-top: 6px;
+        z-index: 1;
+        flex-shrink: 0;
     }
 
     .pt-step-content {
-        padding-bottom: 30px;
-    }
-
-    .pt-step:last-child .pt-step-content {
-        padding-bottom: 0;
+        padding-bottom: 24px;
+        flex-grow: 1;
     }
 
     .pt-step-label {
         font-family: 'Inter', sans-serif;
         font-size: 12px;
         font-weight: 700;
-        color: #38b2ac;
+        color: #00A896;
         letter-spacing: 1px;
         text-transform: uppercase;
         display: block;
-        margin-bottom: 6px;
+        line-height: 1;
+        margin-bottom: 8px;
     }
 
     .pt-step-content h3 {
         font-family: 'Plus Jakarta Sans', sans-serif;
-        font-size: 18px;
+        font-size: 17px;
         font-weight: 700;
-        line-height: 18.2px;
-        letter-spacing: 0.28px;
+        line-height: 1.3;
         color: #0B2545;
-        margin: 0 0 8px 0;
+        margin: 0 0 6px 0;
     }
 
     .pt-step-content p {
         font-family: 'Inter', sans-serif;
-        font-size: 16px;
+        font-size: 15px;
         color: #44474E;
-        line-height: 24px;
-        letter-spacing: 0px;
+        line-height: 22px;
         margin: 0;
     }
 
@@ -217,39 +220,27 @@
             display: none;
         }
         .pt-content h2 {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-weight: 700;
             font-size: 24px;
             line-height: 30px;
-            letter-spacing: 0px;
-            color: #000000;
             margin-bottom: 12px;
         }
         .pt-intro {
-            font-family: 'Inter', sans-serif;
-            font-weight: 400;
-            font-size: 16px;
-            line-height: 24px;
-            letter-spacing: 0px;
-            text-align: justify;
-            color: #000000;
+            font-size: 15px;
+            line-height: 22px;
             margin-bottom: 24px;
         }
+        .pt-step {
+            gap: 12px;
+        }
         .pt-step-content h3 {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-weight: 700;
-            font-size: 18px;
-            line-height: 18.2px;
-            letter-spacing: 0.28px;
-            color: #0B2545;
+            font-size: clamp(13px, 3.8vw, 15px);
+            line-height: 1.3;
+            margin-bottom: 6px;
+            white-space: nowrap;
         }
         .pt-step-content p {
-            font-family: 'Inter', sans-serif;
-            font-weight: 400;
-            font-size: 16px;
-            line-height: 24px;
-            letter-spacing: 0px;
-            color: #44474E;
+            font-size: 14px;
+            line-height: 20px;
         }
     }
 </style>
