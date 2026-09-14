@@ -42,7 +42,7 @@
         /* Unified Container matching Hero Card Grid */
         .container {
             box-sizing: border-box;
-            max-width: 82.5rem; 
+            max-width: 94.875rem; /* 1518px (1320px content + 198px padding) */
             margin: 0 auto;
             padding: 3rem 99px;
         }
@@ -1332,45 +1332,7 @@
 
     <!-- Main Container for Tabs, Actions and About -->
     <div class="container">
-        <!-- Navigation Tabs -->
-        <nav class="tabs-nav">
-            <a href="javascript:void(0)" class="tab-item active" data-target="tab-patients">Individual/Patients</a>
-            <a href="javascript:void(0)" class="tab-item" data-target="tab-providers">Providers</a>
-        </nav>
 
-        <!-- Action Buttons Container -->
-        <div class="actions-container">
-            <!-- Action Buttons for Individuals & Patients -->
-            <div id="tab-patients" class="actions-grid">
-                <a href="#" class="action-btn">
-                    <img src="{{ asset('images/location.svg') }}" class="action-icon" alt="Find a Lab">
-                    Find a Lab
-                </a>
-                <a href="#" class="action-btn">
-                    <img src="{{ asset('images/view-result.svg') }}" class="action-icon" alt="View Test Results">
-                    View Test Results
-                </a>
-                <a href="#" class="action-btn">
-                    <img src="{{ asset('images/pay-bill.svg') }}" class="action-icon" alt="Pay a Bill">
-                    Pay a Bill
-                </a>
-                <a href="#" class="action-btn">
-                    <img src="{{ asset('images/shop-test.svg') }}" class="action-icon" alt="Shop for Tests">
-                    Shop for Tests
-                </a>
-            </div>
-
-            <!-- Action Buttons for Providers -->
-            <div id="tab-providers" class="actions-grid" style="display: none;">
-                <a href="#" class="action-btn">Provider Services</a>
-                <a href="#" class="action-btn">Clinical Resources</a>
-                <a href="#" class="action-btn">Order Supplies</a>
-                <a href="#" class="action-btn">Contact Us</a>
-            </div>
-
-            <!-- View Page Link -->
-            <a href="#" class="view-page-link">View Individuals & Patients Page</a>
-        </div>
 
         <!-- Main Content -->
         <div class="content-split">
@@ -1422,12 +1384,12 @@
             <div class="services-grid">
                 <!-- Genomic Diagnostics (Left Large Card) -->
                 <div class="service-card-left">
-                    <img src="{{ asset('images/our-dioginostic-first.jpg') }}" alt="Genomic Diagnostics" class="service-card-bg">
+                    <img src="{{ asset('images/our-dioginostic-first.jpg') }}" alt="Chemistry" class="service-card-bg">
                     <div class="service-card-overlay"></div>
                     <div class="service-card-content">
-                        <h3 class="card-title">Genomic Diagnostics</h3>
+                        <h3 class="card-title">Chemistry</h3>
                         <p class="card-text">
-                            Testing focused on the genetic material that underlies inherited conditions and long-term health risk, processed with careful attention to accuracy at every step.
+                            Comprehensive testing of blood and bodily fluids to evaluate metabolic function and detect imbalances, providing essential baseline data for patient care.
                         </p>
                         <a href="{{ url('/service/genomic-diagnostics') }}" class="explore-btn">
                             Explore Service
@@ -1440,12 +1402,12 @@
                 <div class="service-column-right">
                     <!-- Molecular Diagnostics (Top Right Card) -->
                     <div class="service-card-small">
-                        <img src="{{ asset('images/our-dioginostic-second.jpg') }}" alt="Molecular Diagnostics" class="service-card-bg">
+                        <img src="{{ asset('images/our-dioginostic-second.jpg') }}" alt="Immunoassay" class="service-card-bg">
                         <div class="service-card-overlay"></div>
                         <div class="service-card-content">
-                            <h3 class="card-title">Molecular Diagnostics</h3>
+                            <h3 class="card-title">Immunoassay</h3>
                             <p class="card-text">
-                                Testing at the molecular level to identify markers relevant to infection, disease activity and treatment planning.
+                                Advanced testing using precise antibody reactions to accurately measure hormones, disease markers, and immune system health.
                             </p>
                             <a href="{{ url('/service/molecular-diagnostics') }}" class="explore-btn">
                                 Explore Service
@@ -1456,12 +1418,12 @@
 
                     <!-- Clinical Diagnostics (Bottom Right Card) -->
                     <div class="service-card-small">
-                        <img src="{{ asset('images/our-dioginostic-third.jpg') }}" alt="Clinical Diagnostics" class="service-card-bg">
+                        <img src="{{ asset('images/our-dioginostic-third.jpg') }}" alt="Hematology" class="service-card-bg">
                         <div class="service-card-overlay"></div>
                         <div class="service-card-content">
-                            <h3 class="card-title">Clinical Diagnostics</h3>
+                            <h3 class="card-title">Hematology</h3>
                             <p class="card-text">
-                                Routine and specialized clinical testing that supports everyday diagnosis, monitoring and preventive care.
+                                Detailed analysis of blood and its components to detect and monitor conditions like anemia, infection, and leukemia.
                             </p>
                             <a href="{{ url('/service/clinical-diagnostics') }}" class="explore-btn">
                                 Explore Service

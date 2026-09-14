@@ -1,12 +1,13 @@
 <style>
         /* Footer Styling */
         .site-footer {
+            --footer-px: 99px;
             background-color: #06162a; /* Dark blue base */
             background: radial-gradient(circle at top left, rgba(26, 188, 156, 0.65) 0%, transparent 17%),
                         radial-gradient(circle at bottom right, rgba(26, 188, 156, 0.65) 0%, transparent 17%),
                         #06162a; /* Cyan glows and base color */
             color: #ffffff;
-            padding: 4.375rem 6.1875rem 6.5rem 6.1875rem;
+            padding: 4.375rem var(--footer-px) 6.5rem var(--footer-px);
             font-family: 'Inter', sans-serif;
             position: relative;
             width: 100%;
@@ -252,14 +253,28 @@
             border-top-left-radius: 1.875rem;
             border-top-right-radius: 1.875rem;
             margin: 0;
-            width: 40rem;
+            width: calc(100% - (var(--footer-px) * 2));
+            max-width: 1320px;
             font-size: 0.875rem;
             font-weight: 600;
             height: 3.5rem;
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: space-between;
+            padding: 0 2.5rem;
             box-sizing: border-box;
+        }
+
+        .footer-copyright {
+            font-size: 0.875rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .footer-legal {
+            font-size: 0.75rem;
+            font-weight: 400;
+            color: #4b5563;
         }
 
         .footer-bottom::before,
@@ -284,8 +299,9 @@
         /* Mobile View Adjustments */
         @media (max-width: 56.25rem) {
             .site-footer {
+                --footer-px: 28px;
                 height: auto;
-                padding: 2.5rem 1.75rem 5.625rem 1.75rem;
+                padding: 2.5rem var(--footer-px) 5.625rem var(--footer-px);
             }
 
             .footer-top {
@@ -329,9 +345,15 @@
             }
 
             .footer-bottom {
-                width: calc(100% - 3.5rem);
-                height: 3.125rem;
+                width: calc(100% - (var(--footer-px) * 2));
+                height: auto;
+                min-height: 3.125rem;
+                padding: 1rem;
                 font-size: 1rem;
+                flex-direction: column;
+                justify-content: center;
+                gap: 0.5rem;
+                text-align: center;
                 border-top-left-radius: 1.25rem;
                 border-top-right-radius: 1.25rem;
             }
@@ -356,8 +378,9 @@
         /* Compact desktop range: keeps the footer usable at 100% browser zoom. */
         @media (min-width: 1100px) and (max-width: 1320px) {
             .site-footer {
+                --footer-px: 72px;
                 height: 30rem;
-                padding: 3.25rem 4.5rem 0;
+                padding: 3.25rem var(--footer-px) 0;
             }
 
             .footer-top {
@@ -404,7 +427,6 @@
             }
 
             .footer-bottom {
-                width: 34rem;
                 height: 3rem;
                 font-size: 0.8125rem;
             }
@@ -413,9 +435,10 @@
         /* Tablet / 125% zoom range: reflow before desktop columns become cramped. */
         @media (min-width: 56.3125rem) and (max-width: 68.6875rem) {
             .site-footer {
+                --footer-px: 40px;
                 height: auto;
                 min-height: 0;
-                padding: 3rem 2.5rem 5.5rem;
+                padding: 3rem var(--footer-px) 5.5rem;
             }
 
             .footer-top {
@@ -505,7 +528,7 @@
                 <!-- Left: About Box -->
                 <div class="footer-left">
                     <div class="footer-col-about">
-                        <h3>Logo</h3>
+                        <img src="{{ asset('images/footer-logo.png') }}" alt="Sterling Logo" style="height: 85px; width: auto; max-width: 100%; margin: 0 0 0.9375rem 0; display: block;">
                         <p>Laboratory solutions focused on precision, timely reporting, and informed care.</p>
                         
                         <div class="footer-hours">
@@ -605,6 +628,7 @@
             </div>
 
             <div class="footer-bottom">
-                &copy; 2026, Lab. All rights are reserved.
+                <div class="footer-copyright">&copy; 2026, Lab. All rights are reserved.</div>
+                <div class="footer-legal">Legal entity: Sterling Molecular Corporation &middot; Active CLIA Registration 14D2349787 &middot; NPI 1134037385</div>
             </div>
         </footer>
