@@ -7,7 +7,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
-    <style>body { margin: 0; font-family: 'Manrope', sans-serif; }</style>
+    <style>
+        * { box-sizing: border-box; }
+        body { margin: 0; font-family: 'Manrope', sans-serif; overflow-x: hidden; width: 100%; }
+        .main-wrapper { width: 100%; margin: 0 auto; overflow-x: hidden; }
+    </style>
 </head>
 <body>
     @include('components.header')
@@ -26,13 +30,13 @@
     
     <style>
         .services-hero, .services-hero * { box-sizing: border-box; }
-        .services-hero { background: #020b1c; color: #fff; isolation: isolate; min-height: 460px; overflow: hidden; position: relative; padding: 0 7%; box-sizing: border-box; }
+        .services-hero { background: #020b1c; color: #fff; isolation: isolate; min-height: 460px; overflow: hidden; position: relative; padding: 0 99px; box-sizing: border-box; }
         .services-hero__background, .services-hero__overlay { height: 100%; inset: 0; position: absolute; width: 100%; }
         .services-hero__background { background-position: center; background-repeat: no-repeat; background-size: 100% 100%; z-index: -2; }
         .services-hero__overlay { background: linear-gradient(90deg, rgba(7,26,49,.96) 0%, rgba(7,26,49,.86) 48%, rgba(7,26,49,.25) 100%); z-index: -1; }
         .services-hero__container { align-items: center; display: flex; margin: 0 auto; max-width: 1320px; width: 100%; min-height: 460px; padding: 56px 0; }
         .services-hero__content { max-width: 580px; }
-        .services-hero h1 { font-size: clamp(34px, 3.1vw, 56px); letter-spacing: -.04em; line-height: 1.1; margin: 0; }
+        .services-hero h1 { font-size: clamp(32px, 3.1vw, 56px); letter-spacing: -.04em; line-height: 1.1; margin: 0; }
         .services-hero p { 
             font-family: 'Inter', sans-serif;
             font-weight: 400;
@@ -41,15 +45,29 @@
             letter-spacing: 0px;
             color: #D9E5EE; 
             margin: 25px 0 30px; 
+            text-align: justify;
         }
-        @media (max-width: 700px) {
-            .services-hero, .services-hero__container { min-height: 430px; }
-            .services-hero__container { align-items: flex-end; padding: 48px 20px; }
-            .services-hero__overlay { background: linear-gradient(90deg, rgba(7,26,49,.96), rgba(7,26,49,.25)); }
-            .services-hero__content { max-width: 350px; }
+        @media (max-width: 1024px) {
+            .services-hero { padding: 0 40px; }
+        }
+        @media (max-width: 768px) {
+            .services-hero { padding: 0 20px; min-height: auto; }
+            .services-hero__container { align-items: flex-start; padding: 80px 0 40px 0; min-height: 340px; }
+            .services-hero__overlay { background: linear-gradient(180deg, rgba(7,26,49,.96) 0%, rgba(7,26,49,.85) 100%); }
+            .services-hero__content { max-width: 100%; text-align: left; padding-top: 10px; }
+            .services-hero h1 {
+                font-size: 34px;
+                letter-spacing: -0.02em;
+                line-height: 1.15;
+            }
             .services-hero p {
+                font-family: 'Inter', sans-serif;
+                font-weight: 400;
                 font-size: 16px;
-                line-height: 26px;
+                line-height: 30px;
+                letter-spacing: 0px;
+                text-align: justify;
+                margin: 18px 0 20px;
             }
         }
     </style>
@@ -140,7 +158,7 @@
         /* Left Info */
         .contact-info {
             flex: 1;
-            min-width: 320px;
+            min-width: 300px;
             max-width: 452px;
             display: flex;
             flex-direction: column;
@@ -153,7 +171,7 @@
             line-height: 44px;
             letter-spacing: 0px;
             color: #0B2545;
-            margin: 0 0 16px 0;
+            margin: 0 0 7px 0;
         }
         .contact-intro {
             font-family: 'Inter', sans-serif;
@@ -162,22 +180,24 @@
             line-height: 25.6px;
             letter-spacing: 0px;
             color: #000000;
-            margin: 0 0 40px 0;
+            margin: 0 0 30px 0;
         }
         .contact-details {
             display: flex;
             flex-direction: column;
             gap: 28px;
-            margin-bottom: 50px;
+            margin-bottom: 40px;
         }
-        .contact-item {
+        .contact-section .contact-item {
             display: flex;
             align-items: center;
             gap: 16px;
+            width: 427.33px;
+            height: 40px;
         }
-        .contact-icon {
-            width: 44px;
-            height: 44px;
+        .contact-section .contact-icon {
+            width: 40px;
+            height: 40px;
             background-color: #0B2545 !important;
             border-radius: 50%;
             display: flex;
@@ -186,16 +206,16 @@
             color: #fff;
             flex-shrink: 0;
         }
-        .contact-icon svg {
+        .contact-section .contact-icon svg {
             width: 20px;
             height: 20px;
         }
-        .contact-text {
+        .contact-section .contact-text {
             display: flex;
             flex-direction: column;
             gap: 4px;
         }
-        .contact-text strong {
+        .contact-section .contact-text strong {
             font-family: 'Plus Jakarta Sans', sans-serif;
             font-size: 20px;
             font-weight: 600;
@@ -203,7 +223,7 @@
             letter-spacing: 0px;
             color: #000000;
         }
-        .contact-text span {
+        .contact-section .contact-text span {
             font-family: 'Inter', sans-serif;
             font-size: 16px;
             font-weight: 400;
@@ -249,8 +269,10 @@
         /* Right Form */
         .contact-form-wrapper {
             flex: 1;
-            min-width: 320px;
-            max-width: 713px;
+            min-width: 300px;
+            width: 713px;
+            max-width: 100%;
+            height: 501px;
             background-color: #0b2545;
             border-radius: 20px;
             padding: 56px 48px;
@@ -259,13 +281,16 @@
             flex-direction: column;
             align-items: center;
             box-shadow: 0 20px 40px rgba(13, 35, 58, 0.08);
+            box-sizing: border-box;
+            margin-top: 2rem;
         }
         .contact-form-wrapper h2 {
-            font-size: clamp(18px, 1.8vw, 24px);
+            font-size: clamp(20px, 2vw, 24px);
             font-weight: 700;
             margin: 0 0 36px 0;
             text-align: center;
-            white-space: nowrap;
+            white-space: normal;
+            line-height: 1.3;
         }
         .contact-form {
             width: 100%;
@@ -295,8 +320,8 @@
             color: #888;
         }
         .contact-form textarea {
-            resize: vertical;
-            min-height: 140px;
+            resize: none;
+            height: 120px;
         }
         .contact-form button {
             background-color: #20b3b5;
@@ -307,9 +332,10 @@
             border-radius: 99px;
             padding: 16px 36px;
             cursor: pointer;
-            margin: 24px auto 0 auto;
+            margin: 18px 0 0 0;
             display: block;
-            min-width: 220px;
+            width: 250px;
+            align-self: center;
             transition: opacity 0.2s, transform 0.2s;
         }
         .contact-form button:hover {
@@ -318,6 +344,9 @@
         }
 
         @media (max-width: 1024px) {
+            .contact-section {
+                padding: 60px 40px;
+            }
             .contact-container {
                 flex-direction: column;
                 align-items: center;
@@ -327,16 +356,50 @@
                 max-width: 100%;
                 width: 100%;
             }
+            .contact-form-wrapper {
+                order: 1;
+            }
+            .contact-info {
+                order: 2;
+            }
         }
-        @media (max-width: 600px) {
-            .form-row {
-                flex-direction: column;
+        @media (max-width: 768px) {
+            .contact-section {
+                padding: 40px 20px;
+            }
+            .contact-info h2 {
+                font-size: 26px;
+                line-height: 34px;
+            }
+            .contact-details {
+                margin-bottom: 36px;
+                gap: 20px;
             }
             .contact-form-wrapper {
-                padding: 40px 24px;
+                padding: 36px 20px;
+                border-radius: 16px;
+                min-width: 0;
             }
+            .contact-form-wrapper h2 {
+                margin-bottom: 24px;
+            }
+            .form-row {
+                flex-direction: column;
+                gap: 16px;
+            }
+            .contact-form button {
+                width: 100%;
+                padding: 16px 24px;
+                font-size: 16px;
+                margin: 20px 0 0 0;
+            }
+        }
+        @media (max-width: 480px) {
             .contact-section {
-                padding: 60px 16px;
+                padding: 32px 16px;
+            }
+            .contact-form-wrapper {
+                padding: 28px 16px;
             }
         }
     </style>
@@ -352,26 +415,36 @@
             <div class="faq-wrapper">
                 <h2>Frequently Asked Questions</h2>
                 <div class="faq-list">
-                    <details class="faq-item">
-                        <summary>What is genomic testing?<span class="icon">+</span></summary>
-                        <div class="faq-answer">Lorem ipsum dolor sit amet, consectetur adipiscing elit id venenatis pretium risus euismod dictum egestas.</div>
-                    </details>
-                    <details class="faq-item">
-                        <summary>Who may need genomic testing?<span class="icon">+</span></summary>
-                        <div class="faq-answer">Lorem ipsum dolor sit amet, consectetur adipiscing elit id venenatis pretium risus euismod dictum egestas.</div>
-                    </details>
-                    <details class="faq-item">
-                        <summary>What type of sample is required?<span class="icon">+</span></summary>
-                        <div class="faq-answer">Lorem ipsum dolor sit amet, consectetur adipiscing elit id venenatis pretium risus euismod dictum egestas.</div>
-                    </details>
-                    <details class="faq-item">
-                        <summary>How long do genomic test results take?<span class="icon">+</span></summary>
-                        <div class="faq-answer">Lorem ipsum dolor sit amet, consectetur adipiscing elit id venenatis pretium risus euismod dictum egestas.</div>
-                    </details>
-                    <details class="faq-item">
-                        <summary>Can patients order genomic tests directly?<span class="icon">+</span></summary>
-                        <div class="faq-answer">Lorem ipsum dolor sit amet, consectetur adipiscing elit id venenatis pretium risus euismod dictum egestas.</div>
-                    </details>
+                    <div class="faq-item active">
+                        <button class="faq-summary">What is genomic testing?<span class="icon">+</span></button>
+                        <div class="faq-answer-wrapper">
+                            <div class="faq-answer">Lorem ipsum dolor sit amet, consectetur adipiscing elit id venenatis pretium risus euismod dictum egestas.</div>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-summary">Who may need genomic testing?<span class="icon">+</span></button>
+                        <div class="faq-answer-wrapper">
+                            <div class="faq-answer">Lorem ipsum dolor sit amet, consectetur adipiscing elit id venenatis pretium risus euismod dictum egestas.</div>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-summary">What type of sample is required?<span class="icon">+</span></button>
+                        <div class="faq-answer-wrapper">
+                            <div class="faq-answer">Lorem ipsum dolor sit amet, consectetur adipiscing elit id venenatis pretium risus euismod dictum egestas.</div>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-summary">How long do genomic test results take?<span class="icon">+</span></button>
+                        <div class="faq-answer-wrapper">
+                            <div class="faq-answer">Lorem ipsum dolor sit amet, consectetur adipiscing elit id venenatis pretium risus euismod dictum egestas.</div>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-summary">Can patients order genomic tests directly?<span class="icon">+</span></button>
+                        <div class="faq-answer-wrapper">
+                            <div class="faq-answer">Lorem ipsum dolor sit amet, consectetur adipiscing elit id venenatis pretium risus euismod dictum egestas.</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -396,16 +469,23 @@
         }
         .map-wrapper {
             flex: 1;
-            min-width: 320px;
+            min-width: 300px;
             max-width: 706px;
             height: 479px;
+            min-height: 460px;
             border-radius: 12px;
             overflow: hidden;
             background: #eaeaea;
         }
+        .map-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            display: block;
+            border: 0;
+        }
         .faq-wrapper {
             flex: 1;
-            min-width: 320px;
+            min-width: 300px;
             max-width: 479px;
             display: flex;
             flex-direction: column;
@@ -426,29 +506,34 @@
             border: 1px solid #eaeaea;
             border-radius: 8px;
             overflow: hidden;
-            transition: all 0.2s ease;
+            background-color: #fff;
+            transition: border-color 0.3s ease;
         }
-        .faq-item[open] {
-            background-color: #f4f9fc;
-            border-color: #eaeaea;
+        .faq-item.active {
+            border-color: #0b2545;
         }
-        .faq-item summary {
+        .faq-summary {
+            width: 100%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 60px;
-            padding: 0 20px;
+            min-height: 60px;
+            padding: 14px 20px;
             font-size: 14.5px;
             font-weight: 700;
             color: #111827;
+            background-color: transparent;
+            border: none;
             cursor: pointer;
-            list-style: none;
-            user-select: none;
+            text-align: left;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            font-family: inherit;
         }
-        .faq-item summary::-webkit-details-marker {
-            display: none;
+        .faq-item.active .faq-summary {
+            background-color: #0b2545;
+            color: #ffffff;
         }
-        .faq-item summary .icon {
+        .faq-summary .icon {
             width: 22px;
             height: 22px;
             display: flex;
@@ -459,35 +544,106 @@
             color: #8b9bb4;
             font-size: 16px;
             font-weight: bold;
-            transition: all 0.2s ease;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+            margin-left: 10px;
         }
-        .faq-item[open] summary .icon {
-            background-color: #0d233a;
+        .faq-item.active .faq-summary .icon {
+            background-color: #0b2545;
             color: #ffffff;
             transform: rotate(45deg);
+
+            
+        }
+        .faq-answer-wrapper {
+            display: grid;
+            grid-template-rows: 0fr;
+            transition: grid-template-rows 0.3s ease-in-out, background-color 0.3s ease;
+            background-color: #fff;
+        }
+        .faq-item.active .faq-answer-wrapper {
+            grid-template-rows: 1fr;
+            background-color: #f4f9fc;
         }
         .faq-answer {
-            padding: 0 20px 20px 20px;
+            overflow: hidden;
+            padding: 0 20px;
             font-size: 14px;
             line-height: 1.6;
             color: #4b5563;
+            transition: padding 0.3s ease-in-out;
+            min-height: 0;
+        }
+        .faq-item.active .faq-answer {
+            padding: 0 20px 20px 20px;
         }
 
         @media (max-width: 1024px) {
+            .map-faq-section {
+                padding: 0 40px 60px 40px;
+            }
             .map-faq-container {
                 flex-direction: column;
                 align-items: center;
+                gap: 40px;
             }
             .map-wrapper, .faq-wrapper {
                 width: 100%;
-                height: auto;
+                max-width: 100%;
             }
-            .map-wrapper {
-                height: 400px;
+            .map-wrapper, .map-wrapper iframe {
+                height: 460px !important;
+                min-height: 460px !important;
+            }
+        }
+        @media (max-width: 768px) {
+            .map-faq-section {
+                padding: 0 20px 40px 20px;
+            }
+            .map-wrapper, .map-wrapper iframe {
+                height: 460px !important;
+                min-height: 460px !important;
+            }
+            .faq-wrapper {
+                display: none !important;
+            }
+        }
+        @media (max-width: 480px) {
+            .map-faq-section {
+                padding: 0 16px 32px 16px;
+            }
+            .map-wrapper, .map-wrapper iframe {
+                height: 460px !important;
+                min-height: 460px !important;
             }
         }
     </style>
 
-    @include('components.footer')
+    <div class="main-wrapper">
+        @include('components.footer')
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const summary = item.querySelector('.faq-summary');
+                summary.addEventListener('click', () => {
+                    const isActive = item.classList.contains('active');
+                    
+                    // Close all FAQs
+                    faqItems.forEach(faq => {
+                        faq.classList.remove('active');
+                    });
+                    
+                    // Toggle current FAQ
+                    if (!isActive) {
+                        item.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>

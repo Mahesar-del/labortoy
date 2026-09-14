@@ -56,10 +56,10 @@
     .process-title {
         text-align: center;
         font-family: 'Plus Jakarta Sans', sans-serif;
-        font-size: 2.125rem;
+        font-size: 2.rem;
         font-weight: 700;
         color: #000000;
-        line-height: 2.75rem;
+        line-height: 2.1rem;
         margin-bottom: 2.5rem;
     }
 
