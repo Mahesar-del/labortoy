@@ -10,6 +10,11 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminAuthController;
 use App\Http\Controllers\AdminHeroController;
+use App\Http\Controllers\AdminContactController;
+use App\Http\Controllers\AdminServiceController;
+use App\Http\Controllers\AdminTestController;
+use App\Http\Controllers\AdminMolecularSectionController;
+use App\Http\Controllers\AdminFaqController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,10 +30,10 @@ use App\Http\Controllers\AdminHeroController;
 Route::get('/', [HomeController::class, 'index']);
 
 Route::get('/services', [ServiceController::class, 'index']);
-Route::get('/genomic-diagnostics', [ServiceController::class, 'genomic']);
-Route::get('/service/genomic-diagnostics', [ServiceController::class, 'genomic']);
-Route::get('/service/molecular-diagnostics', [ServiceController::class, 'molecular']);
+Route::get('/chemistry-testing', [ServiceController::class, 'chemistry'])->name('chemistry.testing');
+Route::get('/service/chemistry-testing', [ServiceController::class, 'chemistry']);
 Route::get('/service/clinical-diagnostics', [ServiceController::class, 'clinical']);
+Route::get('/service/{slug}', [ServiceController::class, 'show'])->name('service.show');
 
 Route::get('/provider-page', [ProviderController::class, 'index']);
 Route::get('/appointment', [AppointmentController::class, 'index'])->name('appointment.index');
@@ -41,3 +46,16 @@ Route::post('/admin/logout', [AdminAuthController::class, 'logout'])->name('admi
 Route::get('/admin', [AdminController::class, 'index'])->name('admin.dashboard');
 Route::get('/admin/home-hero', [AdminHeroController::class, 'edit'])->name('admin.home-hero.edit');
 Route::post('/admin/home-hero', [AdminHeroController::class, 'update'])->name('admin.home-hero.update');
+Route::get('/admin/contact-settings', [AdminContactController::class, 'edit'])->name('admin.contact-settings.edit');
+Route::post('/admin/contact-settings', [AdminContactController::class, 'update'])->name('admin.contact-settings.update');
+Route::get('/admin/services', [AdminServiceController::class, 'index'])->name('admin.services.index');
+Route::post('/admin/services', [AdminServiceController::class, 'store'])->name('admin.services.store');
+Route::post('/admin/services/hero-image', [AdminServiceController::class, 'updateHeroImage'])->name('admin.services.hero-image.update');
+Route::get('/admin/services/{id}/edit', [AdminServiceController::class, 'edit'])->name('admin.services.edit');
+Route::post('/admin/services/{id}/edit', [AdminServiceController::class, 'update'])->name('admin.services.update');
+Route::get('/admin/tests', [AdminTestController::class, 'index'])->name('admin.tests.index');
+Route::post('/admin/tests', [AdminTestController::class, 'store'])->name('admin.tests.store');
+Route::get('/admin/faqs', [AdminFaqController::class, 'index'])->name('admin.faqs.index');
+Route::post('/admin/faqs', [AdminFaqController::class, 'store'])->name('admin.faqs.store');
+Route::get('/admin/molecular-specimens', [AdminMolecularSectionController::class, 'edit'])->name('admin.molecular-specimens.edit');
+Route::post('/admin/molecular-specimens', [AdminMolecularSectionController::class, 'update'])->name('admin.molecular-specimens.update');

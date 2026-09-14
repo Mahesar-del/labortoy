@@ -1447,7 +1447,7 @@
                             <p class="card-text">
                                 Testing at the molecular level to identify markers relevant to infection, disease activity and treatment planning.
                             </p>
-                            <a href="{{ url('/service/molecular-diagnostics') }}" class="explore-btn">
+                            <a href="{{ url('/service/chemistry-testing') }}" class="explore-btn">
                                 Explore Service
                                 <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                             </a>

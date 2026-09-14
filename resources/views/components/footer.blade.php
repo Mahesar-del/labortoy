@@ -576,7 +576,7 @@
                             </div>
                             <div class="contact-text">
                                 <h5>Laboratory Location</h5>
-                                <p>5th Street, 21st Floor, New York, USA</p>
+                                <p>{!! nl2br(e(DB::table('site_settings')->where('key','contact_address')->value('value') ?: '5th Street, 21st Floor, New York, USA')) !!}</p>
                             </div>
                         </div>
 
@@ -586,7 +586,7 @@
                             </div>
                             <div class="contact-text">
                                 <h5>Customer Support</h5>
-                                <p>info@example.com</p>
+                                <p>{{ DB::table('site_settings')->where('key','contact_email')->value('value') ?: 'info@example.com' }}</p>
                             </div>
                         </div>
 
@@ -596,7 +596,7 @@
                             </div>
                             <div class="contact-text">
                                 <h5>Speak with us</h5>
-                                <p>(888) 4567890</p>
+                                <p>{{ DB::table('site_settings')->where('key','contact_phone')->value('value') ?: '(888) 4567890' }}</p>
                             </div>
                         </div>
                     </div>

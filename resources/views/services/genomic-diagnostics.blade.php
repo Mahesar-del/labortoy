@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Genomic Diagnostics</title>
+    <title>Chemistry Testing</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -11,31 +11,43 @@
 </head>
 <body>
     @include('components.header')
-    @include('components.services-hero')
+    @include('components.services-hero', ['title' => nl2br(e($service->hero_heading ?? 'Chemistry Testing')), 'description' => $service->hero_description ?? 'Accurate chemistry testing that supports diagnosis, monitoring, and informed clinical decisions.', 'buttonText' => $service->button_text ?? 'Book an Appointment', 'buttonLink' => $service->button_link ?? '/appointment', 'bgImage' => !empty($service->hero_image) ? asset('storage/'.$service->hero_image) : asset('images/clinical-test.png')])
     
     <section class="understanding-genomic" aria-labelledby="understanding-genomic-title">
         <div class="understanding-genomic__container">
             <div class="understanding-genomic__content">
-                <h2 id="understanding-genomic-title">Understanding Genomic Diagnostics</h2>
-                <p>Genomic diagnostics uses advanced laboratory testing to examine a person's genetic information and identify changes within DNA that may be associated with inherited conditions, disease risk, or other clinically relevant findings. By looking beyond traditional diagnostic approaches, genomic testing can provide healthcare providers with deeper insight into the biological factors that may contribute to a patient's condition.</p>
-                <p>Sterling combines laboratory expertise with advanced genomic technologies to generate reliable diagnostic information for healthcare providers and their patients.</p>
+                <h2 id="understanding-genomic-title">Understanding Chemistry Testing</h2>
+                <p>Chemistry testing provides important laboratory information used to assess metabolic health, organ function, and other key clinical indicators. At Sterling, routine chemistry testing is performed using established laboratory methods and appropriate analyzers to support consistent and reliable results. Our chemistry testing menu is determined by clinical demand, laboratory capabilities, and the selected analyzer, allowing testing services to remain focused on practical clinical needs.</p>
+                <ul class="chemistry-points">
+                    <li>Supports metabolic and organ health assessment.</li>
+                    <li>Uses reliable laboratory testing methods.</li>
+                    <li>Based on clinical needs and analyser capabilities.</li>
+                </ul>
             </div>
     
             <img class="understanding-genomic__image" src="{{ asset('images/understanding-genomic.jpg') }}" alt="Child receiving care in a hospital room">
         </div>
     </section>
+
+    @if($tests->isNotEmpty())
+    <section class="assigned-tests"><h2>Available Tests</h2><div class="assigned-tests__grid">@foreach($tests as $test)<article class="assigned-test">@if($test->image_path)<img src="{{ asset('storage/'.$test->image_path) }}" alt="{{ $test->name }}">@endif<div><h3>{{ $test->heading ?: $test->name }}</h3><p>{{ $test->description }}</p></div></article>@endforeach</div></section>
+    <style>.assigned-tests{max-width:1240px;margin:20px auto 60px;padding:0 99px}.assigned-tests h2{color:#102d55}.assigned-tests__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}.assigned-test{overflow:hidden;border-radius:18px;background:#09243f;color:#fff}.assigned-test img{width:100%;height:190px;object-fit:cover;display:block}.assigned-test div{padding:18px}.assigned-test h3{margin:0 0 8px}.assigned-test p{margin:0;color:#d8e6ee;line-height:1.6}@media(max-width:700px){.assigned-tests{padding:0 28px}.assigned-tests__grid{grid-template-columns:1fr}}</style>
+    @endif
     
     <style>
         .understanding-genomic, .understanding-genomic * { box-sizing: border-box; }
         .understanding-genomic { background: #fff; padding: 25px 0; }
-        .understanding-genomic__container { align-items: start; display: grid; gap: clamp(36px, 7vw, 110px); grid-template-columns: minmax(0, 1.05fr) minmax(320px, .85fr); margin: 0 auto; max-width: 1440px; padding: 0 99px; }
+        .understanding-genomic__container { align-items: stretch; display: grid; gap: clamp(36px, 7vw, 110px); grid-template-columns: minmax(0, 1.05fr) minmax(320px, .85fr); margin: 0 auto; max-width: 1440px; padding: 0 99px; }
         .understanding-genomic__content { max-width: 650px; }
         .understanding-genomic h2 { color: #000; font-size: clamp(24px, 2vw, 34px); letter-spacing: -.03em; line-height: 1.2; margin: 0 0 22px; text-align: justify; }
         .understanding-genomic p { color: #000; font-size: clamp(14px, 1vw, 16px); line-height: 1.75; margin: 0 0 20px; text-align: justify; }
         .understanding-genomic p:last-child { margin-bottom: 0; }
-        .understanding-genomic__image { aspect-ratio: 1.5 / 1; border-radius: 18px; display: block; object-fit: cover; overflow: hidden; width: 100%; }
-        @media (max-width: 700px) { .understanding-genomic { padding: 52px 0; } .understanding-genomic__container { padding: 0 28px; gap: 30px; grid-template-columns: 1fr; } .understanding-genomic h2 { text-align: left; } .understanding-genomic__image { order: -1; } }
+        .chemistry-points { color: #000; font-size: clamp(14px, 1vw, 16px); line-height: 1.75; margin: 0; padding-left: 22px; }
+        .understanding-genomic__image { align-self: stretch; border-radius: 18px; display: block; height: 100%; min-height: 100%; object-fit: cover; overflow: hidden; width: 100%; }
+        @media (max-width: 700px) { .understanding-genomic { padding: 52px 0; } .understanding-genomic__container { padding: 0 28px; gap: 30px; grid-template-columns: 1fr; } .understanding-genomic h2 { text-align: left; } .understanding-genomic__image { order: -1; height: auto; min-height: 0; } }
     </style>
+    
+    @include('components.chemistry-testing-services')
     
     @php
         $genomicServices = [
@@ -72,7 +84,8 @@
         ];
     @endphp
     
-    <section class="genomic-testing-services" aria-labelledby="genomic-testing-services-title">
+    {{-- Temporarily hidden at the client's request; content is preserved for later use. --}}
+    {{-- <section class="genomic-testing-services" aria-labelledby="genomic-testing-services-title">
         <div class="genomic-testing-services__container">
             <header class="genomic-testing-services__header">
                 <h2 id="genomic-testing-services-title">Genomic Testing Services</h2>
@@ -124,20 +137,11 @@
             .genomic-service-detail__content, .genomic-service-detail--reversed .genomic-service-detail__content { grid-column: 1; grid-row: 2; padding-top: 0; }
             .genomic-service-detail__image, .genomic-service-detail--reversed .genomic-service-detail__image { grid-column: 1; grid-row: 1; }
         }
-    </style>
+    </style> --}}
     
-    @include('components.three-cards-overlap', [
-        'title' => 'Where Genomic Diagnostics Can Help',
-        'description' => 'Genomic information can provide valuable insights across multiple areas of patient care<br class="genomic-help__desktop-break"> and clinical investigation.',
-        'backgroundImage' => asset('images/why-genomic.jpg'),
-        'cards' => [
-            ['icon' => asset('images/dna.svg'), 'title' => 'Inherited Conditions', 'text' => 'Support investigation of genetic conditions that may run within families.'],
-            ['icon' => asset('images/Cancer.svg'), 'title' => 'Cancer Genetics', 'text' => 'Help evaluate genetic variants associated with hereditary cancer risk.'],
-            ['icon' => asset('images/target.svg'), 'title' => 'Precision Medicine', 'text' => 'Provide genomic insights that may support individualized approaches to treatment.']
-        ]
-    ])
+    {{-- Managed from Admin > Services > Molecular Cards. --}}
+    @include('components.specimens-molecular')
 
-    
     @include('components.process-explained')
     @include('components.faq')
     @include('components.diagnostics-cta.cta')

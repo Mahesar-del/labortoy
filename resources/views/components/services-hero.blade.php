@@ -6,7 +6,7 @@
         <div class="services-hero__content">
             <h1 id="services-hero-title">{!! $title ?? 'Genomic<br>Diagnostics' !!}</h1>
             <p>{{ $description ?? 'Advanced genomic testing that helps identify genetic variation, understand disease risk, and support more informed clinical decisions.' }}</p>
-            <a class="services-hero__button" href="{{ route('appointment.index') }}">Book an Appointment</a>
+            <a class="services-hero__button" href="{{ $buttonLink ?? route('appointment.index') }}">{{ $buttonText ?? 'Book an Appointment' }}</a>
         </div>
     </div>
 </section>

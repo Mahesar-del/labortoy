@@ -16,61 +16,8 @@
 <body>
     @include('components.header')
 
-    <section class="services-hero" aria-labelledby="services-hero-title">
-        <div class="services-hero__background" style="background-image: url('{{ asset('img/genomic-diagnostics-hero.png') }}');"></div>
-        <div class="services-hero__overlay"></div>
-    
-        <div class="services-hero__container">
-            <div class="services-hero__content">
-                <h1 id="services-hero-title">Contact Us</h1>
-                <p>Access laboratory testing information, specimen requirements, clinical resources, and provider support to help you navigate the testing process with Sterling.</p>
-            </div>
-        </div>
-    </section>
-    
-    <style>
-        .services-hero, .services-hero * { box-sizing: border-box; }
-        .services-hero { background: #020b1c; color: #fff; isolation: isolate; min-height: 460px; overflow: hidden; position: relative; padding: 0 99px; box-sizing: border-box; }
-        .services-hero__background, .services-hero__overlay { height: 100%; inset: 0; position: absolute; width: 100%; }
-        .services-hero__background { background-position: center; background-repeat: no-repeat; background-size: 100% 100%; z-index: -2; }
-        .services-hero__overlay { background: linear-gradient(90deg, rgba(7,26,49,.96) 0%, rgba(7,26,49,.86) 48%, rgba(7,26,49,.25) 100%); z-index: -1; }
-        .services-hero__container { align-items: center; display: flex; margin: 0 auto; max-width: 1320px; width: 100%; min-height: 460px; padding: 56px 0; }
-        .services-hero__content { max-width: 580px; }
-        .services-hero h1 { font-size: clamp(32px, 3.1vw, 56px); letter-spacing: -.04em; line-height: 1.1; margin: 0; }
-        .services-hero p { 
-            font-family: 'Inter', sans-serif;
-            font-weight: 400;
-            font-size: 18px; 
-            line-height: 30px; 
-            letter-spacing: 0px;
-            color: #D9E5EE; 
-            margin: 25px 0 30px; 
-            text-align: justify;
-        }
-        @media (max-width: 1024px) {
-            .services-hero { padding: 0 40px; }
-        }
-        @media (max-width: 768px) {
-            .services-hero { padding: 0 20px; min-height: auto; }
-            .services-hero__container { align-items: flex-start; padding: 80px 0 40px 0; min-height: 340px; }
-            .services-hero__overlay { background: linear-gradient(180deg, rgba(7,26,49,.96) 0%, rgba(7,26,49,.85) 100%); }
-            .services-hero__content { max-width: 100%; text-align: left; padding-top: 10px; }
-            .services-hero h1 {
-                font-size: 34px;
-                letter-spacing: -0.02em;
-                line-height: 1.15;
-            }
-            .services-hero p {
-                font-family: 'Inter', sans-serif;
-                font-weight: 400;
-                font-size: 16px;
-                line-height: 30px;
-                letter-spacing: 0px;
-                text-align: justify;
-                margin: 18px 0 20px;
-            }
-        }
-    </style>
+    <section class="contact-hero" aria-labelledby="contact-hero-title"><div class="contact-hero__image"></div><div class="contact-hero__shade"></div><div class="contact-hero__content"><h1 id="contact-hero-title">Contact Us</h1><p>Access laboratory testing information, specimen requirements, clinical resources, and provider support to help you navigate the testing process with Sterling.</p></div></section>
+    <style>.contact-hero{background:#041b34;color:#fff;height:500px;isolation:isolate;overflow:hidden;position:relative}.contact-hero__image,.contact-hero__shade{inset:0;position:absolute}.contact-hero__image{background-image:url('{{ asset('images/molecular-diagonostics-hero-img.jpg') }}');background-position:center;background-repeat:no-repeat;background-size:cover;z-index:-2}.contact-hero__shade{background:linear-gradient(90deg,rgba(3,21,42,.98) 0%,rgba(3,21,42,.92) 38%,rgba(3,21,42,.42) 67%,rgba(3,21,42,.16));z-index:-1}.contact-hero__content{left:max(7%,calc((100% - 1500px)/2 + 7%));max-width:700px;position:absolute;top:50%;transform:translateY(-50%)}.contact-hero h1{font:800 clamp(44px,4.2vw,62px)/.98 'Plus Jakarta Sans',sans-serif;letter-spacing:-.055em;margin:0 0 38px}.contact-hero p{color:#f4f8fb;font:400 clamp(17px,1.35vw,22px)/1.8 'Inter',sans-serif;margin:0;max-width:680px}@media(max-width:700px){.contact-hero{height:410px}.contact-hero__image{background-position:64% center}.contact-hero__shade{background:linear-gradient(90deg,rgba(3,21,42,.97),rgba(3,21,42,.72))}.contact-hero__content{left:28px;right:28px}.contact-hero h1{margin-bottom:24px}.contact-hero p{font-size:16px;line-height:1.65}}</style>
 
     <section class="contact-section">
         <div class="contact-container">
@@ -86,7 +33,7 @@
                         </div>
                         <div class="contact-text">
                             <strong>Laboratory Location</strong>
-                            <span>5th Street, 21st Floor, New York, USA</span>
+                            <span>{!! nl2br(e($contact->address)) !!}</span>
                         </div>
                     </div>
                     <div class="contact-item">
@@ -95,7 +42,7 @@
                         </div>
                         <div class="contact-text">
                             <strong>Customer Support</strong>
-                            <span>info@example.com</span>
+                            <span>{{ $contact->email }}</span>
                         </div>
                     </div>
                     <div class="contact-item">
@@ -104,7 +51,7 @@
                         </div>
                         <div class="contact-text">
                             <strong>Appointment & Reports</strong>
-                            <span>(888) 4567890</span>
+                            <span>{{ $contact->phone }}</span>
                         </div>
                     </div>
                 </div>
@@ -120,7 +67,7 @@
             </div>
 
             <!-- Right Form Section -->
-            <div class="contact-form-wrapper">
+            <div class="contact-form-wrapper" id="contact-form">
                 <h2>Have Any Questions Contact With Us</h2>
                 <form class="contact-form">
                     <div class="form-row">
@@ -140,7 +87,7 @@
 
     <style>
         .contact-section {
-            padding: 80px 99px;
+            padding: 25px 99px;
             background-color: #ffffff;
             color: #0d233a;
             font-family: 'Manrope', sans-serif;
@@ -408,7 +355,7 @@
         <div class="map-faq-container">
             <!-- Left Map -->
             <div class="map-wrapper">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2483.057396656094!2d-0.14447608422961425!3d51.523091979637775!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48761ad554c335c1%3A0xda2164b934c67c1a!2sFitzrovia%2C%20London!5e0!3m2!1sen!2suk!4v1650000000000!5m2!1sen!2suk" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <iframe src="https://www.google.com/maps?q={{ urlencode($contact->address) }}&output=embed" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
 
             <!-- Right FAQ -->
@@ -418,31 +365,31 @@
                     <div class="faq-item active">
                         <button class="faq-summary">What is genomic testing?<span class="icon">+</span></button>
                         <div class="faq-answer-wrapper">
-                            <div class="faq-answer">Lorem ipsum dolor sit amet, consectetur adipiscing elit id venenatis pretium risus euismod dictum egestas.</div>
+                            <div class="faq-answer">Genomic testing examines DNA to identify inherited variants and other molecular findings that can support diagnosis, risk assessment, and personalized treatment decisions.</div>
                         </div>
                     </div>
                     <div class="faq-item">
                         <button class="faq-summary">Who may need genomic testing?<span class="icon">+</span></button>
                         <div class="faq-answer-wrapper">
-                            <div class="faq-answer">Lorem ipsum dolor sit amet, consectetur adipiscing elit id venenatis pretium risus euismod dictum egestas.</div>
+                            <div class="faq-answer">It may be considered when there is a family history of an inherited condition, an unexplained diagnosis, or a need to guide treatment using a patient’s genetic information.</div>
                         </div>
                     </div>
                     <div class="faq-item">
                         <button class="faq-summary">What type of sample is required?<span class="icon">+</span></button>
                         <div class="faq-answer-wrapper">
-                            <div class="faq-answer">Lorem ipsum dolor sit amet, consectetur adipiscing elit id venenatis pretium risus euismod dictum egestas.</div>
+                            <div class="faq-answer">Depending on the test, the laboratory may require a blood sample, saliva, or another specimen. Your provider will confirm the correct collection instructions.</div>
                         </div>
                     </div>
                     <div class="faq-item">
                         <button class="faq-summary">How long do genomic test results take?<span class="icon">+</span></button>
                         <div class="faq-answer-wrapper">
-                            <div class="faq-answer">Lorem ipsum dolor sit amet, consectetur adipiscing elit id venenatis pretium risus euismod dictum egestas.</div>
+                            <div class="faq-answer">Turnaround varies by test complexity. Many genomic tests are completed within two to four weeks, and your provider will share the final report when it is ready.</div>
                         </div>
                     </div>
                     <div class="faq-item">
                         <button class="faq-summary">Can patients order genomic tests directly?<span class="icon">+</span></button>
                         <div class="faq-answer-wrapper">
-                            <div class="faq-answer">Lorem ipsum dolor sit amet, consectetur adipiscing elit id venenatis pretium risus euismod dictum egestas.</div>
+                            <div class="faq-answer">Some tests may be available by direct ordering, while others require a healthcare provider’s order. Contact Sterling to confirm the requirements for a specific test.</div>
                         </div>
                     </div>
                 </div>
@@ -575,7 +522,7 @@
             min-height: 0;
         }
         .faq-item.active .faq-answer {
-            padding: 0 20px 20px 20px;
+            padding: 20px 20px 20px 20px;
         }
 
         @media (max-width: 1024px) {

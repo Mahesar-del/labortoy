@@ -15,5 +15,23 @@
     document.querySelectorAll('.nav a[href="/"]').forEach(function (link) {
         link.href = '{{ route('admin.home-hero.edit') }}';
     });
+    document.querySelectorAll('.nav a[href="#contacts"]').forEach(function (link) {
+        link.href = '{{ route('admin.contact-settings.edit') }}';
+    });
+    document.querySelectorAll('.nav a[href="/services"]').forEach(function (link) {
+        link.href = '{{ route('admin.services.index') }}';
+    });
+    const servicesLink = document.querySelector('.nav a[href="{{ route('admin.services.index') }}"]');
+    if (servicesLink) {
+        const testLink = servicesLink.cloneNode(true);
+        testLink.href = '{{ route('admin.tests.index') }}';
+        testLink.querySelector('span').textContent = 'Tests';
+        servicesLink.parentNode.insertBefore(testLink, servicesLink.nextSibling);
+
+        const faqLink = servicesLink.cloneNode(true);
+        faqLink.href = '{{ route('admin.faqs.index') }}';
+        faqLink.querySelector('span').textContent = 'FAQs';
+        servicesLink.parentNode.insertBefore(faqLink, testLink.nextSibling);
+    }
 </script>
 </body></html>

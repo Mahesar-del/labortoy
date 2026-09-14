@@ -2,26 +2,13 @@
     <div class="specimens-backdrop"></div>
     <div class="specimens-container">
         <div class="specimens-content">
-            <h2 id="specimens-title">Specimens Used for Molecular Testing</h2>
-            <p>Molecular testing can require different specimen types depending on the specific test and clinical indication. Final specimen requirements should always be based on Sterling's current test menu and laboratory protocols.</p>
+            <h2 id="specimens-title">{{ $specimens['heading'] ?? 'Specimens Used for Molecular Testing' }}</h2>
+            <p>{{ $specimens['description'] ?? 'Molecular testing can require different specimen types depending on the specific test and clinical indication. Final specimen requirements should always be based on Sterling’s current test menu and laboratory protocols.' }}</p>
         </div>
         <div class="specimens-grid">
-            <article class="specimen-card">
-                <h3>Blood</h3>
-                <p>Used for selected molecular and genetic investigations.</p>
-            </article>
-            <article class="specimen-card">
-                <h3>Swab</h3>
-                <p>May be used for selected infectious or respiratory testing.</p>
-            </article>
-            <article class="specimen-card">
-                <h3>Tissue</h3>
-                <p>May support specific oncology and molecular investigations.</p>
-            </article>
-            <article class="specimen-card">
-                <h3>Other Specimens</h3>
-                <p>Requirements vary according to the individual test.</p>
-            </article>
+            @foreach(($specimens['card_heading'] ?? ['Blood','Swab','Tissue','Other Specimens']) as $index => $heading)
+            <article class="specimen-card"><h3>{{ $heading }}</h3><p>{{ $specimens['card_description'][$index] ?? '' }}</p></article>
+            @endforeach
         </div>
     </div>
 </section>
@@ -30,7 +17,7 @@
     .specimens-section, .specimens-section * { box-sizing: border-box; }
     .specimens-section {
         position: relative;
-        padding: 50px 7%;
+        padding: clamp(56px, 6vw, 88px) 7%;
         background-color: #0B2545; /* Base color fallback */
         color: #ffffff;
         isolation: isolate;
@@ -49,30 +36,30 @@
 
     .specimens-container {
         display: grid;
-        grid-template-columns: 1.1fr 0.9fr;
-        gap: 60px;
-        max-width: 1320px;
+        grid-template-columns: minmax(0, .92fr) minmax(520px, 1.08fr);
+        gap: clamp(42px, 6vw, 88px);
+        max-width: 1440px;
         margin: 0 auto;
         align-items: center;
     }
 
     .specimens-content h2 {
         font-family: 'Plus Jakarta Sans', sans-serif;
-        font-size: 34px;
+        font-size: clamp(28px, 2.4vw, 40px);
         font-weight: 700;
-        line-height: 44px;
+        line-height: 1.15;
         margin-top: 0;
-        margin-bottom: 24px;
+        margin-bottom: 18px;
         letter-spacing: 0px;
         color: #ffffff;
     }
 
     .specimens-content p {
         font-family: 'Inter', sans-serif;
-        font-size: 16px;
+        font-size: 15px;
         font-weight: 400;
-        line-height: 30px;
-        text-align: justify;
+        line-height: 1.7;
+        text-align: left;
         margin: 0;
         color: #ffffff;
     }
@@ -80,52 +67,53 @@
     .specimens-grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 20px;
+        gap: 16px;
     }
 
     .specimen-card {
         background: #ffffff;
-        border: 0.67px solid #000000;
-        border-radius: 12px;
-        padding: 32px 28px;
+        border: 1px solid rgba(255,255,255,.75);
+        border-radius: 14px;
+        min-height: 156px;
+        padding: 25px 24px;
         color: #000000;
         box-shadow: 0 10px 30px rgba(0,0,0,0.15);
     }
 
     .specimen-card h3 {
         font-family: 'Plus Jakarta Sans', sans-serif;
-        font-size: 20px;
+        font-size: 19px;
         font-weight: 700;
-        line-height: 30px;
-        margin-top: 0;
-        margin-bottom: 12px;
+        line-height: 1.25;
+        margin: 0 0 10px;
         color: #000000;
         letter-spacing: 0px;
     }
 
     .specimen-card p {
         font-family: 'Inter', sans-serif;
-        font-size: 16px;
+        font-size: 14px;
         font-weight: 400;
-        line-height: 24px;
+        line-height: 1.5;
         margin: 0;
         color: #000000;
         letter-spacing: 0px;
     }
 
-    @media (max-width: 992px) {
+    @media (max-width: 1050px) {
         .specimens-container {
             grid-template-columns: 1fr;
-            gap: 45px;
+            gap: 32px;
         }
     }
 
     @media (max-width: 600px) {
         .specimens-section {
-            padding: 60px 28px;
+            padding: 52px 24px;
         }
         .specimens-grid {
             grid-template-columns: 1fr;
         }
+        .specimen-card { min-height: 0; }
     }
 </style>
