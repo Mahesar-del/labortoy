@@ -73,6 +73,16 @@ class AdminServiceController extends Controller
             'hero_heading' => 'nullable|string|max:150',
             'hero_description' => 'nullable|string|max:1500',
             'hero_image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:5120',
+            'help_heading' => 'nullable|string|max:180',
+            'help_description' => 'nullable|string|max:1500',
+            'help_card_heading' => 'nullable|array|size:4',
+            'help_card_heading.*' => 'nullable|string|max:100',
+            'help_card_description' => 'nullable|array|size:4',
+            'help_card_description.*' => 'nullable|string|max:500',
+            'intro_heading' => 'nullable|string|max:180',
+            'intro_description' => 'nullable|string|max:3000',
+            'intro_bullets' => 'nullable|string|max:1500',
+            'intro_image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:5120',
             'button_text' => 'nullable|string|max:80',
             'button_link' => 'nullable|string|max:255',
         ]);
@@ -86,6 +96,17 @@ class AdminServiceController extends Controller
             'button_text' => $data['button_text'] ?? 'Book an Appointment', 'button_link' => $data['button_link'] ?? '/appointment',
             'updated_at' => now(),
         ];
+        if ($request->has('help_card_heading')) {
+            $cards = [];
+            for ($i = 0; $i < 4; $i++) $cards[] = ['heading' => $data['help_card_heading'][$i] ?? '', 'description' => $data['help_card_description'][$i] ?? ''];
+            $values['help_heading'] = $data['help_heading'] ?? null;
+            $values['help_description'] = $data['help_description'] ?? null;
+            $values['help_cards'] = json_encode($cards);
+        }
+        $values['intro_heading'] = $data['intro_heading'] ?? null;
+        $values['intro_description'] = $data['intro_description'] ?? null;
+        $values['intro_bullets'] = $data['intro_bullets'] ?? null;
+        if ($request->hasFile('intro_image')) $values['intro_image'] = $request->file('intro_image')->store('service-intros', 'public');
         if ($request->hasFile('hero_image')) $values['hero_image'] = $request->file('hero_image')->store('service-heroes', 'public');
         DB::table('services')->where('id', $service->id)->update($values);
         return redirect()->route('admin.services.index')->with('success', 'Service updated successfully.');

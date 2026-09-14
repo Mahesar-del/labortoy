@@ -1,0 +1,3 @@
+<?php
+use Illuminate\Database\Migrations\Migration;use Illuminate\Database\Schema\Blueprint;use Illuminate\Support\Facades\Schema;
+class AddIntroSectionToServicesTable extends Migration { public function up(){Schema::table('services',function(Blueprint $table){$table->string('intro_heading')->nullable();$table->text('intro_description')->nullable();$table->text('intro_bullets')->nullable();$table->string('intro_image')->nullable();});} public function down(){Schema::table('services',function(Blueprint $table){$table->dropColumn(['intro_heading','intro_description','intro_bullets','intro_image']);});}}

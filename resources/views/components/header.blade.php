@@ -273,15 +273,18 @@ p {
             <img src="{{ asset('images/header-logo.svg') }}" alt="Sterling Logo" style="height: auto; max-height: 85px; width: 100%; object-fit: contain; object-position: left;">
         </a>
 
+    @php($headerServices = \Illuminate\Support\Facades\DB::table('services')->where('is_active', true)->orderBy('name')->get())
     <ul class="nav-links">
         <li class="has-megamenu">
             <a href="/services">Services</a>
             <div class="megamenu">
                 <div class="megamenu-column">
                     <ul>
-                        <li><a href="#">Clinical Services</a></li>
-                        <li><a href="#">Specialty Testing</a></li>
-                        <li><a href="#">Genetics</a></li>
+                        @forelse($headerServices as $headerService)
+                            <li><a href="{{ url('/service/'.$headerService->slug) }}">{{ $headerService->name }}</a></li>
+                        @empty
+                            <li><a href="/services">View Services</a></li>
+                        @endforelse
                     </ul>
                 </div>
             </div>

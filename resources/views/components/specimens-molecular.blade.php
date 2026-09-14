@@ -2,12 +2,13 @@
     <div class="specimens-backdrop"></div>
     <div class="specimens-container">
         <div class="specimens-content">
-            <h2 id="specimens-title">{{ $specimens['heading'] ?? 'Specimens Used for Molecular Testing' }}</h2>
-            <p>{{ $specimens['description'] ?? 'Molecular testing can require different specimen types depending on the specific test and clinical indication. Final specimen requirements should always be based on Sterling’s current test menu and laboratory protocols.' }}</p>
+            <h2 id="specimens-title">{{ $service->help_heading ?? ($specimens['heading'] ?? 'Service Highlights') }}</h2>
+            <p>{{ $service->help_description ?? ($specimens['description'] ?? 'Explore key areas where this laboratory service can support clinical decision-making.') }}</p>
         </div>
         <div class="specimens-grid">
-            @foreach(($specimens['card_heading'] ?? ['Blood','Swab','Tissue','Other Specimens']) as $index => $heading)
-            <article class="specimen-card"><h3>{{ $heading }}</h3><p>{{ $specimens['card_description'][$index] ?? '' }}</p></article>
+            @php($serviceCards = !empty($service->help_cards) ? json_decode($service->help_cards, true) : null)
+            @foreach($serviceCards ?: collect($specimens['card_heading'] ?? ['Blood','Swab','Tissue','Other Specimens'])->map(function($heading, $index) use ($specimens) { return ['heading' => $heading, 'description' => $specimens['card_description'][$index] ?? '']; })->all() as $card)
+            <article class="specimen-card"><h3>{{ $card['heading'] }}</h3><p>{{ $card['description'] }}</p></article>
             @endforeach
         </div>
     </div>
