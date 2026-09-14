@@ -7,7 +7,7 @@
             <h1 id="services-hero-title">{!! $title ?? 'Healthcare Provider<br>Services' !!}</h1>
             <p>{{ $description ?? 'Streamlined laboratory testing, fast turnaround times, and dedicated support designed specifically for healthcare providers and clinical partners.' }}</p>
             @if(!isset($showButton) || $showButton !== false)
-                <a class="services-hero__button" href="{{ $buttonLink ?? '#appointment' }}">{{ $buttonText ?? 'Book an Appointment' }}</a>
+                <a class="services-hero__button" href="{{ $buttonLink ?? route('appointment.index') }}">{{ $buttonText ?? 'Book an Appointment' }}</a>
             @endif
         </div>
     </div>
