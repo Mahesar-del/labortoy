@@ -1,26 +1,18 @@
 <style>
         /* Footer Styling */
         .site-footer {
-            background-color: #06162a;
-            background: radial-gradient(circle at top left, rgba(26, 188, 156, 0.45) 0%, transparent 35%),
-                        radial-gradient(circle at bottom right, rgba(26, 188, 156, 0.45) 0%, transparent 35%),
-                        #06162a;
+            background-color: #06162a; /* Dark blue base */
+            background: radial-gradient(circle at top left, rgba(26, 188, 156, 0.65) 0%, transparent 17%),
+                        radial-gradient(circle at bottom right, rgba(26, 188, 156, 0.65) 0%, transparent 17%),
+                        #06162a; /* Cyan glows and base color */
             color: #ffffff;
-<<<<<<< HEAD
             padding: 4.375rem 6.1875rem 6.5rem 6.1875rem;
-=======
-            padding: 4.375rem 2.5rem 5.625rem 2.5rem;
->>>>>>> Farukh
             font-family: 'Inter', sans-serif;
             position: relative;
             width: 100%;
             max-width: 100%;
             margin: 0 auto;
             min-height: 33.8125rem;
-<<<<<<< HEAD
-=======
-            height: auto;
->>>>>>> Farukh
             box-sizing: border-box;
             border-top-left-radius: 1.5625rem;
             border-top-right-radius: 1.5625rem;
@@ -198,63 +190,35 @@
         .footer-contact-info {
             display: flex;
             justify-content: space-between;
-            align-items: flex-start;
             padding: 0;
-            margin-top: 3.125rem;
+            margin-top: 3.125rem; /* Reduced to tighten the gap */
             max-width: 1320px;
             margin-left: auto;
             margin-right: auto;
             width: 100%;
-            gap: 1.5rem;
         }
 
-        .footer-contact-info .footer-item {
+        .contact-item {
             display: flex;
-            align-items: flex-start;
-            gap: 1rem;
-            flex: 1;
-            min-width: 0;
+            align-items: center;
+            gap: 0.9375rem;
         }
 
-        .contact-item:first-child {
-            flex: 1.25;
-        }
-
-<<<<<<< HEAD
         .contact-icon {
-            width: 3rem;
-            height: 3rem;
-            background-color: #14B8A6;
-=======
-        .footer-contact-info .footer-icon {
             width: 2.8125rem;
             height: 2.8125rem;
-            background-color: #1ABC9C !important;
->>>>>>> 3cf52811488d80e97e888d274d05f99a775e313d
+            background-color: #1ABC9C;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #ffffff;
+            color: white;
             flex-shrink: 0;
-            margin-top: 0.125rem;
-            transition: transform 0.2s ease, background-color 0.2s ease;
         }
 
-        .contact-item:hover .contact-icon {
-            transform: scale(1.05);
-            background-color: #0d9488;
-        }
-
-<<<<<<< HEAD
         .contact-icon svg {
-            width: 1.35rem;
-            height: 1.35rem;
-=======
-        .footer-contact-info .footer-icon svg {
             width: 1.25rem;
             height: 1.25rem;
->>>>>>> 3cf52811488d80e97e888d274d05f99a775e313d
             stroke: currentColor;
             fill: none;
             stroke-width: 2;
@@ -262,46 +226,19 @@
             stroke-linejoin: round;
         }
 
-<<<<<<< HEAD
-        .contact-text {
-            display: flex;
-            flex-direction: column;
-            gap: 0.25rem;
-            min-width: 0;
-        }
-
         .contact-text h5 {
-=======
-        .footer-contact-info .footer-text h5 {
->>>>>>> 3cf52811488d80e97e888d274d05f99a775e313d
             margin: 0;
             font-size: 1rem;
-            font-weight: 600;
+            font-weight: 500;
             color: #ffffff;
-            white-space: nowrap;
-            line-height: 1.3;
         }
 
-<<<<<<< HEAD
-        .contact-text p,
-        .contact-text p a {
-            margin: 0;
-            font-size: 0.875rem;
-            color: #94A3B8;
-            text-decoration: none;
-            line-height: 1.4;
-            transition: color 0.2s ease;
-        }
-
-        .contact-text p a:hover {
-            color: #14B8A6;
-=======
-        .footer-contact-info .footer-text p {
+        .contact-text p {
             margin: 0.3125rem 0 0 0;
             font-size: 0.875rem;
             color: #FFFFFF;
             letter-spacing: 0.0625rem;
->>>>>>> 3cf52811488d80e97e888d274d05f99a775e313d
+
         }
 
         .footer-bottom {
@@ -387,12 +324,8 @@
 
             .footer-contact-info {
                 flex-direction: column;
-                gap: 1.25rem;
-<<<<<<< HEAD
-                margin-top: 1.5rem;
-=======
+                gap: 0.1rem;
                 margin-top: 1.25rem;
->>>>>>> 3cf52811488d80e97e888d274d05f99a775e313d
             }
 
             .footer-bottom {
@@ -417,6 +350,151 @@
             .footer-bottom::after {
                 right: -1.25rem;
                 background: radial-gradient(circle at 100% 0, transparent 1.25rem, #ffffff 1.28125rem);
+            }
+        }
+
+        /* Compact desktop range: keeps the footer usable at 100% browser zoom. */
+        @media (min-width: 1100px) and (max-width: 1320px) {
+            .site-footer {
+                height: 30rem;
+                padding: 3.25rem 4.5rem 0;
+            }
+
+            .footer-top {
+                gap: 2.5rem;
+                margin-bottom: 2rem;
+            }
+
+            .footer-col-about {
+                width: 18rem;
+                padding: 1.5rem;
+            }
+
+            .footer-contact-info {
+                display: grid;
+                grid-template-columns: 1.4fr 0.9fr 0.75fr;
+                gap: 1rem;
+                margin-top: 1.5rem;
+            }
+
+            .contact-item {
+                min-width: 0;
+                gap: 0.75rem;
+            }
+
+            .contact-icon {
+                width: 2.5rem;
+                height: 2.5rem;
+                flex: 0 0 2.5rem;
+            }
+
+            .contact-text {
+                min-width: 0;
+            }
+
+            .contact-text h5 {
+                font-size: 13px !important;
+                white-space: nowrap;
+            }
+
+            .contact-text p {
+                font-size: 11px !important;
+                letter-spacing: 0;
+                white-space: nowrap;
+            }
+
+            .footer-bottom {
+                width: 34rem;
+                height: 3rem;
+                font-size: 0.8125rem;
+            }
+        }
+
+        /* Tablet / 125% zoom range: reflow before desktop columns become cramped. */
+        @media (min-width: 56.3125rem) and (max-width: 68.6875rem) {
+            .site-footer {
+                height: auto;
+                min-height: 0;
+                padding: 3rem 2.5rem 5.5rem;
+            }
+
+            .footer-top {
+                flex-direction: column;
+                gap: 2.5rem;
+                margin-bottom: 0;
+            }
+
+            .footer-col-about {
+                width: min(100%, 22rem);
+            }
+
+            .footer-right {
+                width: 100%;
+            }
+
+            .footer-right-top {
+                display: grid;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 2rem;
+            }
+
+            .footer-col-newsletter {
+                grid-column: 1 / -1;
+            }
+
+            .footer-contact-info {
+                display: grid;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 1.5rem;
+                margin-top: 2rem;
+            }
+
+            .contact-item {
+                min-width: 0;
+            }
+
+            .contact-text {
+                min-width: 0;
+            }
+
+            .contact-text p {
+                white-space: normal;
+                overflow-wrap: anywhere;
+            }
+        }
+
+        /* 110%–125% zoom range: keep the three contact blocks readable in one row. */
+        @media (min-width: 1100px) and (max-width: 1750px) {
+            .footer-contact-info {
+                display: grid;
+                grid-template-columns: 1.45fr 0.95fr 0.7fr;
+                gap: 1.25rem;
+            }
+
+            .contact-item,
+            .contact-text {
+                min-width: 0;
+            }
+
+            .contact-icon {
+                flex: 0 0 2.5rem;
+                width: 2.5rem;
+                height: 2.5rem;
+            }
+
+            .contact-text h5 {
+                font-size: 0.875rem;
+                white-space: nowrap;
+            }
+
+            .contact-text p {
+                font-size: 0.75rem;
+                letter-spacing: 0;
+                white-space: nowrap;
+            }
+
+            .contact-item:first-child .contact-text p {
+                white-space: normal;
             }
         }
 </style>
@@ -492,33 +570,33 @@
 
                     <!-- Contact Info Row -->
                     <div class="footer-contact-info">
-                        <div class="footer-item">
-                            <div class="footer-icon">
+                        <div class="contact-item">
+                            <div class="contact-icon">
                                 <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
                             </div>
-                            <div class="footer-text">
+                            <div class="contact-text">
                                 <h5>Laboratory Location</h5>
-                                <p>5th Street, 21st Floor,<br>New York, USA</p>
+                                <p>5th Street, 21st Floor, New York, USA</p>
                             </div>
                         </div>
 
-                        <div class="footer-item">
-                            <div class="footer-icon">
+                        <div class="contact-item">
+                            <div class="contact-icon">
                                 <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
                             </div>
-                            <div class="footer-text">
+                            <div class="contact-text">
                                 <h5>Customer Support</h5>
-                                <p><a href="mailto:info@example.com">info@example.com</a></p>
+                                <p>info@example.com</p>
                             </div>
                         </div>
 
-                        <div class="footer-item">
-                            <div class="footer-icon">
+                        <div class="contact-item">
+                            <div class="contact-icon">
                                 <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
                             </div>
-                            <div class="footer-text">
+                            <div class="contact-text">
                                 <h5>Speak with us</h5>
-                                <p><a href="tel:8884567890">(888) 4567890</a></p>
+                                <p>(888) 4567890</p>
                             </div>
                         </div>
                     </div>
