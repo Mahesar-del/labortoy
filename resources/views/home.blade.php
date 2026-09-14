@@ -1391,7 +1391,7 @@
                         <p class="card-text">
                             Comprehensive testing of blood and bodily fluids to evaluate metabolic function and detect imbalances, providing essential baseline data for patient care.
                         </p>
-                        <a href="{{ url('/service/genomic-diagnostics') }}" class="explore-btn">
+                        <a href="{{ url('/service/chemistry-testing') }}" class="explore-btn">
                             Explore Service
                             <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                         </a>
@@ -1409,7 +1409,7 @@
                             <p class="card-text">
                                 Advanced testing using precise antibody reactions to accurately measure hormones, disease markers, and immune system health.
                             </p>
-                            <a href="{{ url('/service/chemistry-testing') }}" class="explore-btn">
+                            <a href="{{ url('/service/immunoassay-testing') }}" class="explore-btn">
                                 Explore Service
                                 <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                             </a>
@@ -1425,7 +1425,7 @@
                             <p class="card-text">
                                 Detailed analysis of blood and its components to detect and monitor conditions like anemia, infection, and leukemia.
                             </p>
-                            <a href="{{ url('/service/clinical-diagnostics') }}" class="explore-btn">
+                            <a href="{{ url('/service/hematology') }}" class="explore-btn">
                                 Explore Service
                                 <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                             </a>
