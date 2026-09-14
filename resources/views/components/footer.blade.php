@@ -352,6 +352,151 @@
                 background: radial-gradient(circle at 100% 0, transparent 1.25rem, #ffffff 1.28125rem);
             }
         }
+
+        /* Compact desktop range: keeps the footer usable at 100% browser zoom. */
+        @media (min-width: 1100px) and (max-width: 1320px) {
+            .site-footer {
+                height: 30rem;
+                padding: 3.25rem 4.5rem 0;
+            }
+
+            .footer-top {
+                gap: 2.5rem;
+                margin-bottom: 2rem;
+            }
+
+            .footer-col-about {
+                width: 18rem;
+                padding: 1.5rem;
+            }
+
+            .footer-contact-info {
+                display: grid;
+                grid-template-columns: 1.4fr 0.9fr 0.75fr;
+                gap: 1rem;
+                margin-top: 1.5rem;
+            }
+
+            .contact-item {
+                min-width: 0;
+                gap: 0.75rem;
+            }
+
+            .contact-icon {
+                width: 2.5rem;
+                height: 2.5rem;
+                flex: 0 0 2.5rem;
+            }
+
+            .contact-text {
+                min-width: 0;
+            }
+
+            .contact-text h5 {
+                font-size: 13px !important;
+                white-space: nowrap;
+            }
+
+            .contact-text p {
+                font-size: 11px !important;
+                letter-spacing: 0;
+                white-space: nowrap;
+            }
+
+            .footer-bottom {
+                width: 34rem;
+                height: 3rem;
+                font-size: 0.8125rem;
+            }
+        }
+
+        /* Tablet / 125% zoom range: reflow before desktop columns become cramped. */
+        @media (min-width: 56.3125rem) and (max-width: 68.6875rem) {
+            .site-footer {
+                height: auto;
+                min-height: 0;
+                padding: 3rem 2.5rem 5.5rem;
+            }
+
+            .footer-top {
+                flex-direction: column;
+                gap: 2.5rem;
+                margin-bottom: 0;
+            }
+
+            .footer-col-about {
+                width: min(100%, 22rem);
+            }
+
+            .footer-right {
+                width: 100%;
+            }
+
+            .footer-right-top {
+                display: grid;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 2rem;
+            }
+
+            .footer-col-newsletter {
+                grid-column: 1 / -1;
+            }
+
+            .footer-contact-info {
+                display: grid;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 1.5rem;
+                margin-top: 2rem;
+            }
+
+            .contact-item {
+                min-width: 0;
+            }
+
+            .contact-text {
+                min-width: 0;
+            }
+
+            .contact-text p {
+                white-space: normal;
+                overflow-wrap: anywhere;
+            }
+        }
+
+        /* 110%–125% zoom range: keep the three contact blocks readable in one row. */
+        @media (min-width: 1100px) and (max-width: 1750px) {
+            .footer-contact-info {
+                display: grid;
+                grid-template-columns: 1.45fr 0.95fr 0.7fr;
+                gap: 1.25rem;
+            }
+
+            .contact-item,
+            .contact-text {
+                min-width: 0;
+            }
+
+            .contact-icon {
+                flex: 0 0 2.5rem;
+                width: 2.5rem;
+                height: 2.5rem;
+            }
+
+            .contact-text h5 {
+                font-size: 0.875rem;
+                white-space: nowrap;
+            }
+
+            .contact-text p {
+                font-size: 0.75rem;
+                letter-spacing: 0;
+                white-space: nowrap;
+            }
+
+            .contact-item:first-child .contact-text p {
+                white-space: normal;
+            }
+        }
 </style>
 
         <!-- Footer Section -->
