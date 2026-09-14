@@ -16,7 +16,7 @@
     .test-information-section, .test-information-section * { box-sizing: border-box; }
     .test-information-section {
         background-color: #ffffff;
-        padding: 5rem 7% 2rem 7%;
+        padding: 3rem 7% 2rem 7%;
         box-sizing: border-box;
         width: 100%;
     }

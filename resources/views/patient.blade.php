@@ -98,7 +98,7 @@
         .patient-info, .patient-info * { box-sizing: border-box; }
         .patient-info {
             width: 100%;
-            padding: 5rem 7%;
+            padding: 3rem 7%;
             background-color: #ffffff;
             box-sizing: border-box;
         }
@@ -290,7 +290,7 @@
         .specimen-collection {
             width: 100%;
             background-color: #0B2545;
-            padding: 5rem 7%;
+            padding: 3rem 7%;
             display: flex;
             justify-content: center;
             box-sizing: border-box;

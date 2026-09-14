@@ -191,12 +191,13 @@ p {
 
     <!-- Navigation Links -->
     <ul class="nav-links">
-        <li><a href="#">Services</a></li>
-        <li><a href="#">Patients</a></li>
-        <li><a href="#">Providers</a></li>
+
+    <li><a href="/services">Services</a></li>
+        <li><a href="/patient">Patients</a></li>
+        <li><a href="/provider-page">Providers</a></li>
         <li><a href="#">Health Systems & Organizations</a></li>
         <li><a href="#">Resources</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a href="/contact-us">Contact</a></li>
     </ul>
 
     <!-- Login Button -->

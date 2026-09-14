@@ -7,7 +7,7 @@
                 <img src="{{ asset('images/request-your-kit.svg') }}" alt="Request your test kit" class="process-icon">
                 <h3 class="process-step-title"><span class="step-num">01.</span> <span>Request Your Test Kit</span></h3>
                 <p class="process-description">
-                    Easily place orders via our secure Physician Portal with custom panels and test combinations.
+                    Easily place orders via our secure Physician Portal with custom panels and comprehensive test combinations.
                 </p>
             </div>
             <!-- Step 2 -->
@@ -15,7 +15,7 @@
                 <img src="{{ asset('images/sample-collection.png') }}" alt="Sample Collection" class="process-icon">
                 <h3 class="process-step-title"><span class="step-num">02.</span> <span>Sample Collection</span></h3>
                 <p class="process-description">
-                    For added convenience, choose our home collection option qualified visit to collect samples safely.
+                    For added convenience, choose our home collection option or a qualified visit to collect samples safely.
                 </p>
             </div>
             <!-- Step 3 -->
@@ -23,7 +23,7 @@
                 <img src="{{ asset('images/analysis-review.svg') }}" alt="Analysis and Review" class="process-icon">
                 <h3 class="process-step-title"><span class="step-num">03.</span> <span>Analysis and Review</span></h3>
                 <p class="process-description">
-                    Our skilled pathologists and lab scientists analyze the test data with the latest technology.
+                    Our skilled pathologists and lab scientists carefully analyze the test data with the latest advanced technology.
                 </p>
             </div>
             <!-- Step 4 -->
@@ -31,7 +31,7 @@
                 <img src="{{ asset('images/follow-support.svg') }}" alt="Follow-Up and Support" class="process-icon">
                 <h3 class="process-step-title"><span class="step-num">04.</span> <span>Follow-Up and Support</span></h3>
                 <p class="process-description">
-                    Our customer support team is here to answer any questions results, next steps, or any additional testing.
+                    Our customer support team is here to answer any questions regarding results, next steps, or any additional testing needed.
                 </p>
             </div>
         </div>
@@ -102,7 +102,7 @@
 
     .process-description {
         font-family: 'Inter', sans-serif;
-        font-size: 1rem;
+        font-size: 15px !important;
         line-height: 1.625rem;
         color: #000000;
         text-align: center;

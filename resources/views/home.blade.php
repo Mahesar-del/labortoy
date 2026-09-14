@@ -284,13 +284,13 @@
 
         /* Science Precision Section */
         .science-precision-container {
-            padding-top: 5rem;
-            padding-bottom: 5rem;
+            padding-top: 1rem;
+            padding-bottom: 3rem;
         }
 
         .science-precision-section {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             justify-content: space-between;
             max-width: 100%;
             width: 100%;
@@ -333,7 +333,7 @@
             flex: 1;
             min-width: 0;
             display: flex;
-            align-items: center;
+            align-items: flex-start;
         }
 
         .science-right-content {
@@ -350,7 +350,7 @@
             line-height: 1.3;
             letter-spacing: -0.015em;
             color: #12263A;
-            margin-top: 1rem;
+            margin-top: 0.4rem;
             margin-bottom: 1rem;
             max-width: 32rem;
         }
@@ -387,7 +387,7 @@
         /* Services Section (#F3F8FA) */
         .services-section {
             background-color: #F3F8FA;
-            padding: 4rem 99px 5rem 99px;
+            padding: 1rem 99px 1rem 99px;
             width: 100%;
             box-sizing: border-box;
             margin-top: 0;
@@ -420,7 +420,7 @@
             font-weight: 400;
             line-height: 1.625rem;
             color: #000000;
-            max-width: 55rem;
+            max-width: 100%;
             letter-spacing: 0px;
         }
 
@@ -663,7 +663,7 @@
         /* Science Moves Section */
         .science-moves-section {
             background-color: #ffffff;
-            padding: 3rem 99px 5rem 99px;
+            padding: 1rem 99px 1rem 99px;
             width: 100%;
             box-sizing: border-box;
         }
@@ -734,7 +734,7 @@
         /* Visit Section */
         .visit-section {
             background-color: #F3F8FA;
-            padding: 4rem 99px 4rem 99px;
+            padding: 1.5rem 99px 1.5rem 99px;
             width: 100%;
             box-sizing: border-box;
         }
@@ -861,7 +861,7 @@
         /* Insights Section */
         .insights-section {
             background-color: #ffffff;
-            padding: 3rem 99px 4rem 99px;
+            padding: 1rem 99px 1rem 99px;
             width: 100%;
             box-sizing: border-box;
         }
@@ -1399,7 +1399,6 @@
         <nav class="tabs-nav">
             <a href="javascript:void(0)" class="tab-item active" data-target="tab-patients">Individual/Patients</a>
             <a href="javascript:void(0)" class="tab-item" data-target="tab-providers">Providers</a>
-            <a href="javascript:void(0)" class="tab-item" data-target="tab-health">Health Systems & Organizations</a>
         </nav>
 
         <!-- Action Buttons Container -->
@@ -1432,14 +1431,6 @@
                 <a href="#" class="action-btn">Contact Us</a>
             </div>
 
-            <!-- Action Buttons for Health Systems & Organizations -->
-            <div id="tab-health" class="actions-grid" style="display: none;">
-                <a href="#" class="action-btn">Partner Integration</a>
-                <a href="#" class="action-btn">Enterprise Solutions</a>
-                <a href="#" class="action-btn">Data Analytics</a>
-                <a href="#" class="action-btn">Consulting</a>
-            </div>
-
             <!-- View Page Link -->
             <a href="#" class="view-page-link">View Individuals & Patients Page</a>
         </div>
@@ -1470,11 +1461,11 @@
 
                 <div class="stats-container">
                     <div class="stat-item">
-                        <div class="stat-number">320+</div>
+                        <div class="stat-number"><span class="counter" data-target="320">0</span>+</div>
                         <div class="stat-label">Wining Awards</div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-number">10k+</div>
+                        <div class="stat-number"><span class="counter" data-target="10">0</span>k+</div>
                         <div class="stat-label">Test Completed</div>
                     </div>
                 </div>
@@ -1550,7 +1541,7 @@
     <div class="container science-precision-container">
         <div class="science-precision-section">
             <div class="science-left">
-                <div class="science-image-container" style="overflow:hidden; border-radius:1rem; clip-path:inset(0 round 1rem); isolation:isolate;">
+                <div class="science-image-container" style="isolation:isolate;">
                     <img src="{{ asset('images/science-meet-two.png') }}" class="science-img-back" style="border-radius:1rem;" alt="Laboratory Diagnostic Process">
                     <img src="{{ asset('images/science-meet-one.png') }}" class="science-img-front" alt="Microscope Analysis">
                 </div>
@@ -1728,6 +1719,51 @@
                     targetGrid.style.display = 'flex';
                 }
             });
+        });
+    });
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const counters = document.querySelectorAll('.counter');
+        const duration = 1000; // Animation duration in milliseconds (faster)
+
+        const animateCounters = (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counter = entry.target;
+                    const target = +counter.getAttribute('data-target');
+                    const startTime = performance.now();
+                    counter.innerText = '0'; // Ensure it starts from 0
+
+                    const updateCount = (currentTime) => {
+                        const elapsedTime = currentTime - startTime;
+                        const progress = Math.min(elapsedTime / duration, 1);
+                        
+                        // Linear progress for consistent fast counting like 0, 1, 2...
+                        const currentCount = Math.floor(target * progress);
+                        
+                        counter.innerText = currentCount;
+
+                        if (progress < 1) {
+                            requestAnimationFrame(updateCount);
+                        } else {
+                            counter.innerText = target;
+                        }
+                    };
+                    
+                    requestAnimationFrame(updateCount);
+                    observer.unobserve(counter); // Only animate once
+                }
+            });
+        };
+
+        const observer = new IntersectionObserver(animateCounters, {
+            threshold: 0.1
+        });
+
+        counters.forEach(counter => {
+            observer.observe(counter);
         });
     });
 </script>
