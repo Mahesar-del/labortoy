@@ -18,8 +18,8 @@
 
 <style>
     .diagnostics-cta, .diagnostics-cta * { box-sizing: border-box; }
-    .diagnostics-cta { padding: 42px 7%; background: #fff; width: 100%; box-sizing: border-box; }
-    .diagnostics-cta__container { width: 100%; max-width: 1320px; margin: 0 auto; }
+    .diagnostics-cta { padding: 42px 0; background: #fff; width: 100%; box-sizing: border-box; }
+    .diagnostics-cta__container { width: 100%; max-width: 1440px; margin: 0 auto; padding: 0 99px; }
     .diagnostics-cta__card { align-items: center; background: #0B2545; border-radius: 18px; color: #fff; display: flex; justify-content: center; min-height: 330px; overflow: hidden; padding: 42px 24px; position: relative; text-align: center; }
     .diagnostics-cta__content { max-width: 880px; position: relative; z-index: 1; }
     .diagnostics-cta h2 { font-size: clamp(24px, 2.2vw, 40px); margin: 0; }
@@ -32,7 +32,8 @@
     .diagnostics-cta__decoration--left { left: 0; }
     .diagnostics-cta__decoration--right { right: 0; }
     @media (max-width: 768px) {
-        .diagnostics-cta { padding: 2.5rem 20px; }
+        .diagnostics-cta { padding: 2.5rem 0; }
+        .diagnostics-cta__container { padding: 0 20px; }
         .diagnostics-cta__card { 
             border-radius: 16px; 
             min-height: 360px; 

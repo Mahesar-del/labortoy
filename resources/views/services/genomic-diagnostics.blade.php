@@ -7,9 +7,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>body { margin: 0; font-family: 'Manrope', sans-serif; }</style>
+    <style>html, body { max-width: 100%; overflow-x: hidden; } body { margin: 0; font-family: 'Manrope', sans-serif; }</style>
 </head>
 <body>
+    @include('components.header')
     @include('components.services-hero')
     
     <section class="understanding-genomic" aria-labelledby="understanding-genomic-title">
@@ -26,14 +27,14 @@
     
     <style>
         .understanding-genomic, .understanding-genomic * { box-sizing: border-box; }
-        .understanding-genomic { background: #fff; padding: 25px 7%; }
-        .understanding-genomic__container { align-items: start; display: grid; gap: clamp(36px, 7vw, 110px); grid-template-columns: minmax(0, 1.05fr) minmax(320px, .85fr); margin: 0 auto; max-width: 1320px; }
+        .understanding-genomic { background: #fff; padding: 25px 0; }
+        .understanding-genomic__container { align-items: start; display: grid; gap: clamp(36px, 7vw, 110px); grid-template-columns: minmax(0, 1.05fr) minmax(320px, .85fr); margin: 0 auto; max-width: 1440px; padding: 0 99px; }
         .understanding-genomic__content { max-width: 650px; }
         .understanding-genomic h2 { color: #000; font-size: clamp(24px, 2vw, 34px); letter-spacing: -.03em; line-height: 1.2; margin: 0 0 22px; text-align: justify; }
         .understanding-genomic p { color: #000; font-size: clamp(14px, 1vw, 16px); line-height: 1.75; margin: 0 0 20px; text-align: justify; }
         .understanding-genomic p:last-child { margin-bottom: 0; }
         .understanding-genomic__image { aspect-ratio: 1.5 / 1; border-radius: 18px; display: block; object-fit: cover; overflow: hidden; width: 100%; }
-        @media (max-width: 700px) { .understanding-genomic { padding: 52px 28px; } .understanding-genomic__container { gap: 30px; grid-template-columns: 1fr; } .understanding-genomic h2 { text-align: left; } .understanding-genomic__image { order: -1; } }
+        @media (max-width: 700px) { .understanding-genomic { padding: 52px 0; } .understanding-genomic__container { padding: 0 28px; gap: 30px; grid-template-columns: 1fr; } .understanding-genomic h2 { text-align: left; } .understanding-genomic__image { order: -1; } }
     </style>
     
     @php
@@ -100,8 +101,8 @@
     
     <style>
         .genomic-testing-services, .genomic-testing-services * { box-sizing: border-box; }
-        .genomic-testing-services { background: #fff; padding: 12px 7% 40px; }
-        .genomic-testing-services__container { margin: 0 auto; max-width: 1320px; }
+        .genomic-testing-services { background: #fff; padding: 12px 0 40px; }
+        .genomic-testing-services__container { margin: 0 auto; max-width: 1440px; padding: 0 99px; }
         .genomic-testing-services__header { margin: 0 auto 54px; max-width: 720px; text-align: center; }
         .genomic-testing-services h2 { color: #101827; font-size: clamp(24px, 2vw, 34px); letter-spacing: -.03em; line-height: 1.2; margin: 0 0 12px; }
         .genomic-testing-services__header p { color: #3e4855; font-size: clamp(13px, .95vw, 15px); line-height: 1.6; margin: 0; }
@@ -115,7 +116,8 @@
         .genomic-service-detail ul { color: #151b24; font-size: clamp(13px, .95vw, 15px); line-height: 1.65; margin: 0; padding-left: 19px; }
         .genomic-service-detail__image { aspect-ratio: 1.38 / 1; border-radius: 18px; display: block; object-fit: cover; overflow: hidden; width: 100%; }
         @media (max-width: 700px) {
-            .genomic-testing-services { padding: 22px 28px 56px; }
+            .genomic-testing-services { padding: 22px 0 56px; }
+            .genomic-testing-services__container { padding: 0 28px; }
             .genomic-testing-services__header { margin-bottom: 38px; }
             .genomic-testing-services__list { gap: 56px; }
             .genomic-service-detail, .genomic-service-detail--reversed { gap: 30px; grid-template-columns: 1fr; }
