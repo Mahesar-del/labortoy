@@ -41,7 +41,7 @@
 <style>
     .process-section {
         background-color: #F3F8FA;
-        padding: 20px 99px;
+        padding: 3rem 99px;
         width: 100%;
         box-sizing: border-box;
     }
@@ -51,6 +51,7 @@
         margin: 0 auto;
         padding: 0;
         width: 100%;
+        box-sizing: border-box;
     }
 
     .process-title {
@@ -64,18 +65,21 @@
     }
 
     .process-grid {
-        display: flex;
-        justify-content: space-between;
-        gap: 2rem;
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 1rem;
         width: 100%;
+        box-sizing: border-box;
     }
 
     .process-card {
-        flex: 1;
         display: flex;
         flex-direction: column;
         align-items: center;
         text-align: center;
+        min-width: 0;
+        width: 100%;
+        box-sizing: border-box;
     }
 
     .process-icon {
@@ -87,12 +91,14 @@
 
     .process-step-title {
         font-family: 'Libre Franklin', sans-serif;
-        font-size: 1rem;
+        font-size: 0.875rem !important;
         font-weight: 600;
-        line-height: 1.4625rem;
+        line-height: 1.4;
         color: #1E3A5F;
         margin-bottom: 0.5rem;
+        text-align: center;
         white-space: nowrap;
+        width: 100%;
     }
 
     .step-num {
@@ -102,29 +108,34 @@
 
     .process-description {
         font-family: 'Inter', sans-serif;
-        font-size: 15px !important;
-        line-height: 1.625rem;
-        color: #000000;
+        font-size: 0.85rem;
+        line-height: 1.55;
+        color: #4B5563;
         text-align: center;
+        margin: 0;
+        padding: 0 4px;
     }
 
-    @media (max-width: 900px) {
+    @media (max-width: 1100px) {
         .process-section {
-            padding-left: 32px;
-            padding-right: 32px;
+            padding: 2.5rem 32px;
         }
         .process-grid {
-            flex-direction: column;
-            gap: 2rem;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 2.5rem 1.5rem;
+        }
+        .process-step-title {
+            font-size: 0.95rem !important;
         }
     }
 
-    @media (max-width: 600px) {
+    @media (max-width: 640px) {
         .process-section {
-            padding-left: 20px;
-            padding-right: 20px;
-            padding-top: 2.5rem;
-            padding-bottom: 2.5rem;
+            padding: 2.5rem 20px;
+        }
+        .process-grid {
+            grid-template-columns: 1fr;
+            gap: 2rem;
         }
     }
 </style>
