@@ -7,14 +7,14 @@
     </div>
 
     <div class="hero-section__content" aria-live="polite">
-        <img class="hero-doc-img" src="{{ asset('img/hero-doc-img.png') }}" alt="Laboratory scientist examining a sample">
+        <img class="hero-doc-img" src="{{ !empty($hero) && !empty($hero->image_path) ? asset('storage/' . $hero->image_path) : asset('img/hero-doc-img.png') }}" alt="Laboratory scientist examining a sample">
         <img class="hero-section__dots" src="{{ asset('img/dots-hero.png') }}?v={{ filemtime(public_path('img/dots-hero.png')) }}" alt="">
         <div class="hero-section__copy">
-            <h1 id="hero-title">Precision Diagnostics. <br> Better Answers for <br> Better Care.</h1>
-            <p>Sterling Genomic, Molecular &amp; Clinical Diagnostics is a U.S. laboratory providing accurate, science-driven testing for patients and providers.</p>
+            <h1 id="hero-title">{!! nl2br(e($hero->heading ?? 'Precision Diagnostics. Better Answers for Better Care.')) !!}</h1>
+            <p>{{ $hero->description ?? 'Sterling Genomic, Molecular & Clinical Diagnostics is a U.S. laboratory providing accurate, science-driven testing for patients and providers.' }}</p>
             <div class="hero-section__actions">
-                <a class="hero-section__button hero-section__button--primary" href="#services">Our Services</a>
-                <a class="hero-section__button hero-section__button--secondary" href="#contact">Contact Us</a>
+                <a class="hero-section__button hero-section__button--primary" href="{{ $hero->primary_button_link ?? '#services' }}">{{ $hero->primary_button_text ?? 'Our Services' }}</a>
+                <a class="hero-section__button hero-section__button--secondary" href="{{ $hero->secondary_button_link ?? '#contact' }}">{{ $hero->secondary_button_text ?? 'Contact Us' }}</a>
             </div>
         </div>
     </div>
@@ -144,23 +144,9 @@
 
         const slides = [
             {
-                title: 'Precision Diagnostics. <br> Better Answers for <br> Better Care.',
-                description: 'Sterling Genomic, Molecular &amp; Clinical Diagnostics is a U.S. laboratory providing accurate, science-driven testing for patients and providers.',
-                docImage: '{{ asset('img/hero-doc-img.png') }}',
-                bgLeft: '{{ asset('img/hero-bg-img-left.png') }}',
-                bgRight: '{{ asset('img/hero-bg-img-right.jpg') }}'
-            },
-            {
-                title: 'Molecular Testing. <br> Clearer Results for <br> Confident Decisions.',
-                description: 'Our molecular testing services deliver timely, dependable results that help providers make informed decisions for every patient.',
-                docImage: '{{ asset('img/hero-doctor-female.png') }}',
-                bgLeft: '{{ asset('img/hero-bg-img-left.png') }}',
-                bgRight: '{{ asset('img/hero-bg-img-right.jpg') }}'
-            },
-            {
-                title: 'Clinical Excellence. <br> Science That Supports <br> Better Outcomes.',
-                description: 'From advanced diagnostics to personalized support, our laboratory team delivers quality insights when they matter most.',
-                docImage: '{{ asset('img/hero-doctor-male.png') }}',
+                title: @json(nl2br(e($hero->heading ?? 'Precision Diagnostics. Better Answers for Better Care.'))),
+                description: @json(e($hero->description ?? 'Sterling Genomic, Molecular & Clinical Diagnostics is a U.S. laboratory providing accurate, science-driven testing for patients and providers.')),
+                docImage: @json(!empty($hero) && !empty($hero->image_path) ? asset('storage/' . $hero->image_path) : asset('img/hero-doc-img.png')),
                 bgLeft: '{{ asset('img/hero-bg-img-left.png') }}',
                 bgRight: '{{ asset('img/hero-bg-img-right.jpg') }}'
             }
@@ -203,7 +189,7 @@
             }, 700);
         };
 
-        if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        if (slides.length > 1 && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
             let sliderTimer;
             const startSlider = () => {
                 if (!sliderTimer) sliderTimer = window.setInterval(showSlide, 3500);
