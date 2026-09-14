@@ -15,6 +15,7 @@ use App\Http\Controllers\AdminServiceController;
 use App\Http\Controllers\AdminTestController;
 use App\Http\Controllers\AdminMolecularSectionController;
 use App\Http\Controllers\AdminFaqController;
+use App\Http\Controllers\FaqController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,6 +40,7 @@ Route::get('/provider-page', [ProviderController::class, 'index']);
 Route::get('/appointment', [AppointmentController::class, 'index'])->name('appointment.index');
 Route::get('/patient', [PatientController::class, 'index']);
 Route::get('/contact-us', [ContactController::class, 'index']);
+Route::get('/faq', [FaqController::class, 'index']);
 
 Route::get('/admin/login', [AdminAuthController::class, 'showLogin'])->name('admin.login');
 Route::post('/admin/login', [AdminAuthController::class, 'login'])->name('admin.login.submit');
