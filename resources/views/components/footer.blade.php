@@ -1,18 +1,26 @@
 <style>
         /* Footer Styling */
         .site-footer {
-            background-color: #06162a; /* Dark blue base */
-            background: radial-gradient(circle at top left, rgba(26, 188, 156, 0.65) 0%, transparent 17%),
-                        radial-gradient(circle at bottom right, rgba(26, 188, 156, 0.65) 0%, transparent 17%),
-                        #06162a; /* Cyan glows and base color */
+            background-color: #06162a;
+            background: radial-gradient(circle at top left, rgba(26, 188, 156, 0.45) 0%, transparent 35%),
+                        radial-gradient(circle at bottom right, rgba(26, 188, 156, 0.45) 0%, transparent 35%),
+                        #06162a;
             color: #ffffff;
+<<<<<<< HEAD
             padding: 4.375rem 6.1875rem 6.5rem 6.1875rem;
+=======
+            padding: 4.375rem 2.5rem 5.625rem 2.5rem;
+>>>>>>> Farukh
             font-family: 'Inter', sans-serif;
             position: relative;
             width: 100%;
             max-width: 100%;
             margin: 0 auto;
             min-height: 33.8125rem;
+<<<<<<< HEAD
+=======
+            height: auto;
+>>>>>>> Farukh
             box-sizing: border-box;
             border-top-left-radius: 1.5625rem;
             border-top-right-radius: 1.5625rem;
@@ -200,7 +208,7 @@
             gap: 1.5rem;
         }
 
-        .contact-item {
+        .footer-contact-info .footer-item {
             display: flex;
             align-items: flex-start;
             gap: 1rem;
@@ -212,10 +220,17 @@
             flex: 1.25;
         }
 
+<<<<<<< HEAD
         .contact-icon {
             width: 3rem;
             height: 3rem;
             background-color: #14B8A6;
+=======
+        .footer-contact-info .footer-icon {
+            width: 2.8125rem;
+            height: 2.8125rem;
+            background-color: #1ABC9C !important;
+>>>>>>> 3cf52811488d80e97e888d274d05f99a775e313d
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -231,9 +246,15 @@
             background-color: #0d9488;
         }
 
+<<<<<<< HEAD
         .contact-icon svg {
             width: 1.35rem;
             height: 1.35rem;
+=======
+        .footer-contact-info .footer-icon svg {
+            width: 1.25rem;
+            height: 1.25rem;
+>>>>>>> 3cf52811488d80e97e888d274d05f99a775e313d
             stroke: currentColor;
             fill: none;
             stroke-width: 2;
@@ -241,6 +262,7 @@
             stroke-linejoin: round;
         }
 
+<<<<<<< HEAD
         .contact-text {
             display: flex;
             flex-direction: column;
@@ -249,6 +271,9 @@
         }
 
         .contact-text h5 {
+=======
+        .footer-contact-info .footer-text h5 {
+>>>>>>> 3cf52811488d80e97e888d274d05f99a775e313d
             margin: 0;
             font-size: 1rem;
             font-weight: 600;
@@ -257,6 +282,7 @@
             line-height: 1.3;
         }
 
+<<<<<<< HEAD
         .contact-text p,
         .contact-text p a {
             margin: 0;
@@ -269,6 +295,13 @@
 
         .contact-text p a:hover {
             color: #14B8A6;
+=======
+        .footer-contact-info .footer-text p {
+            margin: 0.3125rem 0 0 0;
+            font-size: 0.875rem;
+            color: #FFFFFF;
+            letter-spacing: 0.0625rem;
+>>>>>>> 3cf52811488d80e97e888d274d05f99a775e313d
         }
 
         .footer-bottom {
@@ -355,7 +388,11 @@
             .footer-contact-info {
                 flex-direction: column;
                 gap: 1.25rem;
+<<<<<<< HEAD
                 margin-top: 1.5rem;
+=======
+                margin-top: 1.25rem;
+>>>>>>> 3cf52811488d80e97e888d274d05f99a775e313d
             }
 
             .footer-bottom {
@@ -455,31 +492,31 @@
 
                     <!-- Contact Info Row -->
                     <div class="footer-contact-info">
-                        <div class="contact-item">
-                            <div class="contact-icon">
+                        <div class="footer-item">
+                            <div class="footer-icon">
                                 <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
                             </div>
-                            <div class="contact-text">
+                            <div class="footer-text">
                                 <h5>Laboratory Location</h5>
                                 <p>5th Street, 21st Floor,<br>New York, USA</p>
                             </div>
                         </div>
 
-                        <div class="contact-item">
-                            <div class="contact-icon">
+                        <div class="footer-item">
+                            <div class="footer-icon">
                                 <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
                             </div>
-                            <div class="contact-text">
+                            <div class="footer-text">
                                 <h5>Customer Support</h5>
                                 <p><a href="mailto:info@example.com">info@example.com</a></p>
                             </div>
                         </div>
 
-                        <div class="contact-item">
-                            <div class="contact-icon">
+                        <div class="footer-item">
+                            <div class="footer-icon">
                                 <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
                             </div>
-                            <div class="contact-text">
+                            <div class="footer-text">
                                 <h5>Speak with us</h5>
                                 <p><a href="tel:8884567890">(888) 4567890</a></p>
                             </div>
