@@ -47,7 +47,7 @@ p {
     position: absolute;
     left: max(24px, calc((100% - 1320px) / 2));
     top: 0;
-    width: 100%;
+    width: 190px;
     height: 100%;
     pointer-events: none; /* Let clicks pass through empty areas */
 }
@@ -76,12 +76,12 @@ p {
 }
 .logo-text {
     position: absolute;
-    left: calc(max(24px, calc((100% - 1320px) / 2)) + 58.28px);
+    left: 58.28px;
     top: 16px;
-    width: 85px;
+    width: 125px;
     height: 48px;
     color: #0d233a;
-    font-size: 34px;
+    font-size: 28px;
     font-weight: 800;
     font-family: 'Plus Jakarta Sans', sans-serif;
     line-height: 47.22px;
@@ -191,7 +191,7 @@ p {
                 <circle cx="12" cy="12" r="2.5" fill="currentColor" stroke="none"></circle>
             </svg>
         </div>
-        <span class="logo-text">Logo</span>
+        <span class="logo-text">Labortoy</span>
     </a>
 
     <!-- Navigation Links -->
