@@ -139,5 +139,6 @@
     @include('components.process-explained')
     @include('components.faq')
     @include('components.diagnostics-cta.cta')
+    @include('components.footer')
 </body>
 </html>

@@ -38,7 +38,7 @@
     @media (max-width: 760px) {
         .three-cards-overlap { padding: 5px 28px 48px; }
         .tco-backdrop { display: none; }
-        .tco-header { color: #111820; margin-bottom: 28px; }
+        .tco-header { color: #111820; margin-bottom: 28px; max-width:258px; }
         .tco-cards { grid-template-columns: 1fr; }
         .tco-card { min-height: 0; align-items: center; text-align: center; }
         .tco-icon { margin-left: auto; margin-right: auto; }
