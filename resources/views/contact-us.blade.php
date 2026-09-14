@@ -272,7 +272,7 @@
             min-width: 300px;
             width: 713px;
             max-width: 100%;
-            height: 501px;
+            height: auto;
             background-color: #0b2545;
             border-radius: 20px;
             padding: 56px 48px;
