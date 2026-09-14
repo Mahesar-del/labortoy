@@ -23,7 +23,7 @@
     .diagnostics-cta__card { align-items: center; background: #0B2545; border-radius: 18px; color: #fff; display: flex; justify-content: center; min-height: 330px; overflow: hidden; padding: 42px 24px; position: relative; text-align: center; }
     .diagnostics-cta__content { max-width: 880px; position: relative; z-index: 1; }
     .diagnostics-cta h2 { font-size: clamp(24px, 2.2vw, 40px); margin: 0; }
-    .diagnostics-cta p { font-size: clamp(14px, 1.15vw, 22px); line-height: 1.6; margin: 24px auto 34px; max-width: 539px; }
+    .diagnostics-cta p { font-size: clamp(14px, 1.15vw, 22px); line-height: 1.6; margin: 24px auto 34px; max-width: 800px; }
     .diagnostics-cta__actions { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; }
     .diagnostics-cta__button { border: 1px solid transparent; border-radius: 999px; color: #fff; font-size: clamp(14px, 1vw, 20px); font-weight: 700; padding: 18px 48px; text-decoration: none; }
     .diagnostics-cta__button--primary { background: #20b3b5; }
