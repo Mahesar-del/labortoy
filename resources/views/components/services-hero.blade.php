@@ -13,11 +13,11 @@
 
 <style>
     .services-hero, .services-hero * { box-sizing: border-box; }
-    .services-hero { background: #020b1c; color: #fff; isolation: isolate; min-height: 360px; overflow: hidden; position: relative; padding: 0 99px; width: 100%; box-sizing: border-box; }
+    .services-hero { background: #020b1c; color: #fff; isolation: isolate; min-height: 420px; overflow: hidden; position: relative; padding: 0 99px; width: 100%; box-sizing: border-box; }
     .services-hero__background, .services-hero__overlay { height: 100%; inset: 0; position: absolute; width: 100%; }
     .services-hero__background { background-position: center; background-repeat: no-repeat; background-size: 100% 100%; z-index: -2; }
     .services-hero__overlay { background: linear-gradient(90deg, rgba(7,26,49,.96) 0%, rgba(7,26,49,.86) 48%, rgba(7,26,49,.25) 100%); z-index: -1; }
-    .services-hero__container { align-items: center; display: flex; margin: 0 auto; max-width: 1320px; min-height: 360px; padding: 40px 0; box-sizing: border-box; width: 100%; }
+    .services-hero__container { align-items: center; display: flex; margin: 0 auto; max-width: 1320px; min-height: 420px; padding: 40px 0 60px 0; box-sizing: border-box; width: 100%; }
     .services-hero__content { max-width: 700px; }
     .services-hero h1 { font-size: clamp(34px, 3.1vw, 56px); letter-spacing: -.04em; line-height: 1.1; margin: 0; }
     .services-hero p { color: rgba(255,255,255,.84); font-size: clamp(14px, 1vw, 17px); line-height: 1.7; margin: 25px 0 30px; }

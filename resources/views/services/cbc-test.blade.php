@@ -30,7 +30,8 @@
     @include('components.services-hero', [
     'title' => 'Complete Blood Count (CBC)',
     'description' => 'A common blood test used to evaluate blood cells and provide important information about overall
-    health, infection, inflammation, anemia, and other clinical conditions.'
+    health, infection, inflammation, anemia, and other clinical conditions.',
+    'bgImage' => asset('images/cbc-test-hero.jpg')
     ])
 
     <!-- Overlapping Info Box -->
