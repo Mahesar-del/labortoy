@@ -73,7 +73,9 @@
         align-items: center;
         background: #e6eff2;
         will-change: transform, opacity;
+        animation: hero-initial-enter .75s ease-out both;
     }
+    @keyframes hero-initial-enter { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: translateY(0); } }
     .hero-section__content--leaving { animation: hero-slide-out .7s ease-in both; }
     .hero-section__content--entering { animation: hero-slide-in .7s ease-out both; }
     @keyframes hero-slide-out { to { opacity: 0; transform: translateY(-115%); } }
@@ -219,6 +221,20 @@
                 title: @json(nl2br(e($hero->heading ?? 'Precision Diagnostics. Better Answers for Better Care.'))),
                 description: @json(e($hero->description ?? 'Sterling Genomic, Molecular & Clinical Diagnostics is a U.S. laboratory providing accurate, science-driven testing for patients and providers.')),
                 docImage: @json(!empty($hero) && !empty($hero->image_path) ? asset('storage/' . $hero->image_path) : asset('img/hero-doc-img.png')),
+                bgLeft: '{{ asset('img/hero-bg-img-left.png') }}',
+                bgRight: '{{ asset('img/hero-bg-img-right.jpg') }}'
+            },
+            {
+                title: 'Advanced Laboratory Testing.<br>Clearer Clinical Insight.',
+                description: 'Science-driven diagnostic services designed to support patients, providers, and informed healthcare decisions.',
+                docImage: '{{ asset('img/hero-doctor-female.png') }}',
+                bgLeft: '{{ asset('img/hero-bg-img-left.png') }}',
+                bgRight: '{{ asset('img/hero-bg-img-right.jpg') }}'
+            },
+            {
+                title: 'Reliable Results.<br>When They Matter Most.',
+                description: 'Sterling delivers laboratory support across chemistry, immunoassay, hematology, and diagnostic testing.',
+                docImage: '{{ asset('img/hero-doctor-male.png') }}',
                 bgLeft: '{{ asset('img/hero-bg-img-left.png') }}',
                 bgRight: '{{ asset('img/hero-bg-img-right.jpg') }}'
             }

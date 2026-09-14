@@ -36,8 +36,8 @@
 <section class="chemistry-services-section" aria-labelledby="chemistry-services-title">
     <div class="chemistry-services-container">
         <header class="chemistry-services-header">
-            <h2 id="chemistry-services-title">Chemistry Testing Services</h2>
-            <p>Explore chemistry testing categories designed to support different diagnostic and clinical needs.</p>
+            <h2 id="chemistry-services-title">{{ $sectionTitle ?? 'Chemistry Testing Services' }}</h2>
+            <p>{{ $sectionDescription ?? 'Explore chemistry testing categories designed to support different diagnostic and clinical needs.' }}</p>
         </header>
 
         <div class="chemistry-services-grid">
