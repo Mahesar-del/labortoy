@@ -39,6 +39,7 @@ Route::get('/provider-page', [ProviderController::class, 'index']);
 Route::get('/appointment', [AppointmentController::class, 'index'])->name('appointment.index');
 Route::get('/patient', [PatientController::class, 'index']);
 Route::get('/contact-us', [ContactController::class, 'index']);
+Route::get('/cbc-test', function () { return view('services.cbc-test'); });
 
 Route::get('/admin/login', [AdminAuthController::class, 'showLogin'])->name('admin.login');
 Route::post('/admin/login', [AdminAuthController::class, 'login'])->name('admin.login.submit');
