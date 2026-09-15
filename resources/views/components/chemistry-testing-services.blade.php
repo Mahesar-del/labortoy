@@ -63,7 +63,7 @@
 
     .chemistry-services-section {
         background-color: #ffffff;
-        padding: 60px 0 80px;
+        padding: 0px 0 80px;
         width: 100%;
     }
 

@@ -1,4 +1,6 @@
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+html, body, body * { font-family: 'Inter', Arial, sans-serif !important; }
 /* Global Typography Rules */
 h1 {
     font-size: 36px !important;
@@ -10,7 +12,7 @@ h3 {
     font-size: 22px !important;
 }
 p {
-    font-size: 16px !important;
+    font-size: 15px !important;
 }
 
 @media (max-width: 768px) {
@@ -24,7 +26,7 @@ p {
         font-size: 20px !important;
     }
     p {
-        font-size: 16px !important;
+        font-size: 14px !important;
     }
 }
 
@@ -124,6 +126,7 @@ p {
     }
 
     .header-search {
+        position: relative;
         display: flex;
         align-items: center;
         background-color: #ffffff;
@@ -181,6 +184,13 @@ p {
     .header-search .clear-btn:hover {
         color: #ef4444; /* Red color on hover for delete/clear action */
     }
+
+    .header-search-suggestions { display:none; position:absolute; top:calc(100% + 10px); left:0; width:330px; max-height:360px; overflow-y:auto; padding:8px; border:1px solid #d8e5ec; border-radius:13px; background:#fff; box-shadow:0 16px 35px rgba(9,46,82,.18); z-index:1000; }
+    .header-search-suggestions.is-open { display:block; }
+    .header-search-suggestion { display:block; padding:11px 12px; border-radius:9px; color:#12304c; text-decoration:none; font-size:13px; line-height:1.35; }
+    .header-search-suggestion:hover { background:#eaf8f6; }
+    .header-search-suggestion small { display:block; color:#638097; margin-top:3px; }
+    .header-search-empty { padding:13px; color:#638097; font-size:13px; }
 
     /* Megamenu Styles */
     .has-megamenu {
@@ -297,22 +307,23 @@ p {
 
     <div class="header-actions">
         <!-- Search Bar -->
-        <div class="header-search">
+        <form class="header-search" action="{{ route('search') }}" method="get">
             <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="11" cy="11" r="8"></circle>
                 <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
             </svg>
-            <input type="text" id="headerSearchInput" placeholder="Search..." aria-label="Search" oninput="document.getElementById('clearSearchBtn').style.display = this.value ? 'flex' : 'none'">
+            <input type="search" id="headerSearchInput" name="q" value="{{ request('q') }}" placeholder="Search..." aria-label="Search" oninput="document.getElementById('clearSearchBtn').style.display = this.value ? 'flex' : 'none'">
             <button type="button" id="clearSearchBtn" class="clear-btn" aria-label="Clear search" onclick="document.getElementById('headerSearchInput').value = ''; this.style.display = 'none'; document.getElementById('headerSearchInput').focus();">
                 <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <line x1="18" y1="6" x2="6" y2="18"></line>
                     <line x1="6" y1="6" x2="18" y2="18"></line>
                 </svg>
             </button>
-        </div>
+            <div id="headerSearchSuggestions" class="header-search-suggestions" role="listbox"></div>
+        </form>
 
         <!-- Appointment Button -->
-        <a href="#" class="appointment-btn">
+        <a href="{{ route('appointment.index') }}" class="appointment-btn">
             Book an Appointment
         </a>
     </div>
@@ -327,3 +338,25 @@ p {
     </button>
     </div>
 </header>
+<script>
+    (function () {
+        var input = document.getElementById('headerSearchInput');
+        var suggestions = document.getElementById('headerSearchSuggestions');
+        var timer;
+        input.addEventListener('input', function () {
+            var query = input.value.trim();
+            clearTimeout(timer);
+            if (query.length < 2) { suggestions.innerHTML = ''; suggestions.classList.remove('is-open'); return; }
+            timer = setTimeout(function () {
+                fetch('{{ route('search.suggestions') }}?q=' + encodeURIComponent(query))
+                    .then(function (response) { return response.json(); })
+                    .then(function (items) {
+                        if (!items.length) { suggestions.innerHTML = '<div class="header-search-empty">No matching tests or services found.</div>'; }
+                        else { suggestions.innerHTML = items.map(function (item) { return '<a class="header-search-suggestion" href="' + item.url + '"><strong>' + item.title + '</strong><small>' + item.type + '</small></a>'; }).join(''); }
+                        suggestions.classList.add('is-open');
+                    });
+            }, 220);
+        });
+        document.addEventListener('click', function (event) { if (!event.target.closest('.header-search')) suggestions.classList.remove('is-open'); });
+    }());
+</script>

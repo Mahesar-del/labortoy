@@ -15,8 +15,8 @@ use App\Http\Controllers\AdminServiceController;
 use App\Http\Controllers\AdminTestController;
 use App\Http\Controllers\AdminMolecularSectionController;
 use App\Http\Controllers\AdminFaqController;
+use App\Http\Controllers\AdminAppointmentController;
 use App\Http\Controllers\FaqController;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,6 +30,25 @@ use App\Http\Controllers\FaqController;
 
 Route::get('/', [HomeController::class, 'index']);
 
+Route::get('/search', function (\Illuminate\Http\Request $request) {
+    $query = trim((string) $request->query('q'));
+    $services = collect();
+    $tests = collect();
+    if ($query !== '') {
+        $services = \Illuminate\Support\Facades\DB::table('services')->where('is_active', true)->where(function ($builder) use ($query) { $builder->where('name', 'like', '%'.$query.'%')->orWhere('summary', 'like', '%'.$query.'%'); })->get();
+        $tests = \Illuminate\Support\Facades\DB::table('tests')->join('services', 'tests.service_id', '=', 'services.id')->where('tests.is_active', true)->where('services.is_active', true)->where(function ($builder) use ($query) { $builder->where('tests.name', 'like', '%'.$query.'%')->orWhere('tests.heading', 'like', '%'.$query.'%')->orWhere('tests.description', 'like', '%'.$query.'%'); })->select('tests.*', 'services.name as service_name', 'services.slug as service_slug')->get();
+    }
+    return view('search-results', compact('query', 'services', 'tests'));
+})->name('search');
+
+Route::get('/search/suggestions', function (\Illuminate\Http\Request $request) {
+    $query = trim((string) $request->query('q'));
+    if (strlen($query) < 2) return response()->json([]);
+    $services = \Illuminate\Support\Facades\DB::table('services')->where('is_active', true)->where('name', 'like', '%'.$query.'%')->limit(4)->get()->map(function ($service) { return ['title' => $service->name, 'type' => 'Service', 'url' => url('/service/'.$service->slug)]; });
+    $tests = \Illuminate\Support\Facades\DB::table('tests')->join('services', 'tests.service_id', '=', 'services.id')->where('tests.is_active', true)->where('services.is_active', true)->where(function ($builder) use ($query) { $builder->where('tests.name', 'like', '%'.$query.'%')->orWhere('tests.heading', 'like', '%'.$query.'%'); })->select('tests.name', 'tests.heading', 'services.name as service_name', 'services.slug as service_slug')->limit(6)->get()->map(function ($test) { return ['title' => $test->heading ?: $test->name, 'type' => 'Test · '.$test->service_name, 'url' => url('/service/'.$test->service_slug)]; });
+    return response()->json($services->merge($tests)->values());
+})->name('search.suggestions');
+
 Route::get('/services', [ServiceController::class, 'index']);
 Route::get('/chemistry-testing', [ServiceController::class, 'chemistry'])->name('chemistry.testing');
 Route::get('/service/chemistry-testing', [ServiceController::class, 'chemistry']);
@@ -38,6 +57,8 @@ Route::get('/service/{slug}', [ServiceController::class, 'show'])->name('service
 
 Route::get('/provider-page', [ProviderController::class, 'index']);
 Route::get('/appointment', [AppointmentController::class, 'index'])->name('appointment.index');
+Route::post('/appointment', [AppointmentController::class, 'store'])->name('appointment.store');
+Route::get('/appointment/booked-slots', [AppointmentController::class, 'bookedSlots'])->name('appointment.booked-slots');
 Route::get('/patient', [PatientController::class, 'index']);
 Route::get('/contact-us', [ContactController::class, 'index']);
 Route::get('/cbc-test', function () { return view('services.cbc-test'); });
@@ -60,6 +81,8 @@ Route::post('/admin/tests', [AdminTestController::class, 'store'])->name('admin.
 Route::get('/admin/tests/{id}/edit', [AdminTestController::class, 'edit'])->name('admin.tests.edit');
 Route::post('/admin/tests/{id}/edit', [AdminTestController::class, 'update'])->name('admin.tests.update');
 Route::post('/admin/tests/{id}/delete', [AdminTestController::class, 'destroy'])->name('admin.tests.delete');
+Route::get('/admin/appointments', [AdminAppointmentController::class, 'index'])->name('admin.appointments.index');
+Route::post('/admin/appointments/{id}', [AdminAppointmentController::class, 'update'])->name('admin.appointments.update');
 Route::get('/admin/faqs', [AdminFaqController::class, 'index'])->name('admin.faqs.index');
 Route::post('/admin/faqs', [AdminFaqController::class, 'store'])->name('admin.faqs.store');
 Route::get('/admin/molecular-specimens', [AdminMolecularSectionController::class, 'edit'])->name('admin.molecular-specimens.edit');
