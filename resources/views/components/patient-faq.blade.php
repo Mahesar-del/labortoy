@@ -1,7 +1,7 @@
 <style>
     .faq-section, .faq-section * { box-sizing: border-box; }
     .faq-section {
-        padding: 1rem 0 2rem 0;
+        padding: 1rem 99px 2rem 99px;
         background-color: #ffffff;
         width: 100%;
     }
@@ -10,7 +10,7 @@
         max-width: 1320px;
         width: 100%;
         margin: 0 auto;
-        padding: 0 7%;
+        padding: 0;
     }
 
     .faq-header {
@@ -156,6 +156,13 @@
         stroke: #ffffff;
     }
 
+    @media (max-width: 1150px) {
+        .faq-section {
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+    }
+
     @media (max-width: 768px) {
         .faq-section {
             padding: 2.5rem 20px;
@@ -165,7 +172,7 @@
             max-width: 1320px;
             width: 100%;
             margin: 0 auto;
-            padding: 0 0%;
+            padding: 0;
         }
 
         .faq-title {
@@ -237,7 +244,7 @@
 <section class="faq-section">
     <div class="faq-container">
         <div class="faq-header">
-            <h2 class="faq-title">Genomic Diagnostics FAQ</h2>
+            <h2 class="faq-title">Frequently Asked Question For Patient</h2>
             <p class="faq-subtitle">Answers to common questions about genomic testing.</p>
         </div>
 
@@ -252,16 +259,16 @@
                             <line x1="5" y1="12" x2="19" y2="12"></line>
                         </svg>
                     </button>
-                </div>
-                <div class="faq-answer">
-                    <div class="faq-answer-inner">
-                        <p class="faq-answer-text">No. Preparation requirements depend on the specific test. Some tests may require fasting or other instructions, while others may not.</p>
                         <button class="faq-toggle-close" aria-label="Close answer">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                                 <line x1="18" y1="6" x2="6" y2="18"></line>
                                 <line x1="6" y1="6" x2="18" y2="18"></line>
                             </svg>
                         </button>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        <p class="faq-answer-text">No. Preparation requirements depend on the specific test. Some tests may require fasting or other instructions, while others may not.</p>
                     </div>
                 </div>
             </div>

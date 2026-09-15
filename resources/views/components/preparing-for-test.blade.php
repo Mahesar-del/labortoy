@@ -67,7 +67,7 @@
     .preparing-test-section, .preparing-test-section * { box-sizing: border-box; }
     .preparing-test-section {
         width: 100%;
-        padding: 3rem 7%;
+        padding: 3rem 99px;
         background-color: #ffffff;
         box-sizing: border-box;
     }
@@ -196,6 +196,13 @@
         color: #44474E;
         line-height: 22px;
         margin: 0;
+    }
+
+    @media (max-width: 1150px) {
+        .preparing-test-section {
+            padding-left: 20px;
+            padding-right: 20px;
+        }
     }
 
     @media (max-width: 992px) {

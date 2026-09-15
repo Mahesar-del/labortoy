@@ -16,13 +16,13 @@
     .test-information-section, .test-information-section * { box-sizing: border-box; }
     .test-information-section {
         background-color: #ffffff;
-        padding: 4rem 7%;
+        padding: 4rem 99px;
         box-sizing: border-box;
         width: 100%;
     }
 
     .ti-container {
-        max-width: 1240px;
+        max-width: 1320px;
         width: 100%;
         min-height: 398px;
         margin: 0 auto;
@@ -73,7 +73,15 @@
         font-size: 15px;
         line-height: 1.65;
         color: #000;
+        text-align: justify;
         margin: 0;
+    }
+
+    @media (max-width: 1150px) {
+        .test-information-section {
+            padding-left: 20px;
+            padding-right: 20px;
+        }
     }
 
     @media (max-width: 992px) {
