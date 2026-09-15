@@ -12,7 +12,7 @@
 <body>
     @include('components.header')
     <section class="services-hero" aria-labelledby="services-hero-title">
-        <div class="services-hero__background" style="background-image: url('{{ asset('img/genomic-diagnostics-hero.png') }}');"></div>
+        <div class="services-hero__background" style="background-image: url('{{ asset('images/patient_hero_image.jpg') }}');"></div>
         <div class="services-hero__overlay"></div>
     
         <div class="services-hero__container">
@@ -25,11 +25,11 @@
     
     <style>
         .services-hero, .services-hero * { box-sizing: border-box; }
-        .services-hero { background: #020b1c; color: #fff; isolation: isolate; min-height: 460px; overflow: hidden; position: relative; }
+        .services-hero { background: #020b1c; color: #fff; isolation: isolate; min-height: 460px; overflow: hidden; position: relative; padding: 0 99px; }
         .services-hero__background, .services-hero__overlay { height: 100%; inset: 0; position: absolute; width: 100%; }
-        .services-hero__background { background-position: center; background-repeat: no-repeat; background-size: 100% 100%; z-index: -2; }
+        .services-hero__background { background-position: center; background-repeat: no-repeat; background-size: cover; z-index: -2; }
         .services-hero__overlay { background: linear-gradient(90deg, rgba(7,26,49,.96) 0%, rgba(7,26,49,.86) 48%, rgba(7,26,49,.25) 100%); z-index: -1; }
-        .services-hero__container { align-items: center; display: flex; margin: 0 auto; max-width: 1320px; min-height: 460px; padding: 56px 7%; width: 100%; }
+        .services-hero__container { align-items: center; display: flex; margin: 0 auto; max-width: 1320px; min-height: 460px; padding: 56px 0; width: 100%; }
         .services-hero__content { max-width: 580px; }
         .services-hero h1 { font-size: clamp(34px, 3.1vw, 56px); letter-spacing: -.04em; line-height: 1.1; margin: 0; }
         .services-hero p { 
@@ -44,14 +44,19 @@
         .services-hero__button { background: #20b3b5; border-radius: 999px; color: #fff; display: inline-block; font-size: 14px; font-weight: 700; padding: 15px 25px; text-decoration: none; }
         .services-hero__button:hover { filter: brightness(.94); }
         .services-hero__button:focus-visible { outline: 3px solid #fff; outline-offset: 4px; }
+        @media (max-width: 1150px) {
+            .services-hero { padding: 0 20px; }
+        }
         @media (max-width: 700px) {
+            .services-hero { padding: 0 20px; }
             .services-hero, .services-hero__container { min-height: 430px; }
-            .services-hero__container { align-items: flex-end; padding: 48px 7%; }
+            .services-hero__container { align-items: flex-end; padding: 48px 0; }
             .services-hero__overlay { background: linear-gradient(90deg, rgba(7,26,49,.96), rgba(7,26,49,.25)); }
             .services-hero__content { max-width: 350px; }
             .services-hero p {
-                font-size: 16px;
-                line-height: 26px;
+                font-size: 15px;
+                line-height: 1.4;
+                text-align: justify;
             }
         }
     </style>
@@ -98,7 +103,7 @@
         .patient-info, .patient-info * { box-sizing: border-box; }
         .patient-info {
             width: 100%;
-            padding: 3rem 7%;
+            padding: 3rem 99px;
             background-color: #ffffff;
             box-sizing: border-box;
         }
@@ -116,7 +121,7 @@
         .patient-info__image-wrapper {
             position: relative;
             flex: 1;
-            max-width: 600px;
+            max-width: 520px;
             width: 100%;
             aspect-ratio: 555 / 470;
             height: auto;
@@ -193,6 +198,13 @@
         .patient-info__list .check-icon svg {
             width: 12px;
             height: 12px;
+        }
+
+        @media (max-width: 1150px) {
+            .patient-info, .specimen-collection {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
         }
 
         @media (max-width: 992px) {
@@ -290,7 +302,7 @@
         .specimen-collection {
             width: 100%;
             background-color: #0B2545;
-            padding: 3rem 7%;
+            padding: 3rem 99px;
             display: flex;
             justify-content: center;
             box-sizing: border-box;
@@ -318,7 +330,7 @@
 
         .specimen-collection__header {
             width: 100%;
-            text-align: center;
+            text-align: left;
         }
 
         .specimen-collection__header h2 {
@@ -403,6 +415,9 @@
             .specimen-collection__container {
                 gap: 24px;
             }
+            .specimen-collection__header {
+                text-align: center;
+            }
             .specimen-collection__header h2 {
                 font-family: 'Plus Jakarta Sans', sans-serif;
                 font-weight: 700;
@@ -416,7 +431,7 @@
                 font-weight: 400;
                 font-size: 16px;
                 line-height: 30px;
-                letter-spacing: 0px
+                letter-spacing: 0px;
                 text-align: center;
                 color: #ffffff;
             }
@@ -428,6 +443,14 @@
     @include('components.test-information')
     @include('components.patient-faq')
     @include('components.diagnostics-cta.cta')
+    <style>
+        /* Fix for footer contact info overlap on mobile view (specific to patient page as requested) */
+        @media (max-width: 1150px) {
+            .site-footer .footer-contact-info {
+                gap: 1.5rem !important;
+            }
+        }
+    </style>
     @include('components.footer')
 </body>
 </html>

@@ -100,8 +100,8 @@
 <style>
     .what-you-need-section, .what-you-need-section * { box-sizing: border-box; }
     .what-you-need-section {
-        background-color: #F3F8FA;
-        padding: 4rem 7%;
+        background-color: #F8F9FA;
+        padding: 4rem 99px;
         width: 100%;
         font-family: 'Inter', sans-serif;
         box-sizing: border-box;
@@ -232,9 +232,17 @@
         font-size: 0.9rem;
         color: #000000;
         line-height: 1.55;
+        text-align: justify;
         margin: 0;
         z-index: 2;
         position: relative;
+    }
+
+    @media (max-width: 1150px) {
+        .what-you-need-section {
+            padding-left: 20px;
+            padding-right: 20px;
+        }
     }
 
     @media (max-width: 992px) {
