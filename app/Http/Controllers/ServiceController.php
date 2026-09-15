@@ -15,6 +15,7 @@ class ServiceController extends Controller
     public function chemistry()
     {
         $service = DB::table('services')->where('slug', 'chemistry-testing')->first();
+        abort_unless($service, 404, 'Service not found in database. Please seed the database.');
         $tests = DB::table('tests')->where('service_id', $service->id)->where('is_active', true)->latest()->get();
         foreach ($tests as $test) { if (empty($test->image_path)) $test->image_path = 'service-heroes/A2EwxH4dOTgtRRfzIBikceUiypJceqlvLWRx4ZFd.webp'; }
         $faqs = DB::table('service_faqs')->where('service_id', $service->id)->where('is_active', true)->latest()->get();
