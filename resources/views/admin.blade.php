@@ -18,6 +18,9 @@
     document.querySelectorAll('.nav a[href="#contacts"]').forEach(function (link) {
         link.href = '{{ route('admin.contact-settings.edit') }}';
     });
+    document.querySelectorAll('a[href="#appointments"]').forEach(function (link) {
+        link.href = '{{ route('admin.appointments.index') }}';
+    });
     document.querySelectorAll('.nav a[href="/services"]').forEach(function (link) {
         link.href = '{{ route('admin.services.index') }}';
     });

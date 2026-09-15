@@ -215,23 +215,27 @@
             </button>
         </div>
 
-        <form>
+        @if(session('success'))<div style="margin:18px 0;padding:12px;border-radius:8px;background:#def9f2;color:#087a6b">{{ session('success') }}</div>@endif
+        @if($errors->any())<div style="margin:18px 0;padding:12px;border-radius:8px;background:#ffe9e9;color:#a32828">{{ $errors->first() }}</div>@endif
+        <form method="post" action="{{ route('appointment.store') }}">
+            @csrf
+            <input type="hidden" id="source_type" name="source_type" value="patient">
             <div class="form-grid">
                 <div class="form-group">
                     <label for="first_name">First Name *</label>
-                    <input type="text" id="first_name" placeholder="First Name" required>
+                    <input type="text" id="first_name" name="first_name" placeholder="First Name" pattern="[A-Za-z\s\-]+" title="Use letters only" required>
                 </div>
                 <div class="form-group">
                     <label for="last_name">Last Name *</label>
-                    <input type="text" id="last_name" placeholder="Last Name" required>
+                    <input type="text" id="last_name" name="last_name" placeholder="Last Name" pattern="[A-Za-z\s\-]+" title="Use letters only" required>
                 </div>
                 <div class="form-group">
                     <label for="email">Email Address *</label>
-                    <input type="email" id="email" placeholder="Email Address" required>
+                    <input type="email" id="email" name="email" placeholder="Email Address" required>
                 </div>
                 <div class="form-group">
                     <label for="phone">Phone Number *</label>
-                    <input type="tel" id="phone" placeholder="Number" required>
+                    <input type="tel" id="phone" name="phone" placeholder="Number" inputmode="numeric" pattern="[0-9+()\-\s]+" title="Use numbers only" required>
                 </div>
 
                 <!-- Provider Only Fields -->
@@ -251,7 +255,7 @@
 
                 <div class="form-group full-width">
                     <label for="appointment_type">Appointment Type *</label>
-                    <select id="appointment_type" required>
+                    <select id="appointment_type" name="appointment_type" required>
                         <!-- Options populated by JS -->
                     </select>
                 </div>
@@ -268,11 +272,11 @@
 
                 <div class="form-group">
                     <label for="date">Preferred Date *</label>
-                    <input type="date" id="date" placeholder="mm/dd/yyyy" required>
+                    <input type="date" id="date" name="date" placeholder="mm/dd/yyyy" min="{{ now()->toDateString() }}" required>
                 </div>
                 <div class="form-group">
                     <label for="slot">Available Slot *</label>
-                    <select id="slot" required>
+                    <select id="slot" name="slot" required>
                         <option value="" disabled selected>Select Time</option>
                     </select>
                 </div>
@@ -289,15 +293,18 @@
 
                 <div class="form-group full-width">
                     <label for="service">Test / Service Details *</label>
-                    <select id="service" required>
+                    <select id="service" name="service" required>
                         <option value="" disabled selected>Select Test</option>
-                        <option value="blood_test">Blood Test</option>
-                        <option value="urine_test">Urine Test</option>
+                        @forelse($tests as $test)
+                            <option value="{{ $test->name }}" {{ old('service') === $test->name ? 'selected' : '' }}>{{ $test->name }} — {{ $test->service_name }}</option>
+                        @empty
+                            <option value="" disabled>No tests are available yet</option>
+                        @endforelse
                     </select>
                 </div>
                 <div class="form-group full-width">
                     <label for="additional_info">Additional Information</label>
-                    <textarea id="additional_info" placeholder="Tell us anything...."></textarea>
+                    <textarea id="additional_info" name="additional_info" placeholder="Tell us anything...."></textarea>
                 </div>
             </div>
 
@@ -324,8 +331,45 @@
         const providerFields = document.querySelectorAll('.provider-field');
         const tabPatient = document.getElementById('tab-patient');
         const tabProvider = document.getElementById('tab-provider');
+        const slotSelect = document.getElementById('slot');
+
+        [
+            ['first_name', /[^a-zA-Z\s-]/g],
+            ['last_name', /[^a-zA-Z\s-]/g],
+            ['phone', /[^0-9+()\-\s]/g]
+        ].forEach(function (rule) {
+            document.getElementById(rule[0]).addEventListener('input', function () {
+                this.value = this.value.replace(rule[1], '');
+            });
+        });
+
+        for (let hour = 0; hour <= 12; hour += 2) {
+            const value = String(hour).padStart(2, '0') + ':00';
+            const label = new Date('2000-01-01T' + value).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
+            const option = document.createElement('option');
+            option.value = value;
+            option.textContent = label;
+            slotSelect.appendChild(option);
+        }
+
+        document.getElementById('date').addEventListener('change', function () {
+            const selectedDate = this.value;
+            slotSelect.value = '';
+            Array.from(slotSelect.options).forEach(function (option) {
+                if (option.value) { option.disabled = false; option.textContent = option.dataset.label || option.textContent; option.dataset.label = option.textContent; }
+            });
+            if (!selectedDate) return;
+            fetch('{{ route('appointment.booked-slots') }}?date=' + encodeURIComponent(selectedDate))
+                .then(function (response) { return response.json(); })
+                .then(function (bookedSlots) {
+                    Array.from(slotSelect.options).forEach(function (option) {
+                        if (bookedSlots.indexOf(option.value) !== -1) { option.disabled = true; option.textContent = (option.dataset.label || option.textContent) + ' (Booked)'; }
+                    });
+                });
+        });
 
         function switchTab(tab) {
+            document.getElementById('source_type').value = tab === 'provider' ? 'healthcare_provider' : 'patient';
             if (tab === 'provider') {
                 tabProvider.classList.add('active');
                 tabProvider.classList.remove('inactive');

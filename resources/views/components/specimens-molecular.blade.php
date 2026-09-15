@@ -8,7 +8,7 @@
         <div class="specimens-grid">
             @php($serviceCards = !empty($service->help_cards) ? json_decode($service->help_cards, true) : null)
             @foreach($serviceCards ?: collect($specimens['card_heading'] ?? ['Blood','Swab','Tissue','Other Specimens'])->map(function($heading, $index) use ($specimens) { return ['heading' => $heading, 'description' => $specimens['card_description'][$index] ?? '']; })->all() as $card)
-            <article class="specimen-card"><h3>{{ $card['heading'] }}</h3><p>{{ $card['description'] }}</p></article>
+            <article class="specimen-card"><h3>{{ $card['heading'] ?? ($card['title'] ?? '') }}</h3><p>{{ $card['description'] ?? '' }}</p></article>
             @endforeach
         </div>
     </div>

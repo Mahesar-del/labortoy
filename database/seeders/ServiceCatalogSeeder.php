@@ -79,7 +79,24 @@ class ServiceCatalogSeeder extends Seeder
             ]);
         }
 
+        $introSections = [
+            'chemistry-testing' => ['What Is Chemistry Testing?', "Chemistry testing measures substances in blood and other samples to provide information about metabolism, organ function, nutrition, and overall health. These results help clinicians understand important changes that may need attention.\n\nBy examining markers such as glucose, electrolytes, enzymes, and proteins, chemistry testing supports routine screening, diagnosis, and ongoing monitoring. Each test is performed using dependable laboratory methods for clear, practical results.", "Supports metabolic and organ health assessment.\nUses reliable laboratory testing methods.\nDesigned around practical clinical needs.", 'service-intros/chemistry-intro.png'],
+            'immunoassay-testing' => ['What Is Immunoassay Testing?', "Immunoassay testing is a laboratory method that measures hormones, proteins, vitamins, and other biomarkers in a sample. It helps identify important biological changes that can support screening, diagnosis, and patient monitoring.\n\nUsing precise antibody-based methods, these tests can detect small amounts of targeted markers. This gives healthcare providers useful information for thyroid health, cardiac assessment, reproductive testing, and wellness evaluation.", "Supports hormone and biomarker assessment.\nHelps with screening and patient monitoring.\nUses precise laboratory testing methods.", 'service-intros/immunoassay-intro.png'],
+            'hematology' => ['What Is Hematology Testing?', "Hematology testing examines blood cells and related markers to provide an important picture of a person’s overall health. It helps assess red blood cells, white blood cells, platelets, hemoglobin, and other components of the blood.\n\nThese results can support evaluation of anemia, infection, inflammation, and clotting concerns. Reliable hematology testing also helps healthcare providers monitor changes over time and make informed clinical decisions.", "Evaluates red cells, white cells, and platelets.\nSupports anemia and infection assessment.\nHelps monitor ongoing blood health.", 'service-intros/hematology-intro.png'],
+        ];
+        foreach ($introSections as $slug => $intro) {
+            DB::table('services')->where('id', $serviceIds[$slug])->update(['intro_heading' => $intro[0], 'intro_description' => $intro[1], 'intro_bullets' => $intro[2], 'intro_image' => $intro[3], 'updated_at' => now()]);
+        }
+
         $tests = [
+            'chemistry-testing' => [
+                ['Comprehensive Metabolic Panel', 'Comprehensive Metabolic Panel', 'Measures key substances in the blood to assess metabolism, liver, kidney, and overall health.'],
+                ['Basic Metabolic Panel', 'Basic Metabolic Panel', 'Evaluates glucose, electrolytes, kidney function, and other essential metabolic markers.'],
+                ['Lipid Panel', 'Lipid Panel', 'Measures cholesterol and triglyceride levels to help assess cardiovascular health.'],
+                ['Blood Glucose', 'Blood Glucose', 'Measures blood sugar levels to support assessment and monitoring of glucose control.'],
+                ['Liver Function Tests (LFT)', 'Liver Function Tests (LFT)', 'Evaluates enzymes and proteins that provide information about liver function and health.'],
+                ['Kidney Function Tests', 'Kidney Function Tests', 'Measures key markers that help assess kidney function and overall renal health.'],
+            ],
             'immunoassay-testing' => [
                 ['Thyroid Stimulating Hormone (TSH)', 'Thyroid function assessment', 'Measures TSH to help assess thyroid function and support evaluation of thyroid-related conditions.'],
                 ['Free T4', 'Free T4 thyroid hormone test', 'Measures free thyroxine levels to provide additional information about thyroid function.'],
