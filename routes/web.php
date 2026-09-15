@@ -16,7 +16,7 @@ use App\Http\Controllers\AdminTestController;
 use App\Http\Controllers\AdminMolecularSectionController;
 use App\Http\Controllers\AdminFaqController;
 use App\Http\Controllers\AdminAppointmentController;
-
+use App\Http\Controllers\FaqController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes

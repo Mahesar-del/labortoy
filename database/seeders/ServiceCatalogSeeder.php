@@ -123,5 +123,11 @@ class ServiceCatalogSeeder extends Seeder
                 );
             }
         }
+
+        // Keep the initial public catalogue focused: three published tests per seeded service.
+        foreach (['chemistry-testing', 'immunoassay-testing', 'hematology'] as $slug) {
+            $ids = DB::table('tests')->where('service_id', $serviceIds[$slug])->orderBy('id')->pluck('id');
+            foreach ($ids as $index => $id) DB::table('tests')->where('id', $id)->update(['is_active' => $index < 3]);
+        }
     }
 }
