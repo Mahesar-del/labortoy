@@ -16,6 +16,7 @@ use App\Http\Controllers\AdminTestController;
 use App\Http\Controllers\AdminMolecularSectionController;
 use App\Http\Controllers\AdminFaqController;
 use App\Http\Controllers\AdminAppointmentController;
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\FaqController;
 /*
 |--------------------------------------------------------------------------
@@ -61,6 +62,7 @@ Route::post('/appointment', [AppointmentController::class, 'store'])->name('appo
 Route::get('/appointment/booked-slots', [AppointmentController::class, 'bookedSlots'])->name('appointment.booked-slots');
 Route::get('/patient', [PatientController::class, 'index']);
 Route::get('/contact-us', [ContactController::class, 'index']);
+Route::get('/about-us', [AboutController::class, 'index'])->name('about');
 Route::get('/cbc-test', function () { return view('services.cbc-test'); });
 Route::get('/blog', function () { return view('services.blog'); });
 Route::get('/blog-post', function () { return view('services.blog-post'); });

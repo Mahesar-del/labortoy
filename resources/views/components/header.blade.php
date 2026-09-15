@@ -301,6 +301,7 @@ p {
         </li>
         <li><a href="/patient">Patients</a></li>
         <li><a href="/provider-page">Providers</a></li>
+        <li><a href="{{ route('about') }}">About Us</a></li>
         <li><a href="/faq">FAQ</a></li>
         <li><a href="/contact-us">Contact</a></li>
     </ul>
