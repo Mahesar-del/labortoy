@@ -23,7 +23,22 @@
     .services-hero__content { max-width: 700px; }
     .services-hero h1 { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 46px; line-height: 58px; letter-spacing: 0px; color: #FFFFFF; margin: 0; }
     .services-hero p { font-family: 'Inter', sans-serif; font-weight: 400; font-size: 18px; line-height: 30px; letter-spacing: 0px; color: #D9E5EE; margin: 25px 0 30px; }
-    .services-hero__button { background: #20b3b5; border-radius: 999px; color: #fff; display: inline-block; font-size: 14px; font-weight: 700; padding: 15px 25px; text-decoration: none; }
+    /* Keep the appointment CTA styled even when a browser has a visited-link style cached. */
+    .services-hero a.services-hero__button,
+    .services-hero a.services-hero__button:visited {
+        align-items: center;
+        background: #20b3b5 !important;
+        border: 0;
+        border-radius: 999px;
+        color: #fff !important;
+        display: inline-flex;
+        font-size: 14px;
+        font-weight: 700;
+        justify-content: center;
+        min-height: 54px;
+        padding: 0 26px;
+        text-decoration: none !important;
+    }
     .services-hero__button:hover { filter: brightness(.94); }
     .services-hero__button:focus-visible { outline: 3px solid #fff; outline-offset: 4px; }
     @media (max-width: 1050px) {

@@ -21,10 +21,40 @@
             margin: 0;
             font-family: 'Inter', sans-serif;
         }
+
+        /* Match the CBC hero's content rail to the shared site header. */
+        .cbc-test-page {
+            min-width: 0;
+            overflow-x: hidden;
+        }
+
+        .cbc-test-page .services-hero__container {
+            box-sizing: border-box;
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 1320px;
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+            width: 100%;
+        }
+
+        @media (max-width: 1517px) and (min-width: 1151px) {
+            .cbc-test-page .services-hero__container {
+                padding-left: 99px !important;
+                padding-right: 99px !important;
+            }
+        }
+
+        @media (max-width: 1150px) {
+            .cbc-test-page .services-hero__container {
+                padding-left: 20px !important;
+                padding-right: 20px !important;
+            }
+        }
     </style>
 </head>
 
-<body>
+<body class="cbc-test-page">
     @include('components.header')
 
     @include('components.services-hero', [
