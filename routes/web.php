@@ -35,6 +35,7 @@ Route::get('/chemistry-testing', [ServiceController::class, 'chemistry'])->name(
 Route::get('/service/chemistry-testing', [ServiceController::class, 'chemistry']);
 Route::get('/service/clinical-diagnostics', [ServiceController::class, 'clinical']);
 Route::get('/service/{slug}', [ServiceController::class, 'show'])->name('service.show');
+Route::get('/tests/{slug}', [App\Http\Controllers\TestPageController::class, 'show'])->name('test-pages.show');
 
 Route::get('/provider-page', [ProviderController::class, 'index']);
 Route::get('/appointment', [AppointmentController::class, 'index'])->name('appointment.index');
@@ -66,3 +67,11 @@ Route::get('/admin/faqs', [AdminFaqController::class, 'index'])->name('admin.faq
 Route::post('/admin/faqs', [AdminFaqController::class, 'store'])->name('admin.faqs.store');
 Route::get('/admin/molecular-specimens', [AdminMolecularSectionController::class, 'edit'])->name('admin.molecular-specimens.edit');
 Route::post('/admin/molecular-specimens', [AdminMolecularSectionController::class, 'update'])->name('admin.molecular-specimens.update');
+
+Route::resource('admin/blog-posts', \App\Http\Controllers\AdminBlogPostController::class, ['as' => 'admin']);
+Route::resource('admin/authors', \App\Http\Controllers\AdminAuthorController::class, ['as' => 'admin']);
+Route::get('admin/faqs', [\App\Http\Controllers\AdminFaqController::class, 'index'])->name('admin.faqs.index');
+Route::post('admin/faqs', [\App\Http\Controllers\AdminFaqController::class, 'store'])->name('admin.faqs.store');
+Route::delete('admin/faqs/{id}', [\App\Http\Controllers\AdminFaqController::class, 'destroy'])->name('admin.faqs.destroy');
+Route::get('admin/test-pages/convert/{id}', [\App\Http\Controllers\AdminTestPageController::class, 'convertBasicTest'])->name('admin.test-pages.convert');
+Route::resource('admin/test-pages', \App\Http\Controllers\AdminTestPageController::class, ['as' => 'admin']);

@@ -16,11 +16,12 @@ class ServiceController extends Controller
     {
         $service = DB::table('services')->where('slug', 'chemistry-testing')->first();
         $tests = DB::table('tests')->where('service_id', $service->id)->where('is_active', true)->latest()->get();
+        $testPages = \App\Models\TestPage::where('service_id', $service->id)->where('status', 'published')->latest()->get();
         $faqs = DB::table('service_faqs')->where('service_id', $service->id)->where('is_active', true)->latest()->get();
         $storedCards = DB::table('section_settings')->where('key', 'molecular_specimens')->value('value');
         $specimens = $storedCards ? json_decode($storedCards, true) : null;
 
-        return view('services.genomic-diagnostics', compact('service', 'tests', 'specimens', 'faqs'));
+        return view('services.genomic-diagnostics', compact('service', 'tests', 'testPages', 'specimens', 'faqs'));
     }
 
     public function show($slug)
@@ -29,10 +30,11 @@ class ServiceController extends Controller
         abort_unless($service, 404);
         if ($slug === 'chemistry-testing') return $this->chemistry();
         $tests = DB::table('tests')->where('service_id', $service->id)->where('is_active', true)->latest()->get();
+        $testPages = \App\Models\TestPage::where('service_id', $service->id)->where('status', 'published')->latest()->get();
         $storedCards = DB::table('section_settings')->where('key', 'molecular_specimens')->value('value');
         $specimens = $storedCards ? json_decode($storedCards, true) : null;
         $faqs = DB::table('service_faqs')->where('service_id', $service->id)->where('is_active', true)->latest()->get();
-        return view('services.dynamic-service', compact('service', 'tests', 'faqs', 'specimens'));
+        return view('services.dynamic-service', compact('service', 'tests', 'testPages', 'faqs', 'specimens'));
     }
 
     public function molecular()
