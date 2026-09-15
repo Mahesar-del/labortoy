@@ -41,7 +41,7 @@
 <style>
     .process-section {
         background-color: #F3F8FA;
-        padding: 1.5rem 0;
+        padding: 40px 0;
         width: 100%;
         box-sizing: border-box;
     }
