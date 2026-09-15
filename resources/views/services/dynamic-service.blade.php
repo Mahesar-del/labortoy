@@ -16,6 +16,14 @@
 @include('components.faq')
 @include('components.diagnostics-cta.cta')
 </main>
+<style>
+@media (max-width:1360px) and (min-width:1151px) {
+  .service-page-shell .services-hero__container,.service-page-shell .dynamic-intro__inner,.service-page-shell .chemistry-services-container { padding-left:99px!important; padding-right:99px!important; }
+}
+@media (max-width:1150px) and (min-width:701px) {
+  .service-page-shell .services-hero__container,.service-page-shell .dynamic-intro__inner,.service-page-shell .chemistry-services-container { padding-left:20px!important; padding-right:20px!important; }
+}
+</style>
 @include('components.footer')
 </body>
 </html>
