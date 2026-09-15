@@ -9,9 +9,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
     <style>
         * { box-sizing: border-box; }
-        body { margin: 0; font-family: 'Manrope', sans-serif; overflow-x: hidden; width: 100%; background-color: #ffffff; }
+        html, body { margin: 0; padding: 0; width: 100%; overflow-x: hidden; font-family: 'Manrope', sans-serif; background-color: #ffffff; }
         .main-wrapper { width: 100%; margin: 0 auto; overflow-x: hidden; }
-        
         /* Outer Page Section with matching Header & Footer 99px padding grid */
         .faq-page-section {
             width: 100%;
@@ -171,7 +170,7 @@
         .contact-hero {
             background: #041b34;
             color: #fff;
-            height: 500px;
+            height: 420px;
             isolation: isolate;
             overflow: hidden;
             position: relative;
@@ -196,7 +195,7 @@
             left: max(99px, calc((100% - 1320px) / 2 + 99px));
             max-width: 700px;
             position: absolute;
-            top: 38%;
+            top: calc(50% - 30px);
             transform: translateY(-50%);
         }
         .contact-hero h1 {
@@ -204,11 +203,13 @@
             letter-spacing: -0.055em;
             margin: 0 0 24px;
         }
+        .mobile-break { display: none; }
         .contact-hero p {
             color: #f4f8fb;
             font: 400 clamp(16px, 1.2vw, 20px) / 1.6 'Inter', sans-serif;
             margin: 0;
             max-width: 680px;
+            text-align: justify;
         }
 
         /* Category Filter Buttons Outer & Inner Wrapper matching 99px padding & 1320px grid */
@@ -315,7 +316,7 @@
         }
         @media (max-width: 700px) {
             .contact-hero {
-                height: 410px;
+                height: 380px;
             }
             .contact-hero__image {
                 background-position: 64% center;
@@ -326,14 +327,40 @@
             .contact-hero__content {
                 left: 20px;
                 right: 20px;
-                top: 32%;
+                top: calc(50% - 26px);
+                transform: translateY(-50%);
             }
             .contact-hero h1 {
                 margin-bottom: 16px;
+                font-size: 38px;
+                line-height: 1.15;
+                letter-spacing: 0.5px;
             }
+            .mobile-break { display: block; }
             .contact-hero p {
                 font-size: 15px;
                 line-height: 1.5;
+            }
+            .contact-hero__buttons-wrapper {
+                bottom: 0;
+            }
+            .faq-btn {
+                border-radius: 12px 12px 0 0;
+                height: 52px;
+                font-size: 14px;
+                min-width: 180px;
+            }
+            .site-footer .contact-text p {
+                white-space: normal;
+                line-height: 1.4;
+                margin-top: 4px;
+            }
+            .site-footer .contact-text h5 {
+                white-space: normal;
+                line-height: 1.2;
+            }
+            .site-footer .footer-contact-info {
+                gap: 16px;
             }
         }
     </style>
@@ -348,180 +375,57 @@
             <div class="contact-hero__image"></div>
             <div class="contact-hero__shade"></div>
             <div class="contact-hero__content">
-                <h1 id="contact-hero-title">Frequently Asked Questions</h1>
-                <p>Find answers to common questions about Sterling's diagnostic services, testing process, appointments, specimens, and results.</p>
+                <h1 id="contact-hero-title">Frequently Asked <br class="mobile-break"> Questions</h1>
+                <p>Find answers to common questions about Sterling's diagnostic services, testing process, appointments, specimens, and results. Learn how to prepare for your laboratory visit, access your online test reports securely, and get support for billing and insurance inquiries.</p>
             </div>
 
             <!-- Category Filter Buttons at Bottom -->
             <div class="contact-hero__buttons-wrapper">
                 <div class="contact-hero__buttons">
-                    <button class="faq-btn active">Getting Ready for Testing</button>
-                    <button class="faq-btn">Testing & Results</button>
-                    <button class="faq-btn">Billing & Payments</button>
-                    <button class="faq-btn">Appointments</button>
-                    <button class="faq-btn">General Questions</button>
+                    @if(isset($categories) && count($categories) > 0)
+                        @foreach($categories as $category)
+                            <button class="faq-btn {{ $loop->first ? 'active' : '' }}" onclick="scrollToCategory('{{ $category->slug }}', this)">{{ $category->name }}</button>
+                        @endforeach
+                    @else
+                        <button class="faq-btn active" onclick="scrollToCategory('cat-getting-ready', this)">Getting Ready for Testing</button>
+                        <button class="faq-btn" onclick="scrollToCategory('cat-testing-results', this)">Testing & Results</button>
+                        <button class="faq-btn" onclick="scrollToCategory('cat-billing-payments', this)">Billing & Payments</button>
+                        <button class="faq-btn" onclick="scrollToCategory('cat-appointments', this)">Appointments</button>
+                        <button class="faq-btn" onclick="scrollToCategory('cat-general-questions', this)">General Questions</button>
+                    @endif
                 </div>
             </div>
         </section>
 
-        <!-- 3-Part FAQ Accordion Section matching Header & Footer 99px padding & 1320px grid -->
+        <!-- 5-Part FAQ Accordion Section -->
         <section class="faq-page-section">
             <main class="faq-page-container">
                 <div class="faq-sections-wrapper">
-                    
-                    <!-- Sub-section 1: Before You Go -->
-                    <div class="faq-category-block">
-                        <h2 class="faq-category-title">Before You Go</h2>
-                        <div class="faq-accordion-group">
-                            <div class="faq-card" onclick="toggleFaqItem(this)">
-                                <div class="faq-card-header">
-                                    <span class="faq-card-question">Where can I find Sterling's available tests?</span>
-                                    <div class="faq-card-icon">
-                                        <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-                                        <svg class="icon-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-                                    </div>
-                                </div>
-                                <div class="faq-card-body">
-                                    <div class="faq-card-answer-inner">
-                                        <p class="faq-card-answer">Available laboratory testing can be explored through Sterling's Test Directory. Test-specific information should be reviewed before ordering.</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="faq-card" onclick="toggleFaqItem(this)">
-                                <div class="faq-card-header">
-                                    <span class="faq-card-question">How do I know which specimen is required?</span>
-                                    <div class="faq-card-icon">
-                                        <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-                                        <svg class="icon-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-                                    </div>
-                                </div>
-                                <div class="faq-card-body">
-                                    <div class="faq-card-answer-inner">
-                                        <p class="faq-card-answer">Specimen requirements (blood, urine, saliva, or tissue) are detailed on each test's information page and in provider ordering guidelines.</p>
-                                    </div>
+                    @if(isset($categories) && count($categories) > 0)
+                        @foreach($categories as $category)
+                            <div class="faq-category-block" id="{{ $category->slug }}">
+                                <h2 class="faq-category-title">{{ $category->name }}</h2>
+                                <div class="faq-accordion-group">
+                                    @foreach($category->items as $item)
+                                        <div class="faq-card" onclick="toggleFaqItem(this)">
+                                            <div class="faq-card-header">
+                                                <span class="faq-card-question">{{ $item->question }}</span>
+                                                <div class="faq-card-icon">
+                                                    <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                                                    <svg class="icon-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                                                </div>
+                                            </div>
+                                            <div class="faq-card-body">
+                                                <div class="faq-card-answer-inner">
+                                                    <p class="faq-card-answer">{{ $item->answer }}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
                                 </div>
                             </div>
-
-                            <div class="faq-card" onclick="toggleFaqItem(this)">
-                                <div class="faq-card-header">
-                                    <span class="faq-card-question">Where can I find collection instructions?</span>
-                                    <div class="faq-card-icon">
-                                        <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-                                        <svg class="icon-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-                                    </div>
-                                </div>
-                                <div class="faq-card-body">
-                                    <div class="faq-card-answer-inner">
-                                        <p class="faq-card-answer">Collection and fasting instructions are provided at the time of order and can also be found in our online testing documentation.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Sub-section 2: Scheduling -->
-                    <div class="faq-category-block">
-                        <h2 class="faq-category-title">Scheduling</h2>
-                        <div class="faq-accordion-group">
-                            <div class="faq-card" onclick="toggleFaqItem(this)">
-                                <div class="faq-card-header">
-                                    <span class="faq-card-question">Where can I find Sterling's available tests?</span>
-                                    <div class="faq-card-icon">
-                                        <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-                                        <svg class="icon-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-                                    </div>
-                                </div>
-                                <div class="faq-card-body">
-                                    <div class="faq-card-answer-inner">
-                                        <p class="faq-card-answer">Available laboratory testing can be explored through Sterling's Test Directory. Test-specific information should be reviewed before ordering.</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="faq-card" onclick="toggleFaqItem(this)">
-                                <div class="faq-card-header">
-                                    <span class="faq-card-question">How do I know which specimen is required?</span>
-                                    <div class="faq-card-icon">
-                                        <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-                                        <svg class="icon-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-                                    </div>
-                                </div>
-                                <div class="faq-card-body">
-                                    <div class="faq-card-answer-inner">
-                                        <p class="faq-card-answer">Specimen requirements (blood, urine, saliva, or tissue) are detailed on each test's information page and in provider ordering guidelines.</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="faq-card" onclick="toggleFaqItem(this)">
-                                <div class="faq-card-header">
-                                    <span class="faq-card-question">Where can I find collection instructions?</span>
-                                    <div class="faq-card-icon">
-                                        <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-                                        <svg class="icon-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-                                    </div>
-                                </div>
-                                <div class="faq-card-body">
-                                    <div class="faq-card-answer-inner">
-                                        <p class="faq-card-answer">Collection and fasting instructions are provided at the time of order and can also be found in our online testing documentation.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Sub-section 3: Managing Unexpected Changes and Closures -->
-                    <div class="faq-category-block">
-                        <h2 class="faq-category-title">Managing Unexpected Changes and Closures</h2>
-                        <div class="faq-accordion-group">
-                            <div class="faq-card" onclick="toggleFaqItem(this)">
-                                <div class="faq-card-header">
-                                    <span class="faq-card-question">How do I know if a patient service center is open?</span>
-                                    <div class="faq-card-icon">
-                                        <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-                                        <svg class="icon-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-                                    </div>
-                                </div>
-                                <div class="faq-card-body">
-                                    <div class="faq-card-answer-inner">
-                                        <p class="faq-card-answer">Available laboratory testing can be explored through Sterling's Test Directory. Test-specific information should be reviewed before ordering.</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="faq-card" onclick="toggleFaqItem(this)">
-                                <div class="faq-card-header">
-                                    <span class="faq-card-question">Can I reschedule my appointment online or with the mobile app?</span>
-                                    <div class="faq-card-icon">
-                                        <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-                                        <svg class="icon-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-                                    </div>
-                                </div>
-                                <div class="faq-card-body">
-                                    <div class="faq-card-answer-inner">
-                                        <p class="faq-card-answer">Yes, appointments can be easily rescheduled or modified through our online portal or mobile app prior to your scheduled time.</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="faq-card" onclick="toggleFaqItem(this)">
-                                <div class="faq-card-header">
-                                    <span class="faq-card-question">Could an unexpected closure or event affect my test processing or result turnaround times?</span>
-                                    <div class="faq-card-icon">
-                                        <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-                                        <svg class="icon-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-                                    </div>
-                                </div>
-                                <div class="faq-card-body">
-                                    <div class="faq-card-answer-inner">
-                                        <p class="faq-card-answer">In rare cases of severe weather or unexpected closures, processing times may be slightly delayed. Our team will notify affected patients immediately.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
+                        @endforeach
+                    @endif
                 </div>
             </main>
         </section>
@@ -531,16 +435,20 @@
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Category Hero Buttons Click
+        function scrollToCategory(categoryId, btnElement) {
+            // Update active button state
             const buttons = document.querySelectorAll('.faq-btn');
-            buttons.forEach(button => {
-                button.addEventListener('click', function() {
-                    buttons.forEach(b => b.classList.remove('active'));
-                    this.classList.add('active');
-                });
-            });
-        });
+            buttons.forEach(b => b.classList.remove('active'));
+            btnElement.classList.add('active');
+
+            // Scroll to the targeted category section smoothly
+            const targetElement = document.getElementById(categoryId);
+            if (targetElement) {
+                const yOffset = -30;
+                const y = targetElement.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                window.scrollTo({ top: y, behavior: 'smooth' });
+            }
+        }
 
         // FAQ Accordion Card Toggle with Smooth Transitions
         function toggleFaqItem(card) {
