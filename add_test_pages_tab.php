@@ -1,0 +1,27 @@
+<?php
+$filePath = 'c:/Users/DELL/Desktop/labortory/laravel/resources/views/admin-tests.blade.php';
+$content = file_get_contents($filePath);
+
+$testLink = "<a class=\"active\" href=\"{{ route('admin.tests.index') }}\"><svg viewBox=\"0 0 24 24\"><path d=\"M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z\"/><polyline points=\"14 2 14 8 20 8\"/><line x1=\"16\" y1=\"13\" x2=\"8\" y2=\"13\"/><line x1=\"16\" y1=\"17\" x2=\"8\" y2=\"17\"/><polyline points=\"10 9 9 9 8 9\"/></svg><span>Tests</span></a>";
+
+$testPagesLink = "<a href=\"{{ route('admin.test-pages.index') }}\"><svg viewBox=\"0 0 24 24\"><path d=\"M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z\"/><polyline points=\"14 2 14 8 20 8\"/><line x1=\"16\" y1=\"13\" x2=\"8\" y2=\"13\"/><line x1=\"16\" y1=\"17\" x2=\"8\" y2=\"17\"/><polyline points=\"10 9 9 9 8 9\"/></svg><span>Test Pages</span></a>";
+
+if (strpos($content, "route('admin.test-pages.index')") === false) {
+    $content = str_replace($testLink, $testLink . $testPagesLink, $content);
+    file_put_contents($filePath, $content);
+    echo "Test Pages tab added successfully to admin-tests.blade.php.\n";
+} else {
+    echo "Test Pages tab already exists in admin-tests.blade.php.\n";
+}
+
+// Also check admin-services.blade.php
+$filePath2 = 'c:/Users/DELL/Desktop/labortory/laravel/resources/views/admin-services.blade.php';
+if (file_exists($filePath2)) {
+    $content2 = file_get_contents($filePath2);
+    if (strpos($content2, "route('admin.test-pages.index')") === false) {
+        $testLink2 = "<a href=\"{{ route('admin.tests.index') }}\"><svg viewBox=\"0 0 24 24\"><path d=\"M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z\"/><polyline points=\"14 2 14 8 20 8\"/><line x1=\"16\" y1=\"13\" x2=\"8\" y2=\"13\"/><line x1=\"16\" y1=\"17\" x2=\"8\" y2=\"17\"/><polyline points=\"10 9 9 9 8 9\"/></svg><span>Tests</span></a>";
+        $content2 = str_replace($testLink2, $testLink2 . $testPagesLink, $content2);
+        file_put_contents($filePath2, $content2);
+        echo "Test Pages tab added successfully to admin-services.blade.php.\n";
+    }
+}

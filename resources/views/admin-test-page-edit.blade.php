@@ -264,6 +264,16 @@
                     </div>
                     <button type="button" id="add-result-btn" style="background:#f2f7fb; color:#12304c; border:1px dashed #cbdce7; border-radius:8px; padding:12px; width:100%; font-weight:bold; cursor:pointer; text-align:center;">+ Add Result</button>
 
+                    <h3 style="margin-top: 30px; margin-bottom: 15px; border-bottom: 1px solid #e1ebf2; padding-bottom: 10px;">FAQ Section</h3>
+                    <div class="form-group">
+                        <label>FAQ Heading (e.g. CBC Test FAQs)</label>
+                        <input type="text" name="faq_heading" class="form-control" value="{{ old('faq_heading', $testPage->faq_heading) }}">
+                    </div>
+                    <div class="form-group">
+                        <label>FAQ Description Text</label>
+                        <textarea name="faq_description" class="form-control" style="min-height:70px;">{{ old('faq_description', $testPage->faq_description) }}</textarea>
+                    </div>
+
                     <div style="margin-top: 30px;">
                         <button type="submit" class="btn-primary">Save Test Page</button>
                     </div>

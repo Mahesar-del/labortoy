@@ -29,13 +29,37 @@ class AdminServiceController extends Controller
     public function store(Request $request)
     {
         $this->guard();
-        $data = $request->validate(['name' => 'required|string|max:150', 'hero_heading' => 'nullable|string|max:150', 'summary' => 'nullable|string|max:1000', 'hero_description' => 'nullable|string|max:1500', 'hero_image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:5120', 'button_text' => 'nullable|string|max:80', 'button_link' => 'nullable|string|max:255']);
+        $data = $request->validate([
+            'name' => 'required|string|max:150', 
+            'hero_heading' => 'nullable|string|max:150', 
+            'summary' => 'nullable|string|max:1000', 
+            'hero_description' => 'nullable|string|max:1500', 
+            'hero_image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:5120', 
+            'button_text' => 'nullable|string|max:80', 
+            'button_link' => 'nullable|string|max:255',
+            'faq_heading' => 'nullable|string|max:180',
+            'faq_description' => 'nullable|string|max:1500',
+        ]);
         $base = Str::slug($data['name']);
         $slug = $base;
         $number = 2;
         while (DB::table('services')->where('slug', $slug)->exists()) $slug = $base . '-' . $number++;
         $heroImage = $request->hasFile('hero_image') ? $request->file('hero_image')->store('service-heroes', 'public') : null;
-        DB::table('services')->insert(['name' => $data['name'], 'slug' => $slug, 'hero_heading' => $data['hero_heading'] ?? $data['name'], 'summary' => $data['summary'] ?? null, 'hero_description' => $data['hero_description'] ?? $data['summary'] ?? null, 'hero_image' => $heroImage, 'button_text' => $data['button_text'] ?? 'Book an Appointment', 'button_link' => $data['button_link'] ?? '/appointment', 'is_active' => true, 'created_at' => now(), 'updated_at' => now()]);
+        DB::table('services')->insert([
+            'name' => $data['name'], 
+            'slug' => $slug, 
+            'hero_heading' => $data['hero_heading'] ?? $data['name'], 
+            'summary' => $data['summary'] ?? null, 
+            'hero_description' => $data['hero_description'] ?? $data['summary'] ?? null, 
+            'hero_image' => $heroImage, 
+            'button_text' => $data['button_text'] ?? 'Book an Appointment', 
+            'button_link' => $data['button_link'] ?? '/appointment', 
+            'faq_heading' => $data['faq_heading'] ?? null,
+            'faq_description' => $data['faq_description'] ?? null,
+            'is_active' => true, 
+            'created_at' => now(), 
+            'updated_at' => now()
+        ]);
         return back()->with('success', 'Service added successfully.');
     }
 
@@ -87,6 +111,8 @@ class AdminServiceController extends Controller
             'intro_image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:5120',
             'button_text' => 'nullable|string|max:80',
             'button_link' => 'nullable|string|max:255',
+            'faq_heading' => 'nullable|string|max:180',
+            'faq_description' => 'nullable|string|max:1500',
         ]);
 
         $slug = Str::slug($data['slug'] ?: $data['name']);
@@ -96,6 +122,8 @@ class AdminServiceController extends Controller
             'hero_heading' => $data['hero_heading'] ?? $data['name'],
             'hero_description' => $data['hero_description'] ?? $data['summary'] ?? null,
             'button_text' => $data['button_text'] ?? 'Book an Appointment', 'button_link' => $data['button_link'] ?? '/appointment',
+            'faq_heading' => $data['faq_heading'] ?? null,
+            'faq_description' => $data['faq_description'] ?? null,
             'updated_at' => now(),
         ];
         if ($request->has('help_card_heading')) {
@@ -112,6 +140,18 @@ class AdminServiceController extends Controller
         if ($request->hasFile('hero_image')) $values['hero_image'] = $request->file('hero_image')->store('service-heroes', 'public');
         DB::table('services')->where('id', $service->id)->update($values);
         return redirect()->route('admin.services.index')->with('success', 'Service updated successfully.');
+    }
+
+    public function destroy($id)
+    {
+        $this->guard();
+        $service = DB::table('services')->where('id', $id)->first();
+        abort_unless($service, 404);
+
+        // Optional: delete associated tests and test pages or handle constraints as needed
+        DB::table('services')->where('id', $id)->delete();
+        
+        return back()->with('success', 'Service deleted successfully.');
     }
 
     private function guard() { abort_unless(Auth::check() && Auth::user()->is_admin, 403); }

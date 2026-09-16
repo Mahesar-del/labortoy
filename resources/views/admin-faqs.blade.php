@@ -60,13 +60,54 @@
                     <form method="post" action="{{ route('admin.faqs.store') }}">
                         @csrf
                         <div class="field">
-                            <label>Assign to service</label>
-                            <select name="service_id" required>
-                                <option value="">Select a service</option>
+                            <label>Assign to page</label>
+                            <select name="assign_to" id="assign_to" required>
+                                <option value="">Select a page to assign</option>
+                                <option value="main_faq">Main FAQ Page</option>
+                                <optgroup label="Services">
+                                    @foreach($services as $service)
+                                        <option value="service_{{ $service->id }}">{{ $service->name }}</option>
+                                    @endforeach
+                                </optgroup>
                                 @foreach($services as $service)
-                                    <option value="{{ $service->id }}">{{ $service->name }}</option>
+                                    @php
+                                        $serviceTests = $tests->where('service_id', $service->id);
+                                    @endphp
+                                    @if($serviceTests->count() > 0)
+                                        <optgroup label="{{ $service->name }} - Tests">
+                                            @foreach($serviceTests as $test)
+                                                <option value="test_{{ $test->id }}">{{ $test->name }}</option>
+                                            @endforeach
+                                        </optgroup>
+                                    @endif
                                 @endforeach
+                                <optgroup label="Test Pages (Detailed)">
+                                    @foreach($testPages as $page)
+                                        <option value="testpage_{{ $page->id }}">{{ $page->title ?? $page->slug }}</option>
+                                    @endforeach
+                                </optgroup>
                             </select>
+                        </div>
+                        <div id="main_faq_fields" style="display: none; background:#f8fbfe; padding:15px; border-radius:8px; border:1px solid #dce9f0; margin-bottom:15px;">
+                            <div class="field" style="margin-top:0;">
+                                <label>Tab Name (Optional)</label>
+                                <input name="tab_name" placeholder="e.g. Getting Ready for Testing">
+                            </div>
+                            <div class="field">
+                                <label>Section Heading (Optional)</label>
+                                <input name="section_heading" placeholder="e.g. Before You Go">
+                            </div>
+                        </div>
+                        <div id="page_faq_fields" style="display: none; background:#f8fbfe; padding:15px; border-radius:8px; border:1px solid #dce9f0; margin-bottom:15px;">
+                            <p style="font-size: 11px; color:#668099; margin-top:0;">Optional: Set the FAQ section heading and description for the selected page. Leave blank to keep existing.</p>
+                            <div class="field" style="margin-top:0;">
+                                <label>FAQ Section Heading</label>
+                                <input name="faq_heading" placeholder="e.g. CBC Test FAQs">
+                            </div>
+                            <div class="field">
+                                <label>FAQ Section Description</label>
+                                <textarea name="faq_description" style="min-height:60px;" placeholder="e.g. Answers to common questions..."></textarea>
+                            </div>
                         </div>
                         <div class="field">
                             <label>Question</label>
@@ -74,16 +115,36 @@
                         </div>
                         <div class="field">
                             <label>Answer</label>
-                            <textarea name="answer" required placeholder="Write the answer shown on the selected service page"></textarea>
+                            <textarea name="answer" required placeholder="Write the answer shown on the selected page"></textarea>
                         </div>
                         <button type="submit">Add FAQ</button>
                     </form>
+                    
+                        <script>
+                            document.getElementById('assign_to').addEventListener('change', function() {
+                                const mainFields = document.getElementById('main_faq_fields');
+                                const pageFields = document.getElementById('page_faq_fields');
+                                
+                                mainFields.style.display = 'none';
+                                pageFields.style.display = 'none';
+                                
+                                if(this.value === 'main_faq') {
+                                    mainFields.style.display = 'block';
+                                } else if(this.value) {
+                                    pageFields.style.display = 'block';
+                                }
+                            });
+                        </script>
                 </section>
                 <section class="panel" style="padding: 24px;">
                     <h2 style="margin-top:0;">Assigned FAQs</h2>
                     @forelse($faqs as $faq)
                         <article class="faq" style="position: relative;">
-                            <span class="badge">{{ $faq->service_name }}</span>
+                            @if($faq->type === 'Global')
+                                <span class="badge" style="background:#e8f4fd; color:#0e5a97;">{{ $faq->type }}: {{ $faq->tab_name ?: 'Main FAQ' }} @if($faq->section_heading) ({{ $faq->section_heading }}) @endif</span>
+                            @else
+                                <span class="badge">{{ $faq->type }}: {{ $faq->assigned_name }}</span>
+                            @endif
                             <form action="{{ route('admin.faqs.destroy', $faq->id) }}" method="POST" style="position: absolute; right: 0; top: 15px;" onsubmit="return confirm('Are you sure you want to delete this FAQ?');">
                                 @csrf
                                 @method('DELETE')

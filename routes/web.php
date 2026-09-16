@@ -41,7 +41,17 @@ Route::get('/provider-page', [ProviderController::class, 'index']);
 Route::get('/appointment', [AppointmentController::class, 'index'])->name('appointment.index');
 Route::get('/patient', [PatientController::class, 'index']);
 Route::get('/contact-us', [ContactController::class, 'index']);
-Route::get('/cbc-test', function () { return view('services.cbc-test'); });
+Route::get('/cbc-test', function () { 
+    $test = \Illuminate\Support\Facades\DB::table('tests')->where('name', 'like', '%CBC%')->first();
+    $faqs = [];
+    if ($test) {
+        $faqs = \Illuminate\Support\Facades\DB::table('service_faqs')
+            ->where('test_id', $test->id)
+            ->where('is_active', true)
+            ->get();
+    }
+    return view('services.cbc-test', compact('test', 'faqs')); 
+});
 Route::get('/blog', function () { return view('services.blog'); });
 Route::get('/blog-post', function () { return view('services.blog-post'); });
 Route::get('/faq', [FaqController::class, 'index']);
@@ -58,6 +68,7 @@ Route::post('/admin/services', [AdminServiceController::class, 'store'])->name('
 Route::post('/admin/services/hero-image', [AdminServiceController::class, 'updateHeroImage'])->name('admin.services.hero-image.update');
 Route::get('/admin/services/{id}/edit', [AdminServiceController::class, 'edit'])->name('admin.services.edit');
 Route::post('/admin/services/{id}/edit', [AdminServiceController::class, 'update'])->name('admin.services.update');
+Route::post('/admin/services/{id}/delete', [AdminServiceController::class, 'destroy'])->name('admin.services.delete');
 Route::get('/admin/tests', [AdminTestController::class, 'index'])->name('admin.tests.index');
 Route::post('/admin/tests', [AdminTestController::class, 'store'])->name('admin.tests.store');
 Route::get('/admin/tests/{id}/edit', [AdminTestController::class, 'edit'])->name('admin.tests.edit');

@@ -16,7 +16,11 @@ body{margin:0;background:#f1f7fb;color:#12304c;font-family:Arial}.wrap{max-width
 <div class="field"><label>Hero description</label><textarea name="hero_description" placeholder="Description displayed below the hero heading"></textarea></div>
 <div class="field"><label>Hero image</label><input type="file" name="hero_image" accept="image/png,image/jpeg,image/webp"><span class="hint">JPG, PNG or WebP. Maximum size: 5 MB.</span></div>
 <div class="field"><label>Hero button text</label><input name="button_text" value="Book an Appointment"></div>
-<div class="field"><label>Hero button link</label><input name="button_link" value="/appointment"></div><button>Add service</button></form></section>
+<div class="field"><label>Hero button link</label><input name="button_link" value="/appointment"></div>
+<hr style="border:0;border-top:1px solid #e1ecf2;margin:22px 0"><h3>FAQ section content</h3>
+<div class="field"><label>FAQ heading</label><input name="faq_heading" placeholder="e.g. Chemistry Testing FAQs"></div>
+<div class="field"><label>FAQ description</label><textarea name="faq_description" placeholder="Answers to common questions about this service"></textarea></div>
+<button>Add service</button></form></section>
 <section class="card"><h2>Molecular Cards Section</h2><p class="section-note">This section is displayed on the Chemistry Testing service page. Changes saved here appear there directly.</p><form method="post" action="{{ route('admin.molecular-specimens.update') }}">@csrf
 <div class="field"><label>Section heading</label><input name="heading" value="{{ old('heading', $molecular['heading']) }}" required></div>
 <div class="field"><label>Section description</label><textarea name="description" required>{{ old('description', $molecular['description']) }}</textarea></div>

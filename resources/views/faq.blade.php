@@ -354,175 +354,59 @@
 
             <!-- Category Filter Buttons at Bottom -->
             <div class="contact-hero__buttons-wrapper">
-                <div class="contact-hero__buttons">
-                    <button class="faq-btn active">Getting Ready for Testing</button>
-                    <button class="faq-btn">Testing & Results</button>
-                    <button class="faq-btn">Billing & Payments</button>
-                    <button class="faq-btn">Appointments</button>
-                    <button class="faq-btn">General Questions</button>
+                <div class="contact-hero__buttons" id="faq-tabs">
+                    @php $firstTab = true; @endphp
+                    @foreach($groupedFaqs as $tabName => $sections)
+                        <button class="faq-btn {{ $firstTab ? 'active' : '' }}" data-tab="tab-{{ Str::slug($tabName) }}">{{ $tabName }}</button>
+                        @php $firstTab = false; @endphp
+                    @endforeach
+                    @if(empty($groupedFaqs))
+                        <button class="faq-btn active">General Questions</button>
+                    @endif
                 </div>
             </div>
         </section>
 
-        <!-- 3-Part FAQ Accordion Section matching Header & Footer 99px padding & 1320px grid -->
+        <!-- FAQ Sections -->
         <section class="faq-page-section">
             <main class="faq-page-container">
-                <div class="faq-sections-wrapper">
-                    
-                    <!-- Sub-section 1: Before You Go -->
-                    <div class="faq-category-block">
-                        <h2 class="faq-category-title">Before You Go</h2>
-                        <div class="faq-accordion-group">
-                            <div class="faq-card" onclick="toggleFaqItem(this)">
-                                <div class="faq-card-header">
-                                    <span class="faq-card-question">Where can I find Sterling's available tests?</span>
-                                    <div class="faq-card-icon">
-                                        <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-                                        <svg class="icon-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-                                    </div>
-                                </div>
-                                <div class="faq-card-body">
-                                    <div class="faq-card-answer-inner">
-                                        <p class="faq-card-answer">Available laboratory testing can be explored through Sterling's Test Directory. Test-specific information should be reviewed before ordering.</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="faq-card" onclick="toggleFaqItem(this)">
-                                <div class="faq-card-header">
-                                    <span class="faq-card-question">How do I know which specimen is required?</span>
-                                    <div class="faq-card-icon">
-                                        <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-                                        <svg class="icon-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-                                    </div>
-                                </div>
-                                <div class="faq-card-body">
-                                    <div class="faq-card-answer-inner">
-                                        <p class="faq-card-answer">Specimen requirements (blood, urine, saliva, or tissue) are detailed on each test's information page and in provider ordering guidelines.</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="faq-card" onclick="toggleFaqItem(this)">
-                                <div class="faq-card-header">
-                                    <span class="faq-card-question">Where can I find collection instructions?</span>
-                                    <div class="faq-card-icon">
-                                        <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-                                        <svg class="icon-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-                                    </div>
-                                </div>
-                                <div class="faq-card-body">
-                                    <div class="faq-card-answer-inner">
-                                        <p class="faq-card-answer">Collection and fasting instructions are provided at the time of order and can also be found in our online testing documentation.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                @if(empty($groupedFaqs))
+                    <div class="faq-sections-wrapper">
+                        <p style="text-align:center; color:#666; padding: 40px;">No FAQs available.</p>
                     </div>
-
-                    <!-- Sub-section 2: Scheduling -->
-                    <div class="faq-category-block">
-                        <h2 class="faq-category-title">Scheduling</h2>
-                        <div class="faq-accordion-group">
-                            <div class="faq-card" onclick="toggleFaqItem(this)">
-                                <div class="faq-card-header">
-                                    <span class="faq-card-question">Where can I find Sterling's available tests?</span>
-                                    <div class="faq-card-icon">
-                                        <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-                                        <svg class="icon-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                @else
+                    @php $firstTabContent = true; @endphp
+                    @foreach($groupedFaqs as $tabName => $sections)
+                        <div class="faq-sections-wrapper faq-tab-content" id="tab-{{ Str::slug($tabName) }}" style="{{ $firstTabContent ? 'display:flex;' : 'display:none;' }}">
+                            @foreach($sections as $sectionHeading => $faqs)
+                                <div class="faq-category-block">
+                                    @if($sectionHeading !== 'General')
+                                        <h2 class="faq-category-title">{{ $sectionHeading }}</h2>
+                                    @endif
+                                    <div class="faq-accordion-group">
+                                        @foreach($faqs as $faq)
+                                            <div class="faq-card" onclick="toggleFaqItem(this)">
+                                                <div class="faq-card-header">
+                                                    <span class="faq-card-question">{{ $faq->question }}</span>
+                                                    <div class="faq-card-icon">
+                                                        <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                                                        <svg class="icon-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                                                    </div>
+                                                </div>
+                                                <div class="faq-card-body">
+                                                    <div class="faq-card-answer-inner">
+                                                        <p class="faq-card-answer">{{ $faq->answer }}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endforeach
                                     </div>
                                 </div>
-                                <div class="faq-card-body">
-                                    <div class="faq-card-answer-inner">
-                                        <p class="faq-card-answer">Available laboratory testing can be explored through Sterling's Test Directory. Test-specific information should be reviewed before ordering.</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="faq-card" onclick="toggleFaqItem(this)">
-                                <div class="faq-card-header">
-                                    <span class="faq-card-question">How do I know which specimen is required?</span>
-                                    <div class="faq-card-icon">
-                                        <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-                                        <svg class="icon-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-                                    </div>
-                                </div>
-                                <div class="faq-card-body">
-                                    <div class="faq-card-answer-inner">
-                                        <p class="faq-card-answer">Specimen requirements (blood, urine, saliva, or tissue) are detailed on each test's information page and in provider ordering guidelines.</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="faq-card" onclick="toggleFaqItem(this)">
-                                <div class="faq-card-header">
-                                    <span class="faq-card-question">Where can I find collection instructions?</span>
-                                    <div class="faq-card-icon">
-                                        <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-                                        <svg class="icon-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-                                    </div>
-                                </div>
-                                <div class="faq-card-body">
-                                    <div class="faq-card-answer-inner">
-                                        <p class="faq-card-answer">Collection and fasting instructions are provided at the time of order and can also be found in our online testing documentation.</p>
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
-                    </div>
-
-                    <!-- Sub-section 3: Managing Unexpected Changes and Closures -->
-                    <div class="faq-category-block">
-                        <h2 class="faq-category-title">Managing Unexpected Changes and Closures</h2>
-                        <div class="faq-accordion-group">
-                            <div class="faq-card" onclick="toggleFaqItem(this)">
-                                <div class="faq-card-header">
-                                    <span class="faq-card-question">How do I know if a patient service center is open?</span>
-                                    <div class="faq-card-icon">
-                                        <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-                                        <svg class="icon-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-                                    </div>
-                                </div>
-                                <div class="faq-card-body">
-                                    <div class="faq-card-answer-inner">
-                                        <p class="faq-card-answer">Available laboratory testing can be explored through Sterling's Test Directory. Test-specific information should be reviewed before ordering.</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="faq-card" onclick="toggleFaqItem(this)">
-                                <div class="faq-card-header">
-                                    <span class="faq-card-question">Can I reschedule my appointment online or with the mobile app?</span>
-                                    <div class="faq-card-icon">
-                                        <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-                                        <svg class="icon-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-                                    </div>
-                                </div>
-                                <div class="faq-card-body">
-                                    <div class="faq-card-answer-inner">
-                                        <p class="faq-card-answer">Yes, appointments can be easily rescheduled or modified through our online portal or mobile app prior to your scheduled time.</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="faq-card" onclick="toggleFaqItem(this)">
-                                <div class="faq-card-header">
-                                    <span class="faq-card-question">Could an unexpected closure or event affect my test processing or result turnaround times?</span>
-                                    <div class="faq-card-icon">
-                                        <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-                                        <svg class="icon-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-                                    </div>
-                                </div>
-                                <div class="faq-card-body">
-                                    <div class="faq-card-answer-inner">
-                                        <p class="faq-card-answer">In rare cases of severe weather or unexpected closures, processing times may be slightly delayed. Our team will notify affected patients immediately.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
+                        @php $firstTabContent = false; @endphp
+                    @endforeach
+                @endif
             </main>
         </section>
 
@@ -534,10 +418,21 @@
         document.addEventListener('DOMContentLoaded', function() {
             // Category Hero Buttons Click
             const buttons = document.querySelectorAll('.faq-btn');
+            const tabContents = document.querySelectorAll('.faq-tab-content');
+            
             buttons.forEach(button => {
                 button.addEventListener('click', function() {
                     buttons.forEach(b => b.classList.remove('active'));
                     this.classList.add('active');
+                    
+                    const targetTabId = this.getAttribute('data-tab');
+                    tabContents.forEach(content => {
+                        if (content.id === targetTabId) {
+                            content.style.display = 'flex';
+                        } else {
+                            content.style.display = 'none';
+                        }
+                    });
                 });
             });
         });
