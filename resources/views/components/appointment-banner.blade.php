@@ -34,7 +34,7 @@
 
     .appointment-banner__image {
         background-image: url('{{ asset('images/provider-hero.jpg') }}');
-        background-position: center right;
+        background-position: right 28%;
         background-repeat: no-repeat;
         background-size: cover;
         z-index: -2;

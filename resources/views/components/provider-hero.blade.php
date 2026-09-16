@@ -1,5 +1,5 @@
 <section class="services-hero" aria-labelledby="services-hero-title">
-    <div class="services-hero__background" style="background-image: url('{{ $bgImage ?? asset('images/provider-hero.jpg') }}');"></div>
+    <div class="services-hero__background" style="background-image: url('{{ $bgImage ?? asset('images/provider-hero.jpg') }}'); background-position: {{ $bgPosition ?? 'center' }};"></div>
     <div class="services-hero__overlay"></div>
 
     <div class="services-hero__container">
