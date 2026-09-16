@@ -73,13 +73,21 @@
         align-items: center;
         background: #e6eff2;
         will-change: transform, opacity;
-        animation: hero-initial-enter .75s ease-out both;
+        animation: hero-initial-enter .6s cubic-bezier(0.16, 1, 0.3, 1) both;
     }
-    @keyframes hero-initial-enter { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: translateY(0); } }
-    .hero-section__content--leaving { animation: hero-slide-out .7s ease-in both; }
-    .hero-section__content--entering { animation: hero-slide-in .7s ease-out both; }
-    @keyframes hero-slide-out { to { opacity: 0; transform: translateY(-115%); } }
-    @keyframes hero-slide-in { from { opacity: 0; transform: translateY(115%); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes hero-initial-enter { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+    .hero-section__content--leaving {
+        opacity: 0;
+        transform: translateY(-8px);
+        transition: opacity 0.35s ease, transform 0.35s ease;
+    }
+    .hero-section__content--entering {
+        animation: hero-smooth-fade-in 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+    @keyframes hero-smooth-fade-in {
+        from { opacity: 0; transform: translateY(12px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
     .hero-doc-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
     .hero-section__copy { position: relative; z-index: 1; width: 49%; padding: 5% 0 5% 6.8%; }
     .hero-section h1 { margin: 0; font-size: clamp(24px, 3.25vw, 56px); font-weight: 800; letter-spacing: -.035em; line-height: 1.17; }
@@ -257,14 +265,14 @@
                 window.setTimeout(() => {
                     content.classList.remove('hero-section__content--entering');
                     changing = false;
-                }, 700);
-            }, 700);
+                }, 450);
+            }, 350);
         };
 
         if (slides.length > 1 && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
             let sliderTimer;
             const startSlider = () => {
-                if (!sliderTimer) sliderTimer = window.setInterval(showSlide, 3500);
+                if (!sliderTimer) sliderTimer = window.setInterval(showSlide, 5500);
             };
             const stopSlider = () => {
                 window.clearInterval(sliderTimer);
