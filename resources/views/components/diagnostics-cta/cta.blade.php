@@ -26,9 +26,9 @@
     .diagnostics-cta h2 { font-size: clamp(24px, 2.2vw, 40px); margin: 0; }
     .diagnostics-cta p { font-size: clamp(14px, 1.15vw, 22px); line-height: 1.6; margin: 24px auto 34px; max-width: 800px; }
     .diagnostics-cta__actions { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; }
-    .diagnostics-cta__button { border: 1px solid transparent; border-radius: 999px; color: #fff; font-size: clamp(14px, 1vw, 20px); font-weight: 700; padding: 18px 48px; text-decoration: none; }
-    .diagnostics-cta__button--primary { background: #20b3b5; }
-    .diagnostics-cta__button--secondary { border-color: rgba(255,255,255,.65); }
+    .diagnostics-cta__button { border: 1px solid transparent; border-radius: 999px; color: #fff; font-size: clamp(14px, 1vw, 20px); font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; }
+    .diagnostics-cta__button--primary { background: #20b3b5; padding: 18px 64px; min-width: 260px; }
+    .diagnostics-cta__button--secondary { border-color: rgba(255,255,255,.65); padding: 18px 24px; min-width: 200px; }
     .diagnostics-cta__decoration { bottom: 0; height: 64%; max-width: 23%; object-fit: contain; object-position: bottom; position: absolute; width: auto; }
     .diagnostics-cta__decoration--left { left: 0; }
     .diagnostics-cta__decoration--right { right: 0; }

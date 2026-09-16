@@ -1,6 +1,12 @@
 @php
-    $testCards = $tests->map(function ($test) {
-        return ['title' => $test->heading ?: $test->name, 'description' => $test->description, 'image' => $test->image_path ? asset('storage/'.$test->image_path) : asset('images/chemistry-card-bg.jpg')];
+    $testCards = $tests->map(function ($test) use ($testPages) {
+        $tp = $testPages->where('title', $test->name)->first();
+        return [
+            'title' => $test->heading ?: $test->name, 
+            'description' => $test->description, 
+            'image' => $test->image_path ? asset('storage/'.$test->image_path) : ($tp && $tp->bg_image ? asset('storage/'.$tp->bg_image) : asset('images/chemistry-card-bg.jpg')),
+            'link' => $tp ? route('test-pages.show', $tp->slug) : '#'
+        ];
     })->all();
 @endphp
 <!doctype html>
