@@ -3,6 +3,7 @@
         <div class="diagnostics-cta__card">
             <img class="diagnostics-cta__decoration diagnostics-cta__decoration--left" src="{{ asset('img/cta-section-right.svg') }}" alt="">
             <img class="diagnostics-cta__decoration diagnostics-cta__decoration--right" src="{{ asset('img/cta-section-left.svg') }}" alt="">
+            <img class="diagnostics-cta__decoration diagnostics-cta__decoration--mobile-right" src="{{ asset('images/Group.png') }}" alt="">
 
             <div class="diagnostics-cta__content">
                 <h2 id="diagnostics-cta-title">Better Diagnostics Start Here</h2>
@@ -31,6 +32,7 @@
     .diagnostics-cta__decoration { bottom: 0; height: 64%; max-width: 23%; object-fit: contain; object-position: bottom; position: absolute; width: auto; }
     .diagnostics-cta__decoration--left { left: 0; }
     .diagnostics-cta__decoration--right { right: 0; }
+    .diagnostics-cta__decoration--mobile-right { display: none; }
     @media (max-width: 768px) {
         .diagnostics-cta { padding: 2.5rem 20px; }
         .diagnostics-cta__container { padding: 0; }
@@ -79,6 +81,16 @@
         }
         .diagnostics-cta__decoration--right { 
             display: none; 
+        }
+        .diagnostics-cta__decoration--mobile-right {
+            display: block;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            max-width: 55%;
+            height: auto;
+            object-fit: contain;
+            object-position: bottom right;
         }
     }
 </style>
