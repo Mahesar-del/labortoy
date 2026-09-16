@@ -1,0 +1,13 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Prevent rewriting requests that already target the public directory.
+    RewriteCond %{REQUEST_URI} !^/public/
+
+    # Route the project root through Laravel's public web directory.
+    RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>
+
+<FilesMatch "^\.(env|git|htaccess)">
+    Require all denied
+</FilesMatch>

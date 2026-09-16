@@ -17,12 +17,12 @@ class ServiceController extends Controller
         $service = DB::table('services')->where('slug', 'chemistry-testing')->first();
         abort_unless($service, 404, 'Service not found in database. Please seed the database.');
         $tests = DB::table('tests')->where('service_id', $service->id)->where('is_active', true)->latest()->get();
-        foreach ($tests as $test) { if (empty($test->image_path)) $test->image_path = 'service-heroes/A2EwxH4dOTgtRRfzIBikceUiypJceqlvLWRx4ZFd.webp'; }
+        $testPages = \App\Models\TestPage::where('service_id', $service->id)->whereIn('status', ['published', 'active'])->latest()->get();
         $faqs = DB::table('service_faqs')->where('service_id', $service->id)->where('is_active', true)->latest()->get();
         $storedCards = DB::table('section_settings')->where('key', 'molecular_specimens')->value('value');
         $specimens = $storedCards ? json_decode($storedCards, true) : null;
 
-        return view('services.dynamic-service', compact('service', 'tests', 'specimens', 'faqs'));
+        return view('services.dynamic-service', compact('service', 'tests', 'testPages', 'specimens', 'faqs'));
     }
 
     public function show($slug)
@@ -30,7 +30,7 @@ class ServiceController extends Controller
         $service = DB::table('services')->where('slug', $slug)->where('is_active', true)->first();
         abort_unless($service, 404);
         $tests = DB::table('tests')->where('service_id', $service->id)->where('is_active', true)->latest()->get();
-        $testPages = \App\Models\TestPage::where('service_id', $service->id)->where('status', 'published')->latest()->get();
+        $testPages = \App\Models\TestPage::where('service_id', $service->id)->whereIn('status', ['published', 'active'])->latest()->get();
         $storedCards = DB::table('section_settings')->where('key', 'molecular_specimens')->value('value');
         $specimens = $storedCards ? json_decode($storedCards, true) : null;
         $faqs = DB::table('service_faqs')->where('service_id', $service->id)->where('is_active', true)->latest()->get();

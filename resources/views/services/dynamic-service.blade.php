@@ -1,10 +1,18 @@
 @php
+    $testPages = $testPages ?? collect();
     $testCards = $tests->map(function ($test) use ($testPages) {
         $tp = $testPages->where('title', $test->name)->first();
+        $testImage = $test->image_path && \Illuminate\Support\Facades\Storage::disk('public')->exists($test->image_path)
+            ? asset('storage/'.$test->image_path)
+            : null;
+        $pageImage = $tp && $tp->bg_image && \Illuminate\Support\Facades\Storage::disk('public')->exists($tp->bg_image)
+            ? asset('storage/'.$tp->bg_image)
+            : null;
+
         return [
             'title' => $test->heading ?: $test->name, 
             'description' => $test->description, 
-            'image' => $test->image_path ? asset('storage/'.$test->image_path) : ($tp && $tp->bg_image ? asset('storage/'.$tp->bg_image) : asset('images/chemistry-card-bg.jpg')),
+            'image' => $testImage ?: $pageImage ?: asset('images/chemistry-card-bg.jpg'),
             'link' => $tp ? route('test-pages.show', $tp->slug) : '#'
         ];
     })->all();

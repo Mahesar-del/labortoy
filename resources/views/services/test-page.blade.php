@@ -21,16 +21,54 @@
             margin: 0;
             font-family: 'Inter', sans-serif;
         }
+
+        .dynamic-test-page {
+            min-width: 0;
+            overflow-x: hidden;
+        }
+
+        .dynamic-test-page .services-hero__container {
+            box-sizing: border-box;
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 1320px;
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+            width: 100%;
+        }
+
+        @media (max-width: 1517px) and (min-width: 1151px) {
+            .dynamic-test-page .services-hero__container {
+                padding-left: 99px !important;
+                padding-right: 99px !important;
+            }
+        }
+
+        @media (max-width: 1150px) {
+            .dynamic-test-page .services-hero__container {
+                padding-left: 20px !important;
+                padding-right: 20px !important;
+            }
+        }
     </style>
 </head>
 
-<body>
+<body class="dynamic-test-page">
     @include('components.header')
+
+    @php
+        $heroImage = $testPage->bg_image && \Illuminate\Support\Facades\Storage::disk('public')->exists($testPage->bg_image)
+            ? asset('storage/' . $testPage->bg_image)
+            : asset('images/cbc-test-hero.jpg');
+        $aboutImage = $testPage->about_image && \Illuminate\Support\Facades\Storage::disk('public')->exists($testPage->about_image)
+            ? asset('storage/' . $testPage->about_image)
+            : asset('images/what-cbc-test.jpg');
+    @endphp
 
     @include('components.services-hero', [
     'title' => $testPage->title,
     'description' => $testPage->description,
-    'bgImage' => $testPage->bg_image ? asset('storage/' . $testPage->bg_image) : asset('images/cbc-test-hero.jpg')
+    'bgImage' => $heroImage
     ])
 
     <!-- Overlapping Info Box -->
@@ -65,7 +103,7 @@
                 @endforeach
             </div>
             <div class="cbc-about-image">
-                <img src="{{ $testPage->about_image ? asset('storage/' . $testPage->about_image) : asset('images/what-cbc-test.jpg') }}" alt="{{ $testPage->title }}">
+                <img src="{{ $aboutImage }}" alt="{{ $testPage->title }}">
             </div>
         </div>
     </section>
