@@ -283,22 +283,25 @@
     ])
 
     <div class="search-section">
-        <div class="search-box">
+        <form class="search-box" action="{{ route('blog.index') }}" method="get">
             <div class="search-input-group">
                 <div class="search-input-wrapper">
                     <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <circle cx="11" cy="11" r="8"></circle>
                         <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                     </svg>
-                    <input type="text" class="search-input" placeholder="Search Blog">
+                    <input type="search" name="q" class="search-input" placeholder="Search Blog" value="{{ $query }}" aria-label="Search blog posts">
                 </div>
-                <button class="search-button">Search</button>
+                <button type="submit" class="search-button">Search</button>
             </div>
-        </div>
+        </form>
     </div>
 
     <section class="blog-section">
         <div class="blog-container">
+        @if($query !== '')
+            <p class="blog-search-status">{{ $posts->count() }} result(s) for “{{ $query }}”</p>
+        @endif
         <div class="blog-grid">
             @forelse($posts as $post)
             <a href="{{ route('blog.show', $post->slug) }}" class="blog-card">
@@ -331,7 +334,7 @@
                 </div>
             </a>
             @empty
-                <p>No blog posts found.</p>
+                <p class="blog-search-status">{{ $query !== '' ? 'No blog posts matched your search.' : 'No blog posts found.' }}</p>
             @endforelse
         </div>
 

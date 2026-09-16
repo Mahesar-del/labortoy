@@ -353,10 +353,28 @@ p {
                 fetch('{{ route('search.suggestions') }}?q=' + encodeURIComponent(query))
                     .then(function (response) { return response.json(); })
                     .then(function (items) {
-                        if (!items.length) { suggestions.innerHTML = '<div class="header-search-empty">No matching tests or services found.</div>'; }
-                        else { suggestions.innerHTML = items.map(function (item) { return '<a class="header-search-suggestion" href="' + item.url + '"><strong>' + item.title + '</strong><small>' + item.type + '</small></a>'; }).join(''); }
+                        suggestions.replaceChildren();
+                        if (!items.length) {
+                            var empty = document.createElement('div');
+                            empty.className = 'header-search-empty';
+                            empty.textContent = 'No matching content found.';
+                            suggestions.appendChild(empty);
+                        } else {
+                            items.forEach(function (item) {
+                                var link = document.createElement('a');
+                                link.className = 'header-search-suggestion';
+                                link.href = item.url;
+                                var title = document.createElement('strong');
+                                title.textContent = item.title;
+                                var type = document.createElement('small');
+                                type.textContent = item.type;
+                                link.appendChild(title);
+                                link.appendChild(type);
+                                suggestions.appendChild(link);
+                            });
+                        }
                         suggestions.classList.add('is-open');
-                    });
+                    }).catch(function () { suggestions.classList.remove('is-open'); });
             }, 220);
         });
         document.addEventListener('click', function (event) { if (!event.target.closest('.header-search')) suggestions.classList.remove('is-open'); });

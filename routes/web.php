@@ -35,11 +35,19 @@ Route::get('/search', function (\Illuminate\Http\Request $request) {
     $query = trim((string) $request->query('q'));
     $services = collect();
     $tests = collect();
+    $blogs = collect();
     if ($query !== '') {
         $services = \Illuminate\Support\Facades\DB::table('services')->where('is_active', true)->where(function ($builder) use ($query) { $builder->where('name', 'like', '%'.$query.'%')->orWhere('summary', 'like', '%'.$query.'%'); })->get();
         $tests = \Illuminate\Support\Facades\DB::table('tests')->join('services', 'tests.service_id', '=', 'services.id')->where('tests.is_active', true)->where('services.is_active', true)->where(function ($builder) use ($query) { $builder->where('tests.name', 'like', '%'.$query.'%')->orWhere('tests.heading', 'like', '%'.$query.'%')->orWhere('tests.description', 'like', '%'.$query.'%'); })->select('tests.*', 'services.name as service_name', 'services.slug as service_slug')->get();
+        $blogs = \App\Models\BlogPost::where('status', 'published')->where(function ($builder) use ($query) {
+            $builder->where('title', 'like', '%'.$query.'%')
+                ->orWhere('excerpt', 'like', '%'.$query.'%')
+                ->orWhere('content', 'like', '%'.$query.'%')
+                ->orWhere('category', 'like', '%'.$query.'%')
+                ->orWhere('tags', 'like', '%'.$query.'%');
+        })->latest('publish_date')->get();
     }
-    return view('search-results', compact('query', 'services', 'tests'));
+    return view('search-results', compact('query', 'services', 'tests', 'blogs'));
 })->name('search');
 
 Route::get('/search/suggestions', function (\Illuminate\Http\Request $request) {
@@ -47,7 +55,8 @@ Route::get('/search/suggestions', function (\Illuminate\Http\Request $request) {
     if (strlen($query) < 2) return response()->json([]);
     $services = \Illuminate\Support\Facades\DB::table('services')->where('is_active', true)->where('name', 'like', '%'.$query.'%')->limit(4)->get()->map(function ($service) { return ['title' => $service->name, 'type' => 'Service', 'url' => url('/service/'.$service->slug)]; });
     $tests = \Illuminate\Support\Facades\DB::table('tests')->join('services', 'tests.service_id', '=', 'services.id')->where('tests.is_active', true)->where('services.is_active', true)->where(function ($builder) use ($query) { $builder->where('tests.name', 'like', '%'.$query.'%')->orWhere('tests.heading', 'like', '%'.$query.'%'); })->select('tests.name', 'tests.heading', 'services.name as service_name', 'services.slug as service_slug')->limit(6)->get()->map(function ($test) { return ['title' => $test->heading ?: $test->name, 'type' => 'Test · '.$test->service_name, 'url' => url('/service/'.$test->service_slug)]; });
-    return response()->json($services->merge($tests)->values());
+    $blogs = \App\Models\BlogPost::where('status', 'published')->where('title', 'like', '%'.$query.'%')->latest('publish_date')->limit(4)->get()->map(function ($post) { return ['title' => $post->title, 'type' => 'Blog', 'url' => route('blog.show', $post->slug)]; });
+    return response()->json($services->merge($tests)->merge($blogs)->values());
 })->name('search.suggestions');
 
 Route::get('/services', [ServiceController::class, 'index']);
@@ -75,13 +84,22 @@ Route::get('/cbc-test', function () {
     }
     return view('services.cbc-test', compact('test', 'faqs')); 
 });
-Route::get('/blog', function () {
-    $posts = \App\Models\BlogPost::with('authorDetails')
-        ->where('status', 'published')
-        ->latest('publish_date')
-        ->get();
+Route::get('/blog', function (\Illuminate\Http\Request $request) {
+    $query = trim((string) $request->query('q'));
+    $postsQuery = \App\Models\BlogPost::with('authorDetails')->where('status', 'published');
+    if ($query !== '') {
+        $postsQuery->where(function ($builder) use ($query) {
+            $builder->where('title', 'like', '%'.$query.'%')
+                ->orWhere('excerpt', 'like', '%'.$query.'%')
+                ->orWhere('content', 'like', '%'.$query.'%')
+                ->orWhere('category', 'like', '%'.$query.'%')
+                ->orWhere('tags', 'like', '%'.$query.'%')
+                ->orWhere('author', 'like', '%'.$query.'%');
+        });
+    }
+    $posts = $postsQuery->latest('publish_date')->get();
 
-    return view('services.blog', compact('posts'));
+    return view('services.blog', compact('posts', 'query'));
 })->name('blog.index');
 Route::get('/blog/{slug}', function ($slug) {
     $post = \App\Models\BlogPost::with('authorDetails')
