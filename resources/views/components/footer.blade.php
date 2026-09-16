@@ -325,9 +325,14 @@
             }
 
             .footer-right-top {
-                flex-direction: column;
-                gap: 2.5rem;
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem 1.25rem;
                 margin-bottom: 1.25rem;
+            }
+
+            .footer-col-newsletter {
+                grid-column: 1 / -1;
             }
 
             .footer-col-links, .footer-col-newsletter {

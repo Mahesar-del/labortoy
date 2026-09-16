@@ -87,7 +87,7 @@
         to { opacity: 1; transform: translateY(0); }
     }
     .hero-doc-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-    .hero-section__copy { position: relative; z-index: 1; width: 49%; padding: 5% 0 5% 6.8%; }
+    .hero-section__copy { position: relative; z-index: 2; width: 49%; padding: 5% 0 5% 6.8%; }
     .hero-section h1 { margin: 0; font-size: clamp(24px, 3.25vw, 56px); font-weight: 800; letter-spacing: -.035em; line-height: 1.17; }
     .hero-section p { max-width: 95%; margin: 24px 0 32px; color: #000; font-size: 16px; line-height: 1.65; text-align: justify; }
     .hero-section__dots {
@@ -99,6 +99,7 @@
         display: block;
         object-fit: contain;
         transform: rotate(43deg);
+        z-index: 2;
     }
     .hero-section__actions { display: flex; flex-wrap: wrap; gap: 18px; }
     .hero-section__button { display: inline-flex; justify-content: center; align-items: center; border: 1px solid transparent; border-radius: 999px; padding: 15px 31px; font-size: clamp(11px, 1vw, 14px); font-weight: 700; text-decoration: none; }
@@ -172,7 +173,7 @@
             align-items: center; 
             background: transparent; 
         }
-        .hero-doc-img { 
+        .hero-doc-images-wrapper { 
             display: none; 
         }
         .hero-section__copy { 
@@ -223,20 +224,15 @@
         hero.dataset.sliderReady = 'true';
 
         const slides = @json($heroSlidesForJs);
-
-        slides.forEach(({ docImage }) => {
-            const image = new Image();
-            image.src = docImage;
-        });
+        if (!slides || slides.length <= 1) return;
 
         const content = hero.querySelector('.hero-section__content');
+        const copy = hero.querySelector('.hero-section__copy');
         const title = hero.querySelector('#hero-title');
         const description = hero.querySelector('.hero-section__copy p');
-        const doctorImage = hero.querySelector('.hero-doc-img');
-        const leftImage = hero.querySelector('.hero-bg-img-left');
-        const rightImage = hero.querySelector('.hero-bg-img-right');
         const primaryButton = hero.querySelector('.hero-section__button--primary');
         const secondaryButton = hero.querySelector('.hero-section__button--secondary');
+        const docImages = hero.querySelectorAll('.hero-slide-doc-img');
         let index = 0;
         let changing = false;
 
@@ -250,15 +246,19 @@
             window.setTimeout(() => {
                 index = (index + 1) % slides.length;
                 const next = slides[index];
+
                 title.innerHTML = next.title;
                 description.textContent = next.description;
-                doctorImage.src = next.docImage;
                 primaryButton.textContent = next.primaryButtonText;
                 primaryButton.href = next.primaryButtonLink;
                 secondaryButton.textContent = next.secondaryButtonText;
                 secondaryButton.href = next.secondaryButtonLink;
-                leftImage.src = next.bgLeft;
-                rightImage.src = next.bgRight;
+
+                docImages.forEach((img, i) => {
+                    if (i === index) img.classList.add('is-active');
+                    else img.classList.remove('is-active');
+                });
+
                 content.classList.remove('hero-section__content--leaving');
                 void content.offsetWidth;
                 content.classList.add('hero-section__content--entering');
@@ -270,10 +270,10 @@
             }, 900);
         };
 
-        if (slides.length > 1 && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
             let sliderTimer;
             const startSlider = () => {
-                if (!sliderTimer) sliderTimer = window.setInterval(showSlide, 3500);
+                if (!sliderTimer) sliderTimer = window.setInterval(showSlide, 6000);
             };
             const stopSlider = () => {
                 window.clearInterval(sliderTimer);
