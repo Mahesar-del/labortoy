@@ -7,7 +7,9 @@
     </div>
 
     <div class="hero-section__content hero-section__content--initial" aria-live="polite">
-        <img class="hero-doc-img" src="{{ $hero->image_url ?? asset('img/hero-doctor-img.png') }}" alt="Laboratory scientist examining a sample">
+        @foreach($heroSlidesForJs as $slideIndex => $heroSlide)
+            <img class="hero-doc-img hero-slide-doc-img{{ $slideIndex === 0 ? ' is-active' : '' }}" src="{{ $heroSlide['docImage'] }}" alt="Laboratory scientist examining a sample">
+        @endforeach
         <img class="hero-section__dots" src="{{ asset('img/dots-hero.png') }}?v={{ filemtime(public_path('img/dots-hero.png')) }}" alt="">
         <div class="hero-section__copy">
             <h1 id="hero-title">{!! nl2br(e($hero->heading ?? 'Precision Diagnostics. Better Answers for Better Care.')) !!}</h1>
@@ -87,6 +89,8 @@
         to { opacity: 1; transform: translateY(0); }
     }
     .hero-doc-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .hero-slide-doc-img { opacity: 0; transition: opacity .25s ease; }
+    .hero-slide-doc-img.is-active { opacity: 1; }
     .hero-section__copy { position: relative; z-index: 2; width: 49%; padding: 5% 0 5% 6.8%; }
     .hero-section h1 { margin: 0; font-size: clamp(24px, 3.25vw, 56px); font-weight: 800; letter-spacing: -.035em; line-height: 1.17; }
     .hero-section p { max-width: 95%; margin: 24px 0 32px; color: #000; font-size: 16px; line-height: 1.65; text-align: justify; }
