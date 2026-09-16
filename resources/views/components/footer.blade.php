@@ -461,6 +461,7 @@
                                 <li><a href="{{ route('about') }}">About Us</a></li>
                                 <li><a href="{{ url('/contact-us') }}">Contact Us</a></li>
                                 <li><a href="{{ url('/faq') }}">FAQs</a></li>
+                                <li><a href="{{ route('blog.index') }}">Blog</a></li>
                                 <li><a href="{{ url('/patient') }}">Patients</a></li>
                             </ul>
                         </div>

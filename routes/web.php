@@ -75,8 +75,22 @@ Route::get('/cbc-test', function () {
     }
     return view('services.cbc-test', compact('test', 'faqs')); 
 });
-Route::get('/blog', function () { return view('services.blog'); });
-Route::get('/blog-post', function () { return view('services.blog-post'); });
+Route::get('/blog', function () {
+    $posts = \App\Models\BlogPost::with('authorDetails')
+        ->where('status', 'published')
+        ->latest('publish_date')
+        ->get();
+
+    return view('services.blog', compact('posts'));
+})->name('blog.index');
+Route::get('/blog/{slug}', function ($slug) {
+    $post = \App\Models\BlogPost::with('authorDetails')
+        ->where('slug', $slug)
+        ->where('status', 'published')
+        ->firstOrFail();
+
+    return view('services.blog-post', compact('post'));
+})->name('blog.show');
 Route::get('/faq', [FaqController::class, 'index']);
 Route::get('/admin/login', [AdminAuthController::class, 'showLogin'])->name('admin.login');
 Route::post('/admin/login', [AdminAuthController::class, 'login'])->name('admin.login.submit');
