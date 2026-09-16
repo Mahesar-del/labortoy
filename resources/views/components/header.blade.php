@@ -303,6 +303,7 @@ p {
         <li><a href="/provider-page">Providers</a></li>
         <li><a href="{{ route('about') }}">About Us</a></li>
         <li><a href="/faq">FAQ</a></li>
+        <li><a href="{{ route('blog.index') }}">Blog</a></li>
         <li><a href="/contact-us">Contact</a></li>
     </ul>
 
