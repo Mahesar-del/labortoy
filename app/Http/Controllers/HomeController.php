@@ -16,7 +16,12 @@ class HomeController extends Controller
             'email' => $settings['contact_email'] ?? '',
             'phone' => $settings['contact_phone'] ?? '',
         ];
+        $blogPosts = \App\Models\BlogPost::where('status', 'published')
+            ->where('show_on_home', true)
+            ->orderByDesc('publish_date')
+            ->take(3)
+            ->get();
 
-        return view('home', compact('hero', 'contact'));
+        return view('home', compact('hero', 'contact', 'blogPosts'));
     }
 }
