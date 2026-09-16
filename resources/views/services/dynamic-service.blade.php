@@ -1,9 +1,15 @@
 @php
-    $testCards = $tests->map(function ($test) {
-        return ['title' => $test->heading ?: $test->name, 'description' => $test->description, 'image' => $test->image_path ? asset('storage/'.$test->image_path) : asset('images/chemistry-card-bg.jpg')];
+    $testCards = $tests->map(function ($test) use ($testPages) {
+        $tp = $testPages->where('title', $test->name)->first();
+        return [
+            'title' => $test->heading ?: $test->name, 
+            'description' => $test->description, 
+            'image' => $test->image_path ? asset('storage/'.$test->image_path) : ($tp && $tp->bg_image ? asset('storage/'.$tp->bg_image) : asset('images/chemistry-card-bg.jpg')),
+            'link' => $tp ? route('test-pages.show', $tp->slug) : '#'
+        ];
     })->all();
 @endphp
-<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{{ $service->name }}</title></head><body>
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{{ $service->name }}</title><style>body { margin: 0; padding: 0; overflow-x: clip; }</style></head><body>
 @include('components.header')
 @include('components.services-hero',['title'=>nl2br(e($service->hero_heading ?: $service->name)),'description'=>$service->hero_description ?: $service->summary,'buttonText'=>$service->button_text ?: 'Book an Appointment','buttonLink'=>$service->button_link ?: '/appointment','bgImage'=>!empty($service->hero_image) ? asset('storage/'.$service->hero_image) : asset('images/clinical-test.png')])
 @include('components.service-intro')

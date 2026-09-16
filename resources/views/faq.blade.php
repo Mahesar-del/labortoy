@@ -9,8 +9,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
     <style>
         * { box-sizing: border-box; }
-        body { margin: 0; font-family: 'Manrope', sans-serif; overflow-x: hidden; width: 100%; background-color: #ffffff; }
-        .main-wrapper { width: 100%; margin: 0 auto; overflow-x: hidden; }
+        body { margin: 0; font-family: 'Manrope', sans-serif; overflow-x: clip; width: 100%; background-color: #ffffff; }
+        .main-wrapper { width: 100%; margin: 0 auto; overflow-x: clip; }
         
         /* Outer Page Section with matching Header & Footer 99px padding grid */
         .faq-page-section {

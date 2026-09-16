@@ -44,8 +44,18 @@
         @media (max-width: 700px) { .understanding-genomic { padding: 52px 0; } .understanding-genomic__container { padding: 0 28px; gap: 30px; grid-template-columns: 1fr; } .understanding-genomic h2 { text-align: left; } .understanding-genomic__image { order: -1; height: auto; min-height: 0; } }
     </style>
     
-    @include('components.chemistry-testing-services', ['testPages' => $testPages])
-    
+    @php
+        $testCards = $tests->map(function ($test) use ($testPages) {
+            $tp = $testPages->where('title', $test->name)->first();
+            return [
+                'title' => $test->heading ?: $test->name, 
+                'description' => $test->description, 
+                'image' => $test->image_path ? asset('storage/'.$test->image_path) : ($tp && $tp->bg_image ? asset('storage/'.$tp->bg_image) : asset('images/chemistry-card-bg.jpg')),
+                'link' => $tp ? route('test-pages.show', $tp->slug) : '#'
+            ];
+        })->all();
+    @endphp
+    @include('components.chemistry-testing-services', ['cards' => $testCards, 'sectionTitle' => $service->name.' Services', 'sectionDescription' => 'Explore '.$service->name.' testing categories designed to support different diagnostic and clinical needs.'])
     @php
         $genomicServices = [
             [
