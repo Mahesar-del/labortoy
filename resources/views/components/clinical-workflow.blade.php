@@ -39,7 +39,7 @@
     .clinical-workflow, .clinical-workflow * { box-sizing: border-box; }
     .clinical-workflow {
         width: 100%;
-        padding: 5rem 7%;
+        padding: 2rem 7%;
         background-color: #ffffff;
     }
 

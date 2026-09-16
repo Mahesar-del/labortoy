@@ -101,7 +101,7 @@
     .what-you-need-section, .what-you-need-section * { box-sizing: border-box; }
     .what-you-need-section {
         background-color: #F8F9FA;
-        padding: 4rem 99px;
+        padding: 1rem 99px;
         width: 100%;
         font-family: 'Inter', sans-serif;
         box-sizing: border-box;

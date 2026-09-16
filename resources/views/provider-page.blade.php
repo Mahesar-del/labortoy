@@ -16,6 +16,7 @@
     @include('components.provider-hero', [
         'title' => 'Laboratory Support for<br>Better Clinical Decisions',
         'description' => 'Access laboratory testing information, specimen requirements, clinical resources, and provider support to help you navigate the testing process with Sterling.',
+        'bgImage' => asset('images/patient_hero_image.jpg'),
         'showButton' => false
     ])
     @include('components.clinical-workflow')

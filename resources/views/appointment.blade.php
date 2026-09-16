@@ -31,7 +31,7 @@
             width: 100%;
             max-width: 1083px;
             border-radius: 20px;
-            padding: 60px 40px;
+            padding: 20px 40px;
             margin: 0 auto;
         }
         .text-center {
@@ -196,11 +196,7 @@
 </head>
 <body>
     @include('components.header')
-    @include('components.provider-hero', [
-        'title' => 'Schedule Your Laboratory Appointment',
-        'description' => 'Choose the appointment option that best fits your needs. Patients can request home sample collection or visit our laboratory, while healthcare providers and organizations can coordinate diagnostic services with our laboratory team.',
-        'showButton' => false
-    ])
+    @include('components.appointment-banner')
     <div class="appointment-page-wrapper">
     <section class="appointment-section">
         <div class="text-center">

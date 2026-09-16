@@ -41,7 +41,7 @@
     .clinical-decisions, .clinical-decisions * { box-sizing: border-box; }
     .clinical-decisions {
         width: 100%;
-        padding: 5rem 7%;
+        padding: 2rem 7%;
         background-color: #ffffff;
     }
 

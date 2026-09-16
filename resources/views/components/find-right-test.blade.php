@@ -36,7 +36,7 @@
 <style>
     .find-right-test, .find-right-test * { box-sizing: border-box; }
     .find-right-test {
-        padding: 5rem 7%;
+        padding: 2rem 7%;
         background-color: #ffffff;
         overflow: hidden;
         width: 100%;

@@ -98,17 +98,6 @@
             border-radius: 17px;
             overflow: hidden;
         }
-        .about-image:empty:after {
-            content: 'Add your image in public/images/about';
-            position: absolute;
-            left: 10px;
-            bottom: 10px;
-            background: rgba(9,39,71,.78);
-            color: #fff;
-            border-radius: 6px;
-            padding: 6px 8px;
-            font-size: 10px;
-        }
         .about-image--horizontal {
             width: 100%;
             height: 317px;
