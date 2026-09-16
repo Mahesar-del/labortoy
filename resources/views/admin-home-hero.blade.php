@@ -18,7 +18,7 @@
             3 => asset('img/hero-doctor-male.png'),
         ];
         $previewImage = $storedHeroImageExists
-            ? asset('storage/'.$hero->image_path)
+            ? route('media.public', ['path' => $hero->image_path])
             : ($heroFallbacks[$slide] ?? $heroFallbacks[1]);
     @endphp
     <main class="page">

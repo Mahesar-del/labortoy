@@ -31,6 +31,17 @@ use App\Http\Controllers\FaqController;
 
 Route::get('/', [HomeController::class, 'index']);
 
+// Hosting-safe access to files uploaded on Laravel's public disk. This keeps
+// uploads working on shared hosting even when public/storage cannot be linked.
+Route::get('/media/{path}', function ($path) {
+    abort_if(strpos($path, '..') !== false || preg_match('~(^|/)\.~', $path), 403);
+
+    $disk = \Illuminate\Support\Facades\Storage::disk('public');
+    abort_unless($disk->exists($path), 404);
+
+    return response()->file($disk->path($path));
+})->where('path', '.*')->name('media.public');
+
 Route::get('/search', function (\Illuminate\Http\Request $request) {
     $query = trim((string) $request->query('q'));
     $services = collect();

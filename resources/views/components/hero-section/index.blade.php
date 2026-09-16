@@ -7,7 +7,7 @@
     </div>
 
     <div class="hero-section__content" aria-live="polite">
-        <img class="hero-doc-img" src="{{ !empty($hero) && !empty($hero->image_path) ? asset('storage/' . $hero->image_path) : asset('img/hero-doc-img.png') }}" alt="Laboratory scientist examining a sample">
+        <img class="hero-doc-img" src="{{ !empty($hero) && !empty($hero->image_path) && \Illuminate\Support\Facades\Storage::disk('public')->exists($hero->image_path) ? route('media.public', ['path' => $hero->image_path]) : asset('img/hero-doc-img.png') }}" alt="Laboratory scientist examining a sample">
         <img class="hero-section__dots" src="{{ asset('img/dots-hero.png') }}?v={{ filemtime(public_path('img/dots-hero.png')) }}" alt="">
         <div class="hero-section__copy">
             <h1 id="hero-title">{!! nl2br(e($hero->heading ?? 'Precision Diagnostics. Better Answers for Better Care.')) !!}</h1>
@@ -220,7 +220,7 @@
             {
                 title: @json(nl2br(e($hero->heading ?? 'Precision Diagnostics. Better Answers for Better Care.'))),
                 description: @json(e($hero->description ?? 'Sterling Genomic, Molecular & Clinical Diagnostics is a U.S. laboratory providing accurate, science-driven testing for patients and providers.')),
-                docImage: @json(!empty($hero) && !empty($hero->image_path) ? asset('storage/' . $hero->image_path) : asset('img/hero-doc-img.png')),
+                docImage: @json(!empty($hero) && !empty($hero->image_path) && \Illuminate\Support\Facades\Storage::disk('public')->exists($hero->image_path) ? route('media.public', ['path' => $hero->image_path]) : asset('img/hero-doc-img.png')),
                 bgLeft: '{{ asset('img/hero-bg-img-left.png') }}',
                 bgRight: '{{ asset('img/hero-bg-img-right.jpg') }}'
             },
