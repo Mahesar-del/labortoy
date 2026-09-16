@@ -57,7 +57,9 @@ class AdminServiceController extends Controller
         $this->guard();
         $service = DB::table('services')->where('id', $id)->first();
         abort_unless($service, 404);
-        return view('admin-service-edit', compact('service'));
+        
+        $testPages = \App\Models\TestPage::where('service_id', $id)->latest()->get();
+        return view('admin-service-edit', compact('service', 'testPages'));
     }
 
     public function update(Request $request, $id)

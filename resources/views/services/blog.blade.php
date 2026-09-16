@@ -300,82 +300,46 @@
     <section class="blog-section">
         <div class="blog-container">
         <div class="blog-grid">
-            <!-- Blog Card 1 -->
-            <a href="#" class="blog-card">
+            @forelse($posts as $post)
+            <a href="{{ route('blog.show', $post->slug) }}" class="blog-card">
                 <div class="blog-image-wrapper">
-                    <img src="{{ asset('images/rapid-diagonics.jpg') }}" alt="Scientists in lab" class="blog-image">
+                    @if($post->image_path)
+                        <img src="{{ asset('storage/' . $post->image_path) }}" alt="{{ $post->title }}" class="blog-image">
+                    @else
+                        <img src="{{ asset('images/clinical-labs.jpg') }}" alt="Placeholder" class="blog-image">
+                    @endif
                 </div>
                 <div class="blog-meta">
-                    <span class="blog-category">BIOMEDICAL</span>
-                    <span class="blog-date">MARCH 15, 2024</span>
+                    <span class="blog-category">
+                        @php
+                            $tags = explode(',', $post->tags);
+                            echo strtoupper(trim($tags[0] ?? 'BIOMEDICAL'));
+                        @endphp
+                    </span>
+                    <span class="blog-date">{{ $post->publish_date ? $post->publish_date->format('M d, Y') : 'MARCH 15, 2024' }}</span>
                 </div>
-                <h3 class="blog-title">Lab-on-a-Chip Devices for Rapid Diagnostics</h3>
+                <h3 class="blog-title">{{ $post->title }}</h3>
+                <div class="blog-author-card" style="display:flex; align-items:center; gap:12px; margin-top:20px;">
+                    @if($post->authorDetails && $post->authorDetails->profile_image)
+                        <img src="{{ asset('storage/' . $post->authorDetails->profile_image) }}" alt="{{ $post->author }}" style="width:36px; height:36px; border-radius:50%; object-fit:cover;">
+                    @else
+                        <div style="width:36px; height:36px; border-radius:50%; background:#22B6AF; color:white; display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:bold;">
+                            {{ substr($post->author, 0, 1) }}
+                        </div>
+                    @endif
+                    <span style="font-size:14px; font-weight:600; color:#111827;">{{ $post->author }}</span>
+                </div>
             </a>
-
-            <!-- Blog Card 2 -->
-            <a href="#" class="blog-card">
-                <div class="blog-image-wrapper">
-                    <img src="{{ asset('images/clinical-labs.jpg') }}" alt="Testing samples" class="blog-image">
-                </div>
-                <div class="blog-meta">
-                    <span class="blog-category">LABORATORY</span>
-                    <span class="blog-date">MARCH 12, 2024</span>
-                </div>
-                <h3 class="blog-title">Standardizing Sample Handling in Clinical Labs</h3>
-            </a>
-
-            <!-- Blog Card 3 -->
-            <a href="#" class="blog-card">
-                <div class="blog-image-wrapper">
-                    <img src="{{ asset('images/rapid-diagonics.jpg') }}" alt="Scientists in lab" class="blog-image">
-                </div>
-                <div class="blog-meta">
-                    <span class="blog-category">BIOMEDICAL</span>
-                    <span class="blog-date">MARCH 10, 2024</span>
-                </div>
-                <h3 class="blog-title">Lab-on-a-Chip Devices for Rapid Diagnostics</h3>
-            </a>
-
-            <!-- Blog Card 4 -->
-            <a href="#" class="blog-card">
-                <div class="blog-image-wrapper">
-                    <img src="{{ asset('images/clinical-labs.jpg') }}" alt="Testing samples" class="blog-image">
-                </div>
-                <div class="blog-meta">
-                    <span class="blog-category">LABORATORY</span>
-                    <span class="blog-date">MARCH 08, 2024</span>
-                </div>
-                <h3 class="blog-title">Standardizing Sample Handling in Clinical Labs</h3>
-            </a>
-
-             <!-- Blog Card 5 -->
-             <a href="#" class="blog-card">
-                <div class="blog-image-wrapper">
-                    <img src="{{ asset('images/rapid-diagonics.jpg') }}" alt="Scientists in lab" class="blog-image">
-                </div>
-                <div class="blog-meta">
-                    <span class="blog-category">BIOMEDICAL</span>
-                    <span class="blog-date">MARCH 05, 2024</span>
-                </div>
-                <h3 class="blog-title">Lab-on-a-Chip Devices for Rapid Diagnostics</h3>
-            </a>
-
-            <!-- Blog Card 6 -->
-            <a href="#" class="blog-card">
-                <div class="blog-image-wrapper">
-                    <img src="{{ asset('images/clinical-labs.jpg') }}" alt="Testing samples" class="blog-image">
-                </div>
-                <div class="blog-meta">
-                    <span class="blog-category">LABORATORY</span>
-                    <span class="blog-date">MARCH 01, 2024</span>
-                </div>
-                <h3 class="blog-title">Standardizing Sample Handling in Clinical Labs</h3>
-            </a>
+            @empty
+                <p>No blog posts found.</p>
+            @endforelse
         </div>
 
+        @if($posts->count() > 9)
         <div class="view-more-container">
             <a href="#" class="btn-view-more">View More</a>
         </div>
+        @endif
     </div>
     </section>
 

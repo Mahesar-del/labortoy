@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>What is a CBC Test? Understanding Your Complete Blood Count</title>
+    <title>{{ $post->title }} | Blog</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         body { margin: 0; padding: 0; font-family: 'Inter', sans-serif; background-color: #FFFFFF; }        /* Container Setup */
@@ -124,53 +124,26 @@
     <div class="post-container">
         <!-- Title Section -->
         <div class="post-header">
-            <h1 class="post-title">What is a CBC Test? Understanding Your Complete Blood Count</h1>
-            <p class="post-subtitle">A Complete Blood Count (CBC) is one of the most common blood tests. Learn what it measures, why it may be ordered, and what the different components of your CBC report mean.</p>
+            <h1 class="post-title">{{ $post->title }}</h1>
+            <div class="post-subtitle">{!! $post->excerpt !!}</div>
             <div class="post-meta">
-                <span>Waqar Mazhar</span>
-                <span>September 14, 2026</span>
-                <span>6 min read</span>
+                <span>{{ $post->author }}</span>
+                <span>{{ $post->publish_date ? $post->publish_date->format('F d, Y') : '' }}</span>
+                <span>5 min read</span>
             </div>
         </div>
 
         <!-- Hero Image -->
-        <img src="{{ asset('images/what-cbc-test.jpg') }}" alt="Blood tubes for CBC Test" class="post-hero-image">
+        @if($post->image_path)
+            <img src="{{ asset('storage/' . $post->image_path) }}" alt="{{ $post->title }}" class="post-hero-image">
+        @endif
 
         <!-- Main Content Area -->
         <div class="post-content-area">
             
             <!-- Left Column: Article Body -->
             <div class="article-body">
-                <p>A Complete Blood Count (CBC) is a common blood test that provides information about the major cells in your blood. It measures red blood cells, white blood cells, platelets, and several related measurements.</p>
-                <p>A CBC may be performed as part of a routine health check or when a healthcare provider wants to investigate certain symptoms or monitor an existing condition.</p>
-                
-                <h2>What Does a CBC Check?</h2>
-                <p>A CBC provides information about several important blood components:</p>
-                <p><strong>Red Blood Cells</strong><br>Red blood cells carry oxygen from the lungs to tissues throughout the body. A CBC measures their number and related characteristics.</p>
-                <p><strong>Hemoglobin</strong><br>Hemoglobin is the protein in red blood cells that carries oxygen. Hemoglobin levels are an important part of evaluating blood health.</p>
-                <p><strong>White Blood Cells</strong><br>White blood cells help the body respond to infections and other conditions. A CBC measures their number and may also provide information about different types of white blood cells.</p>
-                <p><strong>Platelets</strong><br>Platelets help the blood clot normally and play an important role in controlling bleeding. A CBC measures the number of platelets in the blood.</p>
-
-                <h2>Why Is a CBC Performed?</h2>
-                <p>A healthcare provider may order a CBC to help evaluate:</p>
-                <ul>
-                    <li>Anemia and other blood abnormalities</li>
-                    <li>Possible infections</li>
-                    <li>Unusual bleeding or bruising</li>
-                    <li>Changes in blood cell levels</li>
-                    <li>Certain blood or immune system conditions</li>
-                </ul>
-                <p>A CBC may also be used to monitor changes in blood counts over time.</p>
-
-                <h2>How Is a CBC Test Done?</h2>
-                <p>A CBC requires a small blood sample, usually collected from a vein in the arm. The sample is sent to the laboratory for analysis. The blood collection itself generally takes only a few minutes.</p>
-                
-                <h2>Do You Need to Fast?</h2>
-                <p>A CBC alone usually does not require fasting. However, if other blood tests are performed at the same time, your healthcare provider may provide specific preparation instructions.</p>
-
-                <h2>Understanding Your Results</h2>
-                <p>CBC results are reported with laboratory reference ranges. These ranges can vary between laboratories, so always use the reference range provided on your own report.</p>
-                <p>A result outside the reference range does not necessarily mean that you have a medical condition. Your healthcare provider will interpret your results along with your symptoms, medical history, and other relevant information.</p>
+                {!! $post->content !!}
             </div>
 
             <!-- Right Column: Sidebar -->
@@ -179,14 +152,21 @@
                 <div class="author-card">
                     <h4 class="sidebar-heading">Written by</h4>
                     <div class="author-header">
-                        <!-- Using an available image -->
-                        <img src="{{ asset('images/patient-page-DR-img.png') }}" alt="Waqar Mazhar" class="author-image">
+                        @if($post->authorDetails && $post->authorDetails->profile_image)
+                            <img src="{{ asset('storage/' . $post->authorDetails->profile_image) }}" alt="{{ $post->author }}" class="author-image">
+                        @else
+                            <div style="width:64px; height:64px; border-radius:50%; background:#22B6AF; color:white; display:flex; align-items:center; justify-content:center; font-size:24px; font-weight:bold;" class="author-image">
+                                {{ substr($post->author, 0, 1) }}
+                            </div>
+                        @endif
                         <div class="author-info">
-                            <h3>Waqar Mazhar</h3>
-                            <p>Content Strategist & Writer</p>
+                            <h3>{{ $post->author }}</h3>
+                            <p>Author</p>
                         </div>
                     </div>
-                    <p class="author-bio">Waqar Mazhar is a healthcare content writer who specializes in making medical and laboratory topics easier to understand. He focuses on clear, accurate, and patient-friendly health information.</p>
+                    <p class="author-bio">
+                        {{ $post->authorDetails->description ?? 'Our dedicated authors provide the latest insights and updates regarding laboratory testing and healthcare.' }}
+                    </p>
                 </div>
 
                 <!-- Share Section -->
@@ -218,56 +198,35 @@
             <h2 class="related-title">Related Posts</h2>
             
             <div class="blog-grid">
-                <!-- Card 1 -->
-                <a href="/blog-post" class="blog-card">
+                @php
+                    $relatedPosts = \App\Models\BlogPost::where('id', '!=', $post->id)->where('status', 'Published')->latest('publish_date')->take(3)->get();
+                @endphp
+                @foreach($relatedPosts as $related)
+                <a href="{{ route('blog.show', $related->slug) }}" class="blog-card">
                     <div class="blog-image-wrapper">
-                        <img src="{{ asset('images/related_lab_on_chip.jpg') }}" alt="Lab-on-a-Chip Devices" class="blog-image">
+                        @if($related->image_path)
+                            <img src="{{ asset('storage/' . $related->image_path) }}" alt="{{ $related->title }}" class="blog-image">
+                        @else
+                            <img src="{{ asset('images/related_lab_on_chip.jpg') }}" alt="Lab-on-a-Chip Devices" class="blog-image">
+                        @endif
                     </div>
                     <div class="blog-meta">
                         <div class="blog-meta-left">
-                            <span>BIOMEDICAL</span>
+                            <span>
+                                @php
+                                    $tags = explode(',', $related->tags);
+                                    echo strtoupper(trim($tags[0] ?? 'BIOMEDICAL'));
+                                @endphp
+                            </span>
                         </div>
                         <div class="blog-meta-right">
                             <div class="meta-line"></div>
-                            <span>MARCH 18, 2024</span>
+                            <span>{{ $related->publish_date ? $related->publish_date->format('F d, Y') : 'MARCH 18, 2024' }}</span>
                         </div>
                     </div>
-                    <h3 class="blog-title">Lab-on-a-Chip Devices for Rapid Diagnostics</h3>
+                    <h3 class="blog-title">{{ $related->title }}</h3>
                 </a>
-
-                <!-- Card 2 -->
-                <a href="/blog-post" class="blog-card">
-                    <div class="blog-image-wrapper">
-                        <img src="{{ asset('images/related_sample_handling.jpg') }}" alt="Standardizing Sample Handling" class="blog-image">
-                    </div>
-                    <div class="blog-meta">
-                        <div class="blog-meta-left">
-                            <span>LABORATORY</span>
-                        </div>
-                        <div class="blog-meta-right">
-                            <div class="meta-line"></div>
-                            <span>MARCH 01, 2024</span>
-                        </div>
-                    </div>
-                    <h3 class="blog-title">Standardizing Sample Handling in Clinical Labs</h3>
-                </a>
-
-                <!-- Card 3 -->
-                <a href="/blog-post" class="blog-card">
-                    <div class="blog-image-wrapper">
-                        <img src="{{ asset('images/related_pediatric_patient.jpg') }}" alt="AI-Powered Drug Discovery" class="blog-image">
-                    </div>
-                    <div class="blog-meta">
-                        <div class="blog-meta-left">
-                            <span>SCIENTIFIC</span>
-                        </div>
-                        <div class="blog-meta-right">
-                            <div class="meta-line"></div>
-                            <span>JANUARY 12, 2024</span>
-                        </div>
-                    </div>
-                    <h3 class="blog-title">AI-Powered Drug Discovery in Modern Research</h3>
-                </a>
+                @endforeach
             </div>
         </div>
     </section>
