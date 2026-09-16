@@ -23,6 +23,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>{{ $service->name }}</title>
+    <link rel="icon" type="image/jpeg" href="{{ asset('images/favicon.jpg') }}">
+    <link rel="shortcut icon" href="{{ asset('images/favicon.jpg') }}">
     <style>
         html, body { margin: 0; min-width: 0; overflow-x: hidden; padding: 0; width: 100%; }
 
