@@ -1549,9 +1549,19 @@
         <div class="container">
             <h2 class="insights-title">Latest Research and Laboratory Insights</h2>
             <div class="insights-grid">
-                <!-- Card 1 -->
+                @forelse($blogPosts as $post)
+                <a class="insight-card" href="{{ route('blog.show', $post->slug) }}" style="text-decoration:none;">
+                    <img src="{{ $post->image_url ?: asset('images/related_lab_on_chip.jpg') }}" alt="{{ $post->image_alt_text ?: $post->title }}" class="insight-img">
+                    <div class="insight-meta">
+                        <span class="insight-category">{{ $post->category ?: 'LABORATORY' }}</span>
+                        <span class="insight-date">&mdash; {{ optional($post->publish_date)->format('M d, Y') }}</span>
+                    </div>
+                    <h3 class="insight-heading">{{ $post->title }}</h3>
+                </a>
+                @empty
+                <!-- Sample cards are shown until home-featured posts are available. -->
                 <div class="insight-card">
-                    <img src="{{ asset('images/first-img.jpg') }}" alt="Biomedical Research" class="insight-img">
+                    <img src="{{ asset('images/related_lab_on_chip.jpg') }}" alt="Lab-on-a-chip diagnostic technology" class="insight-img">
                     <div class="insight-meta">
                         <span class="insight-category">BIOMEDICAL</span>
                         <span class="insight-date">&mdash; MARCH 18, 2026</span>
@@ -1560,7 +1570,7 @@
                 </div>
                 <!-- Card 2 -->
                 <div class="insight-card">
-                    <img src="{{ asset('images/second-img.jpg') }}" alt="Laboratory Research" class="insight-img">
+                    <img src="{{ asset('images/related_sample_handling.jpg') }}" alt="Careful sample handling in a diagnostic laboratory" class="insight-img">
                     <div class="insight-meta">
                         <span class="insight-category">LABORATORY</span>
                         <span class="insight-date">&mdash; MARCH 18, 2026</span>
@@ -1569,13 +1579,14 @@
                 </div>
                 <!-- Card 3 -->
                 <div class="insight-card">
-                    <img src="{{ asset('images/third-img.jpg') }}" alt="Biology Research" class="insight-img">
+                    <img src="{{ asset('images/rapid-diagonics.jpg') }}" alt="Modern diagnostic laboratory testing" class="insight-img">
                     <div class="insight-meta">
                         <span class="insight-category">BIOLOGY</span>
                         <span class="insight-date">&mdash; MARCH 18, 2026</span>
                     </div>
                     <h3 class="insight-heading">AI-Powered Drug Discovery in Modern Research</h3>
                 </div>
+                @endforelse
             </div>
         </div>
     </section>

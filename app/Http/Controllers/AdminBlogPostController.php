@@ -67,7 +67,7 @@ class AdminBlogPostController extends Controller
 
         if ($request->hasFile('featured_image')) {
             $path = $request->file('featured_image')->store('blog_images', 'public');
-            $validated['image_path'] = '/storage/' . $path;
+            $validated['image_path'] = $path;
         }
 
         $validated['show_on_home'] = $request->has('show_on_home');
@@ -117,7 +117,7 @@ class AdminBlogPostController extends Controller
 
         if ($request->hasFile('featured_image')) {
             $path = $request->file('featured_image')->store('blog_images', 'public');
-            $validated['image_path'] = '/storage/' . $path;
+            $validated['image_path'] = $path;
         }
 
         $validated['show_on_home'] = $request->has('show_on_home');
@@ -133,4 +133,3 @@ class AdminBlogPostController extends Controller
         return redirect()->route('admin.blog-posts.index')->with('success', 'Blog post deleted.');
     }
 }
-

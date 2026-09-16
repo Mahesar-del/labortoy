@@ -37,6 +37,22 @@ class BlogPost extends Model
         'visibility_public' => 'boolean'
     ];
 
+    public function getImageUrlAttribute()
+    {
+        $path = trim((string) $this->image_path);
+        if ($path === '') {
+            return null;
+        }
+
+        $path = ltrim($path, '/');
+        if (strpos($path, 'images/') === 0) {
+            return asset($path);
+        }
+
+        $path = preg_replace('#^(storage/)+#', '', $path);
+        return asset('storage/' . $path);
+    }
+
     public function authorDetails()
     {
         return $this->belongsTo(Author::class, 'author', 'name');

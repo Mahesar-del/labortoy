@@ -116,8 +116,8 @@
                 </div>
                 <div class="field">
                     <label>Featured Image</label>
-                    @if(isset($blogPost) && $blogPost->image_path)
-                        <img src="{{ asset('storage/' . $blogPost->image_path) }}" class="current-image" alt="Current Image">
+                    @if(isset($blogPost) && $blogPost->image_url)
+                        <img src="{{ $blogPost->image_url }}" class="current-image" alt="Current Image">
                     @endif
                     <input type="file" name="featured_image" accept="image/*">
                 </div>
@@ -148,6 +148,8 @@
                     <select name="category" required>
                         <option value="" disabled {{ empty($blogPost->category) && empty(old('category')) ? 'selected' : '' }}>-- Select Category --</option>
                         <option value="Biomedical" {{ old('category', $blogPost->category ?? '') === 'Biomedical' ? 'selected' : '' }}>Biomedical</option>
+                        <option value="Laboratory" {{ old('category', $blogPost->category ?? '') === 'Laboratory' ? 'selected' : '' }}>Laboratory</option>
+                        <option value="Biology" {{ old('category', $blogPost->category ?? '') === 'Biology' ? 'selected' : '' }}>Biology</option>
                         <option value="Health" {{ old('category', $blogPost->category ?? '') === 'Health' ? 'selected' : '' }}>Health</option>
                         <option value="Wellness" {{ old('category', $blogPost->category ?? '') === 'Wellness' ? 'selected' : '' }}>Wellness</option>
                         <option value="Diagnostics" {{ old('category', $blogPost->category ?? '') === 'Diagnostics' ? 'selected' : '' }}>Diagnostics</option>

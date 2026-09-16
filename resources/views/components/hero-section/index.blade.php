@@ -7,7 +7,7 @@
     </div>
 
     <div class="hero-section__content" aria-live="polite">
-        <img class="hero-doc-img" src="{{ !empty($hero) && !empty($hero->image_path) && \Illuminate\Support\Facades\Storage::disk('public')->exists($hero->image_path) ? route('media.public', ['path' => $hero->image_path]) : asset('img/hero-doc-img.png') }}" alt="Laboratory scientist examining a sample">
+        <img class="hero-doc-img" src="{{ $hero->image_url ?? asset('img/hero-doctor-img.png') }}" alt="Laboratory scientist examining a sample">
         <img class="hero-section__dots" src="{{ asset('img/dots-hero.png') }}?v={{ filemtime(public_path('img/dots-hero.png')) }}" alt="">
         <div class="hero-section__copy">
             <h1 id="hero-title">{!! nl2br(e($hero->heading ?? 'Precision Diagnostics. Better Answers for Better Care.')) !!}</h1>
@@ -216,29 +216,7 @@
         if (!hero || hero.dataset.sliderReady) return;
         hero.dataset.sliderReady = 'true';
 
-        const slides = [
-            {
-                title: @json(nl2br(e($hero->heading ?? 'Precision Diagnostics. Better Answers for Better Care.'))),
-                description: @json(e($hero->description ?? 'Sterling Genomic, Molecular & Clinical Diagnostics is a U.S. laboratory providing accurate, science-driven testing for patients and providers.')),
-                docImage: @json(!empty($hero) && !empty($hero->image_path) && \Illuminate\Support\Facades\Storage::disk('public')->exists($hero->image_path) ? route('media.public', ['path' => $hero->image_path]) : asset('img/hero-doc-img.png')),
-                bgLeft: '{{ asset('img/hero-bg-img-left.png') }}',
-                bgRight: '{{ asset('img/hero-bg-img-right.jpg') }}'
-            },
-            {
-                title: 'Advanced Laboratory Testing.<br>Clearer Clinical Insight.',
-                description: 'Science-driven diagnostic services designed to support patients, providers, and informed healthcare decisions.',
-                docImage: '{{ asset('img/hero-doctor-female.png') }}',
-                bgLeft: '{{ asset('img/hero-bg-img-left.png') }}',
-                bgRight: '{{ asset('img/hero-bg-img-right.jpg') }}'
-            },
-            {
-                title: 'Reliable Results.<br>When They Matter Most.',
-                description: 'Sterling delivers laboratory support across chemistry, immunoassay, hematology, and diagnostic testing.',
-                docImage: '{{ asset('img/hero-doctor-male.png') }}',
-                bgLeft: '{{ asset('img/hero-bg-img-left.png') }}',
-                bgRight: '{{ asset('img/hero-bg-img-right.jpg') }}'
-            }
-        ];
+        const slides = @json($heroSlidesForJs);
 
         slides.forEach(({ docImage }) => {
             const image = new Image();
@@ -251,6 +229,8 @@
         const doctorImage = hero.querySelector('.hero-doc-img');
         const leftImage = hero.querySelector('.hero-bg-img-left');
         const rightImage = hero.querySelector('.hero-bg-img-right');
+        const primaryButton = hero.querySelector('.hero-section__button--primary');
+        const secondaryButton = hero.querySelector('.hero-section__button--secondary');
         let index = 0;
         let changing = false;
 
@@ -263,8 +243,12 @@
                 index = (index + 1) % slides.length;
                 const next = slides[index];
                 title.innerHTML = next.title;
-                description.innerHTML = next.description;
+                description.textContent = next.description;
                 doctorImage.src = next.docImage;
+                primaryButton.textContent = next.primaryButtonText;
+                primaryButton.href = next.primaryButtonLink;
+                secondaryButton.textContent = next.secondaryButtonText;
+                secondaryButton.href = next.secondaryButtonLink;
                 leftImage.src = next.bgLeft;
                 rightImage.src = next.bgRight;
                 content.classList.remove('hero-section__content--leaving');

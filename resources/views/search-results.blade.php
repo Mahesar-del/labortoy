@@ -1,1 +1,64 @@
-<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Search | Labortoy</title><style>body{margin:0;font-family:Arial,sans-serif;color:#092e52;background:#f4f9fc}.results{max-width:1050px;margin:0 auto;padding:150px 24px 80px}.results h1{font-size:38px;margin:0 0 10px}.results>p{color:#5d7891}.search-form{display:flex;gap:10px;margin:28px 0}.search-form input{flex:1;padding:14px 18px;border:1px solid #b8d5e4;border-radius:10px;font-size:16px}.search-form button{border:0;background:#19b8a9;color:white;font-weight:bold;border-radius:10px;padding:0 24px}.section{margin-top:35px}.section h2{font-size:22px}.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}.result-card{display:block;background:white;border:1px solid #d8e8f0;border-radius:14px;padding:20px;color:inherit;text-decoration:none;box-shadow:0 6px 16px rgba(15,57,84,.05)}.result-card:hover{border-color:#19b8a9}.result-card h3{margin:0 0 8px;font-size:18px}.result-card p{margin:0;color:#58758e;line-height:1.5}.tag{display:inline-block;margin-top:13px;background:#e3f8f4;color:#078b7a;font-size:12px;padding:5px 8px;border-radius:20px;font-weight:bold}.empty{padding:30px;background:white;border-radius:12px;color:#607c93}@media(max-width:700px){.results{padding-top:115px}.results h1{font-size:30px}}</style></head><body>@include('components.header')<main class="results"><h1>Search</h1><p>Find services and laboratory tests.</p><form class="search-form" action="{{ route('search') }}" method="get"><input name="q" value="{{ $query }}" placeholder="Search tests or services..." autofocus><button>Search</button></form>@if($query === '')<div class="empty">Enter a test or service name to search.</div>@elseif($services->isEmpty() && $tests->isEmpty())<div class="empty">No results found for “{{ $query }}”.</div>@else@if($services->isNotEmpty())<section class="section"><h2>Services</h2><div class="cards">@foreach($services as $service)<a class="result-card" href="{{ route('service.show',$service->slug) }}"><h3>{{ $service->name }}</h3><p>{{ $service->summary }}</p><span class="tag">Service</span></a>@endforeach</div></section>@endif@if($tests->isNotEmpty())<section class="section"><h2>Tests</h2><div class="cards">@foreach($tests as $test)<a class="result-card" href="{{ route('service.show',$test->service_slug) }}"><h3>{{ $test->heading ?: $test->name }}</h3><p>{{ $test->description ?: 'Laboratory test available through '.$test->service_name.'.' }}</p><span class="tag">{{ $test->service_name }}</span></a>@endforeach</div></section>@endif@endif</main>@include('components.footer')</body></html>
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Search | Labortoy</title>
+    <style>
+        body{margin:0;font-family:Arial,sans-serif;color:#092e52;background:#f4f9fc}
+        .results{max-width:1050px;margin:0 auto;padding:150px 24px 80px}
+        .results h1{font-size:38px;margin:0 0 10px}
+        .results>p{color:#5d7891}
+        .search-form{display:flex;gap:10px;margin:28px 0}
+        .search-form input{flex:1;padding:14px 18px;border:1px solid #b8d5e4;border-radius:10px;font-size:16px}
+        .search-form button{border:0;background:#19b8a9;color:white;font-weight:bold;border-radius:10px;padding:0 24px;cursor:pointer}
+        .section{margin-top:35px}.section h2{font-size:22px}
+        .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}
+        .result-card{display:block;background:white;border:1px solid #d8e8f0;border-radius:14px;padding:20px;color:inherit;text-decoration:none;box-shadow:0 6px 16px rgba(15,57,84,.05)}
+        .result-card:hover{border-color:#19b8a9}.result-card h3{margin:0 0 8px;font-size:18px}
+        .result-card p{margin:0;color:#58758e;line-height:1.5}
+        .tag{display:inline-block;margin-top:13px;background:#e3f8f4;color:#078b7a;font-size:12px;padding:5px 8px;border-radius:20px;font-weight:bold}
+        .empty{padding:30px;background:white;border-radius:12px;color:#607c93}
+        @media(max-width:700px){.results{padding-top:115px}.results h1{font-size:30px}.search-form button{padding:0 14px}}
+    </style>
+</head>
+<body>
+    @include('components.header')
+    <main class="results">
+        <h1>Search</h1>
+        <p>Find services, laboratory tests, and blog articles.</p>
+        <form class="search-form" action="{{ route('search') }}" method="get">
+            <input name="q" value="{{ $query }}" placeholder="Search tests, services, or blogs..." aria-label="Search all content">
+            <button type="submit">Search</button>
+        </form>
+        @if($query === '')
+            <div class="empty">Enter a test, service, or blog topic to search.</div>
+        @elseif($services->isEmpty() && $tests->isEmpty() && $blogs->isEmpty())
+            <div class="empty">No results found for “{{ $query }}”.</div>
+        @else
+            @if($services->isNotEmpty())
+                <section class="section"><h2>Services</h2><div class="cards">
+                    @foreach($services as $service)
+                        <a class="result-card" href="{{ route('service.show',$service->slug) }}"><h3>{{ $service->name }}</h3><p>{{ $service->summary }}</p><span class="tag">Service</span></a>
+                    @endforeach
+                </div></section>
+            @endif
+            @if($tests->isNotEmpty())
+                <section class="section"><h2>Tests</h2><div class="cards">
+                    @foreach($tests as $test)
+                        <a class="result-card" href="{{ route('service.show',$test->service_slug) }}"><h3>{{ $test->heading ?: $test->name }}</h3><p>{{ $test->description ?: 'Laboratory test available through '.$test->service_name.'.' }}</p><span class="tag">{{ $test->service_name }}</span></a>
+                    @endforeach
+                </div></section>
+            @endif
+            @if($blogs->isNotEmpty())
+                <section class="section"><h2>Blog Posts</h2><div class="cards">
+                    @foreach($blogs as $post)
+                        <a class="result-card" href="{{ route('blog.show',$post->slug) }}"><h3>{{ $post->title }}</h3><p>{{ strip_tags($post->excerpt ?? '') }}</p><span class="tag">{{ $post->category ?: 'Blog' }}</span></a>
+                    @endforeach
+                </div></section>
+            @endif
+        @endif
+    </main>
+    @include('components.footer')
+</body>
+</html>

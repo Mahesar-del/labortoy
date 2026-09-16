@@ -9,8 +9,8 @@
                 <h2 id="diagnostics-cta-title">Better Diagnostics Start Here</h2>
                 <p>Access reliable laboratory testing backed by advanced technology, scientific expertise, and a commitment to accurate results.</p>
                 <div class="diagnostics-cta__actions">
-                    <a class="diagnostics-cta__button diagnostics-cta__button--primary" href="#services">Our Services</a>
-                    <a class="diagnostics-cta__button diagnostics-cta__button--secondary" href="#contact">Contact Our Team</a>
+                    <a class="diagnostics-cta__button diagnostics-cta__button--primary" href="{{ url('/services') }}">Our Services</a>
+                    <a class="diagnostics-cta__button diagnostics-cta__button--secondary" href="{{ url('/contact-us') }}">Contact Our Team</a>
                 </div>
             </div>
         </div>

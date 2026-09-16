@@ -2,6 +2,15 @@
     $introBullets = !empty($service->intro_bullets)
         ? preg_split('/\r\n|\r|\n/', $service->intro_bullets)
         : ['Supports accurate clinical assessment.', 'Uses reliable laboratory testing methods.', 'Designed around practical clinical needs.'];
+    $introImagePath = ltrim((string) ($service->intro_image ?? ''), '/');
+    $introImageExists = $introImagePath !== ''
+        && \Illuminate\Support\Facades\Storage::disk('public')->exists($introImagePath);
+    $introFallbackImage = ($service->slug ?? '') === 'chemistry-testing'
+        ? asset('images/chemistry-card-bg.jpg')
+        : asset('images/understanding-genomic.jpg');
+    $introImageUrl = $introImageExists
+        ? asset('storage/'.$introImagePath)
+        : $introFallbackImage;
 @endphp
 
 <section class="dynamic-intro">
@@ -17,7 +26,7 @@
                 @endforeach
             </ul>
         </div>
-        <img src="{{ !empty($service->intro_image) ? asset('storage/'.$service->intro_image) : asset('images/understanding-genomic.jpg') }}" alt="{{ $service->name }}">
+        <img src="{{ $introImageUrl }}" alt="{{ $service->name }}">
     </div>
 </section>
 
