@@ -13,7 +13,7 @@
         $storedHeroImageExists = !empty($hero->image_path)
             && \Illuminate\Support\Facades\Storage::disk('public')->exists($hero->image_path);
         $heroFallbacks = [
-            1 => asset('img/hero-doc-img.png'),
+            1 => asset('img/hero-doctor-img.png'),
             2 => asset('img/hero-doctor-female.png'),
             3 => asset('img/hero-doctor-male.png'),
         ];
