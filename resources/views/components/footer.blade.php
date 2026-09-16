@@ -458,10 +458,10 @@
                         <div class="footer-col-links">
                             <h4>Quick Links</h4>
                             <ul class="footer-links-list">
-                                <li><a href="#">About Us</a></li>
-                                <li><a href="#">Contact</a></li>
-                                <li><a href="#">Team Member</a></li>
-                                <li><a href="#">Price Table</a></li>
+                                <li><a href="{{ route('about') }}">About Us</a></li>
+                                <li><a href="{{ url('/contact-us') }}">Contact Us</a></li>
+                                <li><a href="{{ url('/faq') }}">FAQs</a></li>
+                                <li><a href="{{ url('/patient') }}">Patients</a></li>
                             </ul>
                         </div>
 
@@ -469,10 +469,9 @@
                         <div class="footer-col-links">
                             <h4>Our services</h4>
                             <ul class="footer-links-list">
-                                <li><a href="#">Biochemistry Research</a></li>
-                                <li><a href="#">Chemical Research</a></li>
-                                <li><a href="#">Molecular Biology</a></li>
-                                <li><a href="#">Diagnostic Testing</a></li>
+                                <li><a href="{{ url('/service/chemistry-testing') }}">Chemistry Testing</a></li>
+                                <li><a href="{{ route('service.show', 'hematology') }}">Hematology</a></li>
+                                <li><a href="{{ route('service.show', 'immunoassay-testing') }}">Immunoassay Testing</a></li>
                             </ul>
                         </div>
 
