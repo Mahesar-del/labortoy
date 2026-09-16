@@ -9,7 +9,7 @@
         ? asset('images/chemistry-card-bg.jpg')
         : asset('images/understanding-genomic.jpg');
     $introImageUrl = $introImageExists
-        ? asset('storage/'.$introImagePath)
+        ? route('media.public', ['path' => $introImagePath])
         : $introFallbackImage;
 @endphp
 

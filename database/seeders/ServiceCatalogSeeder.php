@@ -4,11 +4,20 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class ServiceCatalogSeeder extends Seeder
 {
     public function run()
     {
+        $immunoassayIntroSource = database_path('seeders/assets/service-intros/immunoassay-intro.png');
+        if (is_file($immunoassayIntroSource)) {
+            Storage::disk('public')->put(
+                'service-intros/immunoassay-intro.png',
+                file_get_contents($immunoassayIntroSource)
+            );
+        }
+
         $services = [
             [
                 'name' => 'Chemistry Testing',
