@@ -7,7 +7,11 @@
     </div>
 
     <div class="hero-section__content" aria-live="polite">
-        <img class="hero-doc-img" src="{{ $hero->image_url ?? asset('img/hero-doctor-img.png') }}" alt="Laboratory scientist examining a sample">
+        <div class="hero-doc-images-wrapper">
+            @foreach($heroSlides as $i => $slideItem)
+                <img class="hero-doc-img hero-slide-doc-img @if($loop->first) is-active @endif" data-slide-index="{{ $i }}" src="{{ $slideItem->image_url }}" alt="Laboratory scientist examining a sample">
+            @endforeach
+        </div>
         <img class="hero-section__dots" src="{{ asset('img/dots-hero.png') }}?v={{ filemtime(public_path('img/dots-hero.png')) }}" alt="">
         <div class="hero-section__copy">
             <h1 id="hero-title">{!! nl2br(e($hero->heading ?? 'Precision Diagnostics. Better Answers for Better Care.')) !!}</h1>
@@ -76,20 +80,47 @@
         animation: hero-initial-enter .6s cubic-bezier(0.16, 1, 0.3, 1) both;
     }
     @keyframes hero-initial-enter { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
-    .hero-section__content--leaving {
+    
+    .hero-doc-images-wrapper {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+    }
+    .hero-slide-doc-img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
         opacity: 0;
-        transform: translateY(-8px);
-        transition: opacity 0.35s ease, transform 0.35s ease;
+        transition: opacity 0.8s ease-in-out;
+        will-change: opacity;
+        z-index: 0;
     }
-    .hero-section__content--entering {
-        animation: hero-smooth-fade-in 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+    .hero-slide-doc-img.is-active {
+        opacity: 1;
+        z-index: 1;
     }
-    @keyframes hero-smooth-fade-in {
-        from { opacity: 0; transform: translateY(12px); }
+
+    .hero-section__copy {
+        transition: opacity 0.3s ease, transform 0.3s ease;
+        will-change: opacity, transform;
+    }
+    .hero-section__content--leaving .hero-section__copy {
+        opacity: 0;
+        transform: translateY(-6px);
+    }
+    .hero-section__content--entering .hero-section__copy {
+        animation: hero-inner-fade-in 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    @keyframes hero-inner-fade-in {
+        from { opacity: 0; transform: translateY(6px); }
         to { opacity: 1; transform: translateY(0); }
     }
     .hero-doc-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-    .hero-section__copy { position: relative; z-index: 1; width: 49%; padding: 5% 0 5% 6.8%; }
+    .hero-section__copy { position: relative; z-index: 2; width: 49%; padding: 5% 0 5% 6.8%; }
     .hero-section h1 { margin: 0; font-size: clamp(24px, 3.25vw, 56px); font-weight: 800; letter-spacing: -.035em; line-height: 1.17; }
     .hero-section p { max-width: 95%; margin: 24px 0 32px; color: #000; font-size: 16px; line-height: 1.65; text-align: justify; }
     .hero-section__dots {
@@ -101,6 +132,7 @@
         display: block;
         object-fit: contain;
         transform: rotate(43deg);
+        z-index: 2;
     }
     .hero-section__actions { display: flex; flex-wrap: wrap; gap: 18px; }
     .hero-section__button { display: inline-flex; justify-content: center; align-items: center; border: 1px solid transparent; border-radius: 999px; padding: 15px 31px; font-size: clamp(11px, 1vw, 14px); font-weight: 700; text-decoration: none; }
@@ -174,7 +206,7 @@
             align-items: center; 
             background: transparent; 
         }
-        .hero-doc-img { 
+        .hero-doc-images-wrapper { 
             display: none; 
         }
         .hero-section__copy { 
@@ -225,20 +257,15 @@
         hero.dataset.sliderReady = 'true';
 
         const slides = @json($heroSlidesForJs);
-
-        slides.forEach(({ docImage }) => {
-            const image = new Image();
-            image.src = docImage;
-        });
+        if (!slides || slides.length <= 1) return;
 
         const content = hero.querySelector('.hero-section__content');
+        const copy = hero.querySelector('.hero-section__copy');
         const title = hero.querySelector('#hero-title');
         const description = hero.querySelector('.hero-section__copy p');
-        const doctorImage = hero.querySelector('.hero-doc-img');
-        const leftImage = hero.querySelector('.hero-bg-img-left');
-        const rightImage = hero.querySelector('.hero-bg-img-right');
         const primaryButton = hero.querySelector('.hero-section__button--primary');
         const secondaryButton = hero.querySelector('.hero-section__button--secondary');
+        const docImages = hero.querySelectorAll('.hero-slide-doc-img');
         let index = 0;
         let changing = false;
 
@@ -250,29 +277,33 @@
             window.setTimeout(() => {
                 index = (index + 1) % slides.length;
                 const next = slides[index];
+
                 title.innerHTML = next.title;
                 description.textContent = next.description;
-                doctorImage.src = next.docImage;
                 primaryButton.textContent = next.primaryButtonText;
                 primaryButton.href = next.primaryButtonLink;
                 secondaryButton.textContent = next.secondaryButtonText;
                 secondaryButton.href = next.secondaryButtonLink;
-                leftImage.src = next.bgLeft;
-                rightImage.src = next.bgRight;
+
+                docImages.forEach((img, i) => {
+                    if (i === index) img.classList.add('is-active');
+                    else img.classList.remove('is-active');
+                });
+
                 content.classList.remove('hero-section__content--leaving');
                 content.classList.add('hero-section__content--entering');
 
                 window.setTimeout(() => {
                     content.classList.remove('hero-section__content--entering');
                     changing = false;
-                }, 450);
-            }, 350);
+                }, 350);
+            }, 300);
         };
 
-        if (slides.length > 1 && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
             let sliderTimer;
             const startSlider = () => {
-                if (!sliderTimer) sliderTimer = window.setInterval(showSlide, 5500);
+                if (!sliderTimer) sliderTimer = window.setInterval(showSlide, 6000);
             };
             const stopSlider = () => {
                 window.clearInterval(sliderTimer);
