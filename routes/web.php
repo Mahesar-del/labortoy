@@ -78,9 +78,6 @@ Route::get('/cbc-test', function () {
 Route::get('/blog', function () {
     $posts = \App\Models\BlogPost::with('authorDetails')
         ->where('status', 'published')
-        ->where(function ($query) {
-            $query->whereNull('visibility_public')->orWhere('visibility_public', true);
-        })
         ->latest('publish_date')
         ->get();
 
