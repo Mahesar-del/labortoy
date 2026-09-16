@@ -263,6 +263,204 @@ p {
 
 
 
+/* Mobile Drawer Styles */
+.mobile-menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(2px);
+    z-index: 9998;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.mobile-menu-overlay.is-active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.mobile-menu-drawer {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 320px;
+    max-width: 85vw;
+    height: 100vh;
+    background-color: #ffffff;
+    z-index: 9999;
+    box-shadow: -5px 0 25px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow-y: auto;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.mobile-menu-drawer.is-active {
+    right: 0;
+}
+
+.mobile-drawer-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #e5e7eb;
+    margin-bottom: 20px;
+}
+
+.mobile-drawer-close {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #111827;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mobile-search-form {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: #f3f4f6;
+    border-radius: 20px;
+    padding: 8px 16px;
+    margin-bottom: 20px;
+}
+
+.mobile-search-form .search-icon {
+    width: 18px;
+    height: 18px;
+    color: #6b7280;
+    margin-right: 8px;
+}
+
+.mobile-search-form input {
+    border: none;
+    background: transparent;
+    outline: none;
+    width: 100%;
+    font-size: 14px;
+    color: #111827;
+}
+
+.mobile-nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex-grow: 1;
+}
+
+.mobile-nav-item > a, .mobile-dropdown-header > a {
+    text-decoration: none;
+    color: #111827;
+    font-size: 16px;
+    font-weight: 600;
+    display: block;
+    padding: 12px 8px;
+    border-radius: 8px;
+    transition: background 0.2s, color 0.2s;
+}
+
+.mobile-nav-item > a:hover, .mobile-dropdown-header > a:hover {
+    background-color: #f3f4f6;
+    color: #22B6AF;
+}
+
+.mobile-dropdown-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.mobile-arrow-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px 12px;
+    color: #4b5563;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+}
+
+.mobile-arrow-btn.is-open {
+    transform: rotate(180deg);
+    color: #22B6AF;
+}
+
+.mobile-arrow-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.mobile-submenu {
+    list-style: none;
+    padding: 0 0 0 16px;
+    margin: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+    border-left: 2px solid #e5e7eb;
+}
+
+.mobile-submenu.is-open {
+    max-height: 400px;
+    padding: 4px 0 8px 16px;
+}
+
+.mobile-submenu li a {
+    text-decoration: none;
+    color: #4b5563;
+    font-size: 14px;
+    font-weight: 500;
+    display: block;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: color 0.2s, background 0.2s;
+}
+
+.mobile-submenu li a:hover {
+    color: #22B6AF;
+    background-color: #f9fafb;
+}
+
+.mobile-drawer-footer {
+    padding-top: 20px;
+    border-top: 1px solid #e5e7eb;
+    margin-top: 20px;
+}
+
+.mobile-appointment-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 48px;
+    background-color: #22B6AF;
+    color: #ffffff;
+    border-radius: 24px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+    transition: background-color 0.2s;
+}
+
+.mobile-appointment-btn:hover {
+    background-color: #1c9b95;
+}
+
 @media (max-width: 1150px) {
     .site-header {
         padding: 0 20px;
@@ -340,43 +538,139 @@ p {
     </button>
     </div>
 </header>
+
+<!-- Mobile Navigation Drawer Overlay & Drawer -->
+<div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+<div class="mobile-menu-drawer" id="mobileMenuDrawer">
+    <div class="mobile-drawer-header">
+        <a href="/" class="mobile-logo">
+            <img src="{{ asset('images/header-logo.svg') }}" alt="Sterling Logo" style="height: 40px; width: auto;">
+        </a>
+        <button class="mobile-drawer-close" id="mobileDrawerClose" aria-label="Close menu">
+            <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </button>
+    </div>
+
+    <!-- Mobile Search Bar -->
+    <form class="mobile-search-form" action="{{ route('search') }}" method="get">
+        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input type="search" name="q" value="{{ request('q') }}" placeholder="Search..." aria-label="Search">
+    </form>
+
+    <ul class="mobile-nav-list">
+        <!-- Services with Accordion Arrow -->
+        <li class="mobile-nav-item mobile-has-dropdown">
+            <div class="mobile-dropdown-header" id="mobileServicesToggle">
+                <a href="/services">Services</a>
+                <button type="button" class="mobile-arrow-btn" id="mobileServicesArrowBtn" aria-label="Toggle Services dropdown">
+                    <svg class="mobile-arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </button>
+            </div>
+            <ul class="mobile-submenu" id="mobileServicesSubmenu">
+                @forelse($headerServices as $headerService)
+                    <li><a href="{{ url('/service/'.$headerService->slug) }}">{{ $headerService->name }}</a></li>
+                @empty
+                    <li><a href="/services">All Services</a></li>
+                @endforelse
+            </ul>
+        </li>
+
+        <li class="mobile-nav-item"><a href="/patient">Patients</a></li>
+        <li class="mobile-nav-item"><a href="/provider-page">Providers</a></li>
+        <li class="mobile-nav-item"><a href="{{ route('about') }}">About Us</a></li>
+        <li class="mobile-nav-item"><a href="/faq">FAQ</a></li>
+        <li class="mobile-nav-item"><a href="{{ route('blog.index') }}">Blog</a></li>
+        <li class="mobile-nav-item"><a href="/contact-us">Contact</a></li>
+    </ul>
+
+    <div class="mobile-drawer-footer">
+        <a href="{{ route('appointment.index') }}" class="mobile-appointment-btn">
+            Book an Appointment
+        </a>
+    </div>
+</div>
+
 <script>
     (function () {
+        // Desktop Search Suggestions
         var input = document.getElementById('headerSearchInput');
         var suggestions = document.getElementById('headerSearchSuggestions');
         var timer;
-        input.addEventListener('input', function () {
-            var query = input.value.trim();
-            clearTimeout(timer);
-            if (query.length < 2) { suggestions.innerHTML = ''; suggestions.classList.remove('is-open'); return; }
-            timer = setTimeout(function () {
-                fetch('{{ route('search.suggestions') }}?q=' + encodeURIComponent(query))
-                    .then(function (response) { return response.json(); })
-                    .then(function (items) {
-                        suggestions.replaceChildren();
-                        if (!items.length) {
-                            var empty = document.createElement('div');
-                            empty.className = 'header-search-empty';
-                            empty.textContent = 'No matching content found.';
-                            suggestions.appendChild(empty);
-                        } else {
-                            items.forEach(function (item) {
-                                var link = document.createElement('a');
-                                link.className = 'header-search-suggestion';
-                                link.href = item.url;
-                                var title = document.createElement('strong');
-                                title.textContent = item.title;
-                                var type = document.createElement('small');
-                                type.textContent = item.type;
-                                link.appendChild(title);
-                                link.appendChild(type);
-                                suggestions.appendChild(link);
-                            });
-                        }
-                        suggestions.classList.add('is-open');
-                    }).catch(function () { suggestions.classList.remove('is-open'); });
-            }, 220);
-        });
-        document.addEventListener('click', function (event) { if (!event.target.closest('.header-search')) suggestions.classList.remove('is-open'); });
+        if (input && suggestions) {
+            input.addEventListener('input', function () {
+                var query = input.value.trim();
+                clearTimeout(timer);
+                if (query.length < 2) { suggestions.innerHTML = ''; suggestions.classList.remove('is-open'); return; }
+                timer = setTimeout(function () {
+                    fetch('{{ route('search.suggestions') }}?q=' + encodeURIComponent(query))
+                        .then(function (response) { return response.json(); })
+                        .then(function (items) {
+                            suggestions.replaceChildren();
+                            if (!items.length) {
+                                var empty = document.createElement('div');
+                                empty.className = 'header-search-empty';
+                                empty.textContent = 'No matching content found.';
+                                suggestions.appendChild(empty);
+                            } else {
+                                items.forEach(function (item) {
+                                    var link = document.createElement('a');
+                                    link.className = 'header-search-suggestion';
+                                    link.href = item.url;
+                                    var title = document.createElement('strong');
+                                    title.textContent = item.title;
+                                    var type = document.createElement('small');
+                                    type.textContent = item.type;
+                                    link.appendChild(title);
+                                    link.appendChild(type);
+                                    suggestions.appendChild(link);
+                                });
+                            }
+                            suggestions.classList.add('is-open');
+                        }).catch(function () { suggestions.classList.remove('is-open'); });
+                }, 220);
+            });
+            document.addEventListener('click', function (event) { if (!event.target.closest('.header-search')) suggestions.classList.remove('is-open'); });
+        }
+
+        // Mobile Drawer Interaction
+        var mobileBtn = document.querySelector('.mobile-menu-btn');
+        var mobileDrawer = document.getElementById('mobileMenuDrawer');
+        var mobileOverlay = document.getElementById('mobileMenuOverlay');
+        var mobileClose = document.getElementById('mobileDrawerClose');
+        var arrowBtn = document.getElementById('mobileServicesArrowBtn');
+        var submenu = document.getElementById('mobileServicesSubmenu');
+
+        function openMenu() {
+            if (mobileDrawer) mobileDrawer.classList.add('is-active');
+            if (mobileOverlay) mobileOverlay.classList.add('is-active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMenu() {
+            if (mobileDrawer) mobileDrawer.classList.remove('is-active');
+            if (mobileOverlay) mobileOverlay.classList.remove('is-active');
+            document.body.style.overflow = '';
+        }
+
+        if (mobileBtn) mobileBtn.addEventListener('click', openMenu);
+        if (mobileClose) mobileClose.addEventListener('click', closeMenu);
+        if (mobileOverlay) mobileOverlay.addEventListener('click', closeMenu);
+
+        if (arrowBtn && submenu) {
+            arrowBtn.addEventListener('click', function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+                arrowBtn.classList.toggle('is-open');
+                submenu.classList.toggle('is-open');
+            });
+        }
     }());
 </script>
