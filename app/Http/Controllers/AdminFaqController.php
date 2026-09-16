@@ -25,5 +25,12 @@ class AdminFaqController extends Controller
         return back()->with('success', 'FAQ added and assigned to the selected service.');
     }
 
+    public function destroy($id)
+    {
+        $this->guard();
+        DB::table('service_faqs')->where('id', $id)->delete();
+        return back()->with('success', 'FAQ removed successfully.');
+    }
+
     private function guard() { abort_unless(Auth::check() && Auth::user()->is_admin, 403); }
 }

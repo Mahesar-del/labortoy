@@ -42,14 +42,14 @@
 
         <div class="chemistry-services-grid">
             @foreach ($cards as $card)
-                <article class="chemistry-card">
+                <a href="{{ url('/cbc-test') }}" class="chemistry-card" style="text-decoration: none;">
                     <img src="{{ $card['image'] }}" alt="{{ $card['title'] }}" class="chemistry-card__bg" loading="lazy">
                     <div class="chemistry-card__overlay"></div>
                     <div class="chemistry-card__content">
                         <h3 class="chemistry-card__title">{{ $card['title'] }}</h3>
                         <p class="chemistry-card__description">{{ $card['description'] }}</p>
                     </div>
-                </article>
+                </a>
             @endforeach
         </div>
     </div>
