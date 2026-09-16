@@ -6,7 +6,7 @@
         </div>
     </div>
 
-    <div class="hero-section__content" aria-live="polite">
+    <div class="hero-section__content hero-section__content--initial" aria-live="polite">
         <img class="hero-doc-img" src="{{ $hero->image_url ?? asset('img/hero-doctor-img.png') }}" alt="Laboratory scientist examining a sample">
         <img class="hero-section__dots" src="{{ asset('img/dots-hero.png') }}?v={{ filemtime(public_path('img/dots-hero.png')) }}" alt="">
         <div class="hero-section__copy">
@@ -73,13 +73,19 @@
         align-items: center;
         background: #e6eff2;
         will-change: transform, opacity;
-        animation: hero-initial-enter .75s ease-out both;
     }
+    .hero-section__content--initial { animation: hero-initial-enter .75s ease-out both; }
     @keyframes hero-initial-enter { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: translateY(0); } }
-    .hero-section__content--leaving { animation: hero-slide-out .7s ease-in both; }
-    .hero-section__content--entering { animation: hero-slide-in .7s ease-out both; }
-    @keyframes hero-slide-out { to { opacity: 0; transform: translateY(-115%); } }
-    @keyframes hero-slide-in { from { opacity: 0; transform: translateY(115%); } to { opacity: 1; transform: translateY(0); } }
+    .hero-section__content--leaving { animation: hero-slide-out .9s cubic-bezier(.55,0,.7,.35) both; }
+    .hero-section__content--entering { animation: hero-slide-in .9s cubic-bezier(.2,.7,.25,1) both; }
+    @keyframes hero-slide-out {
+        from { opacity: 1; transform: translateY(0); }
+        to { opacity: 0; transform: translateY(-100%); }
+    }
+    @keyframes hero-slide-in {
+        from { opacity: 0; transform: translateY(100%); }
+        to { opacity: 1; transform: translateY(0); }
+    }
     .hero-doc-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
     .hero-section__copy { position: relative; z-index: 1; width: 49%; padding: 5% 0 5% 6.8%; }
     .hero-section h1 { margin: 0; font-size: clamp(24px, 3.25vw, 56px); font-weight: 800; letter-spacing: -.035em; line-height: 1.17; }
@@ -234,6 +240,8 @@
         let index = 0;
         let changing = false;
 
+        window.setTimeout(() => content.classList.remove('hero-section__content--initial'), 800);
+
         const showSlide = () => {
             if (changing) return;
             changing = true;
@@ -252,13 +260,14 @@
                 leftImage.src = next.bgLeft;
                 rightImage.src = next.bgRight;
                 content.classList.remove('hero-section__content--leaving');
+                void content.offsetWidth;
                 content.classList.add('hero-section__content--entering');
 
                 window.setTimeout(() => {
                     content.classList.remove('hero-section__content--entering');
                     changing = false;
-                }, 700);
-            }, 700);
+                }, 900);
+            }, 900);
         };
 
         if (slides.length > 1 && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
@@ -271,8 +280,6 @@
                 sliderTimer = undefined;
             };
 
-            content.addEventListener('pointerenter', stopSlider);
-            content.addEventListener('pointerleave', startSlider);
             startSlider();
         }
     })();
