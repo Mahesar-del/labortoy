@@ -214,6 +214,155 @@
         }
     </style>
 
+    @if($testPage->components && $testPage->components->count())
+    <!-- Key Components Section -->
+    <section class="cbc-components-section">
+        <div class="cbc-components-container">
+            <div class="cbc-components-header">
+                <h2>{{ $testPage->components_heading ?? 'Key Components of a ' . $testPage->title }}</h2>
+                <p>{{ $testPage->components_text ?? "A {$testPage->title} report includes the parameters listed below. Normal ranges may vary slightly between laboratories, so always use the reference range provided on your own report as the primary guide." }}</p>
+            </div>
+
+            <div class="cbc-cards-grid">
+                @foreach($testPage->components as $component)
+                <div class="cbc-card">
+                    <div class="cbc-card-icon">
+                        @if($component->icon)
+                            <img src="{{ asset('storage/' . $component->icon) }}" alt="{{ $component->title }}">
+                                                @else
+                            @php $svgIndex = $loop->index % 4; @endphp
+                            @if($svgIndex == 0)
+                                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                            @elseif($svgIndex == 1)
+                                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>
+                            @elseif($svgIndex == 2)
+                                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                            @elseif($svgIndex == 3)
+                                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                            @endif
+                        @endif
+                    </div>
+                    <h3>{{ $component->title }}</h3>
+                    <p>{{ $component->description }}</p>
+                </div>
+                @endforeach
+            </div>
+        </div>
+    </section>
+
+    <style>
+        /* CBC Components Section */
+        .cbc-components-section {
+            padding: 20px 99px;
+            background-color: #ffffff;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .cbc-components-container {
+            max-width: 1320px;
+            /* Match global container width */
+            margin: 0 auto;
+            box-sizing: border-box;
+        }
+
+        .cbc-components-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 30px auto;
+        }
+
+        .cbc-components-header h2 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 30px;
+            font-weight: 800;
+            color: #000000;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        .cbc-components-header p {
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 30px;
+            color: #000000;
+            margin: 0;
+            text-align: center;
+        }
+
+        .cbc-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .cbc-card {
+            background-color: #F3F8FA;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            border-radius: 14px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            padding: 40px 24px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .cbc-card-icon {
+            width: 56px;
+            height: 56px;
+            background-color: #0b2545;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+        }
+
+        .cbc-card-icon img {
+            width: 28px;
+            height: 28px;
+            object-fit: contain;
+        }
+
+        .cbc-card h3 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            line-height: 23.26px;
+            color: #000000;
+            margin-top: 0;
+            margin-bottom: 12px;
+        }
+
+        .cbc-card p {
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 26px;
+            color: #000000;
+            margin: 0;
+        }
+
+        @media (max-width: 1024px) {
+            .cbc-cards-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .cbc-cards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cbc-components-section {
+                padding: 40px 20px;
+            }
+        }
+    </style>
+    @endif
+
     @if($testPage->specimen_title || $testPage->preparation_title)
     <!-- Specimen and Preparation Section -->
     <section class="cbc-sp-section">
@@ -360,148 +509,9 @@
     </style>
     @endif
 
-    @if($testPage->components && $testPage->components->count())
-    <!-- Key Components Section -->
-    <section class="cbc-components-section">
-        <div class="cbc-components-container">
-            <div class="cbc-components-header">
-                <h2>{{ $testPage->components_heading ?? 'Key Components of a ' . $testPage->title }}</h2>
-                <p>{{ $testPage->components_text ?? "A {$testPage->title} report includes the parameters listed below. Normal ranges may vary slightly between laboratories, so always use the reference range provided on your own report as the primary guide." }}</p>
-            </div>
+@include('components.process-explained')
 
-            <div class="cbc-cards-grid">
-                @foreach($testPage->components as $component)
-                <div class="cbc-card">
-                    <div class="cbc-card-icon">
-                        @if($component->icon)
-                            <img src="{{ asset('storage/' . $component->icon) }}" alt="{{ $component->title }}">
-                        @else
-                            <!-- Placeholder if no icon -->
-                            <div style="width:28px; height:28px; background:rgba(255,255,255,0.2); border-radius:50%;"></div>
-                        @endif
-                    </div>
-                    <h3>{{ $component->title }}</h3>
-                    <p>{{ $component->description }}</p>
-                </div>
-                @endforeach
-            </div>
-        </div>
-    </section>
-
-    <style>
-        /* CBC Components Section */
-        .cbc-components-section {
-            padding: 20px 99px;
-            background-color: #ffffff;
-            width: 100%;
-            box-sizing: border-box;
-        }
-
-        .cbc-components-container {
-            max-width: 1320px;
-            /* Match global container width */
-            margin: 0 auto;
-            box-sizing: border-box;
-        }
-
-        .cbc-components-header {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto 30px auto;
-        }
-
-        .cbc-components-header h2 {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: 30px;
-            font-weight: 800;
-            color: #000000;
-            margin-top: 0;
-            margin-bottom: 15px;
-        }
-
-        .cbc-components-header p {
-            font-family: 'Inter', sans-serif;
-            font-size: 16px;
-            font-weight: 400;
-            line-height: 30px;
-            color: #000000;
-            margin: 0;
-            text-align: center;
-        }
-
-        .cbc-cards-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 24px;
-        }
-
-        .cbc-card {
-            background-color: #F3F8FA;
-            border: 1px solid rgba(0, 0, 0, 0.05);
-            border-radius: 14px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-            padding: 40px 24px;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .cbc-card-icon {
-            width: 56px;
-            height: 56px;
-            background-color: #0b2545;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 24px;
-        }
-
-        .cbc-card-icon img {
-            width: 28px;
-            height: 28px;
-            object-fit: contain;
-        }
-
-        .cbc-card h3 {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: 20px;
-            font-weight: 700;
-            line-height: 23.26px;
-            color: #000000;
-            margin-top: 0;
-            margin-bottom: 12px;
-        }
-
-        .cbc-card p {
-            font-family: 'Inter', sans-serif;
-            font-size: 16px;
-            font-weight: 400;
-            line-height: 26px;
-            color: #000000;
-            margin: 0;
-        }
-
-        @media (max-width: 1024px) {
-            .cbc-cards-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 640px) {
-            .cbc-cards-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .cbc-components-section {
-                padding: 40px 20px;
-            }
-        }
-    </style>
-    @endif
-
-    @if($testPage->results && $testPage->results->count())
+@if($testPage->results && $testPage->results->count())
     <!-- Results Section -->
     <section class="cbc-results-section">
         <div class="cbc-results-container">
@@ -674,7 +684,7 @@
     <style>
         /* FAQ Section CSS */
         .cbc-faq-section {
-            padding: 0 99px 60px 99px;
+            padding: 0 99px 20px 99px;
             background-color: #ffffff;
             width: 100%;
             box-sizing: border-box;
@@ -812,6 +822,7 @@
     </script>
     @endif
 
+    @include('components.diagnostics-cta.cta')
     @include('components.footer')
 
     <script>

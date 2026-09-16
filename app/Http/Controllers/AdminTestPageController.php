@@ -214,7 +214,9 @@ class AdminTestPageController extends Controller
             'components_text' => 'nullable|string',
             'results_heading' => 'nullable|string|max:255',
             'results_text' => 'nullable|string',
-            'status' => 'required|in:active,draft',
+            'faq_heading' => 'nullable|string|max:255',
+            'faq_description' => 'nullable|string',
+            'status' => 'required|in:active,draft,published',
         ]);
     }
 }

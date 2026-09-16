@@ -261,7 +261,7 @@
                 <!-- Card 1 -->
                 <div class="cbc-card">
                     <div class="cbc-card-icon">
-                        <img src="{{ asset('images/red-blood-sell.svg') }}" alt="Red Blood Cells">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
                     </div>
                     <h3>Red Blood Cells</h3>
                     <p>Measures red blood cell-related values that help assess the blood's ability to carry oxygen
@@ -270,7 +270,7 @@
                 <!-- Card 2 -->
                 <div class="cbc-card">
                     <div class="cbc-card-icon">
-                        <img src="{{ asset('images/hemoglobin.svg') }}" alt="Hemoglobin">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>
                     </div>
                     <h3>Hemoglobin</h3>
                     <p>Measures the amount of hemoglobin, the protein in red blood cells responsible for carrying
@@ -279,7 +279,7 @@
                 <!-- Card 3 -->
                 <div class="cbc-card">
                     <div class="cbc-card-icon">
-                        <img src="{{ asset('images/white-blood-sell.svg') }}" alt="White Blood Cells">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
                     </div>
                     <h3>White Blood Cells</h3>
                     <p>Measures white blood cells, which are an important part of the body's immune response to help
@@ -288,7 +288,7 @@
                 <!-- Card 4 -->
                 <div class="cbc-card">
                     <div class="cbc-card-icon">
-                        <img src="{{ asset('images/platelets.svg') }}" alt="Platelets">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
                     </div>
                     <h3>Platelets</h3>
                     <p>Measures platelet levels, which play an important role in normal blood clotting to prevent
@@ -766,75 +766,26 @@
     <section class="cbc-faq-section">
         <div class="cbc-faq-container">
             <div class="cbc-faq-header">
-                <h2>CBC Test FAQs</h2>
-                <p>Answers to common questions about CBC testing.</p>
+                <h2>{{ $test->faq_heading ?: ($test->name ?? 'CBC Test') . ' FAQs' }}</h2>
+                <p>{{ $test->faq_description ?: 'Answers to common questions about ' . ($test->name ?? 'CBC') . ' testing.' }}</p>
             </div>
             <div class="cbc-faq-list">
-                <!-- Item 1 -->
-                <div class="cbc-faq-item">
-                    <div class="cbc-faq-question" onclick="toggleCbcFaq(this)">
-                        <span class="cbc-faq-qtext">What is a CBC test?</span>
-                        <div class="cbc-faq-icon">
-                            <svg class="icon-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-                            <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                @forelse($faqs as $faq)
+                    <div class="cbc-faq-item">
+                        <div class="cbc-faq-question" onclick="toggleCbcFaq(this)">
+                            <span class="cbc-faq-qtext">{{ $faq->question }}</span>
+                            <div class="cbc-faq-icon">
+                                <svg class="icon-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                                <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                            </div>
+                        </div>
+                        <div class="cbc-faq-answer">
+                            <p>{{ $faq->answer }}</p>
                         </div>
                     </div>
-                    <div class="cbc-faq-answer">
-                        <p>A Complete Blood Count (CBC) is a blood test that measures several components of blood, including red blood cells, white blood cells, hemoglobin, and platelets.</p>
-                    </div>
-                </div>
-                <!-- Item 2 -->
-                <div class="cbc-faq-item">
-                    <div class="cbc-faq-question" onclick="toggleCbcFaq(this)">
-                        <span class="cbc-faq-qtext">Does a CBC require fasting?</span>
-                        <div class="cbc-faq-icon">
-                            <svg class="icon-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-                            <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-                        </div>
-                    </div>
-                    <div class="cbc-faq-answer">
-                        <p>Generally, a CBC does not require fasting. However, if your blood is being drawn for additional tests that do require fasting, you may need to fast before the test.</p>
-                    </div>
-                </div>
-                <!-- Item 3 -->
-                <div class="cbc-faq-item">
-                    <div class="cbc-faq-question" onclick="toggleCbcFaq(this)">
-                        <span class="cbc-faq-qtext">What type of specimen is used?</span>
-                        <div class="cbc-faq-icon">
-                            <svg class="icon-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-                            <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-                        </div>
-                    </div>
-                    <div class="cbc-faq-answer">
-                        <p>A blood sample is used, typically drawn from a vein in your arm by a trained healthcare professional.</p>
-                    </div>
-                </div>
-                <!-- Item 4 -->
-                <div class="cbc-faq-item">
-                    <div class="cbc-faq-question" onclick="toggleCbcFaq(this)">
-                        <span class="cbc-faq-qtext">Why might a healthcare provider order a CBC?</span>
-                        <div class="cbc-faq-icon">
-                            <svg class="icon-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-                            <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-                        </div>
-                    </div>
-                    <div class="cbc-faq-answer">
-                        <p>A CBC is often ordered as part of a routine check-up, to monitor a known medical condition, or to diagnose issues like infection, anemia, or immune system disorders.</p>
-                    </div>
-                </div>
-                <!-- Item 5 -->
-                <div class="cbc-faq-item">
-                    <div class="cbc-faq-question" onclick="toggleCbcFaq(this)">
-                        <span class="cbc-faq-qtext">Who interprets my CBC results?</span>
-                        <div class="cbc-faq-icon">
-                            <svg class="icon-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-                            <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-                        </div>
-                    </div>
-                    <div class="cbc-faq-answer">
-                        <p>Your healthcare provider or a pathologist will interpret your CBC results in the context of your overall health, medical history, and symptoms.</p>
-                    </div>
-                </div>
+                @empty
+                    <p style="text-align: center; color: #666;">No FAQs available for this test yet.</p>
+                @endforelse
             </div>
         </div>
     </section>

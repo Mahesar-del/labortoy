@@ -67,7 +67,14 @@
         @foreach($services as $service)
         <section class="panel" style="margin-top: 15px; margin-bottom: 25px;">
             <div style="display:flex; justify-content:space-between; align-items:center; padding:20px; border-bottom:1px solid var(--line); background:#f9fbfc; border-radius: 10px 10px 0 0;">
-                <h2 style="margin:0; font-size:16px; color:#06233d;">{{ $service->name }}</h2>
+                <div style="display:flex; align-items:center; gap:10px;">
+                    <h2 style="margin:0; font-size:16px; color:#06233d;">{{ $service->name }}</h2>
+                    <a href="{{ route('admin.services.edit', $service->id) }}" style="color:#58748c; text-decoration:none; font-size:11px; background:#e1ebf2; padding:4px 8px; border-radius:4px;">Edit Category</a>
+                    <form action="{{ route('admin.services.delete', $service->id) }}" method="POST" style="margin:0;" onsubmit="return confirm('Delete this entire Category?');">
+                        @csrf
+                        <button type="submit" style="color:#8e2b2b; text-decoration:none; font-size:11px; background:#fbeceb; border:none; padding:4px 8px; border-radius:4px; cursor:pointer;">Delete</button>
+                    </form>
+                </div>
                 <a href="{{ route('admin.test-pages.create', ['service_id' => $service->id]) }}" style="background:#f5a623; color:#fff; text-decoration:none; padding:8px 14px; border-radius:6px; font-weight:bold; font-size:11px;">+ Add Test Page</a>
             </div>
             <div style="overflow-x:auto;">

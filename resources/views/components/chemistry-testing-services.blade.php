@@ -41,16 +41,29 @@
         </header>
 
         <div class="chemistry-services-grid">
-            @foreach ($cards as $card)
-                <a href="{{ url('/cbc-test') }}" class="chemistry-card" style="text-decoration: none;">
-                    <img src="{{ $card['image'] }}" alt="{{ $card['title'] }}" class="chemistry-card__bg" loading="lazy">
-                    <div class="chemistry-card__overlay"></div>
-                    <div class="chemistry-card__content">
-                        <h3 class="chemistry-card__title">{{ $card['title'] }}</h3>
-                        <p class="chemistry-card__description">{{ $card['description'] }}</p>
-                    </div>
-                </a>
-            @endforeach
+            @if(isset($testPages) && $testPages->count() > 0)
+                @foreach ($testPages as $tp)
+                    <a href="{{ route('test-pages.show', $tp->slug) }}" class="chemistry-card" style="text-decoration: none;">
+                        <img src="{{ $tp->bg_image ? asset('storage/'.$tp->bg_image) : asset('images/chemistry-card-bg.jpg') }}" alt="{{ $tp->title }}" class="chemistry-card__bg" loading="lazy">
+                        <div class="chemistry-card__overlay"></div>
+                        <div class="chemistry-card__content">
+                            <h3 class="chemistry-card__title">{{ $tp->title }}</h3>
+                            <p class="chemistry-card__description">{{ Str::limit($tp->description, 80) }}</p>
+                        </div>
+                    </a>
+                @endforeach
+            @else
+                @foreach ($cards as $card)
+                    <a href="{{ url('/cbc-test') }}" class="chemistry-card" style="text-decoration: none;">
+                        <img src="{{ $card['image'] }}" alt="{{ $card['title'] }}" class="chemistry-card__bg" loading="lazy">
+                        <div class="chemistry-card__overlay"></div>
+                        <div class="chemistry-card__content">
+                            <h3 class="chemistry-card__title">{{ $card['title'] }}</h3>
+                            <p class="chemistry-card__description">{{ $card['description'] }}</p>
+                        </div>
+                    </a>
+                @endforeach
+            @endif
         </div>
     </div>
 </section>
