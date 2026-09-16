@@ -349,8 +349,13 @@
 
             .footer-contact-info {
                 flex-direction: column;
-                gap: 0.1rem;
+                gap: 1.5rem;
                 margin-top: 1.25rem;
+            }
+
+            .contact-text h5, .contact-text p {
+                white-space: normal;
+                line-height: 1.4;
             }
 
             .footer-bottom {
