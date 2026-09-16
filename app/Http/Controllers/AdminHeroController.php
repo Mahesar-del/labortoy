@@ -58,7 +58,7 @@ class AdminHeroController extends Controller
             array_merge($data, ['image_path' => $imagePath, 'updated_at' => now(), 'created_at' => $existing->created_at ?? now()])
         );
 
-        return redirect()->route('admin.home-hero.edit')->with('success', 'Home page hero has been updated.');
+        return redirect()->route('admin.home-hero.edit', ['slide' => $slide])->with('success', 'Home page hero has been updated.');
     }
 
     private function hero($slide = 1)
