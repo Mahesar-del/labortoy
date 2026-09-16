@@ -134,8 +134,8 @@
         </div>
 
         <!-- Hero Image -->
-        @if($post->image_path)
-            <img src="{{ asset('storage/' . $post->image_path) }}" alt="{{ $post->title }}" class="post-hero-image">
+        @if($post->image_url)
+            <img src="{{ $post->image_url }}" alt="{{ $post->title }}" class="post-hero-image">
         @endif
 
         <!-- Main Content Area -->
@@ -204,8 +204,8 @@
                 @foreach($relatedPosts as $related)
                 <a href="{{ route('blog.show', $related->slug) }}" class="blog-card">
                     <div class="blog-image-wrapper">
-                        @if($related->image_path)
-                            <img src="{{ asset('storage/' . $related->image_path) }}" alt="{{ $related->title }}" class="blog-image">
+                        @if($related->image_url)
+                            <img src="{{ $related->image_url }}" alt="{{ $related->title }}" class="blog-image">
                         @else
                             <img src="{{ asset('images/related_lab_on_chip.jpg') }}" alt="Lab-on-a-Chip Devices" class="blog-image">
                         @endif

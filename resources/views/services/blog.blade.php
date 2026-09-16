@@ -303,8 +303,8 @@
             @forelse($posts as $post)
             <a href="{{ route('blog.show', $post->slug) }}" class="blog-card">
                 <div class="blog-image-wrapper">
-                    @if($post->image_path)
-                        <img src="{{ asset('storage/' . $post->image_path) }}" alt="{{ $post->title }}" class="blog-image">
+                    @if($post->image_url)
+                        <img src="{{ $post->image_url }}" alt="{{ $post->title }}" class="blog-image">
                     @else
                         <img src="{{ asset('images/clinical-labs.jpg') }}" alt="Placeholder" class="blog-image">
                     @endif

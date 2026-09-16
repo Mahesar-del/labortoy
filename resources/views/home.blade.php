@@ -1551,7 +1551,7 @@
             <div class="insights-grid">
                 @forelse($blogPosts as $post)
                 <a class="insight-card" href="{{ route('blog.show', $post->slug) }}" style="text-decoration:none;">
-                    <img src="{{ $post->image_path ? asset('storage/' . $post->image_path) : asset('images/related_lab_on_chip.jpg') }}" alt="{{ $post->image_alt_text ?: $post->title }}" class="insight-img">
+                    <img src="{{ $post->image_url ?: asset('images/related_lab_on_chip.jpg') }}" alt="{{ $post->image_alt_text ?: $post->title }}" class="insight-img">
                     <div class="insight-meta">
                         <span class="insight-category">{{ $post->category ?: 'LABORATORY' }}</span>
                         <span class="insight-date">&mdash; {{ optional($post->publish_date)->format('M d, Y') }}</span>
