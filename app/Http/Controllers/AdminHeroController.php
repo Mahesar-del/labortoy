@@ -42,7 +42,12 @@ class AdminHeroController extends Controller
         $imagePath = $existing->image_path ?? null;
 
         if ($request->hasFile('image')) {
-            if ($imagePath && Storage::disk('public')->exists($imagePath)) {
+            $imageUsedByAnotherSlide = $imagePath && DB::table('hero_settings')
+                ->where('key', '<>', $key)
+                ->where('image_path', $imagePath)
+                ->exists();
+
+            if ($imagePath && ! $imageUsedByAnotherSlide && Storage::disk('public')->exists($imagePath)) {
                 Storage::disk('public')->delete($imagePath);
             }
             $imagePath = $request->file('image')->store('hero', 'public');

@@ -9,6 +9,18 @@
     </style>
 </head>
 <body>
+    @php
+        $storedHeroImageExists = !empty($hero->image_path)
+            && \Illuminate\Support\Facades\Storage::disk('public')->exists($hero->image_path);
+        $heroFallbacks = [
+            1 => asset('img/hero-doc-img.png'),
+            2 => asset('img/hero-doctor-female.png'),
+            3 => asset('img/hero-doctor-male.png'),
+        ];
+        $previewImage = $storedHeroImageExists
+            ? asset('storage/'.$hero->image_path)
+            : ($heroFallbacks[$slide] ?? $heroFallbacks[1]);
+    @endphp
     <main class="page">
         <header class="top"><div class="title"><h1>Home page hero</h1><p>Edit the image, content, and both call-to-action buttons shown at the top of your home page.</p></div><a class="back" href="{{ route('admin.dashboard') }}">← Back to dashboard</a></header>
         <nav style="display:flex;gap:8px;margin-bottom:18px">@for($i=1;$i<=3;$i++)<a href="{{ route('admin.home-hero.edit',['slide'=>$i]) }}" style="padding:9px 18px;border-radius:8px;text-decoration:none;font-size:13px;font-weight:700;color:{{ $slide===$i?'#fff':'#2775ca' }};background:{{ $slide===$i?'#16b9a7':'#e5f0f7' }}">Hero option {{ $i }}</a>@endfor</nav>
@@ -16,7 +28,7 @@
         @if($errors->any())<div class="errors">Please correct the highlighted fields and save again.</div>@endif
         <form class="card" method="POST" action="{{ route('admin.home-hero.update') }}" enctype="multipart/form-data">@csrf<input type="hidden" name="slide" value="{{ $slide }}">
             <section><h2 class="form-title">Hero content</h2><div class="field"><label for="heading">Heading</label><textarea id="heading" name="heading" required>{{ old('heading',$hero->heading) }}</textarea><small>Use a new line where you want a heading break.</small></div><div class="field"><label for="description">Description</label><textarea id="description" name="description">{{ old('description',$hero->description) }}</textarea></div><div class="field"><label for="image">Hero image</label><input id="image" type="file" name="image" accept="image/png,image/jpeg,image/webp"><small>JPG, PNG or WebP. Maximum file size: 5 MB.</small></div><div class="button-row"><div class="field"><label for="primary_button_text">Primary button text</label><input id="primary_button_text" name="primary_button_text" value="{{ old('primary_button_text',$hero->primary_button_text) }}" required></div><div class="field"><label for="primary_button_link">Primary button link</label><input id="primary_button_link" name="primary_button_link" value="{{ old('primary_button_link',$hero->primary_button_link) }}" required></div><div class="field"><label for="secondary_button_text">Second button text</label><input id="secondary_button_text" name="secondary_button_text" value="{{ old('secondary_button_text',$hero->secondary_button_text) }}" required></div><div class="field"><label for="secondary_button_link">Second button link</label><input id="secondary_button_link" name="secondary_button_link" value="{{ old('secondary_button_link',$hero->secondary_button_link) }}" required></div></div><button class="save" type="submit">Save hero changes</button></section>
-            <aside class="preview"><div class="eyebrow">Live content preview</div><h2 id="preview-heading">{{ $hero->heading }}</h2><p id="preview-description">{{ $hero->description }}</p><img id="preview-image" src="{{ !empty($hero->image_path) ? asset('storage/'.$hero->image_path) : asset('img/hero-doc-img.png') }}" alt="Hero preview"><div class="preview-actions"><span id="preview-primary">{{ $hero->primary_button_text }}</span><span id="preview-secondary">{{ $hero->secondary_button_text }}</span></div></aside>
+            <aside class="preview"><div class="eyebrow">Live content preview</div><h2 id="preview-heading">{{ $hero->heading }}</h2><p id="preview-description">{{ $hero->description }}</p><img id="preview-image" src="{{ $previewImage }}" alt="Hero preview"><div class="preview-actions"><span id="preview-primary">{{ $hero->primary_button_text }}</span><span id="preview-secondary">{{ $hero->secondary_button_text }}</span></div></aside>
         </form>
     </main>
     <script>const link=(input,target)=>input.addEventListener('input',()=>target.textContent=input.value);link(document.querySelector('#heading'),document.querySelector('#preview-heading'));link(document.querySelector('#description'),document.querySelector('#preview-description'));link(document.querySelector('#primary_button_text'),document.querySelector('#preview-primary'));link(document.querySelector('#secondary_button_text'),document.querySelector('#preview-secondary'));document.querySelector('#image').addEventListener('change',e=>{if(e.target.files[0])document.querySelector('#preview-image').src=URL.createObjectURL(e.target.files[0])});</script>
