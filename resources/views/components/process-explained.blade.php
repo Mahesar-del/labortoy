@@ -44,10 +44,11 @@
         padding: 40px 0;
         width: 100%;
         box-sizing: border-box;
+        border-top: 1px solid #E5E7EB;
     }
 
     .process-container {
-        max-width: 1440px;
+        max-width: 1518px;
         margin: 0 auto;
         padding: 0 99px;
         width: 100%;
@@ -57,11 +58,12 @@
     .process-title {
         text-align: center;
         font-family: 'Plus Jakarta Sans', sans-serif;
-        font-size: 2.rem;
+        font-size: 2.125rem;
         font-weight: 700;
         color: #000000;
-        line-height: 2.1rem;
+        line-height: 2.875rem;
         margin-bottom: 2.5rem;
+        letter-spacing: 0;
     }
 
     .process-grid {

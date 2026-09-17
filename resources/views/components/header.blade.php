@@ -61,6 +61,8 @@ p {
     min-width: 120px;
     max-width: 280px;
     margin-left: -8px; /* Pulled left slightly less to perfectly align */
+    outline: none;
+    border: none;
 }
 .nav-links {
     flex: 1;
@@ -484,7 +486,7 @@ p {
     @php($headerServices = \Illuminate\Support\Facades\DB::table('services')->where('is_active', true)->orderBy('name')->get())
     <ul class="nav-links">
         <li class="has-megamenu">
-            <a href="/services">Services</a>
+            <a style="cursor: default;">Services</a>
             <div class="megamenu">
                 <div class="megamenu-column">
                     <ul>
@@ -567,7 +569,7 @@ p {
         <!-- Services with Accordion Arrow -->
         <li class="mobile-nav-item mobile-has-dropdown">
             <div class="mobile-dropdown-header" id="mobileServicesToggle">
-                <a href="/services">Services</a>
+                <a style="cursor: default;">Services</a>
                 <button type="button" class="mobile-arrow-btn" id="mobileServicesArrowBtn" aria-label="Toggle Services dropdown">
                     <svg class="mobile-arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <polyline points="6 9 12 15 18 9"></polyline>

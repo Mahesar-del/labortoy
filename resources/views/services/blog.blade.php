@@ -10,18 +10,28 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
     <style>
-        html, body {
+        html {
+            height: 100%;
+            background-color: #06162a;
+        }
+
+        body {
             max-width: 100%;
             overflow-x: clip;
             margin: 0;
             font-family: 'Inter', sans-serif;
             background-color: #FAFAFA;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
         .blog-section {
             padding: 0 99px;
             width: 100%;
             box-sizing: border-box;
+            margin-bottom: 10px;
+            flex: 1;
         }
 
         .blog-container {
@@ -112,9 +122,9 @@
         /* Blog Grid */
         .blog-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-bottom: 20px;
         }
 
         .blog-card {
@@ -324,16 +334,6 @@
                     <span class="blog-date">{{ $post->publish_date ? $post->publish_date->format('M d, Y') : 'MARCH 15, 2024' }}</span>
                 </div>
                 <h3 class="blog-title">{{ $post->title }}</h3>
-                <div class="blog-author-card" style="display:flex; align-items:center; gap:12px; margin-top:20px;">
-                    @if($post->authorDetails && $post->authorDetails->profile_image)
-                        <img src="{{ asset('storage/' . $post->authorDetails->profile_image) }}" alt="{{ $post->author }}" style="width:36px; height:36px; border-radius:50%; object-fit:cover;">
-                    @else
-                        <div style="width:36px; height:36px; border-radius:50%; background:#22B6AF; color:white; display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:bold;">
-                            {{ substr($post->author, 0, 1) }}
-                        </div>
-                    @endif
-                    <span style="font-size:14px; font-weight:600; color:#111827;">{{ $post->author }}</span>
-                </div>
             </a>
             @empty
                 <p class="blog-search-status">{{ $query !== '' ? 'No blog posts matched your search.' : 'No blog posts found.' }}</p>

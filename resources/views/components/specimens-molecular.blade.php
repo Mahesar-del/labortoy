@@ -18,7 +18,7 @@
     .specimens-section, .specimens-section * { box-sizing: border-box; }
     .specimens-section {
         position: relative;
-        padding: clamp(56px, 6vw, 88px) 7%;
+        padding: clamp(32px, 4vw, 48px) 7%;
         background-color: #0B2545; /* Base color fallback */
         color: #ffffff;
         isolation: isolate;
@@ -110,7 +110,7 @@
 
     @media (max-width: 600px) {
         .specimens-section {
-            padding: 52px 24px;
+            padding: 32px 24px;
         }
         .specimens-grid {
             grid-template-columns: 1fr;

@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         body { margin: 0; padding: 0; font-family: 'Inter', sans-serif; background-color: #FFFFFF; }        /* Container Setup */
-        .post-container { max-width: 1518px; margin: 0 auto; padding: 60px 99px 20px; box-sizing: border-box; }
+        .post-container { max-width: 1518px; margin: 0 auto; padding: 30px 99px 20px; box-sizing: border-box; }
         
         /* Title Section */
         .post-header { margin-bottom: 40px; }
@@ -41,6 +41,7 @@
         .article-body ul { margin: 0 0 24px; padding-left: 20px; }
         .article-body li { margin-bottom: 12px; }
         .article-body strong { color: #000000; font-weight: 600; }
+        .article-body > *:first-child { margin-top: -4px; }
 
         /* Right Column: Sidebar */
         .sidebar { position: sticky; top: 20px; border-left: 1px dashed #D1D5DB; padding-left: 30px; align-self: start; }
