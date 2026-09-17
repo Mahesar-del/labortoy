@@ -4,7 +4,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ $testPage->title }} - Sterling Diagnostics</title>
+    <title>{{ $testPage->meta_title ?: $testPage->title . ' - Sterling Diagnostics' }}</title>
+    <meta name="description" content="{{ $testPage->meta_description ?: $testPage->description }}">
+    @if(!empty($testPage->meta_keywords))<meta name="keywords" content="{{ $testPage->meta_keywords }}">@endif
     <link rel="icon" type="image/jpeg" href="{{ asset('images/favicon.jpg') }}">
     <link rel="shortcut icon" href="{{ asset('images/favicon.jpg') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">

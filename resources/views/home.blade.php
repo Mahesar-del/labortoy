@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sterling Laboratory</title>
+    <title>{{ $seo->title }}</title>
+    <meta name="description" content="{{ $seo->description }}">
+    @if(!empty($seo->keywords))<meta name="keywords" content="{{ $seo->keywords }}">@endif
     <link rel="icon" type="image/jpeg" href="{{ asset('images/favicon.jpg') }}">
     <link rel="shortcut icon" href="{{ asset('images/favicon.jpg') }}">
     <style>

@@ -31,6 +31,9 @@ class AdminServiceController extends Controller
         $this->guard();
         $data = $request->validate([
             'name' => 'required|string|max:150', 
+            'meta_title' => 'nullable|string|max:255',
+            'meta_description' => 'nullable|string|max:500',
+            'meta_keywords' => 'nullable|string|max:500',
             'hero_heading' => 'nullable|string|max:150', 
             'summary' => 'nullable|string|max:1000', 
             'hero_description' => 'nullable|string|max:1500', 
@@ -45,7 +48,7 @@ class AdminServiceController extends Controller
         $number = 2;
         while (DB::table('services')->where('slug', $slug)->exists()) $slug = $base . '-' . $number++;
         $heroImage = $request->hasFile('hero_image') ? $request->file('hero_image')->store('service-heroes', 'public') : null;
-        DB::table('services')->insert(['name' => $data['name'], 'slug' => $slug, 'hero_heading' => $data['hero_heading'] ?? $data['name'], 'summary' => $data['summary'] ?? null, 'hero_description' => $data['hero_description'] ?? $data['summary'] ?? null, 'hero_image' => $heroImage, 'button_text' => $data['button_text'] ?? 'Book an Appointment', 'button_link' => $data['button_link'] ?? '/appointment', 'is_active' => true, 'created_at' => now(), 'updated_at' => now()]);
+        DB::table('services')->insert(['name' => $data['name'], 'slug' => $slug, 'meta_title' => $data['meta_title'] ?? null, 'meta_description' => $data['meta_description'] ?? null, 'meta_keywords' => $data['meta_keywords'] ?? null, 'hero_heading' => $data['hero_heading'] ?? $data['name'], 'summary' => $data['summary'] ?? null, 'hero_description' => $data['hero_description'] ?? $data['summary'] ?? null, 'hero_image' => $heroImage, 'button_text' => $data['button_text'] ?? 'Book an Appointment', 'button_link' => $data['button_link'] ?? '/appointment', 'is_active' => true, 'created_at' => now(), 'updated_at' => now()]);
         return back()->with('success', 'Service added successfully.');
     }
 
@@ -81,6 +84,9 @@ class AdminServiceController extends Controller
         $data = $request->validate([
             'name' => 'required|string|max:150',
             'slug' => 'nullable|string|max:150',
+            'meta_title' => 'nullable|string|max:255',
+            'meta_description' => 'nullable|string|max:500',
+            'meta_keywords' => 'nullable|string|max:500',
             'summary' => 'nullable|string|max:1000',
             'hero_heading' => 'nullable|string|max:150',
             'hero_description' => 'nullable|string|max:1500',
@@ -105,6 +111,9 @@ class AdminServiceController extends Controller
         abort_if(DB::table('services')->where('slug', $slug)->where('id', '!=', $service->id)->exists(), 422, 'This URL is already used by another service.');
         $values = [
             'name' => $data['name'], 'slug' => $slug, 'summary' => $data['summary'] ?? null,
+            'meta_title' => $data['meta_title'] ?? null,
+            'meta_description' => $data['meta_description'] ?? null,
+            'meta_keywords' => $data['meta_keywords'] ?? null,
             'hero_heading' => $data['hero_heading'] ?? $data['name'],
             'hero_description' => $data['hero_description'] ?? $data['summary'] ?? null,
             'button_text' => $data['button_text'] ?? 'Book an Appointment', 'button_link' => $data['button_link'] ?? '/appointment',

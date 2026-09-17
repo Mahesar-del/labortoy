@@ -11,6 +11,10 @@ body{margin:0;background:#f1f7fb;color:#12304c;font-family:Arial}.wrap{max-width
 <section class="card" id="add"><h2>Add Service</h2><form method="post" action="{{ route('admin.services.store') }}" enctype="multipart/form-data">@csrf
 <div class="field"><label>Service name</label><input name="name" required placeholder="e.g. Chemistry Testing"></div>
 <div class="field"><label>Short description</label><textarea name="summary" placeholder="Brief description of this service"></textarea></div>
+<hr style="border:0;border-top:1px solid #e1ecf2;margin:22px 0"><h3>Search Engine Optimization</h3>
+<div class="field"><label>Meta title</label><input name="meta_title" maxlength="255" placeholder="SEO title shown in search results"><span class="hint">Recommended length: 50–60 characters.</span></div>
+<div class="field"><label>Meta description</label><textarea name="meta_description" maxlength="500" placeholder="Short search result description"></textarea><span class="hint">Recommended length: 150–160 characters.</span></div>
+<div class="field"><label>Meta keywords</label><input name="meta_keywords" maxlength="500" placeholder="laboratory testing, diagnostics, chemistry"><span class="hint">Separate keywords with commas.</span></div>
 <hr style="border:0;border-top:1px solid #e1ecf2;margin:22px 0"><h3>Hero section content</h3>
 <div class="field"><label>Hero heading</label><input name="hero_heading" placeholder="e.g. Chemistry Testing"><span class="hint">Heading displayed on the service page banner.</span></div>
 <div class="field"><label>Hero description</label><textarea name="hero_description" placeholder="Description displayed below the hero heading"></textarea></div>
