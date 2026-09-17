@@ -1,6 +1,23 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 html, body, body * { font-family: 'Inter', Arial, sans-serif !important; }
+
+/* Keep phone, registration and NPI numbers in the page's intended colour.
+   iOS/Safari and some Android browsers otherwise turn detected numbers blue. */
+a[x-apple-data-detectors],
+a[x-apple-data-detectors]:hover,
+a[x-apple-data-detectors]:focus,
+a[x-apple-data-detectors]:active,
+a[href^="tel:"],
+a[href^="sms:"] {
+    background: transparent !important;
+    border: 0 !important;
+    color: inherit !important;
+    font: inherit !important;
+    text-decoration: none !important;
+    -webkit-text-fill-color: currentColor !important;
+}
+
 /* Global Typography Rules */
 h1 {
     font-size: 36px !important;
