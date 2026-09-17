@@ -35,8 +35,13 @@
 
         const faqLink = servicesLink.cloneNode(true);
         faqLink.href = '{{ route('admin.faqs.index') }}';
-        faqLink.querySelector('span').textContent = 'FAQs';
+        faqLink.querySelector('span').textContent = 'Service FAQs';
         servicesLink.parentNode.insertBefore(faqLink, testLink.nextSibling);
+
+        const mainFaqLink = servicesLink.cloneNode(true);
+        mainFaqLink.href = '{{ route('admin.main-faqs.index') }}';
+        mainFaqLink.querySelector('span').textContent = 'Main FAQs';
+        servicesLink.parentNode.insertBefore(mainFaqLink, faqLink.nextSibling);
     }
 </script>
 </body></html>
