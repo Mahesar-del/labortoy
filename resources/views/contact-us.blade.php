@@ -76,16 +76,19 @@
             <!-- Right Form Section -->
             <div class="contact-form-wrapper" id="contact-form">
                 <h2>Have Any Questions Contact With Us</h2>
-                <form class="contact-form">
+                @if(session('contact_success'))<div class="contact-form-alert success">{{ session('contact_success') }}</div>@endif
+                @if($errors->any())<div class="contact-form-alert error">{{ $errors->first() }}</div>@endif
+                <form class="contact-form" method="post" action="{{ route('contact.store') }}">
+                    @csrf
                     <div class="form-row">
-                        <input type="text" placeholder="First Name" required>
-                        <input type="email" placeholder="Email Address" required>
+                        <input type="text" name="name" value="{{ old('name') }}" placeholder="First Name" pattern="[A-Za-zÀ-ÿ' .\-]+" title="Name can contain letters only" oninput="this.value=this.value.replace(/[^A-Za-zÀ-ÿ' .\-]/g,'')" required>
+                        <input type="email" name="email" value="{{ old('email') }}" placeholder="Email Address" required>
                     </div>
                     <div class="form-row">
-                        <input type="tel" placeholder="Phone" required>
-                        <input type="text" placeholder="Subject" required>
+                        <input type="tel" name="phone" value="{{ old('phone') }}" placeholder="Phone" inputmode="tel" pattern="[0-9+()\- ]+" title="Phone number can contain digits only" oninput="this.value=this.value.replace(/[^0-9+()\- ]/g,'')" required>
+                        <input type="text" name="subject" value="{{ old('subject') }}" placeholder="Subject" required>
                     </div>
-                    <textarea placeholder="Type Your Message" rows="5" required></textarea>
+                    <textarea name="message" placeholder="Type Your Message" rows="5" required>{{ old('message') }}</textarea>
                     <button type="submit">Send Message</button>
                 </form>
             </div>
@@ -252,6 +255,7 @@
             flex-direction: column;
             gap: 16px;
         }
+        .contact-form-alert{margin:0 auto 18px;max-width:674px;padding:13px 16px;border-radius:8px;font-weight:700}.contact-form-alert.success{background:#dff8f1;color:#087a6b}.contact-form-alert.error{background:#fff0f0;color:#b23a45}
         .form-row {
             display: flex;
             gap: 16px;

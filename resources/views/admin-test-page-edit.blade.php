@@ -20,7 +20,8 @@
         .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
     </style>
 </head>
-<body>
+<body class="admin-inner-page">
+@include('components.admin-sidebar')
 <div class="admin">
     <aside class="sidebar">
         <div class="brand"><span class="brand-mark"></span><span class="brand-copy"><b>Lab Admin</b><small>Laboratory Management</small></span></div>

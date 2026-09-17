@@ -83,7 +83,8 @@ Route::get('/appointment', [AppointmentController::class, 'index'])->name('appoi
 Route::post('/appointment', [AppointmentController::class, 'store'])->name('appointment.store');
 Route::get('/appointment/booked-slots', [AppointmentController::class, 'bookedSlots'])->name('appointment.booked-slots');
 Route::get('/patient', [PatientController::class, 'index']);
-Route::get('/contact-us', [ContactController::class, 'index']);
+Route::get('/contact-us', [ContactController::class, 'index'])->name('contact.index');
+Route::post('/contact-us', [ContactController::class, 'store'])->name('contact.store');
 Route::get('/cbc-test', function () { 
     $test = \Illuminate\Support\Facades\DB::table('tests')->where('name', 'like', '%CBC%')->first();
     $faqs = [];
@@ -134,6 +135,9 @@ Route::get('/admin/home-hero', [AdminHeroController::class, 'edit'])->name('admi
 Route::post('/admin/home-hero', [AdminHeroController::class, 'update'])->name('admin.home-hero.update');
 Route::get('/admin/contact-settings', [AdminContactController::class, 'edit'])->name('admin.contact-settings.edit');
 Route::post('/admin/contact-settings', [AdminContactController::class, 'update'])->name('admin.contact-settings.update');
+Route::get('/admin/contact-messages', [\App\Http\Controllers\AdminContactMessageController::class, 'index'])->name('admin.contact-messages.index');
+Route::post('/admin/contact-messages/{id}/status', [\App\Http\Controllers\AdminContactMessageController::class, 'updateStatus'])->name('admin.contact-messages.status');
+Route::delete('/admin/contact-messages/{id}', [\App\Http\Controllers\AdminContactMessageController::class, 'destroy'])->name('admin.contact-messages.destroy');
 Route::get('/admin/services', [AdminServiceController::class, 'index'])->name('admin.services.index');
 Route::post('/admin/services', [AdminServiceController::class, 'store'])->name('admin.services.store');
 Route::post('/admin/services/hero-image', [AdminServiceController::class, 'updateHeroImage'])->name('admin.services.hero-image.update');

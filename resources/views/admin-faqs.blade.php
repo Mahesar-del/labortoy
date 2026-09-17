@@ -17,7 +17,8 @@
         .badge{display:inline-block;background:#e2faf4;border-radius:12px;color:#078a78;font-size:11px;font-weight:bold;margin-bottom:7px;padding:4px 7px}
     </style>
 </head>
-<body>
+<body class="admin-inner-page">
+@include('components.admin-sidebar')
 <div class="admin">
     <aside class="sidebar">
         <div class="brand"><span class="brand-mark"></span><span class="brand-copy"><b>Lab Admin</b><small>Laboratory Management</small></span></div>

@@ -18,7 +18,8 @@
         .empty-state:before { content: "▦"; display: block; margin: 24px auto 8px; color: #c5d9e6; font-size: 34px; }
     </style>
 </head>
-<body>
+<body class="admin-inner-page">
+@include('components.admin-sidebar')
 <div class="admin">
     <aside class="sidebar">
         <div class="brand"><span class="brand-mark"></span><span class="brand-copy"><b>Lab Admin</b><small>Laboratory Management</small></span></div>
