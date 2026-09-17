@@ -1470,7 +1470,7 @@
         <div class="container">
             <div class="science-moves-card">
                 <div class="sm-left">
-                    <img src="{{ asset('images/science-moves.jpg') }}" alt="Science Moves Diagnostics Forward">
+                    <img src="{{ asset('images/science-moves-diagnostics-forward.webp') }}" alt="Science Moves Diagnostics Forward">
                 </div>
                 <div class="sm-right">
                     <p class="sm-category"><span>&mdash;</span> SCIENCE & TECHNOLOGY</p>

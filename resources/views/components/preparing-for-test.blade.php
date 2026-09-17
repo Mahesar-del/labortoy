@@ -2,7 +2,7 @@
     <div class="pt-container">
         <!-- Left Side: Image -->
         <div class="pt-image-wrapper">
-            <img src="{{ asset('images/prepare-for-the-test.jpg') }}" alt="Preparing for a Test" class="pt-image">
+            <img src="{{ asset('images/preparing-for-test.webp') }}" alt="Preparing for a Test" class="pt-image">
         </div>
         
         <!-- Right Side: Content -->

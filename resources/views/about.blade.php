@@ -101,7 +101,7 @@
         .about-image--horizontal {
             width: 100%;
             height: 317px;
-            background-image: url('{{ asset('images/about-left.png') }}');
+            background-image: url('{{ asset('images/science-meets-clinicalprecision-two.webp') }}');
             align-self: start;
         }
         .about-right {
@@ -114,7 +114,7 @@
             width: 100%;
             max-width: 415px;
             height: 400px;
-            background-image: url('{{ asset('images/about right.png') }}');
+            background-image: url('{{ asset('images/diagnostic- science-clinical-precision-up.webp') }}');
             background-size: cover;
             background-position: center top;
             border-radius: 30px;

@@ -14,7 +14,7 @@
 <body>
     @include('components.header')
     <section class="services-hero" aria-labelledby="services-hero-title">
-        <div class="services-hero__background" style="background-image: url('{{ asset('images/patient_hero_image.jpg') }}');"></div>
+        <div class="services-hero__background" style="background-image: url('{{ asset('images/patient-banner.webp') }}');"></div>
         <div class="services-hero__overlay"></div>
     
         <div class="services-hero__container">
@@ -29,7 +29,7 @@
         .services-hero, .services-hero * { box-sizing: border-box; }
         .services-hero { background: #020b1c; color: #fff; isolation: isolate; min-height: 460px; overflow: hidden; position: relative; padding: 0 99px; }
         .services-hero__background, .services-hero__overlay { height: 100%; inset: 0; position: absolute; width: 100%; }
-        .services-hero__background { background-position: center; background-repeat: no-repeat; background-size: cover; z-index: -2; }
+        .services-hero__background { background-position: center top; background-repeat: no-repeat; background-size: cover; z-index: -2; }
         .services-hero__overlay { background: linear-gradient(90deg, rgba(7,26,49,.96) 0%, rgba(7,26,49,.86) 48%, rgba(7,26,49,.25) 100%); z-index: -1; }
         .services-hero__container { align-items: center; display: flex; margin: 0 auto; max-width: 1320px; min-height: 460px; padding: 56px 0; width: 100%; }
         .services-hero__content { max-width: 580px; }
@@ -68,7 +68,7 @@
             <div class="patient-info__image-wrapper">
                 <picture>
                     <source media="(max-width: 768px)" srcset="{{ asset('images/test-information.jpg') }}">
-                    <img src="{{ asset('images/patient-info-section-left-img.png') }}" alt="Patient typing on laptop" class="patient-info__image">
+                    <img src="{{ asset('images/information-you-can-understand.webp') }}" alt="Patient typing on laptop" class="patient-info__image">
                 </picture>
             </div>
             
@@ -294,7 +294,7 @@
             
             <!-- Right Side: Image -->
             <div class="specimen-collection__image-wrapper">
-                <img src="{{ asset('images/patient-page-DR-img.png') }}" alt="Doctor giving thumbs up" class="specimen-collection__image">
+                <img src="{{ asset('images/specimen-collection.webp') }}" alt="Doctor giving thumbs up" class="specimen-collection__image">
             </div>
         </div>
     </section>
