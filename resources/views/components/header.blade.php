@@ -626,53 +626,66 @@ a:focus, a:active, button:focus, button:active {
     <div class="header-container">
         <!-- Logo -->
         <a href="/" class="logo-container">
-            <img src="{{ asset('images/header_logo_new.svg') }}" alt="Sterling Logo" width="220" height="75" style="height: auto; max-height: 85px; width: 100%; object-fit: contain; object-position: left;">
+            <img src="{{ asset('images/header-logo.svg') }}" alt="Sterling Logo" width="220" height="75" style="height: auto; max-height: 85px; width: 100%; object-fit: contain; object-position: left;">
         </a>
 
-    @php($headerServices = \Illuminate\Support\Facades\DB::table('services')->where('is_active', true)->orderBy('name')->get())
+    @php
+        $headerServices = \Illuminate\Support\Facades\DB::table('services')->where('is_active', true)->orderBy('name')->get();
+        $headerTestsByService = \Illuminate\Support\Facades\DB::table('tests')
+            ->join('services', 'tests.service_id', '=', 'services.id')
+            ->leftJoin('test_pages', function($join) {
+                $join->on('tests.name', '=', 'test_pages.title')
+                     ->whereIn('test_pages.status', ['published', 'active']);
+            })
+            ->where('tests.is_active', true)
+            ->where('services.is_active', true)
+            ->select(
+                'tests.id',
+                'tests.name',
+                'tests.heading',
+                'tests.service_id',
+                'services.slug as service_slug',
+                'test_pages.slug as page_slug'
+            )
+            ->orderBy('tests.id')
+            ->get()
+            ->groupBy('service_slug');
+    @endphp
     <ul class="nav-links">
         <li class="has-megamenu">
-            <a style="cursor: default;">Services</a>
+            <a href="/services" style="cursor: pointer;">Services</a>
             <div class="megamenu">
                 <div class="megamenu-sidebar">
-                    <button class="megamenu-tab active" data-target="mega-chem">Chemistry</button>
-                    <button class="megamenu-tab" data-target="mega-immuno">Immunoassay</button>
-                    <button class="megamenu-tab" data-target="mega-hema">Hematology</button>
+                    @foreach($headerServices as $index => $service)
+                        @php($tabLabel = \Illuminate\Support\Str::before($service->name, ' Testing'))
+                        <a href="{{ url('/service/'.$service->slug) }}" 
+                           class="megamenu-tab {{ $index === 0 ? 'active' : '' }}" 
+                           data-target="mega-service-{{ $service->id }}">
+                            {{ $tabLabel ?: $service->name }}
+                        </a>
+                    @endforeach
                 </div>
                 <div class="megamenu-content">
-                    <div class="megamenu-pane active" id="mega-chem">
-                        <div class="megamenu-grid">
-                            <a href="#">Comprehensive Metabolic Panel (CMP)</a>
-                            <a href="#">Basic Metabolic Panel (BMP)</a>
-                            <a href="#">Lipid Panel</a>
-                            <a href="#">Blood Glucose</a>
-                            <a href="#">Liver Function Tests (LFT)</a>
-                            <a href="#">Kidney Function Tests</a>
+                    @foreach($headerServices as $index => $service)
+                        <div class="megamenu-pane {{ $index === 0 ? 'active' : '' }}" id="mega-service-{{ $service->id }}">
+                            <div class="megamenu-grid">
+                                @php($serviceTests = $headerTestsByService->get($service->slug, collect()))
+                                @forelse($serviceTests as $t)
+                                    @php($tUrl = $t->page_slug ? url('/tests/'.$t->page_slug) : ($t->name === 'Complete Blood Count (CBC)' ? url('/cbc-test') : url('/service/'.$service->slug)))
+                                    <a href="{{ $tUrl }}">{{ $t->heading ?: $t->name }}</a>
+                                @empty
+                                    <a href="{{ url('/service/'.$service->slug) }}">All {{ $service->name }} Tests</a>
+                                @endforelse
+                            </div>
                         </div>
-                    </div>
-                    <div class="megamenu-pane" id="mega-immuno">
-                        <div class="megamenu-grid">
-                            <a href="#">Thyroid Stimulating Hormone (TSH)</a>
-                            <a href="#">Free T4</a>
-                            <a href="#">Vitamin D</a>
-                            <a href="#">Prostate Specific Antigen (PSA)</a>
-                        </div>
-                    </div>
-                    <div class="megamenu-pane" id="mega-hema">
-                        <div class="megamenu-grid">
-                            <a href="#">Complete Blood Count (CBC)</a>
-                            <a href="#">Hemoglobin A1C</a>
-                            <a href="#">Prothrombin Time (PT/INR)</a>
-                            <a href="#">Sedimentation Rate (ESR)</a>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </li>
         <li><a href="/patient">Patients</a></li>
         <li><a href="/provider-page">Providers</a></li>
         <li class="has-resources-menu">
-            <a href="/resources">Resources</a>
+            <a style="cursor: default;">Resources</a>
             <div class="resources-megamenu">
                 <div class="resources-megamenu-grid">
                     <a href="/faq" class="resources-megamenu-item">FAQ</a>
@@ -723,7 +736,7 @@ a:focus, a:active, button:focus, button:active {
 <div class="mobile-menu-drawer" id="mobileMenuDrawer">
     <div class="mobile-drawer-header">
         <a href="/" class="mobile-logo">
-            <img src="{{ asset('images/header_logo_new.svg') }}" alt="Sterling Logo" style="height: 40px; width: auto;">
+            <img src="{{ asset('images/header-logo.svg') }}" alt="Sterling Logo" style="height: 40px; width: auto;">
         </a>
         <button class="mobile-drawer-close" id="mobileDrawerClose" aria-label="Close menu">
             <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -766,7 +779,7 @@ a:focus, a:active, button:focus, button:active {
         <li class="mobile-nav-item"><a href="/provider-page">Providers</a></li>
         <li class="mobile-nav-item mobile-has-dropdown">
             <div class="mobile-dropdown-header" id="mobileResourcesToggle">
-                <a href="/resources">Resources</a>
+                <a style="cursor: default;">Resources</a>
                 <button type="button" class="mobile-arrow-btn" id="mobileResourcesArrowBtn" aria-label="Toggle Resources dropdown">
                     <svg class="mobile-arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <polyline points="6 9 12 15 18 9"></polyline>
