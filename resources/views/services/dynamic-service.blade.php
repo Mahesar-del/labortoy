@@ -26,7 +26,7 @@
     <link rel="icon" type="image/jpeg" href="{{ asset('images/favicon.jpg') }}">
     <link rel="shortcut icon" href="{{ asset('images/favicon.jpg') }}">
     <style>
-        html, body { margin: 0; min-width: 0; overflow-x: hidden; padding: 0; width: 100%; }
+        html, body { margin: 0; min-width: 0; overflow-x: clip; padding: 0; width: 100%; }
 
         .service-page-shell {
             --service-content-width: 1320px;

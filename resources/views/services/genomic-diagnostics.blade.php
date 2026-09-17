@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>html, body { max-width: 100%; overflow-x: hidden; } body { margin: 0; font-family: 'Manrope', sans-serif; }</style>
+    <style>html, body { max-width: 100%; overflow-x: clip; } body { margin: 0; font-family: 'Manrope', sans-serif; }</style>
 </head>
 <body>
     @include('components.header')
