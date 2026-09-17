@@ -216,10 +216,7 @@
                     <div class="blog-meta">
                         <div class="blog-meta-left">
                             <span>
-                                @php
-                                    $tags = explode(',', $related->tags);
-                                    echo strtoupper(trim($tags[0] ?? 'BIOMEDICAL'));
-                                @endphp
+                                {{ strtoupper($related->category ?: 'UNCATEGORIZED') }}
                             </span>
                         </div>
                         <div class="blog-meta-right">

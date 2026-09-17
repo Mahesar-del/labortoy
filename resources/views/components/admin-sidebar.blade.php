@@ -15,10 +15,13 @@
     <div class="admin-side-nav__brand"><span class="admin-side-nav__mark">⚗</span>Lab Admin</div>
     <div class="admin-side-nav__label">Main menu</div>
     <a href="{{ route('admin.dashboard') }}"><span class="admin-side-nav__icon">⌂</span>Dashboard</a>
+    <a href="{{ route('admin.home-hero.edit') }}"><span class="admin-side-nav__icon">◆</span>Home Page</a>
     <a href="{{ route('admin.services.index') }}"><span class="admin-side-nav__icon">▤</span>Services</a>
     <a href="{{ route('admin.tests.index') }}"><span class="admin-side-nav__icon">◫</span>Tests</a>
     <a href="{{ route('admin.appointments.index') }}"><span class="admin-side-nav__icon">▣</span>Appointments</a>
     <div class="admin-side-nav__label">Website</div>
+    <a href="{{ route('admin.blog-posts.index') }}"><span class="admin-side-nav__icon">▧</span>Blog Posts</a>
+    <a href="{{ route('admin.blog-categories.index') }}"><span class="admin-side-nav__icon">▦</span>Blog Categories</a>
     <a href="{{ route('admin.faqs.index') }}"><span class="admin-side-nav__icon">?</span>FAQs</a>
     <a href="{{ route('admin.contact-settings.edit') }}"><span class="admin-side-nav__icon">✉</span>Contact settings</a>
 </aside>

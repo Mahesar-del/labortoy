@@ -39,7 +39,8 @@ textarea{min-height:80px;resize:vertical}
 .alert-error{background:#fff3e2;color:#c16d13}
 </style>
 </head>
-<body>
+<body class="admin-inner-page">
+@include('components.admin-sidebar')
 <main class="wrap">
     <header class="top">
         <div>

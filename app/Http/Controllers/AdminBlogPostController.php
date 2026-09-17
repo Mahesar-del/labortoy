@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Author;
+use App\Models\BlogCategory;
 use App\Models\BlogPost;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -29,6 +31,8 @@ class AdminBlogPostController extends Controller
 
     public function create()
     {
+        $authors = Author::orderBy('name')->get();
+        $categories = BlogCategory::where('is_active', true)->orderBy('name')->get();
         $user = auth()->user() ?? \App\Models\User::first();
         $stats = [
             'appointments' => DB::table('appointments')->whereDate('appointment_at', today())->count(),
@@ -36,7 +40,7 @@ class AdminBlogPostController extends Controller
             'services' => DB::table('services')->where('is_active', true)->count(),
             'pages' => 3
         ];
-        return view('admin-blog-post-edit', compact('user', 'stats'));
+        return view('admin-blog-post-edit', compact('user', 'stats', 'authors', 'categories'));
     }
 
     public function store(Request $request)
@@ -45,9 +49,9 @@ class AdminBlogPostController extends Controller
             'title' => 'required|string|max:255',
             'slug' => 'nullable|string|unique:blog_posts',
             'status' => 'required|in:published,draft',
-            'author' => 'nullable|string',
+            'author' => 'nullable|string|exists:authors,name',
             'publish_date' => 'nullable|date',
-            'category' => 'nullable|string',
+            'category' => 'required|string|exists:blog_categories,name',
             'tags' => 'nullable|string',
             'excerpt' => 'nullable|string',
             'key_takeaways' => 'nullable|string',
@@ -79,6 +83,8 @@ class AdminBlogPostController extends Controller
 
     public function edit(BlogPost $blogPost)
     {
+        $authors = Author::orderBy('name')->get();
+        $categories = BlogCategory::orderBy('name')->get();
         $user = auth()->user() ?? \App\Models\User::first();
         $stats = [
             'appointments' => DB::table('appointments')->whereDate('appointment_at', today())->count(),
@@ -86,7 +92,7 @@ class AdminBlogPostController extends Controller
             'services' => DB::table('services')->where('is_active', true)->count(),
             'pages' => 3
         ];
-        return view('admin-blog-post-edit', compact('blogPost', 'user', 'stats'));
+        return view('admin-blog-post-edit', compact('blogPost', 'user', 'stats', 'authors', 'categories'));
     }
 
     public function update(Request $request, BlogPost $blogPost)
@@ -95,9 +101,9 @@ class AdminBlogPostController extends Controller
             'title' => 'required|string|max:255',
             'slug' => 'nullable|string|unique:blog_posts,slug,' . $blogPost->id,
             'status' => 'required|in:published,draft',
-            'author' => 'nullable|string',
+            'author' => 'nullable|string|exists:authors,name',
             'publish_date' => 'nullable|date',
-            'category' => 'nullable|string',
+            'category' => 'required|string|exists:blog_categories,name',
             'tags' => 'nullable|string',
             'excerpt' => 'nullable|string',
             'key_takeaways' => 'nullable|string',

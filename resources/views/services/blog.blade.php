@@ -309,10 +309,19 @@
         </form>
     </div>
 
+    @if($categories->isNotEmpty())
+    <nav style="display:flex;flex-wrap:wrap;justify-content:center;gap:10px;padding:0 24px 34px" aria-label="Blog categories">
+        <a href="{{ route('blog.index', array_filter(['q' => $query])) }}" style="padding:9px 16px;border-radius:999px;text-decoration:none;font-weight:700;font-size:13px;{{ $selectedCategory === '' ? 'background:#0b2545;color:#fff' : 'background:#edf4f8;color:#0b2545' }}">All</a>
+        @foreach($categories as $category)
+            <a href="{{ route('blog.index', array_filter(['q' => $query, 'category' => $category->name])) }}" style="padding:9px 16px;border-radius:999px;text-decoration:none;font-weight:700;font-size:13px;{{ $selectedCategory === $category->name ? 'background:#0b2545;color:#fff' : 'background:#edf4f8;color:#0b2545' }}">{{ $category->name }}</a>
+        @endforeach
+    </nav>
+    @endif
+
     <section class="blog-section">
         <div class="blog-container">
-        @if($query !== '')
-            <p class="blog-search-status">{{ $posts->count() }} result(s) for “{{ $query }}”</p>
+        @if($query !== '' || $selectedCategory !== '')
+            <p class="blog-search-status">{{ $posts->count() }} post(s){{ $selectedCategory !== '' ? ' in '.$selectedCategory : '' }}{{ $query !== '' ? ' matching “'.$query.'”' : '' }}</p>
         @endif
         <div class="blog-grid">
             @forelse($posts as $post)
@@ -326,17 +335,14 @@
                 </div>
                 <div class="blog-meta">
                     <span class="blog-category">
-                        @php
-                            $tags = explode(',', $post->tags);
-                            echo strtoupper(trim($tags[0] ?? 'BIOMEDICAL'));
-                        @endphp
+                        {{ strtoupper($post->category ?: 'UNCATEGORIZED') }}
                     </span>
                     <span class="blog-date">{{ $post->publish_date ? $post->publish_date->format('M d, Y') : 'MARCH 15, 2024' }}</span>
                 </div>
                 <h3 class="blog-title">{{ $post->title }}</h3>
             </a>
             @empty
-                <p class="blog-search-status">{{ $query !== '' ? 'No blog posts matched your search.' : 'No blog posts found.' }}</p>
+                <p class="blog-search-status">{{ ($query !== '' || $selectedCategory !== '') ? 'No blog posts matched this selection.' : 'No blog posts found.' }}</p>
             @endforelse
         </div>
 

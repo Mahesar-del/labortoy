@@ -51,7 +51,7 @@
 </head>
 <body>
 
-<div class="admin"><aside class="sidebar"><div class="brand"><span class="brand-mark"></span><span class="brand-copy"><b>Lab Admin</b><small>Laboratory Management</small></span></div><div class="section-label">Main menu</div><nav class="nav"><a href="{{ route('admin.dashboard') }}"><svg viewBox="0 0 24 24"><path d="M3 11 12 3l9 8v10H3z"/><path d="M9 21v-6h6v6"/></svg><span>Dashboard</span></a><a href="{{ route('admin.home-hero.edit') }}"><svg viewBox="0 0 24 24"><path d="M3 11 12 3l9 8v10H3z"/><path d="M9 21v-6h6v6"/></svg><span>Home Page</span></a><a href="/admin/services"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg><span>Services</span></a><a href="#"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg><span>Pages</span></a><a href="#"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg><span>Appointment Page</span></a><a href="#"><svg viewBox="0 0 24 24"><path d="M21 15a4 4 0 0 1-4 4H7l-4 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"/></svg><span>Contact Us</span></a><a class="active" href="{{ route('admin.blog-posts.index') }}"><svg viewBox="0 0 24 24"><path d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zM9 17H7v-2h2v2zm0-4H7v-2h2v2zm0-4H7V7h2v2zm8 8h-6v-2h6v2zm0-4h-6v-2h6v2zm0-4h-6V7h6v2z"/></svg><span>Blog Posts</span></a><a href="{{ route('admin.tests.index') }}"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg><span>Tests</span></a>
+<div class="admin"><aside class="sidebar"><div class="brand"><span class="brand-mark"></span><span class="brand-copy"><b>Lab Admin</b><small>Laboratory Management</small></span></div><div class="section-label">Main menu</div><nav class="nav"><a href="{{ route('admin.dashboard') }}"><svg viewBox="0 0 24 24"><path d="M3 11 12 3l9 8v10H3z"/><path d="M9 21v-6h6v6"/></svg><span>Dashboard</span></a><a href="{{ route('admin.home-hero.edit') }}"><svg viewBox="0 0 24 24"><path d="M3 11 12 3l9 8v10H3z"/><path d="M9 21v-6h6v6"/></svg><span>Home Page</span></a><a href="/admin/services"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg><span>Services</span></a><a href="#"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg><span>Appointment Page</span></a><a href="#"><svg viewBox="0 0 24 24"><path d="M21 15a4 4 0 0 1-4 4H7l-4 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"/></svg><span>Contact Us</span></a><a class="active" href="{{ route('admin.blog-posts.index') }}"><svg viewBox="0 0 24 24"><path d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zM9 17H7v-2h2v2zm0-4H7v-2h2v2zm0-4H7V7h2v2zm8 8h-6v-2h6v2zm0-4h-6v-2h6v2zm0-4h-6V7h6v2z"/></svg><span>Blog Posts</span></a><a href="{{ route('admin.tests.index') }}"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg><span>Tests</span></a>
             <a href="{{ route('admin.test-pages.index') }}"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg><span>Test Pages</span></a><a href="{{ route('admin.faqs.index') }}"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><span>FAQs</span></a>
             <a href="{{ route('admin.authors.index') }}"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><span>Authors</span></a></nav><div class="sidebar-rule"></div><div class="section-label">System</div><nav class="nav"><a href="#"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .34 1.88l.06.06-2.1 2.1-.06-.06a1.7 1.7 0 0 0-1.88-.34 1.7 1.7 0 0 0-1.03 1.56v.1h-3v-.1A1.7 1.7 0 0 0 10.7 18.6a1.7 1.7 0 0 0-1.88.34l-.06.06-2.1-2.1.06-.06A1.7 1.7 0 0 0 7.06 15a1.7 1.7 0 0 0-1.56-1.03h-.1v-3h.1A1.7 1.7 0 0 0 7.06 9a1.7 1.7 0 0 0-.34-1.88l-.06-.06 2.1-2.1.06.06A1.7 1.7 0 0 0 10.7 5.36a1.7 1.7 0 0 0 1.03-1.56v-.1h3v.1a1.7 1.7 0 0 0 1.03 1.56 1.7 1.7 0 0 0 1.88-.34l.06-.06 2.1 2.1-.06.06A1.7 1.7 0 0 0 19.4 9a1.7 1.7 0 0 0 1.56 1.03h.1v3h-.1A1.7 1.7 0 0 0 19.4 15Z"/></svg><span>Settings</span></a></nav><div class="upgrade"><span class="upgrade-icon">▥</span><div><b>Lab Admin Pro</b>Manage your lab efficiently</div></div></aside><main style="min-width:0; background:#fdfdf9;">
 
@@ -131,11 +131,14 @@
                 <div class="field">
                     <label>Author</label>
                     <select name="author">
-                        <option value="Mike Ross" {{ old('author', $blogPost->author ?? '') === 'Mike Ross' ? 'selected' : '' }}>Mike Ross</option>
-                        <option value="Dr. Sarah Jenkins" {{ old('author', $blogPost->author ?? '') === 'Dr. Sarah Jenkins' ? 'selected' : '' }}>Dr. Sarah Jenkins</option>
-                        <option value="Tech Specialist" {{ old('author', $blogPost->author ?? '') === 'Tech Specialist' ? 'selected' : '' }}>Tech Specialist</option>
-                        <option value="Admin User" {{ old('author', $blogPost->author ?? '') === 'Admin User' ? 'selected' : '' }}>Admin User</option>
+                        <option value="">Select an author</option>
+                        @foreach($authors as $author)
+                            <option value="{{ $author->name }}" {{ old('author', $blogPost->author ?? '') === $author->name ? 'selected' : '' }}>{{ $author->name }}</option>
+                        @endforeach
                     </select>
+                    @if($authors->isEmpty())
+                        <small style="display:block;margin-top:6px;color:#b45309;">No authors found. Add an author from the Authors section first.</small>
+                    @endif
                 </div>
                 <div class="field">
                     <label>Publish Date</label>
@@ -147,14 +150,13 @@
                     <label>Category</label>
                     <select name="category" required>
                         <option value="" disabled {{ empty($blogPost->category) && empty(old('category')) ? 'selected' : '' }}>-- Select Category --</option>
-                        <option value="Biomedical" {{ old('category', $blogPost->category ?? '') === 'Biomedical' ? 'selected' : '' }}>Biomedical</option>
-                        <option value="Laboratory" {{ old('category', $blogPost->category ?? '') === 'Laboratory' ? 'selected' : '' }}>Laboratory</option>
-                        <option value="Biology" {{ old('category', $blogPost->category ?? '') === 'Biology' ? 'selected' : '' }}>Biology</option>
-                        <option value="Health" {{ old('category', $blogPost->category ?? '') === 'Health' ? 'selected' : '' }}>Health</option>
-                        <option value="Wellness" {{ old('category', $blogPost->category ?? '') === 'Wellness' ? 'selected' : '' }}>Wellness</option>
-                        <option value="Diagnostics" {{ old('category', $blogPost->category ?? '') === 'Diagnostics' ? 'selected' : '' }}>Diagnostics</option>
-                        <option value="Technology" {{ old('category', $blogPost->category ?? '') === 'Technology' ? 'selected' : '' }}>Technology</option>
+                        @foreach($categories as $category)
+                            <option value="{{ $category->name }}" {{ old('category', $blogPost->category ?? '') === $category->name ? 'selected' : '' }}>{{ $category->name }}</option>
+                        @endforeach
                     </select>
+                    @if($categories->isEmpty())
+                        <small style="display:block;margin-top:6px;color:#b45309;">No categories found. Create one from Blog Categories first.</small>
+                    @endif
                 </div>
                 <div class="field">
                     <label>Tags / Tag Cloud</label>
@@ -244,5 +246,20 @@
     </form>
 </main>
 </div>
+<script>
+    (function () {
+        const blogPostsLink = Array.from(document.querySelectorAll('.nav a')).find(function (link) {
+            const label = link.querySelector('span');
+            return label && label.textContent.trim() === 'Blog Posts';
+        });
+        if (blogPostsLink && !document.querySelector('.nav a[href="{{ route('admin.blog-categories.index') }}"]')) {
+            const categoryLink = blogPostsLink.cloneNode(true);
+            categoryLink.href = '{{ route('admin.blog-categories.index') }}';
+            categoryLink.classList.remove('active');
+            categoryLink.querySelector('span').textContent = 'Blog Categories';
+            blogPostsLink.after(categoryLink);
+        }
+    })();
+</script>
 </body>
 </html>

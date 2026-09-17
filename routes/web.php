@@ -97,6 +97,7 @@ Route::get('/cbc-test', function () {
 });
 Route::get('/blog', function (\Illuminate\Http\Request $request) {
     $query = trim((string) $request->query('q'));
+    $selectedCategory = trim((string) $request->query('category'));
     $postsQuery = \App\Models\BlogPost::with('authorDetails')->where('status', 'published');
     if ($query !== '') {
         $postsQuery->where(function ($builder) use ($query) {
@@ -108,9 +109,13 @@ Route::get('/blog', function (\Illuminate\Http\Request $request) {
                 ->orWhere('author', 'like', '%'.$query.'%');
         });
     }
+    if ($selectedCategory !== '') {
+        $postsQuery->where('category', $selectedCategory);
+    }
     $posts = $postsQuery->latest('publish_date')->get();
+    $categories = \App\Models\BlogCategory::where('is_active', true)->orderBy('name')->get();
 
-    return view('services.blog', compact('posts', 'query'));
+    return view('services.blog', compact('posts', 'query', 'categories', 'selectedCategory'));
 })->name('blog.index');
 Route::get('/blog/{slug}', function ($slug) {
     $post = \App\Models\BlogPost::with('authorDetails')
@@ -148,6 +153,9 @@ Route::get('/admin/molecular-specimens', [AdminMolecularSectionController::class
 Route::post('/admin/molecular-specimens', [AdminMolecularSectionController::class, 'update'])->name('admin.molecular-specimens.update');
 
 Route::resource('admin/blog-posts', \App\Http\Controllers\AdminBlogPostController::class, ['as' => 'admin']);
+Route::get('admin/blog-categories', [\App\Http\Controllers\AdminBlogCategoryController::class, 'index'])->name('admin.blog-categories.index');
+Route::post('admin/blog-categories', [\App\Http\Controllers\AdminBlogCategoryController::class, 'store'])->name('admin.blog-categories.store');
+Route::delete('admin/blog-categories/{blogCategory}', [\App\Http\Controllers\AdminBlogCategoryController::class, 'destroy'])->name('admin.blog-categories.destroy');
 Route::resource('admin/authors', \App\Http\Controllers\AdminAuthorController::class, ['as' => 'admin']);
 Route::get('admin/faqs', [\App\Http\Controllers\AdminFaqController::class, 'index'])->name('admin.faqs.index');
 Route::post('admin/faqs', [\App\Http\Controllers\AdminFaqController::class, 'store'])->name('admin.faqs.store');
