@@ -30,13 +30,13 @@
             justify-content: center;
             align-items: center;
             min-height: calc(100vh - 200px);
-            padding: 40px 20px;
+            padding: 40px 99px;
             width: 100%;
         }
         .appointment-section {
             background: #F3F8FA;
             width: 100%;
-            max-width: 1083px;
+            max-width: 1320px;
             border-radius: 20px;
             padding: 20px 40px;
             margin: 0 auto;
@@ -179,6 +179,13 @@
 
         .provider-field {
             display: none;
+        }
+
+        @media (max-width: 1150px) {
+            .appointment-page-wrapper {
+                padding-left: 40px;
+                padding-right: 40px;
+            }
         }
 
         @media (max-width: 768px) {

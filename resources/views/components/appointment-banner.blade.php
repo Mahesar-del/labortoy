@@ -4,7 +4,7 @@
 
     <div class="appointment-banner__inner">
         <div class="appointment-banner__content">
-            <h1 id="appointment-banner-title">Schedule Your Laboratory<br>Appointment</h1>
+            <h1 id="appointment-banner-title">Schedule Your Laboratory<br> Appointment</h1>
             <p>Choose the appointment option that best fits your needs. Patients can request home sample collection or visit our laboratory, while healthcare providers and organizations can coordinate diagnostic services with our laboratory team.</p>
         </div>
     </div>
@@ -33,7 +33,7 @@
     }
 
     .appointment-banner__image {
-        background-image: url('{{ asset('images/provider-hero.jpg') }}');
+        background-image: url('{{ asset('images/laboratory-appointment.webp') }}');
         background-position: right 28%;
         background-repeat: no-repeat;
         background-size: cover;
@@ -51,9 +51,9 @@
         align-items: center;
         display: flex;
         margin: 0 auto;
-        max-width: 1700px;
+        max-width: 1320px;
         min-height: 360px;
-        padding: 40px 76px;
+        padding: 40px 0;
         width: 100%;
     }
 
@@ -79,6 +79,15 @@
         line-height: 1.58;
         margin: 0;
         max-width: 780px;
+        text-align: left;
+        word-spacing: normal;
+    }
+
+    @media (max-width: 1400px) {
+        .appointment-banner__inner {
+            padding-left: 99px;
+            padding-right: 99px;
+        }
     }
 
     @media (max-width: 900px) {
@@ -111,7 +120,7 @@
 
         .appointment-banner__inner {
             align-items: flex-end;
-            padding: 40px 24px;
+            padding: 40px 28px;
         }
 
         .appointment-banner h1 {
@@ -126,6 +135,7 @@
         .appointment-banner p {
             font-size: 16px;
             line-height: 1.55;
+            text-align: justify;
         }
     }
 </style>
