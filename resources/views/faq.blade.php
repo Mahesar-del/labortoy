@@ -53,119 +53,69 @@
         }
 
         .faq-accordion-group {
-            display: flex;
-            flex-direction: column;
+            display: grid;
             gap: 12px;
-            width: 100%;
         }
 
-        .faq-card {
-            background-color: #FFFFFF;
-            border: 1px solid #E5E7EB;
+        .faq-item {
+            border: 1px solid #d7e1e8;
             border-radius: 12px;
-            overflow: hidden;
-            transition: background-color 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
             cursor: pointer;
-            width: 100%;
+            overflow: hidden;
         }
 
-        .faq-card.active {
-            background-color: #F3F8FA;
-            border-color: #D1D5DB;
-            box-shadow: 0 4px 12px rgba(11, 37, 69, 0.04);
-        }
-
-        .faq-card-header {
+        .faq-question {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 18px 24px;
-            gap: 16px;
-            width: 100%;
+            padding: 20px 22px;
+            color: #102b49;
+            font: 600 16px Arial;
+            transition: all 0.2s ease;
         }
 
-        .faq-card-question {
-            font-family: 'Inter', sans-serif;
-            font-size: 15px;
-            font-weight: 600;
-            color: #0B2545;
-            line-height: 1.4;
-        }
-
-        .faq-card-icon {
-            width: 32px;
-            height: 32px;
-            min-width: 32px;
+        .faq-question b {
+            background: #edf2f7;
             border-radius: 50%;
-            background-color: #EDF2F7;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background-color 0.3s ease, transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .faq-card-icon svg {
-            width: 16px;
-            height: 16px;
-            stroke: #94A3B8;
-            transition: stroke 0.3s ease;
-        }
-
-        .faq-card-icon .icon-close {
-            display: none;
-        }
-
-        .faq-card-icon .icon-plus {
-            display: block;
-        }
-
-        /* Active state icon */
-        .faq-card.active .faq-card-icon {
-            background-color: #0B2545;
-            transform: rotate(90deg);
-        }
-
-        .faq-card.active .faq-card-icon svg {
-            stroke: #FFFFFF;
-        }
-
-        .faq-card.active .faq-card-icon .icon-close {
-            display: block;
-        }
-
-        .faq-card.active .faq-card-icon .icon-plus {
-            display: none;
-        }
-
-        /* Smooth CSS Grid Animation for Accordion Answer */
-        .faq-card-body {
+            color: #52708c;
             display: grid;
-            grid-template-rows: 0fr;
-            transition: grid-template-rows 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 21px;
+            height: 28px;
+            place-items: center;
+            width: 28px;
+            transition: all 0.2s ease;
+            font-weight: normal;
         }
 
-        .faq-card.active .faq-card-body {
-            grid-template-rows: 1fr;
+        .faq-answer {
+            display: none;
+            border-top: 1px solid #d7e1e8;
+            padding: 17px 22px;
         }
 
-        .faq-card-answer-inner {
-            overflow: hidden;
-            padding: 0 24px;
-            opacity: 0;
-            transition: opacity 0.3s ease, padding 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .faq-card.active .faq-card-answer-inner {
-            padding: 0 24px 20px 24px;
-            opacity: 1;
-        }
-
-        .faq-card-answer {
-            font-family: 'Inter', sans-serif;
-            font-size: 14px;
-            color: #4B5563;
-            line-height: 1.65;
+        .faq-answer p {
+            color: #526b81;
+            font: 15px/1.65 Arial;
             margin: 0;
+        }
+
+        .faq-item.active {
+            border-color: #0b2545;
+        }
+
+        .faq-item.active .faq-question {
+            background: #0b2545;
+            color: #fff;
+        }
+
+        .faq-item.active .faq-question b {
+            background: transparent;
+            color: #fff;
+            transform: rotate(45deg); /* Optional: turn + into x */
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
         }
 
         /* Contact Hero Section */
@@ -194,7 +144,7 @@
             z-index: -1;
         }
         .contact-hero__content {
-            left: max(99px, calc((100% - 1320px) / 2 + 99px));
+            left: max(99px, calc((100% - 1320px) / 2));
             max-width: 700px;
             position: absolute;
             top: calc(50% - 30px);
@@ -300,20 +250,15 @@
                 font-size: 18px;
                 margin-bottom: 14px;
             }
-            .faq-card-header {
-                padding: 14px 16px;
-            }
-            .faq-card-question {
+            .faq-question {
                 font-size: 14px;
+                padding: 16px 18px;
             }
-            .faq-card-answer-inner {
-                padding: 0 16px;
+            .faq-answer {
+                padding: 16px 18px;
             }
-            .faq-card.active .faq-card-answer-inner {
-                padding: 0 16px 16px 16px;
-            }
-            .faq-card-answer {
-                font-size: 13.5px;
+            .faq-answer p {
+                font-size: 14px;
             }
         }
         @media (max-width: 700px) {
@@ -409,20 +354,15 @@
                                 <h2 class="faq-category-title">{{ $category->name }}</h2>
                                 <div class="faq-accordion-group">
                                     @foreach($category->items as $item)
-                                        <div class="faq-card" onclick="toggleFaqItem(this)">
-                                            <div class="faq-card-header">
-                                                <span class="faq-card-question">{{ $item->question }}</span>
-                                                <div class="faq-card-icon">
-                                                    <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-                                                    <svg class="icon-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-                                                </div>
+                                        <article class="faq-item" onclick="toggleFaqItem(this)">
+                                            <div class="faq-question">
+                                                <span>{{ $item->question }}</span>
+                                                <b>+</b>
                                             </div>
-                                            <div class="faq-card-body">
-                                                <div class="faq-card-answer-inner">
-                                                    <p class="faq-card-answer">{{ $item->answer }}</p>
-                                                </div>
+                                            <div class="faq-answer">
+                                                <p>{{ $item->answer }}</p>
                                             </div>
-                                        </div>
+                                        </article>
                                     @endforeach
                                 </div>
                             </div>
@@ -453,15 +393,21 @@
         }
 
         // FAQ Accordion Card Toggle with Smooth Transitions
-        function toggleFaqItem(card) {
-            const parentBlock = card.closest('.faq-accordion-group');
-            const siblingCards = parentBlock.querySelectorAll('.faq-card');
-            siblingCards.forEach(item => {
-                if (item !== card) {
-                    item.classList.remove('active');
-                }
-            });
-            card.classList.toggle('active');
+        function toggleFaqItem(cardElement) {
+            const isActive = cardElement.classList.contains('active');
+            
+            // Close all currently active cards within the same group
+            const group = cardElement.closest('.faq-accordion-group');
+            if (group) {
+                group.querySelectorAll('.faq-item.active').forEach(card => {
+                    card.classList.remove('active');
+                });
+            }
+
+            // If it wasn't active, open it
+            if (!isActive) {
+                cardElement.classList.add('active');
+            }
         }
     </script>
 </body>
