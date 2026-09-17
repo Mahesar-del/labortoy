@@ -31,6 +31,8 @@ class TestPage extends Model
         'components_text',
         'results_heading',
         'results_text',
+        'faq_heading',
+        'faq_description',
         'status',
     ];
 

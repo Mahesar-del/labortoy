@@ -5,8 +5,24 @@ html {
     overflow-y: scroll;
 }
 
-.site-header, .site-header *, .mobile-menu-drawer, .mobile-menu-drawer * { 
-    font-family: 'Inter', Arial, sans-serif !important; 
+/* Keep phone, registration and NPI numbers in the page's intended colour.
+   iOS/Safari and some Android browsers otherwise turn detected numbers blue. */
+a[x-apple-data-detectors],
+a[x-apple-data-detectors]:hover,
+a[x-apple-data-detectors]:focus,
+a[x-apple-data-detectors]:active,
+a[href^="tel:"],
+a[href^="sms:"] {
+    background: transparent !important;
+    border: 0 !important;
+    color: inherit !important;
+    font: inherit !important;
+    text-decoration: none !important;
+    -webkit-text-fill-color: currentColor !important;
+}
+
+.site-header, .site-header *, .mobile-menu-drawer, .mobile-menu-drawer * {
+    font-family: 'Inter', Arial, sans-serif !important;
 }
 
 /* Prevent links from blinking on click globally */
@@ -875,14 +891,14 @@ a:focus, a:active, button:focus, button:active {
         // Megamenu Tab Interaction
         var megaTabs = document.querySelectorAll('.megamenu-tab');
         var megaPanes = document.querySelectorAll('.megamenu-pane');
-        
+
         megaTabs.forEach(function(tab) {
             tab.addEventListener('mouseenter', function() {
                 var targetId = this.getAttribute('data-target');
-                
+
                 megaTabs.forEach(function(t) { t.classList.remove('active'); });
                 megaPanes.forEach(function(p) { p.classList.remove('active'); });
-                
+
                 this.classList.add('active');
                 var targetPane = document.getElementById(targetId);
                 if (targetPane) {
