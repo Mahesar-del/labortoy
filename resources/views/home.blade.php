@@ -1451,12 +1451,12 @@
                 <div class="science-right-content">
                     <h2 class="science-title">Where Diagnostic Science Meets Clinical Precision</h2>
                     <p class="science-description">
-                        Sterling is a physical diagnostic laboratory, staffed by scientists and technicians who carry out testing in a controlled clinical environment. Every stage of the process — from sample handling to analysis — follows established laboratory protocol.
+                        Sterling is a physical diagnostic laboratory, staffed by scientists and technicians who carry out testing in a controlled clinical environment. Every stage of the process, starting from sample handling through to final analysis, follows established laboratory protocol.
                     </p>
                     <p class="science-description">
                         Our laboratory environment is designed around accuracy and consistency, so that referring providers and patients alike can rely on the diagnostic information Sterling produces.
                     </p>
-                    <a href="#" class="explore-link">Explore Our Laboratory &rarr;</a>
+                    <a href="{{ route('about') }}" class="explore-link">Explore Our Laboratory &rarr;</a>
                 </div>
             </div>
         </div>

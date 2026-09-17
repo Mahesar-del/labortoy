@@ -36,7 +36,7 @@
 
         .service-page-shell .services-hero { margin: 0; max-width: none; width: 100%; }
 
-        /* These are the page's main content rails.  They use the same width as the header. */
+        /* 1. Force all containers to behave exactly like header-container */
         .service-page-shell .services-hero__container,
         .service-page-shell .dynamic-intro__inner,
         .service-page-shell .chemistry-services-container,
@@ -44,52 +44,46 @@
         .service-page-shell .process-container,
         .service-page-shell .diagnostics-cta__container {
             box-sizing: border-box;
-            margin-left: auto;
-            margin-right: auto;
-            max-width: var(--service-content-width);
+            margin-left: auto !important;
+            margin-right: auto !important;
+            max-width: var(--service-content-width) !important;
             padding-left: 0 !important;
             padding-right: 0 !important;
             width: 100%;
-        }
-
-        .service-page-shell .specimens-section,
-        .service-page-shell .diagnostics-cta {
-            padding-left: 0 !important;
-            padding-right: 0 !important;
         }
 
         .service-page-shell .faq-container {
             box-sizing: border-box;
-            margin-left: auto;
-            margin-right: auto;
-            max-width: 1050px;
+            margin-left: auto !important;
+            margin-right: auto !important;
+            max-width: 1050px !important;
             padding-left: 0 !important;
             padding-right: 0 !important;
             width: 100%;
         }
 
-        /* Header has a 99px gutter until its 1320px content area fits in full. */
-        @media (max-width: 1517px) and (min-width: 1151px) {
-            .service-page-shell .services-hero__container,
-            .service-page-shell .dynamic-intro__inner,
-            .service-page-shell .chemistry-services-container,
-            .service-page-shell .specimens-container,
-            .service-page-shell .process-container,
-            .service-page-shell .diagnostics-cta__container,
-            .service-page-shell .faq-container {
-                padding-left: 99px !important;
-                padding-right: 99px !important;
-            }
+        /* 2. Force all wrappers to behave exactly like site-header */
+        .service-page-shell .services-hero,
+        .service-page-shell .dynamic-intro,
+        .service-page-shell .chemistry-services-section,
+        .service-page-shell .specimens-section,
+        .service-page-shell .process-section,
+        .service-page-shell .faq-section,
+        .service-page-shell .diagnostics-cta {
+            padding-left: 99px !important;
+            padding-right: 99px !important;
+            box-sizing: border-box;
         }
 
+        /* 3. Mobile responsiveness for wrappers (just like site-header) */
         @media (max-width: 1150px) {
-            .service-page-shell .services-hero__container,
-            .service-page-shell .dynamic-intro__inner,
-            .service-page-shell .chemistry-services-container,
-            .service-page-shell .specimens-container,
-            .service-page-shell .process-container,
-            .service-page-shell .diagnostics-cta__container,
-            .service-page-shell .faq-container {
+            .service-page-shell .services-hero,
+            .service-page-shell .dynamic-intro,
+            .service-page-shell .chemistry-services-section,
+            .service-page-shell .specimens-section,
+            .service-page-shell .process-section,
+            .service-page-shell .faq-section,
+            .service-page-shell .diagnostics-cta {
                 padding-left: 20px !important;
                 padding-right: 20px !important;
             }

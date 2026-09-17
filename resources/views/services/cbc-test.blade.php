@@ -236,9 +236,14 @@
                 height: 1px;
             }
 
+            .cbc-about-section {
+                padding: 4vw 5vw 12vw;
+            }
+
             .cbc-about-container {
                 flex-direction: column-reverse; /* Image above text on mobile */
-                gap: 40px;
+                gap: 6vw;
+                padding: 0;
             }
 
             .cbc-about-content h2 {
@@ -405,7 +410,18 @@
             }
 
             .cbc-components-section {
-                padding: 40px 20px;
+                padding: 0vw 4vw 8vw;
+            }
+
+            .cbc-components-header {
+                margin: 0 auto 3vw auto;
+            }
+
+            .cbc-components-header h2 {
+                font-size: 3.5vw;
+                white-space: nowrap;
+                margin-top: 0;
+                margin-bottom: 2vw;
             }
         }
     </style>
@@ -827,34 +843,41 @@
             gap: 12px;
         }
         .cbc-faq-item {
-            border: 1px solid #E5E7EB;
-            border-radius: 8px;
+            border: 1px solid #d7e1e8;
+            border-radius: 12px;
             background-color: #FFFFFF;
             overflow: hidden;
             transition: all 0.3s ease;
         }
         .cbc-faq-item.active {
-            border-color: transparent;
-            background-color: #F4F7F9;
+            border-color: #0b2545;
         }
         .cbc-faq-question {
-            padding: 24px;
+            padding: 20px 22px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .cbc-faq-item.active .cbc-faq-question {
+            background-color: #0b2545;
         }
         .cbc-faq-qtext {
             font-family: 'Inter', sans-serif;
             font-size: 16px;
             font-weight: 600;
-            color: #111827;
+            color: #102b49;
+            transition: color 0.3s ease;
+        }
+        .cbc-faq-item.active .cbc-faq-qtext {
+            color: #fff;
         }
         .cbc-faq-icon {
-            width: 32px;
-            height: 32px;
+            width: 28px;
+            height: 28px;
             border-radius: 50%;
-            background-color: #F1F5F9;
+            background-color: #edf2f7;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -862,53 +885,65 @@
             transition: all 0.3s ease;
         }
         .cbc-faq-item.active .cbc-faq-icon {
-            background-color: #0B2545;
+            background-color: transparent;
         }
         .icon-plus, .icon-close {
             width: 16px;
             height: 16px;
-            stroke: #64748B;
+            stroke: #52708c;
         }
         .icon-close {
             display: none;
-            stroke: #FFFFFF;
         }
         .cbc-faq-item.active .icon-plus {
             display: none;
         }
         .cbc-faq-item.active .icon-close {
             display: block;
+            stroke: #fff;
         }
         .cbc-faq-answer {
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.3s ease;
-            padding: 0 24px;
+            padding: 0 22px;
+            border-top: 1px solid transparent;
         }
         .cbc-faq-item.active .cbc-faq-answer {
             max-height: 300px;
-            padding: 0 24px 24px 24px;
+            padding: 17px 22px;
+            border-top-color: #d7e1e8;
         }
         .cbc-faq-answer p {
             font-family: 'Inter', sans-serif;
             font-size: 15px;
-            line-height: 26px;
-            color: #374151;
+            line-height: 1.65;
+            color: #526b81;
             margin: 0;
         }
 
         @media (max-width: 640px) {
             .cbc-faq-section {
-                padding: 60px 20px;
+                padding: 3vw 5vw 6vw !important;
+            }
+            .cbc-faq-header {
+                margin-bottom: 4vw !important;
             }
             .cbc-faq-header h2 {
-                font-size: 28px;
+                font-size: 5.5vw;
+                margin-bottom: 1.5vw;
+            }
+            .cbc-faq-header p {
+                font-size: 3.6vw;
+            }
+            .cbc-faq-list {
+                gap: 2.5vw;
             }
             .cbc-faq-question {
-                padding: 16px;
+                padding: 3.5vw 4vw;
             }
             .cbc-faq-item.active .cbc-faq-answer {
-                padding: 0 16px 16px 16px;
+                padding: 3.5vw 4vw;
             }
         }
     </style>
@@ -929,26 +964,6 @@
             }
         }
     </script>
-
-    <style>
-        @media (max-width: 768px) {
-            .cbc-about-section,
-            .cbc-components-section,
-            .cbc-sp-section {
-                padding-left: 20px !important;
-                padding-right: 20px !important;
-            }
-            .cbc-results-section {
-                padding: 40px 20px 0px 20px !important; /* Removed bottom padding */
-            }
-            .cbc-faq-section {
-                padding: 0px 20px 0px 20px !important; /* Removed bottom padding */
-            }
-            .cbc-faq-header {
-                margin-bottom: 20px !important; /* Reduced from 40px */
-            }
-        }
-    </style>
 
     @include('components.diagnostics-cta.cta')
 

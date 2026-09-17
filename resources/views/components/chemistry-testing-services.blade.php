@@ -196,7 +196,7 @@
 
     @media (max-width: 640px) {
         .chemistry-services-section {
-            padding: 40px 0 60px;
+            padding: 4vw 0 10vw;
         }
 
         .chemistry-services-container {

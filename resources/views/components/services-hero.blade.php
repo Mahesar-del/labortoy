@@ -17,7 +17,7 @@
     .services-hero, .services-hero * { box-sizing: border-box; }
     .services-hero { background: #020b1c; color: #fff; isolation: isolate; min-height: 360px; overflow: hidden; position: relative; width:100%; max-width:none; margin:0; }
     .services-hero__background, .services-hero__overlay { height: 100%; inset: 0; position: absolute; width: 100%; }
-    .services-hero__background { background-position: center; background-repeat: no-repeat; background-size: cover; z-index: -2; }
+    .services-hero__background { background-position: center 15%; background-repeat: no-repeat; background-size: cover; z-index: -2; }
     .services-hero__overlay { background: linear-gradient(90deg, rgba(7,26,49,.96) 0%, rgba(7,26,49,.86) 48%, rgba(7,26,49,.25) 100%); z-index: -1; }
     .services-hero__container { align-items: center; display: flex; margin: 0 auto; max-width: 1518px; min-height: 420px; padding: 40px 99px 60px 99px; box-sizing: border-box; width: 100%; }
     .services-hero__content { max-width: 700px; }
@@ -46,11 +46,11 @@
     }
     @media (max-width: 700px) {
         .services-hero { padding: 0; min-height: 400px; }
-        .services-hero__container { min-height: 400px; align-items: flex-end; justify-content: flex-start; padding: 40px 20px 80px 20px; }
+        .services-hero__container { min-height: 400px; align-items: flex-end; justify-content: flex-start; padding: 10vw 5vw 10vw 5vw; }
         .services-hero__overlay { background: rgba(7, 26, 49, 0.75); }
         .services-hero__content { max-width: 100%; display: block; }
         .services-hero h1 { font-size: 28px; line-height: 38px; text-align: left; color: #FFFFFF; font-weight: 800; }
-        .services-hero p { font-size: 16px; line-height: 24px; text-align: justify; color: #D9E5EE; margin: 28px 0 0; font-weight: 400; }
-        .services-hero__button { display: none; }
+        .services-hero p { font-size: 16px; line-height: 24px; text-align: justify; color: #D9E5EE; margin: 6vw 0 6vw; font-weight: 400; }
+        .services-hero__button { display: inline-flex; }
     }
 </style>

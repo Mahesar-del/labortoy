@@ -58,7 +58,7 @@
 
     .cw-image {
         width: 100%;
-        height: auto;
+        height: 350px;
         object-fit: cover;
         border-radius: 16px;
     }

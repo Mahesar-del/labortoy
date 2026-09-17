@@ -41,7 +41,7 @@
         .understanding-genomic p:last-child { margin-bottom: 0; }
         .chemistry-points { color: #000; font-size: clamp(14px, 1vw, 16px); line-height: 1.75; margin: 0; padding-left: 22px; }
         .understanding-genomic__image { align-self: stretch; border-radius: 18px; display: block; height: 100%; min-height: 100%; object-fit: cover; overflow: hidden; width: 100%; }
-        @media (max-width: 700px) { .understanding-genomic { padding: 52px 0; } .understanding-genomic__container { padding: 0 28px; gap: 30px; grid-template-columns: 1fr; } .understanding-genomic h2 { text-align: left; } .understanding-genomic__image { order: -1; height: auto; min-height: 0; } }
+        @media (max-width: 700px) { .understanding-genomic { padding: 4vw 0 12vw; } .understanding-genomic__container { padding: 0 7vw; gap: 6vw; grid-template-columns: 1fr; } .understanding-genomic h2 { text-align: left; } .understanding-genomic__image { order: -1; height: auto; min-height: 0; } }
     </style>
     
     @php

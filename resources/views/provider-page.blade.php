@@ -9,9 +9,55 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>body { margin: 0; font-family: 'Manrope', sans-serif; }</style>
+    <style>
+        body { margin: 0; font-family: 'Manrope', sans-serif; }
+
+        /* 1. Force all containers to behave exactly like header-container */
+        .provider-page-shell .services-hero__container,
+        .provider-page-shell .cw-container,
+        .provider-page-shell .wyn-container,
+        .provider-page-shell .frt-section,
+        .provider-page-shell .tco-container,
+        .provider-page-shell .cd-container,
+        .provider-page-shell .diagnostics-cta__container {
+            box-sizing: border-box;
+            margin-left: auto !important;
+            margin-right: auto !important;
+            max-width: 1320px !important;
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+            width: 100%;
+        }
+
+        /* 2. Force all wrappers to behave exactly like site-header */
+        .provider-page-shell .services-hero,
+        .provider-page-shell .clinical-workflow,
+        .provider-page-shell .what-you-need-section,
+        .provider-page-shell .find-right-test,
+        .provider-page-shell .three-cards-overlap,
+        .provider-page-shell .clinical-decisions,
+        .provider-page-shell .diagnostics-cta {
+            padding-left: 99px !important;
+            padding-right: 99px !important;
+            box-sizing: border-box;
+        }
+
+        /* 3. Mobile responsiveness for wrappers (just like site-header) */
+        @media (max-width: 1150px) {
+            .provider-page-shell .services-hero,
+            .provider-page-shell .clinical-workflow,
+            .provider-page-shell .what-you-need-section,
+            .provider-page-shell .find-right-test,
+            .provider-page-shell .three-cards-overlap,
+            .provider-page-shell .clinical-decisions,
+            .provider-page-shell .diagnostics-cta {
+                padding-left: 20px !important;
+                padding-right: 20px !important;
+            }
+        }
+    </style>
 </head>
-<body>
+<body class="provider-page-shell">
     @include('components.header')
     @include('components.provider-hero', [
         'title' => 'Laboratory Support for<br>Better Clinical Decisions',

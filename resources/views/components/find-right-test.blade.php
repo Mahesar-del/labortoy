@@ -138,9 +138,12 @@
             height: 100%;
             min-height: 380px;
         }
-        .find-right-test .card-a { grid-column: 1; grid-row: 1; align-self: end; }
-        .find-right-test .card-b { grid-column: 1; grid-row: 2; align-self: start; }
-        .find-right-test .card-c { grid-column: 3; grid-row: 1; align-self: end; }
-        .find-right-test .card-d { grid-column: 3; grid-row: 2; align-self: start; }
+        .find-right-test .card-a { grid-column: 1; grid-row: 1; align-self: end; justify-self: start; width: 100%; }
+        .find-right-test .card-b { grid-column: 1; grid-row: 2; align-self: start; justify-self: start; width: 100%; }
+        .find-right-test .card-c { grid-column: 3; grid-row: 1; align-self: end; justify-self: end; width: 100%; }
+        .find-right-test .card-d { grid-column: 3; grid-row: 2; align-self: start; justify-self: end; width: 100%; }
+        .frt-card {
+            max-width: 100%; /* Allow filling the 1fr column so they touch edges perfectly */
+        }
     }
 </style>

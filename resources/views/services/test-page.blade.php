@@ -198,7 +198,7 @@
             font-family: 'Plus Jakarta Sans', sans-serif;
             font-size: 32px;
             font-weight: 800;
-            color: #0b2545;
+            color: #000;
             margin-top: 0;
             margin-bottom: 16px;
         }
@@ -243,13 +243,19 @@
                 height: 1px;
             }
 
+            .cbc-about-section {
+                padding: 4vw 5vw 12vw;
+            }
+
             .cbc-about-container {
                 flex-direction: column-reverse; /* Image above text on mobile */
-                gap: 40px;
+                gap: 6vw;
+                padding: 0;
             }
 
             .cbc-about-content h2 {
                 font-size: 28px;
+                text-align: left;
             }
         }
     </style>
@@ -397,7 +403,18 @@
             }
 
             .cbc-components-section {
-                padding: 40px 20px;
+                padding: 0vw 4vw 8vw;
+            }
+
+            .cbc-components-header {
+                margin: 0 auto 3vw auto;
+            }
+
+            .cbc-components-header h2 {
+                font-size: 3.5vw;
+                white-space: nowrap;
+                margin-top: 0;
+                margin-bottom: 2vw;
             }
         }
     </style>
@@ -603,7 +620,7 @@
             font-size: 34px;
             font-weight: 700;
             line-height: 44px;
-            color: #12263A;
+            color: #000;
             margin-top: 0;
             margin-bottom: 24px;
         }
@@ -678,17 +695,17 @@
 
         @media (max-width: 640px) {
             .cbc-results-section {
-                padding: 40px 20px;
+                padding: 6vw 5vw 2vw;
             }
 
             .cbc-result-card {
-                padding: 20px;
-                gap: 16px;
+                padding: 4vw;
+                gap: 3vw;
             }
 
             .cbc-results-left h2 {
-                font-size: 20px;
-                line-height: 28px;
+                font-size: 5.2vw;
+                line-height: 1.3;
             }
         }
     </style>
@@ -699,8 +716,8 @@
     <section class="cbc-faq-section">
         <div class="cbc-faq-container">
             <div class="cbc-faq-header">
-                <h2>{{ $testPage->title }} FAQs</h2>
-                <p>Answers to common questions about this test.</p>
+                <h2>{{ $testPage->faq_heading ?: $testPage->title . ' FAQs' }}</h2>
+                <p>{{ $testPage->faq_description ?: 'Answers to common questions about this test.' }}</p>
             </div>
             <div class="cbc-faq-list">
                 @foreach($testPage->service->faqs->where('is_active', true) as $faq)
@@ -749,7 +766,7 @@
         .cbc-faq-header p {
             font-family: 'Inter', sans-serif;
             font-size: 16px;
-            color: #4B5563;
+            color: #000;
             margin: 0;
         }
         .cbc-faq-list {
@@ -758,34 +775,41 @@
             gap: 12px;
         }
         .cbc-faq-item {
-            border: 1px solid #E5E7EB;
-            border-radius: 8px;
+            border: 1px solid #d7e1e8;
+            border-radius: 12px;
             background-color: #FFFFFF;
             overflow: hidden;
             transition: all 0.3s ease;
         }
         .cbc-faq-item.active {
-            border-color: transparent;
-            background-color: #F4F7F9;
+            border-color: #0b2545;
         }
         .cbc-faq-question {
-            padding: 24px;
+            padding: 20px 22px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .cbc-faq-item.active .cbc-faq-question {
+            background-color: #0b2545;
         }
         .cbc-faq-qtext {
             font-family: 'Inter', sans-serif;
             font-size: 16px;
             font-weight: 600;
-            color: #111827;
+            color: #102b49;
+            transition: color 0.3s ease;
+        }
+        .cbc-faq-item.active .cbc-faq-qtext {
+            color: #fff;
         }
         .cbc-faq-icon {
-            width: 32px;
-            height: 32px;
+            width: 28px;
+            height: 28px;
             border-radius: 50%;
-            background-color: #F1F5F9;
+            background-color: #edf2f7;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -793,53 +817,65 @@
             transition: all 0.3s ease;
         }
         .cbc-faq-item.active .cbc-faq-icon {
-            background-color: #0B2545;
+            background-color: transparent;
         }
         .icon-plus, .icon-close {
             width: 16px;
             height: 16px;
-            stroke: #64748B;
+            stroke: #52708c;
         }
         .icon-close {
             display: none;
-            stroke: #FFFFFF;
         }
         .cbc-faq-item.active .icon-plus {
             display: none;
         }
         .cbc-faq-item.active .icon-close {
             display: block;
+            stroke: #fff;
         }
         .cbc-faq-answer {
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.3s ease;
-            padding: 0 24px;
+            padding: 0 22px;
+            border-top: 1px solid transparent;
         }
         .cbc-faq-item.active .cbc-faq-answer {
             max-height: 500px;
-            padding: 0 24px 24px 24px;
+            padding: 17px 22px;
+            border-top-color: #d7e1e8;
         }
         .cbc-faq-answer p {
             font-family: 'Inter', sans-serif;
             font-size: 15px;
-            line-height: 26px;
-            color: #374151;
+            line-height: 1.65;
+            color: #526b81;
             margin: 0;
         }
 
         @media (max-width: 640px) {
             .cbc-faq-section {
-                padding: 60px 20px;
+                padding: 3vw 5vw 6vw;
+            }
+            .cbc-faq-header {
+                margin-bottom: 4vw;
             }
             .cbc-faq-header h2 {
-                font-size: 28px;
+                font-size: 5.5vw;
+                margin-bottom: 1.5vw;
+            }
+            .cbc-faq-header p {
+                font-size: 3.6vw;
+            }
+            .cbc-faq-list {
+                gap: 2.5vw;
             }
             .cbc-faq-question {
-                padding: 16px;
+                padding: 3.5vw 4vw;
             }
             .cbc-faq-item.active .cbc-faq-answer {
-                padding: 0 16px 16px 16px;
+                padding: 3.5vw 4vw;
             }
         }
     </style>

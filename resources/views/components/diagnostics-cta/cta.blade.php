@@ -34,7 +34,7 @@
     .diagnostics-cta__decoration--right { right: 0; }
     .diagnostics-cta__decoration--mobile-right { display: none; }
     @media (max-width: 768px) {
-        .diagnostics-cta { padding: 2.5rem 20px; }
+        .diagnostics-cta { padding: 4vw 5vw; }
         .diagnostics-cta__container { padding: 0; }
         .diagnostics-cta__card { 
             border-radius: 16px; 
