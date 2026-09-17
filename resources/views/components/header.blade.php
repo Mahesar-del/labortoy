@@ -1,6 +1,9 @@
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
-html, body, body * { font-family: 'Inter', Arial, sans-serif !important; }
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;700&display=block');
+
+html {
+    overflow-y: scroll;
+}
 
 /* Keep phone, registration and NPI numbers in the page's intended colour.
    iOS/Safari and some Android browsers otherwise turn detected numbers blue. */
@@ -18,33 +21,29 @@ a[href^="sms:"] {
     -webkit-text-fill-color: currentColor !important;
 }
 
-/* Global Typography Rules */
-h1 {
-    font-size: 36px !important;
-}
-h2 {
-    font-size: 28px !important;
-}
-h3 {
-    font-size: 22px !important;
-}
-p {
-    font-size: 15px !important;
+.site-header, .site-header *, .mobile-menu-drawer, .mobile-menu-drawer * {
+    font-family: 'Inter', Arial, sans-serif !important;
 }
 
+/* Prevent links from blinking on click globally */
+a, button {
+    -webkit-tap-highlight-color: transparent;
+}
+a:focus, a:active, button:focus, button:active {
+    outline: none !important;
+}
+
+/* Header Typography Rules */
+.site-header h1, .mobile-menu-drawer h1 { font-size: 36px !important; }
+.site-header h2, .mobile-menu-drawer h2 { font-size: 28px !important; }
+.site-header h3, .mobile-menu-drawer h3 { font-size: 22px !important; }
+.site-header p, .mobile-menu-drawer p { font-size: 15px !important; }
+
 @media (max-width: 768px) {
-    h1 {
-        font-size: 28px !important;
-    }
-    h2 {
-        font-size: 24px !important;
-    }
-    h3 {
-        font-size: 20px !important;
-    }
-    p {
-        font-size: 14px !important;
-    }
+    .site-header h1, .mobile-menu-drawer h1 { font-size: 28px !important; }
+    .site-header h2, .mobile-menu-drawer h2 { font-size: 24px !important; }
+    .site-header h3, .mobile-menu-drawer h3 { font-size: 20px !important; }
+    .site-header p, .mobile-menu-drawer p { font-size: 14px !important; }
 }
 
 /* Header Styles */
@@ -74,12 +73,19 @@ p {
     align-items: center;
     height: 100%;
     pointer-events: auto;
-    flex-shrink: 1;
-    min-width: 120px;
-    max-width: 280px;
-    margin-left: -8px; /* Pulled left slightly less to perfectly align */
+    flex-shrink: 0;
+    width: 220px;
+    margin-left: -8px;
     outline: none;
     border: none;
+}
+.logo-container img {
+    height: 75px;
+    width: 220px;
+    max-height: 85px;
+    object-fit: contain;
+    object-position: left;
+    display: block;
 }
 .nav-links {
     flex: 1;
@@ -95,8 +101,8 @@ p {
     text-decoration: none;
     color: #111827;
     font-weight: 500;
-    font-size: clamp(12px, 1.1vw, 15px);
-    transition: color 0.2s;
+    font-size: 16px;
+    transition: none;
     white-space: nowrap;
     line-height: 20px;
 }
@@ -213,7 +219,7 @@ p {
 
     /* Megamenu Styles */
     .has-megamenu {
-        position: relative;
+        position: static;
     }
     
     .nav-links li {
@@ -224,23 +230,34 @@ p {
 
     .megamenu {
         position: absolute;
-        top: calc(50% + 20px);
-        left: 50%;
-        transform: translateX(-50%);
-        width: 200px;
-        background-color: #ffffff; /* White background */
-        color: #111827;
-        padding: 15px 20px;
+        top: 100%;
+        left: 152px;
+        width: 53rem; /* 880px = 55rem */
+        max-width: calc(100% - 240px);
+        min-height: 251px;
+        background-color: #ffffff;
+        padding: 0;
         box-sizing: border-box;
         opacity: 0;
         visibility: hidden;
         transition: opacity 0.3s ease, visibility 0.3s ease;
         display: flex;
-        flex-direction: column;
-        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        flex-direction: row;
+        box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
         z-index: 1000;
-        border-top: 2px solid #eaedf2;
-        border-radius: 0 0 8px 8px;
+        border-radius: 0 0 6px 6px;
+        overflow: hidden;
+    }
+
+    /* Invisible bridge to keep hover active */
+    .megamenu::before {
+        content: '';
+        position: absolute;
+        top: -20px;
+        left: 0;
+        right: 0;
+        height: 20px;
+        background: transparent;
     }
 
     .has-megamenu:hover .megamenu {
@@ -248,39 +265,151 @@ p {
         visibility: visible;
     }
 
-    .megamenu-column h4 {
-        font-size: 16px !important;
-        font-weight: 600;
-        margin-bottom: 20px;
-        color: #ffffff;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-    }
-
-    .megamenu-column ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
+    .megamenu-sidebar {
+        width: 215px;
+        background-color: #0b2545;
+        padding: 24px 0;
         display: flex;
         flex-direction: column;
-        gap: 12px;
+        flex-shrink: 0;
     }
 
-    .megamenu-column ul li a {
-        color: #4b5563;
+    .megamenu-tab {
+        font-family: 'Plus Jakarta Sans', sans-serif !important;
+        font-weight: 700 !important;
+        font-size: 18px !important;
+        line-height: 40px !important;
+        color: #ffffff !important;
         text-decoration: none;
-        font-size: 14px;
-        transition: color 0.2s, transform 0.2s;
-        font-weight: 500;
-        display: inline-block;
+        padding: 4px 30px;
+        cursor: pointer;
+        display: block;
+        transition: background-color 0.2s;
+        text-align: left;
+        background: none;
+        border: none;
+        width: 100%;
+        box-sizing: border-box;
     }
 
-    .megamenu-column ul li a:hover {
-        color: #214f9d;
-        transform: translateX(5px);
+    .megamenu-tab:hover, .megamenu-tab.active {
+        background-color: rgba(255, 255, 255, 0.1);
     }
 
+    .megamenu-content {
+        flex: 1;
+        padding: 30px 45px;
+        background-color: #ffffff;
+        position: relative;
+    }
 
+    .megamenu-pane {
+        display: none;
+        animation: fadeInMega 0.3s ease-in-out;
+    }
+
+    .megamenu-pane.active {
+        display: block;
+    }
+
+    @keyframes fadeInMega {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    .megamenu-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0px 40px;
+    }
+
+    .megamenu-grid a {
+        font-family: 'Plus Jakarta Sans', sans-serif !important;
+        font-weight: 400 !important;
+        font-size: 15px !important;
+        line-height: 34px !important;
+        color: #111827 !important;
+        text-decoration: none;
+        transition: color 0.2s;
+        display: block;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .megamenu-grid a:hover {
+        color: #22B6AF !important;
+    }
+
+    /* Resources Megamenu Styles */
+    .has-resources-menu {
+        position: relative;
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
+
+    .resources-megamenu {
+        position: absolute;
+        top: 297%;
+        left: -22px;
+        width: 150px;
+        background-color: #ffffff;
+        padding: 6px;
+        box-sizing: border-box;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+        box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.12);
+        z-index: 1000;
+        border-radius: 8px;
+        border: 1px solid #e5e7eb;
+    }
+
+    .resources-megamenu::before {
+        content: '';
+        position: absolute;
+        top: -15px;
+        left: 0;
+        right: 0;
+        height: 15px;
+        background: transparent;
+    }
+
+    .has-resources-menu:hover .resources-megamenu {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .resources-megamenu-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+    }
+
+    .resources-megamenu-item {
+        display: block;
+        padding: 8px 12px;
+        border-radius: 6px;
+        font-family: 'Plus Jakarta Sans', sans-serif !important;
+        font-weight: 500 !important;
+        font-size: 14px !important;
+        color: #111827 !important;
+        text-decoration: none !important;
+        transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    .resources-megamenu-item:hover {
+        background-color: #f0fdfa;
+        color: #22B6AF !important;
+    }
+
+    .resources-item-desc {
+        font-size: 12px !important;
+        color: #6b7280 !important;
+        margin-top: 2px;
+        line-height: 16px;
+    }
 
 /* Mobile Drawer Styles */
 .mobile-menu-overlay {
@@ -497,7 +626,7 @@ p {
     <div class="header-container">
         <!-- Logo -->
         <a href="/" class="logo-container">
-            <img src="{{ asset('images/header-logo.svg') }}" alt="Sterling Logo" style="height: auto; max-height: 85px; width: 100%; object-fit: contain; object-position: left;">
+            <img src="{{ asset('images/header_logo_new.svg') }}" alt="Sterling Logo" width="220" height="75" style="height: auto; max-height: 85px; width: 100%; object-fit: contain; object-position: left;">
         </a>
 
     @php($headerServices = \Illuminate\Support\Facades\DB::table('services')->where('is_active', true)->orderBy('name')->get())
@@ -505,22 +634,53 @@ p {
         <li class="has-megamenu">
             <a style="cursor: default;">Services</a>
             <div class="megamenu">
-                <div class="megamenu-column">
-                    <ul>
-                        @forelse($headerServices as $headerService)
-                            <li><a href="{{ url('/service/'.$headerService->slug) }}">{{ $headerService->name }}</a></li>
-                        @empty
-                            <li><a href="/services">View Services</a></li>
-                        @endforelse
-                    </ul>
+                <div class="megamenu-sidebar">
+                    <button class="megamenu-tab active" data-target="mega-chem">Chemistry</button>
+                    <button class="megamenu-tab" data-target="mega-immuno">Immunoassay</button>
+                    <button class="megamenu-tab" data-target="mega-hema">Hematology</button>
+                </div>
+                <div class="megamenu-content">
+                    <div class="megamenu-pane active" id="mega-chem">
+                        <div class="megamenu-grid">
+                            <a href="#">Comprehensive Metabolic Panel (CMP)</a>
+                            <a href="#">Basic Metabolic Panel (BMP)</a>
+                            <a href="#">Lipid Panel</a>
+                            <a href="#">Blood Glucose</a>
+                            <a href="#">Liver Function Tests (LFT)</a>
+                            <a href="#">Kidney Function Tests</a>
+                        </div>
+                    </div>
+                    <div class="megamenu-pane" id="mega-immuno">
+                        <div class="megamenu-grid">
+                            <a href="#">Thyroid Stimulating Hormone (TSH)</a>
+                            <a href="#">Free T4</a>
+                            <a href="#">Vitamin D</a>
+                            <a href="#">Prostate Specific Antigen (PSA)</a>
+                        </div>
+                    </div>
+                    <div class="megamenu-pane" id="mega-hema">
+                        <div class="megamenu-grid">
+                            <a href="#">Complete Blood Count (CBC)</a>
+                            <a href="#">Hemoglobin A1C</a>
+                            <a href="#">Prothrombin Time (PT/INR)</a>
+                            <a href="#">Sedimentation Rate (ESR)</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </li>
         <li><a href="/patient">Patients</a></li>
         <li><a href="/provider-page">Providers</a></li>
-        <li><a href="{{ route('about') }}">About Us</a></li>
-        <li><a href="/faq">FAQ</a></li>
-        <li><a href="{{ route('blog.index') }}">Blog</a></li>
+        <li class="has-resources-menu">
+            <a href="/resources">Resources</a>
+            <div class="resources-megamenu">
+                <div class="resources-megamenu-grid">
+                    <a href="/faq" class="resources-megamenu-item">FAQ</a>
+                    <a href="/blog" class="resources-megamenu-item">Blogs</a>
+                    <a href="/about-us" class="resources-megamenu-item">About Us</a>
+                </div>
+            </div>
+        </li>
         <li><a href="/contact-us">Contact</a></li>
     </ul>
 
@@ -563,7 +723,7 @@ p {
 <div class="mobile-menu-drawer" id="mobileMenuDrawer">
     <div class="mobile-drawer-header">
         <a href="/" class="mobile-logo">
-            <img src="{{ asset('images/header-logo.svg') }}" alt="Sterling Logo" style="height: 40px; width: auto;">
+            <img src="{{ asset('images/header_logo_new.svg') }}" alt="Sterling Logo" style="height: 40px; width: auto;">
         </a>
         <button class="mobile-drawer-close" id="mobileDrawerClose" aria-label="Close menu">
             <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -604,9 +764,21 @@ p {
 
         <li class="mobile-nav-item"><a href="/patient">Patients</a></li>
         <li class="mobile-nav-item"><a href="/provider-page">Providers</a></li>
-        <li class="mobile-nav-item"><a href="{{ route('about') }}">About Us</a></li>
-        <li class="mobile-nav-item"><a href="/faq">FAQ</a></li>
-        <li class="mobile-nav-item"><a href="{{ route('blog.index') }}">Blog</a></li>
+        <li class="mobile-nav-item mobile-has-dropdown">
+            <div class="mobile-dropdown-header" id="mobileResourcesToggle">
+                <a href="/resources">Resources</a>
+                <button type="button" class="mobile-arrow-btn" id="mobileResourcesArrowBtn" aria-label="Toggle Resources dropdown">
+                    <svg class="mobile-arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </button>
+            </div>
+            <ul class="mobile-submenu" id="mobileResourcesSubmenu">
+                <li><a href="/faq">FAQ</a></li>
+                <li><a href="/blog">Blogs</a></li>
+                <li><a href="/about-us">About Us</a></li>
+            </ul>
+        </li>
         <li class="mobile-nav-item"><a href="/contact-us">Contact</a></li>
     </ul>
 
@@ -666,6 +838,8 @@ p {
         var mobileClose = document.getElementById('mobileDrawerClose');
         var arrowBtn = document.getElementById('mobileServicesArrowBtn');
         var submenu = document.getElementById('mobileServicesSubmenu');
+        var resArrowBtn = document.getElementById('mobileResourcesArrowBtn');
+        var resSubmenu = document.getElementById('mobileResourcesSubmenu');
 
         function openMenu() {
             if (mobileDrawer) mobileDrawer.classList.add('is-active');
@@ -691,5 +865,33 @@ p {
                 submenu.classList.toggle('is-open');
             });
         }
+
+        if (resArrowBtn && resSubmenu) {
+            resArrowBtn.addEventListener('click', function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+                resArrowBtn.classList.toggle('is-open');
+                resSubmenu.classList.toggle('is-open');
+            });
+        }
+
+        // Megamenu Tab Interaction
+        var megaTabs = document.querySelectorAll('.megamenu-tab');
+        var megaPanes = document.querySelectorAll('.megamenu-pane');
+
+        megaTabs.forEach(function(tab) {
+            tab.addEventListener('mouseenter', function() {
+                var targetId = this.getAttribute('data-target');
+
+                megaTabs.forEach(function(t) { t.classList.remove('active'); });
+                megaPanes.forEach(function(p) { p.classList.remove('active'); });
+
+                this.classList.add('active');
+                var targetPane = document.getElementById(targetId);
+                if (targetPane) {
+                    targetPane.classList.add('active');
+                }
+            });
+        });
     }());
 </script>
