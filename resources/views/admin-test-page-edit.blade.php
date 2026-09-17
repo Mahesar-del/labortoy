@@ -104,6 +104,23 @@
                         @endif
                     </div>
 
+                    <h3 style="margin-top: 30px; margin-bottom: 15px; border-bottom: 1px solid #e1ebf2; padding-bottom: 10px;">Search Engine Optimization</h3>
+                    <div class="form-group">
+                        <label>Meta Title</label>
+                        <input type="text" name="meta_title" maxlength="255" class="form-control" value="{{ old('meta_title', $testPage->meta_title) }}">
+                        <small style="color:#71869a;">Recommended length: 50–60 characters.</small>
+                    </div>
+                    <div class="form-group">
+                        <label>Meta Description</label>
+                        <textarea name="meta_description" maxlength="500" class="form-control">{{ old('meta_description', $testPage->meta_description) }}</textarea>
+                        <small style="color:#71869a;">Recommended length: 150–160 characters.</small>
+                    </div>
+                    <div class="form-group">
+                        <label>Meta Keywords</label>
+                        <input type="text" name="meta_keywords" maxlength="500" class="form-control" value="{{ old('meta_keywords', $testPage->meta_keywords) }}">
+                        <small style="color:#71869a;">Separate keywords with commas.</small>
+                    </div>
+
                     <h3 style="margin-top: 30px; margin-bottom: 15px; border-bottom: 1px solid #e1ebf2; padding-bottom: 10px;">Quick Info Section</h3>
                     <div class="grid-2">
                         <div class="form-group">

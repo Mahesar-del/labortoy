@@ -50,11 +50,16 @@ class HomeController extends Controller
                 'bgRight' => asset('img/hero-bg-img-right.jpg'),
             ];
         })->values();
-        $settings = DB::table('site_settings')->whereIn('key', ['contact_address', 'contact_email', 'contact_phone'])->pluck('value', 'key');
+        $settings = DB::table('site_settings')->whereIn('key', ['contact_address', 'contact_email', 'contact_phone', 'home_meta_title', 'home_meta_description', 'home_meta_keywords'])->pluck('value', 'key');
         $contact = (object) [
             'address' => $settings['contact_address'] ?? '',
             'email' => $settings['contact_email'] ?? '',
             'phone' => $settings['contact_phone'] ?? '',
+        ];
+        $seo = (object) [
+            'title' => $settings['home_meta_title'] ?? 'Sterling Laboratory',
+            'description' => $settings['home_meta_description'] ?? 'Sterling provides accurate, science-driven laboratory testing for patients and healthcare providers.',
+            'keywords' => $settings['home_meta_keywords'] ?? '',
         ];
         $blogPosts = \App\Models\BlogPost::where('status', 'published')
             ->where('show_on_home', true)
@@ -62,6 +67,6 @@ class HomeController extends Controller
             ->take(3)
             ->get();
 
-        return view('home', compact('hero', 'heroSlides', 'heroSlidesForJs', 'contact', 'blogPosts'));
+        return view('home', compact('hero', 'heroSlides', 'heroSlidesForJs', 'contact', 'blogPosts', 'seo'));
     }
 }

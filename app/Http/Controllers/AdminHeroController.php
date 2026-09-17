@@ -18,6 +18,9 @@ class AdminHeroController extends Controller
             'hero' => $this->hero($slide),
             'slide' => $slide,
             'user' => Auth::user(),
+            'seo' => DB::table('site_settings')
+                ->whereIn('key', ['home_meta_title', 'home_meta_description', 'home_meta_keywords'])
+                ->pluck('value', 'key'),
         ]);
     }
 
@@ -33,7 +36,16 @@ class AdminHeroController extends Controller
             'primary_button_link' => ['required', 'string', 'max:255'],
             'secondary_button_text' => ['required', 'string', 'max:80'],
             'secondary_button_link' => ['required', 'string', 'max:255'],
+            'meta_title' => ['nullable', 'string', 'max:255'],
+            'meta_description' => ['nullable', 'string', 'max:500'],
+            'meta_keywords' => ['nullable', 'string', 'max:500'],
         ]);
+        $seo = [
+            'home_meta_title' => $data['meta_title'] ?? null,
+            'home_meta_description' => $data['meta_description'] ?? null,
+            'home_meta_keywords' => $data['meta_keywords'] ?? null,
+        ];
+        unset($data['meta_title'], $data['meta_description'], $data['meta_keywords']);
         unset($data['image']);
 
         $slide = min(3, max(1, (int) $request->input('slide', 1)));
@@ -57,6 +69,13 @@ class AdminHeroController extends Controller
             ['key' => $key],
             array_merge($data, ['image_path' => $imagePath, 'updated_at' => now(), 'created_at' => $existing->created_at ?? now()])
         );
+
+        foreach ($seo as $settingKey => $settingValue) {
+            DB::table('site_settings')->updateOrInsert(
+                ['key' => $settingKey],
+                ['value' => $settingValue, 'updated_at' => now(), 'created_at' => now()]
+            );
+        }
 
         return redirect()->route('admin.home-hero.edit', ['slide' => $slide])->with('success', 'Home page hero has been updated.');
     }

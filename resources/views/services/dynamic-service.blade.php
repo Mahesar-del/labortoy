@@ -22,7 +22,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>{{ $service->name }}</title>
+    <title>{{ $service->meta_title ?: $service->name }}</title>
+    <meta name="description" content="{{ $service->meta_description ?: ($service->summary ?: $service->hero_description) }}">
+    @if(!empty($service->meta_keywords))<meta name="keywords" content="{{ $service->meta_keywords }}">@endif
     <link rel="icon" type="image/jpeg" href="{{ asset('images/favicon.jpg') }}">
     <link rel="shortcut icon" href="{{ asset('images/favicon.jpg') }}">
     <style>
