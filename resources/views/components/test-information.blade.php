@@ -1,7 +1,7 @@
 <section class="test-information-section">
     <div class="ti-container">
         <div class="ti-image">
-            <img src="{{ asset('images/test-information.jpg') }}" alt="Test Information">
+            <img src="{{ asset('images/test-information.webp') }}" alt="Test Information">
         </div>
         <div class="ti-content">
             <h2 class="ti-title">Test Information</h2>
