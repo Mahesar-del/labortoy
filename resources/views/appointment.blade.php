@@ -15,9 +15,15 @@
             margin: 0;
             padding: 0;
         }
+        html {
+            max-width: 100%;
+            overflow-x: hidden;
+        }
         body {
             font-family: 'Inter', sans-serif;
             background-color: #ffffff;
+            max-width: 100%;
+            overflow-x: hidden;
         }
         .appointment-page-wrapper {
             display: flex;
@@ -25,6 +31,7 @@
             align-items: center;
             min-height: calc(100vh - 200px);
             padding: 40px 20px;
+            width: 100%;
         }
         .appointment-section {
             background: #F3F8FA;
@@ -85,12 +92,15 @@
             grid-template-columns: 1fr 1fr;
             gap: 24px;
             margin-bottom: 24px;
+            min-width: 0;
+            width: 100%;
         }
         
         .form-group {
             display: flex;
             flex-direction: column;
             gap: 8px;
+            min-width: 0;
         }
         
         .form-group.full-width {
@@ -114,6 +124,9 @@
             color: #000000;
             outline: none;
             transition: border-color 0.3s ease;
+            max-width: 100%;
+            min-width: 0;
+            width: 100%;
         }
 
         select {
@@ -169,11 +182,17 @@
         }
 
         @media (max-width: 768px) {
+            .appointment-page-wrapper {
+                align-items: flex-start;
+                padding: 28px 16px;
+            }
             .appointment-section {
-                padding: 40px 20px;
+                border-radius: 14px;
+                padding: 32px 16px;
             }
             .form-grid {
                 grid-template-columns: 1fr;
+                gap: 20px;
             }
             .form-group.full-width {
                 grid-column: span 1;
@@ -183,9 +202,11 @@
             }
             .tabs {
                 gap: 10px;
+                width: 100%;
             }
             .tab-btn {
-                padding: 12px 16px;
+                min-width: 0;
+                padding: 12px 10px;
                 flex: 1;
             }
             .submit-btn {

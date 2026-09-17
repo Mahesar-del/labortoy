@@ -49,7 +49,7 @@
             font-size: 18px;
         }
         .about-section {
-            padding: 84px 99px 36px 99px;
+            padding: 40px 99px 10px 99px;
             background: #fff;
             width: 100%;
             box-sizing: border-box;
@@ -168,7 +168,7 @@
             box-sizing: border-box;
         }
         .mission-section {
-            padding: 0px 99px 50px 99px;
+            padding: 0px 99px 34px 99px;
             background: #fff;
             width: 100%;
             box-sizing: border-box;
@@ -397,7 +397,7 @@
                 padding: 48px 20px 20px 20px;
             }
             .mission-section {
-                padding: 0 20px 48px 20px;
+                padding: 0 20px 5px 20px;
             }
             .why-choose-section {
                 padding: 48px 20px;
@@ -591,7 +591,7 @@
 
         /* Why Choose Sterling Section */
         .why-choose-section {
-            padding: 0 99px 70px 99px;
+            padding: 0 99px 25px 99px;
             background: #fff;
             width: 100%;
             box-sizing: border-box;
@@ -670,7 +670,7 @@
 
         /* Standards Credentials Section */
         .standards-section {
-            padding: 0 99px 92px 99px;
+            padding: 0 99px 45px 99px;
             background: #fff;
             width: 100%;
             box-sizing: border-box;
@@ -905,7 +905,7 @@
             .why-choose-section {
                 padding-left: 0 !important;
                 padding-right: 0 !important;
-                padding-top: 48px !important;
+                padding-top: 15px !important;
                 padding-bottom: 48px !important;
                 width: 100% !important;
                 box-sizing: border-box !important;
@@ -997,7 +997,7 @@
             .standards-section {
                 padding-left: 0 !important;
                 padding-right: 0 !important;
-                padding-top: 48px !important;
+                padding-top: 7px !important;
                 padding-bottom: 48px !important;
                 width: 100% !important;
                 box-sizing: border-box !important;
@@ -1077,12 +1077,13 @@
 </head>
 <body>
     @include('components.header')
-    <section class="about-hero">
-        <div class="about-hero__inner">
-            <h1>Advancing Diagnostics Through Science.</h1>
-            <p>Sterling is a diagnostic laboratory focused on precision, scientific expertise, and reliable laboratory testing that supports better-informed healthcare decisions.</p>
-        </div>
-    </section>
+    @include('components.provider-hero', [
+        'title' => 'Advancing Diagnostics Through Science.',
+        'description' => 'Sterling is a diagnostic laboratory focused on precision, scientific expertise, and reliable laboratory testing that supports better-informed healthcare decisions.',
+        'bgImage' => asset('images/about-us-hero-img.jpg'),
+        'bgPosition' => 'center 45%',
+        'showButton' => false
+    ])
 
     <!-- Top About Section -->
     <section class="about-section">
