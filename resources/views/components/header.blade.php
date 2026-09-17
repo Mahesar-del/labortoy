@@ -653,7 +653,7 @@ a:focus, a:active, button:focus, button:active {
     @endphp
     <ul class="nav-links">
         <li class="has-megamenu">
-            <a style="cursor: default;">Services</a>
+            <a href="/services" style="cursor: pointer;">Services</a>
             <div class="megamenu">
                 <div class="megamenu-sidebar">
                     @foreach($headerServices as $index => $service)
