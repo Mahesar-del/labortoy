@@ -28,6 +28,7 @@ class AdminController extends Controller
                 ->limit(5)
                 ->get(),
             'newMessages' => DB::table('contact_messages')->where('status', 'new')->count(),
+            'recentMessages' => DB::table('contact_messages')->latest()->limit(4)->get(),
         ]);
     }
 }

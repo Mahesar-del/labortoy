@@ -16,7 +16,7 @@
     <section class="list">
         @forelse($messages as $message)
             <article class="message-card">
-                <div class="message-head"><div><span class="source">Contact Us</span><h2>{{ $message->subject ?: 'No subject' }}</h2><div class="meta"><strong>{{ $message->name }}</strong> · {{ $message->email }} @if($message->phone)· {{ $message->phone }}@endif<br>{{ \Carbon\Carbon::parse($message->created_at)->format('d M Y, h:i A') }}</div></div></div>
+                <div class="message-head"><div><span class="source">Contact Us</span><h2>{{ $message->subject ?: 'No subject' }}</h2><div class="meta"><strong>{{ $message->name }}</strong> · {{ $message->email }} @if($message->phone)· {{ $message->phone }}@endif<br>{{ \Carbon\Carbon::parse($message->created_at, 'UTC')->timezone('America/New_York')->format('d M Y, h:i A T') }}</div></div></div>
                 <div class="message-body">{{ $message->message }}</div>
                 <div class="actions">
                     <form method="post" action="{{ route('admin.contact-messages.status', $message->id) }}">@csrf<select name="status">@foreach(['new'=>'New','read'=>'Read','replied'=>'Replied'] as $value=>$label)<option value="{{ $value }}" {{ $message->status===$value?'selected':'' }}>{{ $label }}</option>@endforeach</select><button type="submit">Update status</button></form>
