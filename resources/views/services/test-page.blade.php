@@ -26,7 +26,7 @@
 
         .dynamic-test-page {
             min-width: 0;
-            overflow-x: hidden;
+            overflow-x: clip;
         }
 
         .dynamic-test-page .services-hero__container {

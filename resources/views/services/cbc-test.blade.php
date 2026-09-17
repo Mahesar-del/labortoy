@@ -25,7 +25,7 @@
         /* Match the CBC hero's content rail to the shared site header. */
         .cbc-test-page {
             min-width: 0;
-            overflow-x: hidden;
+            overflow-x: clip;
         }
 
         .cbc-test-page .services-hero__container {
