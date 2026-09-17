@@ -610,7 +610,7 @@ a:focus, a:active, button:focus, button:active {
     <div class="header-container">
         <!-- Logo -->
         <a href="/" class="logo-container">
-            <img src="{{ asset('images/header-logo.svg') }}" alt="Sterling Logo" width="220" height="75" style="height: auto; max-height: 85px; width: 100%; object-fit: contain; object-position: left;">
+            <img src="{{ asset('images/smglab-logo.svg') }}" alt="Sterling Logo" width="220" height="75" style="height: auto; max-height: 85px; width: 100%; object-fit: contain; object-position: left;">
         </a>
 
     @php
@@ -720,7 +720,7 @@ a:focus, a:active, button:focus, button:active {
 <div class="mobile-menu-drawer" id="mobileMenuDrawer">
     <div class="mobile-drawer-header">
         <a href="/" class="mobile-logo">
-            <img src="{{ asset('images/header-logo.svg') }}" alt="Sterling Logo" style="height: 40px; width: auto;">
+            <img src="{{ asset('images/smglab-logo.svg') }}" alt="Sterling Logo" style="height: 40px; width: auto;">
         </a>
         <button class="mobile-drawer-close" id="mobileDrawerClose" aria-label="Close menu">
             <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
