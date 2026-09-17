@@ -13,13 +13,6 @@
 </head>
 <body>
     @include('components.header')
-    @include('components.provider-hero', [
- 'title' => 'Patient<br>Portal',
-        'description' => 'Access laboratory testing information, specimen requirements, clinical resources, and provider support to help you navigate the testing process with Sterling.',
-        'bgImage' => asset('images/patient_hero_image.jpg'),
-        'bgPosition' => 'center 28%',
-        'showButton' => false
-    ])
     <section class="services-hero" aria-labelledby="services-hero-title">
         <div class="services-hero__background" style="background-image: url('{{ asset('images/patient-banner.webp') }}');"></div>
         <div class="services-hero__overlay"></div>
