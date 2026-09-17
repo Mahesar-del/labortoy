@@ -154,3 +154,12 @@ Route::post('admin/faqs', [\App\Http\Controllers\AdminFaqController::class, 'sto
 Route::delete('admin/faqs/{id}', [\App\Http\Controllers\AdminFaqController::class, 'destroy'])->name('admin.faqs.destroy');
 Route::get('admin/test-pages/convert/{id}', [\App\Http\Controllers\AdminTestPageController::class, 'convertBasicTest'])->name('admin.test-pages.convert');
 Route::resource('admin/test-pages', \App\Http\Controllers\AdminTestPageController::class, ['as' => 'admin']);
+
+Route::get('admin/main-faqs', [\App\Http\Controllers\AdminMainFaqController::class, 'index'])->name('admin.main-faqs.index');
+Route::post('admin/main-faqs/categories', [\App\Http\Controllers\AdminMainFaqController::class, 'storeCategory'])->name('admin.main-faqs.categories.store');
+Route::post('admin/main-faqs/categories/{id}', [\App\Http\Controllers\AdminMainFaqController::class, 'updateCategory'])->name('admin.main-faqs.categories.update');
+Route::delete('admin/main-faqs/categories/{id}', [\App\Http\Controllers\AdminMainFaqController::class, 'destroyCategory'])->name('admin.main-faqs.categories.destroy');
+
+Route::post('admin/main-faqs/items', [\App\Http\Controllers\AdminMainFaqController::class, 'storeItem'])->name('admin.main-faqs.items.store');
+Route::post('admin/main-faqs/items/{id}', [\App\Http\Controllers\AdminMainFaqController::class, 'updateItem'])->name('admin.main-faqs.items.update');
+Route::delete('admin/main-faqs/items/{id}', [\App\Http\Controllers\AdminMainFaqController::class, 'destroyItem'])->name('admin.main-faqs.items.destroy');
