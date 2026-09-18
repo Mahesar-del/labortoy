@@ -329,7 +329,7 @@
             width: 50%;
             height: auto;
             bottom: -1rem;
-            right: 4%;
+            right: 0%;
             border-radius: 12px;
         }
 
@@ -1445,8 +1445,8 @@
         <div class="science-precision-section">
             <div class="science-left">
                 <div class="science-image-container" style="isolation:isolate;">
-                    <img src="{{ asset('images/science-meet-two.png') }}" class="science-img-back" style="border-radius:1rem;" alt="Laboratory Diagnostic Process">
-                    <img src="{{ asset('images/science-meet-one.png') }}" class="science-img-front" alt="Microscope Analysis">
+                    <img src="{{ asset('images/diagnostic- science-clinical-precision-up.webp') }}" class="science-img-back" style="border-radius:1rem;" alt="Laboratory Diagnostic Process">
+                    <img src="{{ asset('images/science-meets-clinicalprecision-two.webp') }}" class="science-img-front" alt="Microscope Analysis">
                 </div>
             </div>
             <div class="science-right">
